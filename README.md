@@ -63,7 +63,29 @@ git push origin main
 
 4. Deploy. Hostinger runs install + build on the server; static files land in `out/`.
 
+> **Important:** Type the install command as `npm install` — do not leave the default/auto option. If `pnpm-lock.yaml` is present, Hostinger may run **pnpm** via Corepack, which fails on shared hosting with `ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`. This repo also includes `package-lock.json` for npm.
+
 > Use the **Git** flow with the full repo — not a zip of `out/`. Pre-built zips are only for **File Manager** upload (`./scripts/package-hostinger.sh`).
+
+### Hostinger build fails (`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`)
+
+Hostinger’s alt-nodejs + Corepack **pnpm** often breaks. Fix in **hPanel → Node.js app → Settings**:
+
+| Setting | Value |
+|---------|--------|
+| Install | `npm install` |
+| Build | `npm run build` |
+| Node.js | **20.x** |
+
+Then **Redeploy**. Do not use `pnpm install` on the server.
+
+**Fastest alternative (no server build):** build locally and upload static files only:
+
+```bash
+./scripts/package-hostinger.sh   # → hoahwa-public_html.zip → File Manager → public_html
+# or
+./scripts/deploy-hostinger.sh    # rsync out/ via SSH
+```
 
 ### 3. After code changes
 
