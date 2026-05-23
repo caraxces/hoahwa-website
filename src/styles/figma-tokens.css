@@ -1,0 +1,41 @@
+/* Hoahwa design tokens — evolved from WIRO layout system */
+:root {
+  --wiro-romance: #fffdfa;
+  --wiro-cod-gray: #151515;
+  --hoahwa-accent: #cd9d65;
+  --wiro-mauve: #cd9d65;
+  --wiro-chenin: #d4a574;
+  --wiro-spring-wood: #f3efe9;
+  --wiro-black: #000000;
+  --wiro-white: #ffffff;
+
+  --wiro-h1: 120px;
+  --wiro-h1-lh: 120px;
+  --wiro-h1-tracking: -0.06em;
+  --wiro-h2: 72px;
+  --wiro-h3: 48px;
+  --wiro-h3-tracking: -0.04em;
+  --wiro-h6: 24px;
+  --wiro-body: 20px;
+  --wiro-body-lh: 28px;
+  --wiro-nav: 16px;
+
+  --wiro-container: 1360px;
+  --wiro-gutter: 24px;
+  --wiro-page-pad: 280px;
+}
+
+@media (max-width: 1280px) {
+  :root {
+    --wiro-page-pad: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --wiro-h1: clamp(48px, 12vw, 80px);
+    --wiro-h1-lh: 1.05;
+    --wiro-h3: clamp(28px, 6vw, 40px);
+    --wiro-page-pad: 20px;
+  }
+}

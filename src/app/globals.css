@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@import "../styles/figma-tokens.css";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --color-wiro-romance: var(--wiro-romance);
+  --color-wiro-mauve: var(--wiro-mauve);
+  --color-hoahwa-accent: var(--hoahwa-accent);
+  --color-wiro-chenin: var(--wiro-chenin);
+  --color-wiro-cod-gray: var(--wiro-cod-gray);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--wiro-black);
+  color: var(--wiro-romance);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+.text-h1 {
+  font-size: var(--wiro-h1);
+  line-height: var(--wiro-h1-lh);
+  letter-spacing: var(--wiro-h1-tracking);
+  font-weight: 400;
+}
+
+.text-h3 {
+  font-size: var(--wiro-h3);
+  line-height: var(--wiro-h3);
+  letter-spacing: var(--wiro-h3-tracking);
+  font-weight: 400;
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 45s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 45s linear infinite;
+}
+
+.animate-decor-marquee {
+  animation: marquee-left 18s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right,
+  .animate-decor-marquee {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
