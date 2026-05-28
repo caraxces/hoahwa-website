@@ -20,22 +20,52 @@
   --wiro-body-lh: 28px;
   --wiro-nav: 16px;
 
-  --wiro-container: 1360px;
-  --wiro-gutter: 24px;
-  --wiro-page-pad: 280px;
+  /* Layout — max content width 1920px */
+  --wiro-container: 1920px;
+  --wiro-gutter: 48px;
+  --wiro-page-pad: 120px;
 }
 
-@media (max-width: 1280px) {
+/* Wide desktop (1440–1920px) */
+@media (max-width: 1920px) and (min-width: 1441px) {
   :root {
-    --wiro-page-pad: 48px;
+    --wiro-page-pad: 80px;
+    --wiro-gutter: 48px;
   }
 }
 
+/* Standard desktop (1280–1440px) */
+@media (max-width: 1440px) {
+  :root {
+    --wiro-page-pad: 60px;
+    --wiro-gutter: 40px;
+  }
+}
+
+/* Laptop (max 1280px) */
+@media (max-width: 1280px) {
+  :root {
+    --wiro-page-pad: 40px;
+    --wiro-gutter: 32px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  :root {
+    --wiro-page-pad: 24px;
+    --wiro-gutter: 24px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   :root {
     --wiro-h1: clamp(48px, 12vw, 80px);
     --wiro-h1-lh: 1.05;
     --wiro-h3: clamp(28px, 6vw, 40px);
-    --wiro-page-pad: 20px;
+    --wiro-page-pad: 16px;
+    --wiro-gutter: 16px;
   }
 }
+

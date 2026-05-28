@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   careersHero,
   careersQuotes,
@@ -68,7 +69,15 @@ export function CareersPageView() {
         <PageContainer>
           <h2 className="text-h3">
             <span className="text-[var(--wiro-mauve)]">Why</span>
-            <span> Join Hoahwa?</span>
+            <span> Join{" "}
+              <Image
+                src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+                alt="Hoahwa"
+                width={240}
+                height={60}
+                className="inline-block h-[1em] w-auto align-middle"
+              />?
+            </span>
           </h2>
           <div className="mt-16 grid gap-12 lg:grid-cols-3">
             {whyJoin.map((item) => (

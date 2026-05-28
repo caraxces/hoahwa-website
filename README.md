@@ -95,10 +95,34 @@ git add -A && git commit -m "your message" && git push
 
 Redeploy from hPanel or wait for auto-deploy if enabled.
 
+## Deploy via Hostinger API (recommended)
+
+Fastest and most reliable for this static export (`out/`). No SSH/rsync timeouts.
+
+```bash
+export HOSTINGER_API_TOKEN='…'   # hPanel → Account → API
+pnpm deploy:hostinger
+# or: node scripts/deploy-hostinger-api.mjs
+```
+
+Uses the same flow as MCP tool `hosting_deployStaticWebsite` (upload zip → extract on server).
+
+### Hostinger MCP in Cursor
+
+1. Copy `.cursor/mcp.json.example` → merge into **Cursor Settings → MCP** (use `HOSTINGER_API_TOKEN`, not a file on disk).
+2. Restart Cursor; enable **hostinger-api** (or `hostinger-hosting-mcp` only to save tool slots).
+3. Ask the agent: *Deploy static site to hoahwa.com from `out/`* → it should call `hosting_deployStaticWebsite`.
+
+| Tool | Use for Hoahwa site |
+|------|---------------------|
+| `hosting_deployStaticWebsite` | **Yes** — pre-built `out/` zip |
+| `hosting_deployJsApplication` | No — builds on server (pnpm/Corepack issues) |
+| SSH `deploy-hostinger.sh` | Fallback only — shared hosting often times out |
+
 ## Other deploy options
 
-- **File Manager:** `./scripts/package-hostinger.sh` → upload `hoahwa-public_html.zip` to `public_html` (no Node.js wizard).
-- **SSH/rsync:** `./scripts/deploy-hostinger.sh` (set `HOSTINGER_REMOTE_DIR=domains/hoahwa.com/public_html`).
+- **File Manager:** `./scripts/package-hostinger.sh` → upload `hoahwa-public_html.zip` to `public_html`.
+- **SSH:** `./scripts/deploy-hostinger.sh` (often unstable on shared hosting).
 
 ## Visual smoke (optional)
 

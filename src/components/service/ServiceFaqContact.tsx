@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { ServiceFaq } from "@/content/service";
 import { AccordionPlusIcon } from "@/components/shared/AccordionPlusIcon";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
@@ -85,7 +86,15 @@ export function ServiceFaqContact({
           <div className="max-w-[720px] shrink-0">
             <h2 className="text-h1">
               <span className="block text-[var(--wiro-romance)]">{contactTitle[0]}</span>
-              <span className="block text-[var(--wiro-mauve)]">{contactTitle[1]}</span>
+              <span className="block text-[var(--wiro-mauve)]">
+                <Image
+                  src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+                  alt="Hoahwa"
+                  width={480}
+                  height={120}
+                  className="block h-[1em] w-auto max-w-full"
+                />
+              </span>
             </h2>
           </div>
           <div className="w-full max-w-[532px]">

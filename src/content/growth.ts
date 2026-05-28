@@ -57,10 +57,10 @@ export const growthPlans: ServicePlan[] = [
 export const growthWhy = {
   label: "Why choose us?",
   headline:
-    "Our custom Shopify builds, give your brand the technical foundation to grow and scale efficiently.",
+    "Direct client collaboration and competitive, cost-efficient execution.",
   body: [
-    "With a proven track record of increasing conversions, enhancing customer experiences and optimising technical performance, Hoahwa is the trusted name, in the eCom game!",
-    "In today's highly competitive eCommerce landscape, success depends on seamless customer experiences, high-conversion and robust technology. Our CX, CRO and Technical Audit identify gaps and opportunities to optimise performance, and drive greater revenue through data-led strategic recommendations.",
+    "We are a young and dynamic boutique unit. By eliminating administrative bloat and collaborating directly with you as dedicated individual experts, we guarantee a high level of responsibility, responsiveness, and premium results.",
+    "Our primary objective is to win prestigious web design and development awards at the world's leading design organizations, offering superb visual aesthetics paired with industry-leading technical compatibility.",
   ],
   partners: {
     title: "Trusted partners that deliver on your growth goals",

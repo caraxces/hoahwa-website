@@ -12,7 +12,7 @@ export const easeInOut: Transition = {
 
 /** Enter + exit when scrolling in/out of viewport */
 export const revealViewport = {
-  once: false,
+  once: true,
   amount: 0.25,
   margin: "0px 0px -8% 0px",
 } as const;

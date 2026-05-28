@@ -1,70 +1,65 @@
 export const growthPitch = {
-  headline: ["We accelerate", "your eCommerce", "Growth"],
+  headline: ["Exquisite design", "meets top-tier", "compatibility"],
   body: [
-    "Our proven process—Auditing, Roadmapping and executing on a Growth Retainer—ensures every step is strategic, based off of data and yields high ROI.",
-    "From CX Design and CRO to eCommerce Strategy and Shopify Development, we provide the expertise and execution needed to unlock your brand's full potential.",
-    "Ready to take things to the next level?",
+    "We are a young, dynamic boutique agency focused on crafting high-end websites that stand out. By working directly with individual clients, we bring exceptional dedication and high personal accountability.",
+    "Cost efficiency is always our key strength. Our ultimate ambition is to win prestigious awards at leading global design organizations, combining pristine aesthetics with flawless technical compatibility.",
+    "Ready to build something extraordinary?",
   ],
   cta: "Contact",
 };
 
 export const servicesAccordion = [
   {
-    id: "auditing",
-    title: "Auditing + Discovery",
-    body: "Our Audit and Discovery process lays the foundations for guaranteed success. Before diving into Growth Retainers or complex Shopify Builds, we conduct in-depth Audits to reduce risk, uncover opportunity, provide tailored recommendations and prioritise suggestions based on effort and impact. This strategic approach ensures every project and retainer starts with clarity, focus and a roadmap for scalable growth.",
+    id: "design",
+    title: "Aesthetic Web Design",
+    body: "Crafting visually striking, award-worthy web interfaces that showcase your brand's unique character. We prioritize pristine aesthetics, modern typography, and immersive interactions.",
   },
   {
-    id: "cro",
-    title: "eCommerce Growth + CRO",
-    body: "CRO and A/B testing become key drivers of ongoing growth. We refine the customer experience, improve conversion rates, and maximise ROI with data-driven experiments.",
+    id: "build",
+    title: "Top-Tier Web Development",
+    body: "Building fast, clean, and responsive websites with cutting-edge technical compatibility. Every line of code is optimized for seamless performance on all browser environments.",
   },
   {
-    id: "dev",
-    title: "Shopify Development",
-    body: "Bespoke Shopify solutions beyond theme builds—from seamless integrations to custom functionality that elevates engagement and CX.",
+    id: "collaboration",
+    title: "Direct Collaboration",
+    body: "No administrative layers, accounts managers, or bureaucrat bloat. You collaborate directly with the creators, ensuring high personal responsibility, rapid execution, and maximum cost efficiency.",
   },
   {
-    id: "replatform",
-    title: "Replatforms + Migrations",
-    body: "Specialist migrations to Shopify from Magento, Salesforce, WooCommerce and more—with meticulous data migration and tailored customer experience.",
-  },
-  {
-    id: "integrations",
-    title: "Technical Integrations",
-    body: "Bespoke functionality and integrations with Klaviyo, Yotpo, Gorgias and more—tailored to your stack for efficiency, engagement and growth.",
+    id: "optimization",
+    title: "Performance Optimization",
+    body: "Ensuring your website is fully optimized for speed, search engines, and modern compatibility standards, keeping maintenance simple and cost-effective.",
   },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Team Hoahwa were fantastic to work with. Their expertise in CRO, strategy, dev and creating a smooth customer journey really stood out. They always went the extra mile to put both our needs, and our customers' first.",
+      "Working directly with the team at Hoahwa was fantastic. The level of personal accountability and responsive communication made the project run smoothly, and the design aesthetics are top-tier.",
     name: "Sasha Seymour-Williams, Brand & Marketing",
   },
   {
     quote:
-      "Hoahwa's knowledge of how to get the best out of Shopify has allowed us to enhance and tailor our store. By improving our CX, its resulted in growth. Highly recommend their team of experts, if you want your store elevated",
-    name: "Joe Lack, Operations Managers",
+      "Hoahwa's design aesthetics and technical compatibility allowed us to elevate our web presence. By working with individuals directly, we saved costs without compromising on quality.",
+    name: "Joe Lack, Operations Manager",
   },
   {
     quote:
-      "Tasked with an incredibly tight deadline ahead of BFCM, the build was completed both on time and budget. The team were incredibly responsive and collaborative throughout, which made the project run super smoothly!",
+      "Tasked with a tight deadline, the build was completed on time and within budget. The team was highly responsive, collaborative, and delivered a high-performance web experience.",
     name: "Jack Turner, Head of Digital",
   },
   {
     quote:
-      "Hoahwa are great. I'd definitely recommend them to anyone looking for Shopify strategy, dev and design support. A very intelligent and engaged team, that have massively helped progress our eCom proposition over the last couple of years",
+      "Hoahwa is a fantastic partner. Highly recommend their agile team for high-end web design and development support. They combine great taste with technical expertise.",
     name: "Jack Stevens, Chief Operations Officer",
   },
   {
     quote:
-      "We're thrilled with the end results and are excited to continue our work with Hoahwa on growth retainers and larger Shopify projects.",
-    name: "Sam Sandiford, eCommerce Manager",
+      "We're thrilled with the end results and the award-worthy aesthetic. The cost efficiency and dedication to code quality was exceptional.",
+    name: "Sam Sandiford, Digital Manager",
   },
   {
     quote:
-      "Hoahwa have been fantastic—they've gone the extra mile to get the job done to the highest quality. One of the smoothest migrations I've ever seen.",
+      "One of the simplest, smoothest website launches I've ever seen. The direct communication and technical compatibility across all platforms was outstanding.",
     name: "Geoff Bull, Chief Marketing Officer",
   },
 ];
@@ -72,28 +67,26 @@ export const testimonials = [
 export const blogTeaser = [
   {
     num: "01",
-    title: "Why Slow Shopify Stores Hurt Revenue More Than Most Brands Realise",
+    title: "Why Slow Websites Hurt User Engagement More Than You Realise",
   },
   {
     num: "02",
-    title: "How Much Revenue Are You Losing to a Slow Shopify Store?",
+    title: "How to Achieve Flawless Cross-Browser Compatibility and Fast Page Speed",
   },
   {
     num: "03",
-    title:
-      "Shopify's Native A/B Testing Changes Everything (And Why Most CRO Setups Are Now Outdated)",
+    title: "The Power of Direct Collaboration: Cutting the Agency Overhead",
   },
   {
     num: "04",
-    title:
-      "What Is a Shopify Partner? Benefits, Services & How to Choose the Right One",
+    title: "Designing for Web Awards: Aesthetic Best Practices and Modern UI Patterns",
   },
 ];
 
 export const poolCta = {
   headline: [
-    "Ready to accelorate your eCommerce Growth",
-    "with a dedicated Shopify Premier Partner?",
+    "Ready to build an award-winning site",
+    "with direct individual collaboration?",
   ],
   cta: "Contact",
 };

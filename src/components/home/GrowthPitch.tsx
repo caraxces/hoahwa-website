@@ -6,6 +6,7 @@ import { ShopifyPremierBadge } from "@/components/shared/ShopifyPremierBadge";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { fadeUp } from "@/lib/motion";
+import { FlowersOverlay } from "@/components/motion/FlowersOverlay";
 
 export function GrowthPitch() {
   return (
@@ -44,15 +45,18 @@ export function GrowthPitch() {
               </Link>
             </Reveal>
           </div>
-          <Reveal variants={fadeUp} className="w-full lg:w-[660px] lg:shrink-0">
-            <div className="relative aspect-[660/699] w-full overflow-hidden rounded-[10px] lg:h-[699px]">
-              <Image
-                src={figmaAssets.growthPitchImage}
-                alt=""
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 660px"
-              />
+          <Reveal variants={fadeUp} className="group-hover-flowers relative w-full lg:w-[660px] lg:shrink-0">
+            <div className="relative aspect-[660/699] w-full lg:h-[699px]">
+              <div className="h-full w-full overflow-hidden rounded-[10px]">
+                <Image
+                  src={figmaAssets.growthPitchImage}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 660px"
+                />
+              </div>
+              <FlowersOverlay />
             </div>
           </Reveal>
         </div>

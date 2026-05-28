@@ -2,9 +2,9 @@ import { BuildPageView } from "@/components/build/BuildPageView";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Shopify Builds + Migrations | Hoahwa",
+  title: "Web Design & Development | Hoahwa",
   description:
-    "Discovery, migration, and Shopify theme development for ambitious DTC brands on Shopify Plus.",
+    "Boutique web design & development focusing on high-end aesthetics, cost-effective pricing, and top-tier browser compatibility.",
 };
 
 export default function BuildPage() {

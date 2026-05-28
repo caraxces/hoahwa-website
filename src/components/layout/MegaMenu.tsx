@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
@@ -180,7 +181,14 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                         </motion.nav>
                         <motion.div className="mt-10" variants={fadeUp}>
                           <Button href="/contact" onClick={onClose}>
-                            Lets Talk Hoahwa
+                            Lets Talk{" "}
+                            <Image
+                              src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+                              alt="Hoahwa"
+                              width={120}
+                              height={30}
+                              className="inline-block h-[1em] w-auto align-middle"
+                            />
                           </Button>
                         </motion.div>
                       </div>
@@ -243,7 +251,14 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                               ))}
                             </nav>
                             <Button href="/contact" className="mt-10" onClick={onClose}>
-                              Lets Talk Hoahwa
+                              Lets Talk{" "}
+                              <Image
+                                src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+                                alt="Hoahwa"
+                                width={120}
+                                height={30}
+                                className="inline-block h-[1em] w-auto align-middle"
+                              />
                             </Button>
                           </div>
                         </motion.div>

@@ -36,11 +36,11 @@ export const auditPage: ServicePage = {
         "Performance, theme architecture, app stack, and technical debt assessment with a remediation roadmap.",
     },
   ],
-  whyTitle: "Why choose Hoahwa for Audits",
+  whyTitle: "Why choose Hoahwa",
   whyPoints: [
-    "Shopify-specialist team with 500+ brand engagements",
-    "Roadmaps prioritised by effort vs impact",
-    "Actionable deliverables—not slide decks",
+    "Young, dynamic agency focused on design aesthetics",
+    "Direct expert-to-expert collaboration with high responsibility",
+    "High cost-efficiency and flexible solutions",
   ],
   faqs: [
     {
@@ -81,11 +81,11 @@ export const buildPage: ServicePage = {
         "Shopify 2.0 theme development with modular sections, CMS flexibility, and performance baked in.",
     },
   ],
-  whyTitle: "Why choose Hoahwa for Builds",
+  whyTitle: "Why choose Hoahwa",
   whyPoints: [
-    "End-to-end replatform expertise",
-    "Award-winning CX and development",
-    "Launch-ready QA and CRO hooks",
+    "Aesthetics geared towards winning prestigious global awards",
+    "Top-tier technical compatibility and responsive performance",
+    "Highly cost-effective builds without administrative overhead",
   ],
   faqs: [
     {
@@ -129,11 +129,11 @@ export const growthPage: ServicePage = {
         "Hypothesis-led A/B testing programme with reporting tied to revenue and conversion.",
     },
   ],
-  whyTitle: "Why choose Hoahwa for Growth",
+  whyTitle: "Why choose Hoahwa",
   whyPoints: [
-    "Record-level conversion lifts for retained clients",
-    "Balanced strategy, design, and dev in one team",
-    "Transparent reporting and experiment velocity",
+    "Agile and dynamic boutique team focused on client results",
+    "Direct communication with dedicated builders",
+    "Uncompromising commitment to top technical standards",
   ],
   faqs: [
     {

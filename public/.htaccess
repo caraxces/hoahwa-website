@@ -1,24 +1,33 @@
-# Hostinger / Apache — static Next.js export
+Options -MultiViews -Indexes
+RewriteEngine On
+
+# Canonical trailing-slash redirect (matches Next trailingSlash:true)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.+[^/])$ /$1/ [R=301,L]
+
+# Serve directory index.html for routes
 DirectoryIndex index.html
 
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
+# 404 fallback
+ErrorDocument 404 /404.html
 
-  # Serve existing files and directories
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^ - [L]
-
-  # Trailing-slash routes (Next export with trailingSlash: true)
-  RewriteCond %{REQUEST_FILENAME}.html -f
-  RewriteRule ^(.+?)/?$ $1.html [L]
-
-  RewriteRule ^ index.html [L]
+# Long-term cache for hashed _next/static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  <FilesMatch "\.(js|css|woff2?|ttf|eot|otf)$">
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpg|jpeg|gif|webp|avif|svg|ico)$">
+    ExpiresDefault "access plus 6 months"
+  </FilesMatch>
 </IfModule>
 
+# Security headers
 <IfModule mod_headers.c>
-  <FilesMatch "\.(html|js|css|svg|woff2?)$">
-    Header set Cache-Control "public, max-age=3600"
-  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header append Vary Accept-Encoding
 </IfModule>

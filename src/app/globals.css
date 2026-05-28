@@ -5,7 +5,8 @@
 @import "swiper/css/pagination";
 
 @theme inline {
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-darley);
+  --font-inter: var(--font-inter);
   --color-wiro-romance: var(--wiro-romance);
   --color-wiro-mauve: var(--wiro-mauve);
   --color-hoahwa-accent: var(--hoahwa-accent);
@@ -20,7 +21,7 @@ html {
 body {
   background: var(--wiro-black);
   color: var(--wiro-romance);
-  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-family: var(--font-darley), var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
 .text-h1 {
@@ -76,5 +77,172 @@ body {
 
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* Flower animation effect from Uiverse.io by yaroslavas2001 */
+.flower-container {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.flower {
+  display: grid;
+  grid-template-columns: 1em 1em;
+  position: absolute;
+  transition: grid-template-columns 0.8s ease;
+  font-size: 28px; /* default flower size */
+}
+
+.flower1 {
+  top: -16px;
+  left: -16px;
+  transform: rotate(5deg);
+}
+
+.flower2 {
+  top: 40%;
+  left: -20px;
+  transform: rotate(35deg);
+}
+
+.flower3 {
+  bottom: -16px;
+  left: 15%;
+  transform: rotate(0deg);
+}
+
+.flower4 {
+  top: -20px;
+  right: 20%;
+  transform: rotate(15deg);
+}
+
+.flower5 {
+  top: 30%;
+  right: -20px;
+  transform: rotate(25deg);
+}
+
+.flower6 {
+  bottom: -20px;
+  right: -16px;
+  transform: rotate(30deg);
+}
+
+.petal {
+  height: 1em;
+  width: 1em;
+  border-radius: 40% 70% / 7% 90%;
+  background: linear-gradient(#cd9d65, #f3dcb3);
+  border: 0.5px solid #dfc79b;
+  z-index: 0;
+  transition: width 0.8s ease, height 0.8s ease;
+}
+
+.petal.two {
+  transform: rotate(90deg);
+}
+
+.petal.three {
+  transform: rotate(270deg);
+}
+
+.petal.four {
+  transform: rotate(180deg);
+}
+
+/* Hover effects when parent group-hover-flowers is hovered */
+.group-hover-flowers:hover .petal {
+  background: linear-gradient(#b8874c, #e6cd9a);
+  border: 0.5px solid #cd9d65;
+}
+
+.group-hover-flowers:hover .flower {
+  grid-template-columns: 1.5em 1.5em;
+}
+
+.group-hover-flowers:hover .flower .petal {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.group-hover-flowers:hover div.flower1 {
+  animation: 15s linear 0s normal none infinite running flower1-spin;
+}
+
+@keyframes flower1-spin {
+  0% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(365deg);
+  }
+}
+
+.group-hover-flowers:hover div.flower2 {
+  animation: 13s linear 1s normal none infinite running flower2-spin;
+}
+
+@keyframes flower2-spin {
+  0% {
+    transform: rotate(35deg);
+  }
+  100% {
+    transform: rotate(-325deg);
+  }
+}
+
+.group-hover-flowers:hover div.flower3 {
+  animation: 16s linear 1s normal none infinite running flower3-spin;
+}
+
+@keyframes flower3-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.group-hover-flowers:hover div.flower4 {
+  animation: 17s linear 1s normal none infinite running flower4-spin;
+}
+
+@keyframes flower4-spin {
+  0% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(375deg);
+  }
+}
+
+.group-hover-flowers:hover div.flower5 {
+  animation: 20s linear 1s normal none infinite running flower5-spin;
+}
+
+@keyframes flower5-spin {
+  0% {
+    transform: rotate(25deg);
+  }
+  100% {
+    transform: rotate(-335deg);
+  }
+}
+
+.group-hover-flowers:hover div.flower6 {
+  animation: 15s linear 1s normal none infinite running flower6-spin;
+}
+
+@keyframes flower6-spin {
+  0% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(390deg);
   }
 }

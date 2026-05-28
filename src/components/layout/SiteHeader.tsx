@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { pillars, headerLinks } from "@/content/navigation";
@@ -14,16 +15,23 @@ function HoahwaLogo() {
   return (
     <Link
       href="/"
-      className="group flex h-[30px] items-center"
+      className="group flex items-center"
       aria-label="Hoahwa home"
     >
-      <motion.span
-        className="text-[22px] font-semibold tracking-[-0.06em] text-[var(--wiro-romance)] transition-colors group-hover:text-[var(--hoahwa-accent)]"
+      <motion.div
+        className="relative h-10 w-10 transition-opacity group-hover:opacity-80 md:h-12 md:w-12"
         whileHover={{ scale: 1.03 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
       >
-        Hoahwa
-      </motion.span>
+        <Image
+          src="/LOGO HOAHWA/hoahwa_logo_board-07.png"
+          alt="Hoahwa"
+          fill
+          className="object-contain"
+          sizes="(max-width: 768px) 40px, 48px"
+          priority
+        />
+      </motion.div>
     </Link>
   );
 }

@@ -1,26 +1,26 @@
 export const careersHero = {
   eyebrow: "Careers",
-  headline: "Join our team",
+  headline: "Join our boutique studio",
 };
 
 export const careersStats = [
-  { value: "26", label: "Team members" },
-  { value: "40", label: "Active Clients" },
-  { value: "2016", label: "Founded" },
+  { value: "5+", label: "Core Creators" },
+  { value: "15+", label: "Design Awards Aims" },
+  { value: "100%", label: "Direct Collaboration" },
 ];
 
 export const openRoles = [
   {
-    title: "CRO Strategist + Data Analyst",
+    title: "Aesthetic UI/UX Designer & Developer",
     location: "Remote",
-    href: "/careers/cro-strategist-data-analyst",
+    href: "/careers/designer-developer",
   },
 ];
 
 export const whyJoin = [
   {
     title: "Personal Growth",
-    body: "Growth is our priority. We believe in empowering our team to reach their full potential by offering a wide variety of exciting projects with leading eCommerce brands. From honing your craft to learning new skills, we invest in professional development and create opportunities for you to thrive.",
+    body: "We believe in empowering our team to reach their full potential by offering a wide variety of exciting projects with leading brands. From honing your craft to learning new skills, we invest in professional development and create opportunities for you to thrive.",
   },
   {
     title: "Collaborative Culture",
@@ -28,51 +28,38 @@ export const whyJoin = [
   },
   {
     title: "Flexible + Fully Remote",
-    body: "Hoahwa operates as a fully remote agency, allowing you to work from wherever you feel most productive. With flexible hours and a stress-free environment, we empower you to balance your personal and professional life seamlessly.",
+    body: "Hoahwa operates as a fully remote team, allowing you to work from wherever you feel most productive. With flexible hours and a stress-free environment, we empower you to balance your personal and professional life seamlessly.",
   },
 ];
 
 export const careersQuotes = [
   {
     quote:
-      "Hoahwa is an agency with a great culture and vision. Team communication is so strong—much better than I ever thought a remote agency could achieve.",
+      "Hoahwa is a boutique studio with a fantastic culture and vision. Direct communication is extremely strong, allowing us to build amazing award-winning experiences without any bureaucratic delays.",
     name: "Ruth",
     role: "Lead CX Designer",
   },
   {
     quote:
-      "I love that my opinions have been respected since the first day I joined and I've been given a really interesting variety of work to do.",
+      "I love working here because we get to shape the aesthetic direction of high-end sites and work directly with clients to ensure top technical compatibility.",
     name: "Stephen",
-    role: "Full Stack Shopify Developer",
+    role: "Full Stack Developer",
   },
   {
     quote:
       "Working at Hoahwa is an incredible experience, largely because of the talented and dedicated team. It's exciting to work in such a rewarding role.",
     name: "Amy",
-    role: "Head of Operations",
-  },
-  {
-    quote:
-      "Lovely, talented, and professional team—everyone is very supportive and a pleasure to work with. Great culture even though remote.",
-    name: "Laura",
-    role: "Project Manager",
+    role: "Creative Operations",
   },
 ];
 
 export const teamMembers = [
-  { name: "Tom", role: "Founder" },
-  { name: "Amy", role: "Operations Director" },
-  { name: "Anna", role: "Lead Project Manager" },
-  { name: "Anna", role: "Head of Development" },
-  { name: "Darren", role: "Commercial Director" },
-  { name: "Ruth", role: "Lead CX Designer" },
-  { name: "Laura", role: "Project Manager" },
-  { name: "Daniel", role: "Frontend Shopify Developer" },
-  { name: "Alfie", role: "Frontend Shopify Developer" },
+  { name: "Tom", role: "Founder & Creative Lead" },
+  { name: "Amy", role: "Creative Operations" },
+  { name: "Ruth", role: "Lead CX/UI Designer" },
   { name: "Stephen", role: "Full Stack Developer" },
   { name: "Van", role: "UX + UI Designer" },
-  { name: "Long", role: "Frontend Shopify Developer" },
-  { name: "Chien", role: "Frontend Shopify Developer" },
+  { name: "Long", role: "Frontend Developer" },
+  { name: "Chien", role: "Frontend Developer" },
   { name: "Mimi", role: "UI Designer" },
-  { name: "Gopika", role: "Social + SEO" },
 ];

@@ -4,29 +4,15 @@ type HoahwaFooterWordmarkProps = {
   className?: string;
 };
 
-/** Full-height footer marquee wordmark — vector, transparent, tight crop */
+/** Full-height footer marquee wordmark — uses official brand image (board-09) */
 export function HoahwaFooterWordmark({ className }: HoahwaFooterWordmarkProps) {
   return (
-    <svg
-      viewBox="0 0 900 260"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="Hoahwa"
-      preserveAspectRatio="xMinYMid meet"
-      className={cn("h-full w-auto shrink-0 text-[var(--wiro-cod-gray)]", className)}
-    >
-      <text
-        x="0"
-        y="242"
-        fill="currentColor"
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="252"
-        fontWeight="700"
-        letterSpacing="-18"
-      >
-        HOAHWA
-      </text>
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/LOGO HOAHWA/hoahwa_logo_board-09.png"
+      alt="HOAHWA"
+      draggable={false}
+      className={cn("h-full w-auto shrink-0 object-contain", className)}
+    />
   );
 }

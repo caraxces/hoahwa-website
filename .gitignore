@@ -19,6 +19,8 @@
 hoahwa-static-deploy.zip
 hoahwa-public_html.zip
 hoahwa-nodejs-deploy.zip
+hoahwa-images-for-designer.zip
+/hoahwa-images-export/
 
 # production
 /build

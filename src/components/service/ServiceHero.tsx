@@ -7,6 +7,7 @@ import { ShopifyPremierBadge } from "@/components/shared/ShopifyPremierBadge";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
+import { FlowersOverlay } from "@/components/motion/FlowersOverlay";
 
 type ServiceHeroProps = {
   headline: [string, string];
@@ -45,16 +46,19 @@ export function ServiceHero({
           <Reveal clip variants={clipUp}>
             <h1 className="text-h1">{headline[0]}</h1>
           </Reveal>
-          <Reveal variants={fadeUp} className="mt-0 flex flex-wrap items-center gap-5">
-            <div className="relative h-[88px] w-[300px] shrink-0 overflow-hidden rounded-lg">
-              <Image
-                src={heroImage}
-                alt=""
-                fill
-                className="object-cover"
-                sizes="300px"
-                priority
-              />
+          <Reveal variants={fadeUp} className="group-hover-flowers relative mt-0 flex flex-wrap items-center gap-5">
+            <div className="relative h-[88px] w-[300px] shrink-0">
+              <div className="h-full w-full overflow-hidden rounded-lg">
+                <Image
+                  src={heroImage}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="300px"
+                  priority
+                />
+              </div>
+              <FlowersOverlay className="!text-[16px]" />
             </div>
             <h1 className="text-h1 text-[var(--wiro-mauve)]">{headline[1]}</h1>
           </Reveal>

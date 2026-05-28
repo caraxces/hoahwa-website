@@ -6,7 +6,7 @@ export const auditHero = {
   headline: ["CX, CRO + Tech", "Audits"],
   aboutLabel: "About us",
   aboutLead: [
-    "Hoahwa are a multi-award-winning eCommerce Growth Agency specialising in Shopify Plus for ambitious home and lifestyle brands.",
+    "Hoahwa is a young, dynamic web design & development agency focusing on high aesthetics and world-class technical compatibility.",
   ],
   aboutRoi:
     "We have a track record for delivering over +2,600% ROI with our proven 3 step process.",
@@ -63,12 +63,12 @@ export const auditPlans: AuditPlan[] = [
 export const auditWhy = {
   label: "Why choose us?",
   headline: [
-    "Our data-driven audits deliver clear,",
-    "actionable insights to fuel your growth.",
+    "High aesthetics, technical compatibility,",
+    "and direct accountability for your success.",
   ],
   body: [
-    "With a proven track record of increasing conversions, enhancing customer experiences and optimising technical performance, Hoahwa is the trusted name, in the eCom game!",
-    "Success depends on seamless customer experiences, high-conversion and robust technology. Our CX, CRO and Technical Audit identify gaps and opportunities to optimise performance, and drive greater revenue through data-led strategic recommendations.",
+    "As a young and dynamic team, we collaborate directly with you. Eliminating agency overhead means we are extremely agile, cost-efficient, and hold ourselves to the highest standards of personal responsibility.",
+    "Our team aims to win prestigious international design awards, crafting websites that demonstrate pristine aesthetic taste and run flawlessly across all browsers and devices with top technical compatibility.",
   ],
   insightsHeadline: ["Insights that", "pack a punch"],
   insightsBody:

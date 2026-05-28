@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { contactPage } from "@/content/contact";
 import { HoahwaContactForm } from "@/components/shared/HoahwaContactForm";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
@@ -21,7 +22,15 @@ export function ContactPageView() {
               <h1 className="text-h1">{contactPage.title[0]}</h1>
             </Reveal>
             <Reveal clip variants={clipUp}>
-              <h1 className="text-h1 text-[var(--wiro-mauve)]">{contactPage.title[1]}</h1>
+              <h1 className="text-h1 text-[var(--wiro-mauve)]">
+                <Image
+                  src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+                  alt="Hoahwa"
+                  width={480}
+                  height={120}
+                  className="block h-[1em] w-auto max-w-full"
+                />
+              </h1>
             </Reveal>
             <Reveal variants={fadeUp} className="mt-12 space-y-6">
               <p>

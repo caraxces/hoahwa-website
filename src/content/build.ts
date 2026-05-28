@@ -4,7 +4,7 @@ export const buildHero = {
   headline: ["Shopify Builds", "+ Migrations"],
   aboutLabel: "About us",
   aboutBody:
-    "Hoahwa are a multi-award-winning eCommerce Growth Agency specialising in Shopify Plus for ambitious home and lifestyle brands. With a over decade of experience and a track record of empowering 500+ DTC brands, we know what it takes to drive growth and scale.",
+    "Hoahwa is a young, dynamic agency specializing in high-performance web design and development. By collaborating directly as dedicated individuals, we ensure unmatched personal accountability and high responsibility. With cost efficiency as our key strength, our mission is to win prestigious awards at leading global design organizations, showcasing premium aesthetic taste alongside world-class technical compatibility.",
 };
 
 export const buildPlans: ServicePlan[] = [
@@ -54,10 +54,10 @@ export const buildPlans: ServicePlan[] = [
 
 export const buildWhy = {
   label: "Why choose us?",
-  headline: "Our custom Shopify builds, are precision engineered for your brands growth.",
+  headline: "Direct collaboration, cost efficiency, and world-class design goals.",
   body: [
-    "With a proven track record of increasing conversions, enhancing customer experiences and optimising technical performance, Hoahwa is the trusted name, in the eCom game!",
-    "Success depends on seamless customer experiences, high-conversion and robust technology. Our CX, CRO and Technical Audit identify gaps and opportunities to optimise performance, and drive greater revenue through data-led strategic recommendations.",
+    "As a young and dynamic team, we cut out agency bloat to collaborate directly with you. This personal connection ensures high responsibility, swift execution, and maximum cost efficiency.",
+    "Our ultimate goal is to win prestigious web design and development awards globally. We design and build websites that exhibit exceptional aesthetic taste, powered by top-tier technical compatibility and performance.",
   ],
 };
 

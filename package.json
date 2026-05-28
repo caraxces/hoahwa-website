@@ -10,7 +10,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "smoke": "node scripts/visual-smoke.mjs"
+    "smoke": "node scripts/visual-smoke.mjs",
+    "deploy:hostinger": "node scripts/deploy-hostinger-api.mjs",
+    "export:images": "node scripts/export-images-for-designer.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -30,6 +32,7 @@
     "eslint-config-next": "16.2.6",
     "playwright": "^1.60.0",
     "tailwindcss": "^4",
+    "tus-js-client": "^4.1.0",
     "typescript": "^5"
   }
 }
