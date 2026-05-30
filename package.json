@@ -12,6 +12,7 @@
     "lint": "eslint",
     "smoke": "node scripts/visual-smoke.mjs",
     "deploy:hostinger": "node scripts/deploy-hostinger-api.mjs",
+    "contact:config": "node scripts/generate-contact-api-config.mjs",
     "export:images": "node scripts/export-images-for-designer.mjs"
   },
   "dependencies": {

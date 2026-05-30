@@ -32,15 +32,22 @@ export function ContactPageView() {
                 />
               </h1>
             </Reveal>
-            <Reveal variants={fadeUp} className="mt-12 space-y-6">
-              <p>
-                <Link
-                  href={contactPage.phoneHref}
-                  className="text-[length:40px] leading-[44px] tracking-[-0.04em] hover:text-[var(--wiro-mauve)]"
-                >
-                  {contactPage.phone}
-                </Link>
-              </p>
+            <Reveal variants={fadeUp} className="mt-12 space-y-8">
+              <div className="space-y-6">
+                {contactPage.phones.map((phone) => (
+                  <div key={phone.href}>
+                    <p className="mb-2 text-sm tracking-[-0.02em] text-[var(--wiro-mauve)]">
+                      {phone.label}
+                    </p>
+                    <Link
+                      href={phone.href}
+                      className="text-[length:40px] leading-[44px] tracking-[-0.04em] hover:text-[var(--wiro-mauve)]"
+                    >
+                      {phone.display}
+                    </Link>
+                  </div>
+                ))}
+              </div>
               <p>
                 <Link
                   href={contactPage.mapsHref}

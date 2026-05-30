@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
+import { FlowersOverlay } from "@/components/motion/FlowersOverlay";
 
 export type ProjectCardData = {
   slug: string;
@@ -23,11 +24,12 @@ export function ProjectCard({
     <Link
       href={href ?? `/case-studies#${project.slug}`}
       className={cn(
-        "group relative block h-[640px] w-[640px] max-w-full shrink-0 overflow-hidden rounded-lg",
+        "group group-hover-flowers relative block h-[640px] w-[640px] max-w-full shrink-0 overflow-visible rounded-lg",
         className,
       )}
       data-name="div.project-card"
     >
+      <div className="absolute inset-0 overflow-hidden rounded-lg">
       <Image
         src={project.image}
         alt=""
@@ -36,6 +38,8 @@ export function ProjectCard({
         sizes="640px"
         unoptimized={project.image.startsWith("http")}
       />
+      </div>
+      <FlowersOverlay />
       <div className="absolute inset-0 bg-[rgba(21,21,21,0.35)] opacity-0 transition-opacity group-hover:opacity-100" />
       <div className="absolute left-11 top-11 rounded border border-white/20 px-3 py-1 text-sm text-white">
         Shopify Plus

@@ -44,6 +44,9 @@ yarn-error.log*
 .env.*
 !.env.example
 
+# Hostinger contact API credentials (generated at deploy time)
+public/api/config.php
+
 # vercel
 .vercel
 

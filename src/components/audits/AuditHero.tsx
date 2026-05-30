@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { auditHero, auditPlans } from "@/content/audits";
 import { figmaAssets } from "@/content/figma-assets";
 import { AuditPlanCard } from "@/components/audits/AuditPlanCard";
@@ -7,7 +6,7 @@ import { ShopifyPremierBadge } from "@/components/shared/ShopifyPremierBadge";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
-import { FlowersOverlay } from "@/components/motion/FlowersOverlay";
+import { FlowerImageCard } from "@/components/motion/FlowerImageCard";
 
 export function AuditHero() {
   return (
@@ -28,21 +27,19 @@ export function AuditHero() {
           <Reveal clip variants={clipUp}>
             <h1 className="text-h1">{auditHero.headline[0]}</h1>
           </Reveal>
-          <Reveal variants={fadeUp} className="group-hover-flowers relative mt-0 flex flex-wrap items-center gap-5">
-            <div className="relative h-[88px] w-[300px] shrink-0">
-              <div className="h-full w-full overflow-hidden rounded-lg">
-                <Image
-                  src={figmaAssets.growthPitchImage}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="300px"
-                  priority
-                />
-              </div>
-              <FlowersOverlay className="!text-[16px]" />
-            </div>
-            <h1 className="text-h1 text-[var(--wiro-mauve)]">{auditHero.headline[1]}</h1>
+          <Reveal
+            variants={fadeUp}
+            className="relative z-10 mt-0 flex flex-wrap items-center gap-5 overflow-visible"
+          >
+            <FlowerImageCard
+              src={figmaAssets.growthPitchImage}
+              sizes="300px"
+              priority
+              overlapText
+            />
+            <h1 className="relative z-0 text-h1 text-[var(--wiro-mauve)]">
+              {auditHero.headline[1]}
+            </h1>
           </Reveal>
           <div className="absolute right-0 top-[65%] hidden lg:block">
             <ShopifyPremierBadge variant="light" size="lg" />

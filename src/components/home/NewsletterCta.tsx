@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { poolCta } from "@/content/home";
 import { figmaAssets } from "@/content/figma-assets";
+import { FlowerImageFill } from "@/components/motion/FlowerImageFill";
 import { Reveal } from "@/components/motion/Reveal";
 import { fadeUp } from "@/lib/motion";
 
@@ -11,13 +11,14 @@ export function NewsletterCta() {
       className="relative flex min-h-[min(1024px,100svh)] flex-col justify-end px-[var(--wiro-page-pad)] pb-[121px] pt-[min(704px,65svh)]"
       data-node-id="1:1100"
     >
-      <Image
+      <FlowerImageFill
         src={figmaAssets.ctaPool}
         alt=""
-        fill
-        className="object-cover object-top"
+        className="object-top"
         sizes="100vw"
         priority={false}
+        wrapperClassName="absolute inset-0"
+        overlayClassName="!text-[22px]"
       />
       <div className="relative z-10 mx-auto w-full max-w-[var(--wiro-container)] px-[var(--wiro-gutter)]">
         <Reveal variants={fadeUp}>

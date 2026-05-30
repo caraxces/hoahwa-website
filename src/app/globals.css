@@ -80,55 +80,94 @@ body {
   }
 }
 
-/* Flower animation effect from Uiverse.io by yaroslavas2001 */
+/* Flower animation — Uiverse.io by yaroslavas2001 (adapted) */
+.flower-image-card {
+  overflow: visible;
+}
+
+.flower-image-card--overlap {
+  margin-right: -10px;
+  margin-bottom: -6px;
+  transform: translate(10px, -6px);
+}
+
+@media (min-width: 768px) {
+  .flower-image-card--overlap {
+    margin-right: -4px;
+    transform: translate(14px, -8px);
+  }
+}
+
+.flower-image-card__media {
+  position: relative;
+  z-index: 2;
+}
+
 .flower-container {
   pointer-events: none;
   position: absolute;
-  inset: 0;
-  z-index: 10;
+  inset: -28px;
+  z-index: 30;
+  overflow: visible;
+}
+
+.flower-image-card--sm .flower-container {
+  inset: -22px;
+  font-size: 13px;
+}
+
+.flower-image-card--lg .flower-container {
+  inset: -36px;
+  font-size: 26px;
 }
 
 .flower {
   display: grid;
-  grid-template-columns: 1em 1em;
+  grid-template-columns: 1.2em 1.2em;
   position: absolute;
-  transition: grid-template-columns 0.8s ease;
-  font-size: 28px; /* default flower size */
+  transition:
+    grid-template-columns 0.8s ease,
+    transform 0.5s ease;
+}
+
+.flower .petal {
+  width: 1.2em;
+  height: 1.2em;
 }
 
 .flower1 {
-  top: -16px;
-  left: -16px;
+  top: -18px;
+  left: -20px;
   transform: rotate(5deg);
 }
 
 .flower2 {
-  top: 40%;
-  left: -20px;
+  top: 38%;
+  left: -24px;
   transform: rotate(35deg);
 }
 
 .flower3 {
-  bottom: -16px;
-  left: 15%;
+  bottom: -20px;
+  left: 10%;
   transform: rotate(0deg);
 }
 
 .flower4 {
-  top: -20px;
-  right: 20%;
+  top: -22px;
+  right: 18%;
   transform: rotate(15deg);
 }
 
 .flower5 {
-  top: 30%;
-  right: -20px;
+  top: 28%;
+  right: -24px;
   transform: rotate(25deg);
 }
 
 .flower6 {
-  bottom: -20px;
-  right: -16px;
+  bottom: -22px;
+  right: -20px;
   transform: rotate(30deg);
 }
 
@@ -139,7 +178,11 @@ body {
   background: linear-gradient(#cd9d65, #f3dcb3);
   border: 0.5px solid #dfc79b;
   z-index: 0;
-  transition: width 0.8s ease, height 0.8s ease;
+  transition:
+    width 0.8s ease,
+    height 0.8s ease,
+    background 0.5s ease;
+  animation: flower-petal-bloom 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
 .petal.two {
@@ -154,7 +197,35 @@ body {
   transform: rotate(180deg);
 }
 
-/* Hover effects when parent group-hover-flowers is hovered */
+.flower1 .petal {
+  animation-delay: 0.05s;
+}
+.flower2 .petal {
+  animation-delay: 0.12s;
+}
+.flower3 .petal {
+  animation-delay: 0.18s;
+}
+.flower4 .petal {
+  animation-delay: 0.1s;
+}
+.flower5 .petal {
+  animation-delay: 0.15s;
+}
+.flower6 .petal {
+  animation-delay: 0.2s;
+}
+
+@keyframes flower-petal-bloom {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hover: bloom larger + spin */
 .group-hover-flowers:hover .petal {
   background: linear-gradient(#b8874c, #e6cd9a);
   border: 0.5px solid #cd9d65;
@@ -244,5 +315,20 @@ body {
   }
   100% {
     transform: rotate(390deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group-hover-flowers:hover div.flower1,
+  .group-hover-flowers:hover div.flower2,
+  .group-hover-flowers:hover div.flower3,
+  .group-hover-flowers:hover div.flower4,
+  .group-hover-flowers:hover div.flower5,
+  .group-hover-flowers:hover div.flower6 {
+    animation: none;
+  }
+
+  .petal {
+    animation: none;
   }
 }

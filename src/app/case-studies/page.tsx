@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Case Studies | Hoahwa",
-  description: "Web design and development case studies from Hoahwa showcasing premium design aesthetics.",
+  description:
+    "The goals Hoahwa is pursuing — high-performance Shopify builds, SEO, CRO, and design-led growth. Case studies published as we go.",
 };
 
 export default function CaseStudiesPage() {

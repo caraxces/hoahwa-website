@@ -1,12 +1,22 @@
 export const contactPage = {
   title: ["Lets Talk", "Hoahwa"] as const,
-  phone: "0203 488 49 89",
-  phoneHref: "tel:+442034884989",
+  phones: [
+    {
+      label: "Design",
+      display: "(+84) 36 2321462",
+      href: "tel:+84362321462",
+    },
+    {
+      label: "SEO · CRO · DEV your website",
+      display: "(+84) 924 769 556",
+      href: "tel:+84924769556",
+    },
+  ],
   email: "hello@hoahwa.com",
   emailHref: "mailto:hello@hoahwa.com",
-  address: "85 Great Portland Street London, W1W 7LT",
+  address: "DHT6, Tan Hung Thuan, Ho Chi Minh city",
   mapsHref:
-    "https://maps.app.goo.gl/GBMFyM4ggprSWhwz6",
+    "https://maps.google.com/?q=DHT6+Tan+Hung+Thuan+Ho+Chi+Minh+city",
   services: [
     "Audits / Discovery",
     "CRO Retainer",

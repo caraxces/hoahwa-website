@@ -92,6 +92,21 @@ function uploadTus(filePath, relativePath, uploadUrl, authToken, authRestToken) 
 }
 
 async function main() {
+  const dbPass =
+    process.env.HOSTINGER_DB_PASS || process.env.HOSTINGER_DB_PASSWORD || "";
+  if (dbPass) {
+    console.log("→ Generating contact API config…");
+    execSync("node scripts/generate-contact-api-config.mjs", {
+      cwd: ROOT,
+      stdio: "inherit",
+      env: process.env,
+    });
+  } else {
+    console.warn(
+      "⚠ HOSTINGER_DB_PASS not set — public/api/config.php will not be updated.",
+    );
+  }
+
   if (process.env.SKIP_BUILD !== "1") {
     console.log("→ Building…");
     execSync("pnpm build", { cwd: ROOT, stdio: "inherit" });

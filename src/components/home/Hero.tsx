@@ -1,11 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { LatestCaseBadge } from "@/components/figma/LatestCaseBadge";
 import { LogoMarquee } from "@/components/figma/LogoMarquee";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
+import { FlowerImageFill } from "@/components/motion/FlowerImageFill";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
+import { FlowerImageCard } from "@/components/motion/FlowerImageCard";
 import { awardLogos, figmaAssets } from "@/content/figma-assets";
 import {
   clipUp,
@@ -39,26 +40,18 @@ export function Hero() {
             </Reveal>
 
             <div
-              className="mt-0 flex flex-wrap items-center gap-5 md:gap-8"
+              className="relative z-10 mt-0 flex flex-wrap items-center gap-5 overflow-visible md:gap-8"
               data-node-id="1:457"
             >
-              <Reveal variants={scaleIn} className="relative h-[88px] w-[300px] shrink-0 overflow-hidden rounded-lg">
-                <motion.div
-                  className="relative h-full w-full"
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <Image
-                    src={figmaAssets.heroGrowthInline}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="300px"
-                    priority
-                  />
-                </motion.div>
+              <Reveal variants={scaleIn} className="overflow-visible">
+                <FlowerImageCard
+                  src={figmaAssets.heroGrowthInline}
+                  sizes="300px"
+                  priority
+                  overlapText
+                />
               </Reveal>
-              <Reveal clip variants={clipUp} className="block">
+              <Reveal clip variants={clipUp} className="relative z-0 block">
                 <span
                   className="text-h1 text-[var(--wiro-mauve)]"
                   data-node-id="1:461"
@@ -97,13 +90,13 @@ export function Hero() {
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Image
+              <FlowerImageFill
                 src={figmaAssets.heroVideoPoster}
                 alt="Showreel"
-                fill
-                className="object-cover"
                 sizes="(max-width: 1360px) 100vw, 1312px"
                 priority
+                wrapperClassName="absolute inset-0"
+                overlayClassName="!text-[18px]"
               />
               <motion.div
                 className="pointer-events-none absolute inset-0 bg-black/20"

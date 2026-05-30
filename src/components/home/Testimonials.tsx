@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { testimonials } from "@/content/home";
 import { figmaAssets } from "@/content/figma-assets";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
+import { FlowersOverlay } from "@/components/motion/FlowersOverlay";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
 
@@ -21,14 +22,17 @@ export function Testimonials() {
             <p className="text-h1 text-[var(--wiro-cod-gray)]">Take it from</p>
           </Reveal>
           <Reveal variants={fadeUp} className="mt-0 flex flex-wrap items-center gap-5">
-            <div className="relative h-[88px] w-[300px] shrink-0 overflow-hidden rounded-lg">
-              <Image
-                src={figmaAssets.testimonialSneaker}
-                alt=""
-                fill
-                className="object-cover object-[center_30%]"
-                sizes="300px"
-              />
+            <div className="group-hover-flowers relative h-[88px] w-[300px] shrink-0 overflow-visible">
+              <div className="h-full w-full overflow-hidden rounded-lg">
+                <Image
+                  src={figmaAssets.testimonialSneaker}
+                  alt=""
+                  fill
+                  className="object-cover object-[center_30%]"
+                  sizes="300px"
+                />
+              </div>
+              <FlowersOverlay className="!text-[12px]" />
             </div>
             <p className="text-h1 text-[var(--wiro-mauve)]">Our Clients</p>
           </Reveal>

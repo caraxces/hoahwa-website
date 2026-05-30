@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { cn } from "@/lib/cn";
+import { FlowersOverlay } from "@/components/motion/FlowersOverlay";
 
 type Logo = { src: string; alt: string; width?: number; height?: number };
 
@@ -42,7 +43,7 @@ export function LogoMarquee({
         {[...logos, ...logos].map((logo, i) => (
           <div
             key={`${logo.alt}-${i}`}
-            className="relative flex h-[110px] shrink-0 items-center justify-center"
+            className="group-hover-flowers relative flex h-[110px] shrink-0 items-center justify-center overflow-visible"
             style={{ width: logo.width ?? 140 }}
           >
             <Image
@@ -53,6 +54,7 @@ export function LogoMarquee({
               className="h-auto max-h-[110px] w-auto object-contain"
               unoptimized={logo.src.startsWith("http")}
             />
+            <FlowersOverlay className="!text-[10px]" />
           </div>
         ))}
       </div>

@@ -53,13 +53,4 @@ export const careersQuotes = [
   },
 ];
 
-export const teamMembers = [
-  { name: "Tom", role: "Founder & Creative Lead" },
-  { name: "Amy", role: "Creative Operations" },
-  { name: "Ruth", role: "Lead CX/UI Designer" },
-  { name: "Stephen", role: "Full Stack Developer" },
-  { name: "Van", role: "UX + UI Designer" },
-  { name: "Long", role: "Frontend Developer" },
-  { name: "Chien", role: "Frontend Developer" },
-  { name: "Mimi", role: "UI Designer" },
-];
+export { teamMembers } from "./team";

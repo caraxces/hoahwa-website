@@ -74,7 +74,7 @@ export function ServicePageTemplate({ page }: { page: ServicePage }) {
 
       <section className="border-b border-[var(--hoahwa-border)] py-16 md:py-20">
         <Container>
-          <SectionHeading eyebrow="Our finest" title="Case Studies" />
+          <SectionHeading eyebrow="What we're pursuing" title="Goals & case studies" />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {miniCases.map((c) => (
               <Link

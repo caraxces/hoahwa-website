@@ -70,7 +70,7 @@ export const pillars: NavPillar[] = [
 export const secondaryLinks = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "eCommerce Insights", href: "/insights" },
-  { label: "Careers", href: "/careers" },
+  { label: "Process", href: "/process" },
   { label: "Awards", href: "#" },
   { label: "About", href: "#" },
 ];
@@ -78,7 +78,7 @@ export const secondaryLinks = [
 export const headerLinks = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "Insights", href: "/insights" },
-  { label: "Careers", href: "/careers" },
+  { label: "Process", href: "/process" },
 ];
 
 export const footerCompany = [
@@ -86,7 +86,7 @@ export const footerCompany = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "Blog", href: "/insights" },
   { label: "Awards", href: "#" },
-  { label: "Careers", href: "/careers" },
+  { label: "Process", href: "/process" },
   { label: "Contact", href: "/contact" },
 ];
 

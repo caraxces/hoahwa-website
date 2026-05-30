@@ -5,9 +5,9 @@ import {
   careersQuotes,
   careersStats,
   openRoles,
-  teamMembers,
   whyJoin,
 } from "@/content/careers";
+import { teamMembers } from "@/content/team";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
@@ -120,17 +120,36 @@ export function CareersPageView() {
             <span className="block">Meet the</span>
             <span className="block text-[var(--wiro-mauve)]">dream team</span>
           </h2>
-          <div className="mt-16 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-16 grid gap-10 md:grid-cols-2">
             {teamMembers.map((member) => (
-              <div
-                key={`${member.name}-${member.role}`}
-                className="flex aspect-square flex-col items-center justify-center rounded-lg bg-[var(--wiro-spring-wood)] p-4 text-center"
+              <article
+                key={member.name}
+                className="overflow-hidden rounded-lg bg-[var(--wiro-spring-wood)]"
               >
-                <p className="text-lg font-medium tracking-[-0.03em]">{member.name}</p>
-                <p className="mt-1 text-xs tracking-[-0.02em] text-[var(--wiro-cod-gray)]/60">
-                  {member.role}
-                </p>
-              </div>
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="p-6 text-center md:p-8">
+                  <p className="text-lg font-medium tracking-[-0.03em]">{member.name}</p>
+                  {member.badge ? (
+                    <p className="mt-1 text-sm tracking-[-0.02em] text-[var(--wiro-mauve)]">
+                      {member.badge}
+                    </p>
+                  ) : null}
+                  <p className="mt-1 text-xs tracking-[-0.02em] text-[var(--wiro-cod-gray)]/60">
+                    {member.role}
+                  </p>
+                  <p className="mt-4 text-sm leading-6 tracking-[-0.02em] text-[var(--wiro-cod-gray)]/70">
+                    {member.bio}
+                  </p>
+                </div>
+              </article>
             ))}
           </div>
         </PageContainer>
