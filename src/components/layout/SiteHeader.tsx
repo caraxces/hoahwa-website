@@ -6,6 +6,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { pillars, headerLinks } from "@/content/navigation";
 import { useHeaderScroll } from "@/hooks/useHeaderScroll";
+import { HeaderAppMenu } from "./HeaderAppMenu";
 import { MegaMenu } from "./MegaMenu";
 import { PageContainer } from "@/components/shared/PageContainer";
 import { MenuButton } from "@/components/motion/MenuButton";
@@ -104,27 +105,10 @@ export function SiteHeader() {
                     href={link.href}
                     className="text-base tracking-[-0.02em] text-[var(--wiro-romance)]"
                   >
-                    {link.label === "Careers" ? (
-                      <span className="inline-flex items-center gap-1.5">
-                        <span className="relative flex h-3.5 w-3.5 items-center justify-center">
-                          <motion.span
-                            className="absolute inset-0 rounded-full bg-[rgba(219,226,104,0.42)]"
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                            }}
-                          />
-                          <span className="relative h-2.5 w-2.5 rounded-full bg-[rgba(219,226,104,0.96)]" />
-                        </span>
-                        Careers
-                      </span>
-                    ) : (
-                      link.label
-                    )}
+                    {link.label}
                   </NavLink>
                 ))}
+                <HeaderAppMenu />
               </nav>
               <motion.div
                 whileHover={{ scale: 1.04 }}

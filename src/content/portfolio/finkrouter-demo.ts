@@ -1,0 +1,407 @@
+import type { PortfolioPageConfig } from "./schema";
+
+const asset = (path: string) => `/portfolio-demo/assets/${path}`;
+
+export const finkrouterDemo: PortfolioPageConfig = {
+  slug: "demo",
+  meta: {
+    title: "FINKROUTER — API Gateway for Claude, Codex & Cursor",
+    description:
+      "Drop-in API gateway for Claude, Codex, and Cursor. Multi-model fallback, Ghost Drop elimination, 1M context.",
+  },
+  theme: { accent: "#eca8d6" },
+  sections: {
+    header: {
+      enabled: true,
+      brandPrimary: "FINK",
+      brandAccent: "ROUTER",
+      brandSuffix: "™",
+      statusText: "All routes live",
+      statusSubtext: " · p50 latency < 12ms",
+      navLinks: [
+        { label: "Features", href: "#features", sectionId: "features" },
+        { label: "How It Works", href: "#how-it-works", sectionId: "howItWorks" },
+        { label: "Infra", href: "#infra", sectionId: "infra" },
+        { label: "Integrations", href: "#integrations", sectionId: "integrations" },
+        { label: "Pricing", href: "#pricing", sectionId: "pricing" },
+      ],
+      ctaLabel: "Start routing",
+      langLabel: "English",
+    },
+    hero: {
+      enabled: true,
+      videoUrl: asset("videos/bg-hero.mp4"),
+      badge: "Drop-in API Gateway dành riêng cho Claude, Codex & Cursor power users",
+      headline: ["Routing", "thông minh ", "hơn."],
+      rotatingWords: ["nhạnh", "chính xác", "ổn định", "linh hoạt", "nhanh"],
+      body: "Chỉ với 1 dòng cấu hình. Tự động kích hoạt Multi-model Fallback, loại bỏ hoàn toàn Ghost Drop, hỗ trợ 1M Context Window. Đảm bảo các phiên làm việc với Claude Code và Cursor của bạn không bao giờ bị gián đoạn.",
+      codeFileName: "claude_client.py",
+      codeLines: [
+        { type: "remove", text: 'base_url = "https://api.anthropic.com"' },
+        { type: "add", text: 'base_url = "https://api.finkrouter.io.vn/"' },
+        { type: "comment", text: "# Everything else stays the same." },
+      ],
+      primaryCta: { label: "Start routing miễn phí", href: "#pricing" },
+      secondaryCta: { label: "Xem cách hoạt động →", href: "#how-it-works" },
+      stats: [
+        { value: "99.9%", label: "Gateway Uptime" },
+        { value: "<50ms", label: "Routing Latency" },
+        { value: "1M", label: "Context Tokens" },
+        { value: "20+", label: "Model Fallbacks" },
+      ],
+    },
+    features: {
+      enabled: true,
+      eyebrow: "Features",
+      title: "Định tuyến",
+      titleMuted: "công nghiệp.",
+      lead: "Được thiết kế chuyên biệt cho các hệ thống AI đòi hỏi độ tin cậy tuyệt đối và tốc độ phản hồi tối đa.",
+      items: [
+        {
+          number: "01",
+          tag: "Protocol Parity",
+          title: "Triệt tiêu Ghost Drop",
+          body: "Định dạng truyền tải hoàn hảo. Các phiên làm việc của Claude Code và Cursor không bao giờ bị ngắt quãng âm thầm.",
+          statValue: "0",
+          statLabel: "lỗi ghost drops",
+        },
+        {
+          number: "02",
+          tag: "Always On",
+          title: "Dự phòng Đa Mô hình",
+          body: "Khi dòng Claude gặp lỗi 429 hoặc quá tải, FINKROUTER tự động chuyển hướng sang Mistral, GPT-4o, Gemini hoặc Groq.",
+          statValue: "20+",
+          statLabel: "mô hình dự phòng",
+        },
+        {
+          number: "03",
+          tag: "SSP v3.0",
+          title: "Context Window lên tới 1M",
+          body: "Công nghệ Ghim Ý nghĩa Ngữ nghĩa giữ lại những thông tin quan trọng nhất và tự động cắt bỏ vùng dữ liệu rác.",
+          statValue: "1M",
+          statLabel: "tokens tối đa",
+        },
+        {
+          number: "04",
+          tag: "Drop-in",
+          title: "Tương thích Giao thức 1:1",
+          body: "Chỉ cần thay đổi một biến môi trường và mọi công cụ như Claude Code, Cursor, LangChain đều chạy ổn định ngay lập tức.",
+          statValue: "100%",
+          statLabel: "tương thích API",
+        },
+      ],
+    },
+    howItWorks: {
+      enabled: true,
+      eyebrow: "Quy trình",
+      titleLines: ["Kết nối.", "Định tuyến.", "Xây dựng."],
+      imageUrl: asset("images/tree.png"),
+      steps: [
+        {
+          number: "01",
+          title: "Kết nối",
+          subtitle: "thay đổi đúng 1 dòng code",
+          body: "Thay đổi base_url của bạn thành api.finkrouter.io.vn/. Mọi công cụ như Claude Code, Cursor hay LangChain đều chạy mượt mà ngay lập tức.",
+        },
+        {
+          number: "02",
+          title: "Định tuyến",
+          subtitle: "thông minh & tối ưu",
+          body: "Mọi yêu cầu đều đi qua quy trình 5 bước của FINKROUTER: chuẩn hóa → lọc context → chọn mô hình tối ưu → gửi yêu cầu → lọc luồng dữ liệu SSE.",
+        },
+        {
+          number: "03",
+          title: "Xây dựng",
+          subtitle: "và bứt phá nhanh hơn",
+          body: "Với nền tảng API luôn hoạt động ổn định bên dưới, bạn có thể tự tin phát triển sản phẩm mà không lo lỗi rớt context hay gián đoạn hệ thống.",
+        },
+      ],
+    },
+    infra: {
+      enabled: true,
+      eyebrow: "Global infrastructure",
+      title: "Global by",
+      titleMuted: "default.",
+      lead: "Your agents run on distributed infrastructure across 29 regions. Sub-50ms latency to 99% of the world.",
+      imageUrl: asset("images/world.png"),
+      mainStat: { value: "29", unit: "regions", label: "Compute nodes distributed globally for maximum redundancy and minimum latency." },
+      sideStats: [
+        { value: "99.99%", label: "Uptime SLA" },
+        { value: "<50ms", label: "Global latency" },
+      ],
+      regions: [
+        { name: "North America", nodes: "7 nodes", active: true },
+        { name: "Europe", nodes: "5 nodes" },
+        { name: "Asia Pacific", nodes: "16 nodes" },
+        { name: "South America", nodes: "1 nodes" },
+      ],
+    },
+    stats: {
+      enabled: true,
+      liveLabel: "LIVE",
+      title: "Real-time",
+      titleMuted: "gateway stats.",
+      graphImageUrl: asset("images/real-time-graph.png"),
+      blocks: [
+        {
+          label: "API requests routed today",
+          sublabel: "across all model providers",
+          value: "1284720",
+          prefix: "",
+        },
+        {
+          label: "Gateway uptime",
+          sublabel: "30-day rolling average",
+          value: "99",
+          suffix: ".9%",
+        },
+        {
+          label: "Routing latency",
+          sublabel: "p50 end-to-end",
+          value: "12",
+          prefix: "<",
+          suffix: "ms",
+        },
+      ],
+      tags: [
+        "claude-opus-4-7",
+        "claude-sonnet-4-6",
+        "gpt-5.5",
+        "gpt-5.4",
+        "gemini-3.1-pro",
+        "deepseek-r1",
+        "o1-pro",
+        "+15 more models",
+      ],
+    },
+    integrations: {
+      enabled: true,
+      eyebrow: "Tương thích tuyệt đối",
+      title: "Hoạt động với",
+      titleMuted: "mọi công cụ.",
+      lead: "FINKROUTER tương thích hoàn hảo với OpenAI API. Mọi công cụ, framework và SDK hỗ trợ Claude hoặc OpenAI đều hoạt động ngay lập tức với FINKROUTER — zero code changes.",
+      bannerImageUrl: asset("images/connection.png"),
+      items: [
+        { name: "Claude", tag: "Primary" },
+        { name: "OpenAI", tag: "LLM" },
+        { name: "Cursor", tag: "IDE" },
+        { name: "Windsurf", tag: "IDE" },
+        { name: "Claude Code", tag: "Agent" },
+        { name: "LangChain", tag: "Framework" },
+        { name: "LiteLLM", tag: "Router" },
+        { name: "Your Scripts", tag: "Custom" },
+      ],
+    },
+    testimonials: {
+      enabled: true,
+      eyebrow: "Testimonials",
+      title: "Được tin dùng bởi các",
+      titleMuted: " power users toàn cầu.",
+      sideStat: { value: "0", label: "Ghost drops since" },
+      companies: ["Vercel", "Cursor Power User", "Startup", "Platform Team"],
+      items: [
+        {
+          quote:
+            "Tôi từng bị rớt các luồng tool-calling trong Claude Code cứ mỗi 30 phút. FINKROUTER đã giải quyết hoàn hảo chỉ bằng một dòng code.",
+          name: "Alex T.",
+          role: "Senior Engineer, Vercel",
+          avatar: "A",
+        },
+        {
+          quote:
+            "Context window 1M token thực sự là game-changer. Tôi có thể nạp toàn bộ codebase vào session mà không lo bị cắt giữa chừng.",
+          name: "Minh N.",
+          role: "CTO, Startup Hà Nội",
+          avatar: "M",
+        },
+        {
+          quote:
+            "Setup mất đúng 30 giây — chỉ đổi một dòng base_url. Hệ thống đã chạy liên tục 45 ngày không ngắt quãng.",
+          name: "Sarah K.",
+          role: "AI Platform Lead, TechCorp",
+          avatar: "S",
+        },
+        {
+          quote:
+            "Multi-model fallback là tính năng tôi cần nhất. Khi Claude 429, hệ thống tự chuyển sang Gemini không cần can thiệp.",
+          name: "David L.",
+          role: "Cursor Power User",
+          avatar: "D",
+        },
+      ],
+    },
+    pricing: {
+      enabled: true,
+      eyebrow: "Pricing",
+      title: "Chọn gói",
+      titleMuted: "phù hợp.",
+      lead: "Hệ thống định giá linh hoạt với hai hình thức: Gói Bundle và Nạp PAYG.",
+      bundleTabLabel: "Gói Bundle",
+      paygTabLabel: "Nạp PAYG",
+      rulesTitle: "Quy tắc Gói Bundle",
+      rules: [
+        "Bạn được cấp chính xác số credits như mô tả, sử dụng trong thời hạn của gói.",
+        "Tổng credits khả dụng trong kỳ là cố định, không thể mua thêm credits lẻ.",
+        "Tốc độ và tần suất request bị giới hạn bởi Rate Limit của từng gói.",
+        "Credits không dùng hết sẽ hết hạn vào cuối kỳ, không hỗ trợ cộng dồn.",
+        "Mỗi tài khoản chỉ được phép có một gói đang hoạt động tại một thời điểm.",
+      ],
+      bundlePlans: [
+        {
+          name: "1 Ngày",
+          duration: "1 ngày",
+          price: "50.000đ",
+          features: [
+            { label: "Rate Limit", value: "2.000 req/5h" },
+            { label: "Credits nhận được", value: "50.000 cr" },
+          ],
+          footnote: "Dùng tối đa 50K cr, không mua thêm trong ngày",
+        },
+        {
+          name: "7 Ngày",
+          duration: "7 ngày",
+          price: "150.000đ",
+          features: [
+            { label: "Rate Limit", value: "2.000 req/5h" },
+            { label: "Credits nhận được", value: "150.000 cr" },
+          ],
+          footnote: "Tối đa 150K cr / 7 ngày",
+        },
+        {
+          name: "Pro Tháng",
+          duration: "30 ngày",
+          price: "350.000đ",
+          popular: true,
+          badge: "Most Popular",
+          features: [
+            { label: "Rate Limit", value: "2.000 req/5h" },
+            { label: "Credits nhận được", value: "350.000 cr" },
+          ],
+          footnote: "Trần 350K cr / tháng, không stack",
+        },
+        {
+          name: "Pro 5x",
+          duration: "30 ngày",
+          price: "650.000đ",
+          features: [
+            { label: "Rate Limit", value: "10.000 req/5h" },
+            { label: "Credits nhận được", value: "650.000 cr" },
+          ],
+          footnote: "Trần 650K cr / tháng",
+        },
+        {
+          name: "Pro 20x",
+          duration: "30 ngày",
+          price: "1.600.000đ",
+          features: [
+            { label: "Rate Limit", value: "40.000 req/5h" },
+            { label: "Credits nhận được", value: "1.600.000 cr" },
+          ],
+          footnote: "Trần 1.6M cr / tháng",
+        },
+      ],
+      paygPlans: [
+        {
+          name: "Nạp 50K",
+          duration: "Không hết hạn",
+          price: "50.000đ",
+          features: [
+            { label: "Credits nhận được", value: "50.000 cr" },
+            { label: "Hết hạn", value: "Không hết hạn" },
+          ],
+          footnote: "Trả theo mức sử dụng thực tế",
+        },
+        {
+          name: "Nạp 200K",
+          duration: "Không hết hạn",
+          price: "200.000đ",
+          features: [
+            { label: "Credits nhận được", value: "200.000 cr" },
+            { label: "Hết hạn", value: "Không hết hạn" },
+          ],
+          footnote: "Tiết kiệm hơn 20% so với nạp lẻ",
+        },
+        {
+          name: "Nạp 500K",
+          duration: "Không hết hạn",
+          price: "450.000đ",
+          popular: true,
+          badge: "Best Value",
+          features: [
+            { label: "Credits nhận được", value: "500.000 cr" },
+            { label: "Hết hạn", value: "Không hết hạn" },
+          ],
+          footnote: "Tiết kiệm 10% — credits tích lũy mãi mãi",
+        },
+      ],
+      contactTitle: "Bạn cần tư vấn thêm?",
+      contactLead: "Liên hệ trực tiếp để được hỗ trợ mua gói hoặc nạp credits nhanh nhất.",
+      contactLinks: [
+        { label: "Zalo: 0778535017", href: "https://zalo.me/0778535017", variant: "primary" },
+        { label: "Telegram: @phulinh1912", href: "https://t.me/phulinh1912", variant: "secondary" },
+      ],
+    },
+    cta: {
+      enabled: true,
+      title: "Sẵn sàng làm\nchủ mọi vòng lặp?",
+      body: "Tham gia cùng cộng đồng Claude Code và Cursor power users để không bao giờ bị nghẽn 429 hay ngắt quãng phiên gọi công cụ. Start routing chỉ trong 60 giây.",
+      primaryCta: "Start routing miễn phí",
+      secondaryCta: "Xem tài liệu docs",
+      footnote: "Tặng 100K tokens miễn phí — không yêu cầu thẻ tín dụng",
+      imageUrl: asset("images/bridge.png"),
+    },
+    footer: {
+      enabled: true,
+      brandPrimary: "FINK",
+      brandAccent: "ROUTER",
+      brandSuffix: "™",
+      description:
+        "Hệ thống Route API tin cậy cho Claude, Codex & Cursor. Làm chủ mọi vòng lặp phát triển của bạn.",
+      socialLinks: [
+        { label: "Twitter", href: "#" },
+        { label: "GitHub", href: "#" },
+        { label: "Discord", href: "#" },
+      ],
+      linkGroups: [
+        {
+          title: "Product",
+          links: [
+            { label: "Features", href: "#features" },
+            { label: "How It Works", href: "#how-it-works" },
+            { label: "Pricing", href: "#pricing" },
+            { label: "Integrations", href: "#integrations" },
+          ],
+        },
+        {
+          title: "Developers",
+          links: [
+            { label: "Documentation", href: "#" },
+            { label: "API Reference", href: "#" },
+            { label: "SDK", href: "#" },
+            { label: "Status", href: "#" },
+          ],
+        },
+        {
+          title: "Company",
+          links: [
+            { label: "About", href: "#" },
+            { label: "Blog", href: "#" },
+            { label: "Careers", href: "#", badge: "Hiring" },
+            { label: "Contact", href: "#" },
+          ],
+        },
+        {
+          title: "Legal",
+          links: [
+            { label: "Privacy", href: "#" },
+            { label: "Terms", href: "#" },
+            { label: "Security", href: "#" },
+          ],
+        },
+      ],
+      copyright: "© 2026 FINKROUTER. Bảo lưu mọi quyền.",
+      statusText: "Mọi kết nối hoạt động ổn định",
+      bannerImageUrl: asset("images/footer-bg.png"),
+    },
+  },
+};

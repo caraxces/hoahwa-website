@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import { DecorativeBorderMarquee } from "@/components/layout/DecorativeBorderMarquee";
-import { SiteHeader } from "@/components/layout/SiteHeader";
-import { SiteFooter } from "@/components/layout/SiteFooter";
 import "./globals.css";
 
 const inter = Inter({
@@ -36,12 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${darleySans.variable} h-full`}>
-      <body className="flex min-h-full flex-col antialiased">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <DecorativeBorderMarquee />
-        <SiteFooter />
-      </body>
+      <body className="flex min-h-full flex-col antialiased">{children}</body>
     </html>
   );
 }

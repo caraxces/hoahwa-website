@@ -67,6 +67,23 @@ export const pillars: NavPillar[] = [
   },
 ];
 
+export type NavAppMenu = {
+  id: "app";
+  label: string;
+  href: string;
+  children: NavChild[];
+};
+
+/** Hoahwa apps — shown under header "App" dropdown and mobile menu. */
+export const appMenu: NavAppMenu = {
+  id: "app",
+  label: "App",
+  href: "/portfolio/builder",
+  children: [
+    { label: "Create your Portfolio", href: "/portfolio/builder" },
+  ],
+};
+
 export const secondaryLinks = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "eCommerce Insights", href: "/insights" },

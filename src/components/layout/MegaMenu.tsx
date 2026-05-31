@@ -9,10 +9,13 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import {
+  appMenu,
   pillars,
   secondaryLinks,
   type NavPillar,
 } from "@/content/navigation";
+
+type MenuPanelId = NavPillar["id"] | "app";
 import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 import { Button } from "@/components/shared/Button";
 import {
@@ -31,8 +34,37 @@ type MegaMenuProps = {
   onClose: () => void;
 };
 
+function MegaMenuSideLinks({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="flex flex-col justify-between md:w-80">
+      <nav className="flex flex-col gap-3">
+        {secondaryLinks.map((link) => (
+          <Link
+            key={link.label}
+            href={link.href}
+            className="text-[var(--wiro-romance)]/60 hover:text-[var(--wiro-romance)]"
+            onClick={onClose}
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
+      <Button href="/contact" className="mt-10" onClick={onClose}>
+        Lets Talk{" "}
+        <Image
+          src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+          alt="Hoahwa"
+          width={120}
+          height={30}
+          className="inline-block h-[1em] w-auto align-middle"
+        />
+      </Button>
+    </div>
+  );
+}
+
 export function MegaMenu({ open, onClose }: MegaMenuProps) {
-  const [activePillar, setActivePillar] = useState<NavPillar["id"] | null>(null);
+  const [activePillar, setActivePillar] = useState<MenuPanelId | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
 
@@ -161,6 +193,21 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                             </span>
                           </motion.button>
                         ))}
+                        <motion.button
+                          type="button"
+                          data-testid="mega-panel-app"
+                          variants={fadeUp}
+                          className="group text-left text-4xl font-semibold tracking-tight text-[var(--wiro-romance)] md:text-5xl"
+                          onClick={() => setActivePillar("app")}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <span className="inline-block transition-colors duration-300 group-hover:translate-x-1 group-hover:text-[var(--wiro-mauve)]">
+                            {appMenu.label}
+                          </span>
+                          <span className="ml-2 inline-block opacity-60 transition-transform duration-300 group-hover:translate-x-1">
+                            →
+                          </span>
+                        </motion.button>
                       </nav>
                       <div className="flex flex-col justify-between md:w-80">
                         <motion.nav
@@ -192,6 +239,45 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                           </Button>
                         </motion.div>
                       </div>
+                    </motion.div>
+                  </motion.div>
+                ) : activePillar === "app" ? (
+                  <motion.div
+                    key="app"
+                    className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain px-5 py-8 md:px-8"
+                    variants={subPanelVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    style={{ willChange: "transform, opacity" }}
+                  >
+                    <motion.div
+                      className="flex flex-1 flex-col gap-10 md:flex-row"
+                      variants={staggerContainer(0.06, 0.08)}
+                      initial="hidden"
+                      animate="visible"
+                    >
+                      <div className="md:flex-1">
+                        <motion.div variants={fadeUp}>
+                          <span className="mb-8 block text-4xl font-semibold text-[var(--wiro-romance)] md:text-5xl">
+                            {appMenu.label}
+                          </span>
+                        </motion.div>
+                        <ul className="flex flex-col gap-4">
+                          {appMenu.children.map((child) => (
+                            <motion.li key={child.label} variants={fadeUp}>
+                              <Link
+                                href={child.href}
+                                className="text-xl text-[var(--wiro-romance)]/60 hover:text-[var(--wiro-romance)] md:text-2xl"
+                                onClick={onClose}
+                              >
+                                {child.label}
+                              </Link>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+                      <MegaMenuSideLinks onClose={onClose} />
                     </motion.div>
                   </motion.div>
                 ) : (
@@ -237,30 +323,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                               ))}
                             </ul>
                           </div>
-                          <div className="flex flex-col justify-between md:w-80">
-                            <nav className="flex flex-col gap-3">
-                              {secondaryLinks.map((link) => (
-                                <Link
-                                  key={link.label}
-                                  href={link.href}
-                                  className="text-[var(--wiro-romance)]/60 hover:text-[var(--wiro-romance)]"
-                                  onClick={onClose}
-                                >
-                                  {link.label}
-                                </Link>
-                              ))}
-                            </nav>
-                            <Button href="/contact" className="mt-10" onClick={onClose}>
-                              Lets Talk{" "}
-                              <Image
-                                src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
-                                alt="Hoahwa"
-                                width={120}
-                                height={30}
-                                className="inline-block h-[1em] w-auto align-middle"
-                              />
-                            </Button>
-                          </div>
+                          <MegaMenuSideLinks onClose={onClose} />
                         </motion.div>
                       </motion.div>
                     ))

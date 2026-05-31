@@ -24,7 +24,7 @@ if (!dbPass) {
 }
 
 const origins = (process.env.CONTACT_ALLOWED_ORIGINS ||
-  "https://hoahwa.com,https://www.hoahwa.com,http://localhost:3000")
+  "https://hoahwa.com,https://www.hoahwa.com,http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001")
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
