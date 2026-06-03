@@ -85,7 +85,7 @@ export function SiteFooter() {
       </div>
 
       {/* Full-width marquee — no horizontal padding, bleeds edge-to-edge */}
-      <div className="relative mt-20 w-full overflow-hidden py-6">
+      <div className="relative mt-20 w-full overflow-x-clip py-6">
         <div className="flex h-[180px] w-max animate-marquee-left items-stretch gap-12 md:h-[356px] md:gap-[50px]">
           {[0, 1, 2, 3].map((i) => (
             <HoahwaFooterWordmark key={i} />

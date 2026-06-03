@@ -4,7 +4,7 @@ import { figmaAssets } from "@/content/figma-assets";
 export function DecorativeBorderMarquee() {
   return (
     <div
-      className="relative w-full overflow-hidden bg-[var(--wiro-black)]"
+      className="relative w-full overflow-x-clip overflow-y-hidden bg-[var(--wiro-black)]"
       aria-hidden
       data-node-id="24:1243"
       data-name="Decorative border"

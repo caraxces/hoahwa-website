@@ -40,8 +40,8 @@ export function Testimonials() {
       </PageContainer>
 
       <Reveal variants={fadeUp}>
-        <div data-testid="testimonials-carousel" className="pl-0">
-          <Swiper spaceBetween={32} slidesPerView="auto" className="!overflow-visible">
+        <div data-testid="testimonials-carousel" className="overflow-hidden pl-0">
+          <Swiper spaceBetween={32} slidesPerView="auto" className="!overflow-hidden">
             {testimonials.map((item) => (
               <SwiperSlide key={item.name} className="!w-[min(714px,85vw)]">
                 <article className="flex min-h-[480px] flex-col justify-between rounded-lg bg-[var(--wiro-romance)] p-12 md:p-20">

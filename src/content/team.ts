@@ -9,10 +9,16 @@ export type TeamMember = {
 export const teamMembers: TeamMember[] = [
   {
     name: "Truc",
-    badge: "Founder",
+    badge: "Leader",
     role: "Developer",
     bio: "Developed Hoahwa from the ground up — building the product, shaping delivery, and assembling the first team behind the studio.",
     image: "/img/founder.png",
+  },
+  {
+    name: "Thao",
+    role: "Marketing",
+    bio: "Shapes how Hoahwa shows up — brand storytelling, campaign strategy, and content that connects our work with the clients who need it.",
+    image: "/img/marketing.png",
   },
   {
     name: "Designer",

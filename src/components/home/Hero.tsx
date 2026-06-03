@@ -20,7 +20,7 @@ import {
 export function Hero() {
   return (
     <PageSection
-      className="bg-[var(--wiro-black)] pb-[121px] pt-[120px]"
+      className="overflow-x-clip bg-[var(--wiro-black)] pb-[121px] pt-[120px]"
       data-node-id="1:441"
     >
       <PageContainer>

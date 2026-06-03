@@ -43,7 +43,7 @@ export function LogoMarquee({
         {[...logos, ...logos].map((logo, i) => (
           <div
             key={`${logo.alt}-${i}`}
-            className="group-hover-flowers relative flex h-[110px] shrink-0 items-center justify-center overflow-visible"
+            className="group-hover-flowers relative flex h-[110px] shrink-0 items-center justify-center overflow-hidden"
             style={{ width: logo.width ?? 140 }}
           >
             <Image
