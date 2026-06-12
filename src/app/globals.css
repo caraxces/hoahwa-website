@@ -106,14 +106,103 @@ body {
 }
 
 .animate-decor-marquee {
-  animation: marquee-left 18s linear infinite;
+  animation: marquee-left 90s linear infinite;
+}
+
+.animate-decor-marquee-wobble {
+  animation: decor-marquee-wobble 5s ease-in-out infinite;
+}
+
+@keyframes decor-marquee-wobble {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(-0.15deg);
+  }
+  75% {
+    transform: translateY(2px) rotate(0.15deg);
+  }
+}
+
+@keyframes keypoint-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.55) translateY(14px);
+    filter: blur(4px);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.06) translateY(-2px);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-keypoint-pop {
+  animation: keypoint-pop 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes keypoint-bubble {
+  0% {
+    opacity: 0;
+    transform: scale(0.32) translateY(16px);
+    filter: blur(6px);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1.1) translateY(-4px);
+    filter: blur(0);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+  62% {
+    opacity: 1;
+    transform: scale(1) translateY(-2px);
+    filter: blur(0);
+  }
+  78% {
+    opacity: 0.9;
+    transform: scale(1.14);
+    filter: blur(0);
+  }
+  92% {
+    opacity: 0.35;
+    transform: scale(1.38);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+    filter: blur(10px);
+  }
+}
+
+.animate-keypoint-bubble {
+  animation-name: keypoint-bubble;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee-left,
   .animate-marquee-right,
-  .animate-decor-marquee {
+  .animate-decor-marquee,
+  .animate-decor-marquee-wobble,
+  .animate-keypoint-pop,
+  .animate-keypoint-bubble {
     animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 
   html {
@@ -124,6 +213,7 @@ body {
 /* Flower animation — Uiverse.io by yaroslavas2001 (adapted) */
 .flower-image-card {
   overflow: visible;
+  isolation: isolate;
 }
 
 .flower-image-card--overlap {
@@ -141,15 +231,15 @@ body {
 
 .flower-image-card__media {
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 .flower-container {
   pointer-events: none;
   position: absolute;
   inset: -28px;
-  z-index: 30;
-  overflow: hidden;
+  z-index: 60;
+  overflow: visible;
 }
 
 .flower-image-card--sm .flower-container {
@@ -218,7 +308,8 @@ body {
   border-radius: 40% 70% / 7% 90%;
   background: linear-gradient(#cd9d65, #f3dcb3);
   border: 0.5px solid #dfc79b;
-  z-index: 0;
+  position: relative;
+  z-index: 61;
   transition:
     width 0.8s ease,
     height 0.8s ease,

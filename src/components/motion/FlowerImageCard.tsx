@@ -36,11 +36,11 @@ export function FlowerImageCard({
     >
       <div
         className={cn(
-          "relative h-full w-full",
+          "relative isolate h-full w-full",
           !isSm && "aspect-[660/699] lg:h-[699px]",
         )}
       >
-        <div className="flower-image-card__media relative h-full w-full overflow-hidden rounded-lg shadow-[0_16px_48px_rgba(0,0,0,0.45)] ring-1 ring-white/15">
+        <div className="flower-image-card__media relative z-[1] h-full w-full overflow-hidden rounded-lg shadow-[0_16px_48px_rgba(0,0,0,0.45)] ring-1 ring-white/15">
           <Image
             src={src}
             alt={alt}
@@ -50,7 +50,7 @@ export function FlowerImageCard({
             priority={priority}
           />
         </div>
-        <FlowersOverlay />
+        <FlowersOverlay className="!z-[60]" />
       </div>
     </div>
   );

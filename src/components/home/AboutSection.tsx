@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { LogoMarquee } from "@/components/figma/LogoMarquee";
-import { ScrubText } from "@/components/figma/ScrubText";
-import { Reveal, RevealGroup } from "@/components/motion/Reveal";
+import { AboutIntro } from "@/components/home/AboutIntro";
+import { AboutScrollFrame } from "@/components/home/AboutScrollFrame";
+import { Reveal } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { figmaAssets } from "@/content/figma-assets";
-import { fadeUp, staggerContainer } from "@/lib/motion";
+import { fadeUp } from "@/lib/motion";
 
 const clientLogos = [
   { src: figmaAssets.awardUkEcom, alt: "WatchHouse", width: 200 },
@@ -20,35 +20,23 @@ const clientLogos = [
 
 export function AboutSection() {
   return (
-    <PageSection
-      className="bg-[var(--wiro-romance)] py-20"
-      data-node-id="1:528"
-    >
+    <PageSection className="bg-[var(--wiro-romance)] py-20" data-node-id="1:528">
       <PageContainer>
-        <RevealGroup
-          className="mb-[113px] flex flex-col gap-10 lg:flex-row lg:justify-between"
-          variants={staggerContainer(0.1, 0.05)}
-        >
-          <Reveal variants={fadeUp}>
-            <p
-              className="shrink-0 text-[length:var(--wiro-body)] leading-[var(--wiro-body-lh)] tracking-[-0.03em] text-[var(--wiro-mauve)]"
-              data-node-id="1:532"
-            >
-              About us
-            </p>
-          </Reveal>
-          <motion.div variants={fadeUp} className="min-w-0 flex-1">
-            <ScrubText />
-          </motion.div>
-        </RevealGroup>
+        <div className="relative z-20 mb-10" data-about-intro>
+          <AboutIntro />
+        </div>
+
+        <AboutScrollFrame />
+
         <Reveal variants={fadeUp}>
           <LogoMarquee
             logos={clientLogos}
             fadeFrom="romance"
-            className="h-[139px]"
+            className="mt-[113px] h-[139px]"
             testId="client-logos-marquee"
           />
         </Reveal>
+        <div id="frame-sequence-end" className="h-px w-full" aria-hidden />
       </PageContainer>
     </PageSection>
   );

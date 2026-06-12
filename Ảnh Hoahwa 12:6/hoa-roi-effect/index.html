@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoahwa — Hiệu ứng hoa rơi theo scroll</title>
+<style>
+  :root{
+    --bg:#0a0805;
+    --gold:#f5c14e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg);
+    color:#f3e9d8;
+    font-family:Georgia,'Times New Roman',serif;
+    overflow-x:hidden;
+  }
+
+  /* ===== BÔNG HOA (canvas vẽ frame) ===== */
+  #flower{
+    position:fixed;
+    left:0; top:0;
+    width:340px;            /* chỉnh kích thước hoa ở đây */
+    pointer-events:none;
+    z-index:50;
+    /* screen blend: nền đen của GIF biến mất, chỉ còn ánh sáng hoa */
+    mix-blend-mode:screen;
+    will-change:transform;
+  }
+
+  /* ===== Layout demo ===== */
+  section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:8vh 8vw;text-align:center}
+  .hero h1{font-size:clamp(2.2rem,6vw,4.5rem);letter-spacing:.35em;color:var(--gold);font-weight:400}
+  .hero p{margin-top:1.2rem;opacity:.65;letter-spacing:.15em}
+  .hero .hint{margin-top:38vh;font-size:.8rem;opacity:.4;animation:bob 2s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(8px)}}
+  .mid h2{font-size:1.6rem;color:var(--gold);letter-spacing:.2em;font-weight:400}
+  .mid p{max-width:34em;margin-top:1rem;line-height:1.9;opacity:.7}
+
+  /* ===== ĐÍCH ĐẾN của bông hoa ===== */
+  #flower-target{
+    width:340px;height:170px;   /* nên ~ bằng kích thước hoa */
+    margin:2rem auto;
+    border-radius:50%;
+  }
+  .altar{padding-bottom:14vh}
+  .altar .bowl{
+    width:260px;height:36px;border-radius:50%;
+    background:radial-gradient(ellipse at center,#3a2a14 0%,#1a1208 70%,transparent 75%);
+    box-shadow:0 -6px 40px rgba(245,193,78,.12);
+  }
+  footer{padding:6vh;text-align:center;opacity:.35;font-size:.8rem;letter-spacing:.2em}
+</style>
+</head>
+<body>
+
+<canvas id="flower" width="540" height="260"></canvas>
+
+<section class="hero">
+  <h1>HOAHWA</h1>
+  <p>Một bông hoa — một hành trình</p>
+  <div class="hint">▼ cuộn xuống</div>
+</section>
+
+<section class="mid">
+  <h2>KHI ÁNH SÁNG RƠI</h2>
+  <p>Cuộn trang và bông hoa sẽ rơi theo bạn, từng cánh hoa lay động theo nhịp cuộn,
+     cho tới khi đậu xuống đúng nơi nó thuộc về.</p>
+</section>
+
+<section class="altar">
+  <h2 style="color:var(--gold);letter-spacing:.2em;font-weight:400">NƠI HOA ĐẬU XUỐNG</h2>
+  <!-- Hoa sẽ rơi & dừng đúng vào khung này. Đặt div này ở bất kỳ đâu bạn muốn -->
+  <div id="flower-target"></div>
+  <div class="bowl"></div>
+</section>
+
+<footer>HOAHWA © 2026</footer>
+
+<script>
+/* ================== CẤU HÌNH ================== */
+const CONFIG = {
+  framePath: 'frames/frame_',  // thư mục chứa frame
+  frameExt: '.webp',
+  frameCount: 58,              // số frame đã tách từ GIF
+  framePad: 3,                 // frame_001 → pad = 3
+  targetSelector: '#flower-target', // hoa rơi tới element này
+  startYvh: 0.12,              // vị trí bắt đầu: 12% chiều cao màn hình từ trên xuống
+  smooth: 0.09,                // độ mượt (0.05 chậm mượt — 0.3 bám sát)
+  loopWhileFalling: false      // false: kéo tới đâu hoa rơi tới đó (scrub) — true: frame tự lặp như GIF
+};
+/* =============================================== */
+
+const canvas = document.getElementById('flower');
+const ctx = canvas.getContext('2d');
+const target = document.querySelector(CONFIG.targetSelector);
+
+// Nạp trước toàn bộ frame
+const frames = [];
+for (let i = 1; i <= CONFIG.frameCount; i++) {
+  const img = new Image();
+  img.src = CONFIG.framePath + String(i).padStart(CONFIG.framePad, '0') + CONFIG.frameExt;
+  frames.push(img);
+}
+
+let startX, startY, endX, endY, scrollEnd;
+
+function measure() {
+  const rect = target.getBoundingClientRect();
+  const docTop = rect.top + window.scrollY;
+  const fw = canvas.offsetWidth, fh = canvas.offsetHeight;
+
+  // điểm bắt đầu: giữa màn hình, gần đỉnh trang
+  startX = (window.innerWidth - fw) / 2;
+  startY = window.innerHeight * CONFIG.startYvh;
+
+  // scrollEnd = lượng scroll để target nằm khoảng giữa màn hình
+  scrollEnd = Math.max(1, docTop + rect.height / 2 - window.innerHeight * 0.55);
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  scrollEnd = Math.min(scrollEnd, maxScroll);
+
+  // điểm kết thúc: tâm hoa trùng tâm target tại thời điểm scroll = scrollEnd
+  endX = rect.left + (rect.width - fw) / 2;
+  endY = docTop + (rect.height - fh) / 2 - scrollEnd;
+}
+
+const easeInOut = t => t < .5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
+
+let current = 0; // tiến độ đã làm mượt
+
+function tick(ts) {
+  const progress = Math.min(1, Math.max(0, window.scrollY / scrollEnd));
+  current += (progress - current) * CONFIG.smooth;
+  if (Math.abs(progress - current) < 0.0005) current = progress;
+
+  const e = easeInOut(current);
+  const x = startX + (endX - startX) * e;
+  const y = startY + (endY - startY) * e;
+  canvas.style.transform = `translate(${x}px, ${y}px)`;
+
+  // chọn frame
+  let idx;
+  if (CONFIG.loopWhileFalling) {
+    // hoa "cháy" liên tục, frame lặp như GIF gốc (~22fps)
+    idx = Math.floor(ts / 45) % CONFIG.frameCount;
+  } else {
+    // scrub: kéo tới đâu frame chạy tới đó
+    idx = Math.min(CONFIG.frameCount - 1, Math.floor(current * CONFIG.frameCount));
+  }
+  const img = frames[idx];
+  if (img && img.complete && img.naturalWidth) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  }
+  requestAnimationFrame(tick);
+}
+
+window.addEventListener('resize', measure);
+window.addEventListener('load', measure);
+measure();
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>

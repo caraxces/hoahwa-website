@@ -1,14 +1,14 @@
 /** Figma-exported assets (local copies in /public/figma where available) */
 
 export const figmaAssets = {
-  decorativeBorder: "/figma/decorative-border.svg",
-  heroGrowthInline: "/figma/growth-pitch.jpg",
-  heroVideoPoster: "/figma/hero-video-1.jpg",
+  decorativeBorder: "/img/Hoa1.svg",
+  heroGrowthInline: "/img/HW8.png",
+  heroVideoPoster: "/img/HW16.png",
   awardUkEcom: "/figma/award-uk-ecom.png",
   awardEuropean: "/figma/award-european.png",
-  growthPitchImage: "/figma/growth-pitch.jpg",
-  testimonialSneaker: "/figma/testimonial-sneaker.jpg",
-  ctaPool: "/figma/cta-pool.jpg",
+  growthPitchImage: "/img/HW2.png",
+  testimonialSneaker: "/img/HW26.3.png",
+  ctaPool: "/img/HW35.png",
   footerHoahwaLogo: "/figma/footer-hoahwa-logo.svg",
   auditInsightsScreenshot: "/figma/audit-insights-screenshot.png",
   buildHeroImage: "/figma/build-hero.jpg",

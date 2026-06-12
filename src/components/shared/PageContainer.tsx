@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { forwardRef } from "react";
 
 export function PageContainer({
   children,
@@ -19,23 +20,20 @@ export function PageContainer({
   );
 }
 
-export function PageSection({
-  children,
-  className,
-  padX = true,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  padX?: boolean;
-}) {
+export const PageSection = forwardRef<
+  HTMLElement,
+  {
+    children: React.ReactNode;
+    className?: string;
+    padX?: boolean;
+  }
+>(function PageSection({ children, className, padX = true }, ref) {
   return (
     <section
-      className={cn(
-        padX && "px-[var(--wiro-page-pad)]",
-        className,
-      )}
+      ref={ref}
+      className={cn(padX && "px-[var(--wiro-page-pad)]", className)}
     >
       {children}
     </section>
   );
-}
+});

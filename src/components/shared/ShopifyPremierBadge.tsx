@@ -1,4 +1,7 @@
+import Image from "next/image";
 import { cn } from "@/lib/cn";
+
+const HOAHWA_PARTNER_LOGO = "/LOGO HOAHWA/hoahwa_logo_board-07.png";
 
 export function ShopifyPremierBadge({
   className,
@@ -10,6 +13,8 @@ export function ShopifyPremierBadge({
   variant?: "dark" | "light";
 }) {
   const isLight = variant === "light";
+  const iconSize = size === "md" ? 40 : 48;
+
   return (
     <div
       className={cn(
@@ -17,28 +22,27 @@ export function ShopifyPremierBadge({
         isLight ? "text-[var(--wiro-romance)]" : "text-[var(--wiro-cod-gray)]",
         className,
       )}
-      aria-label="Shopify Premier Partner"
+      aria-label="Want to be your partner"
     >
-      <span
+      <Image
+        src={HOAHWA_PARTNER_LOGO}
+        alt=""
+        width={iconSize}
+        height={iconSize}
         className={cn(
-          "flex shrink-0 items-center justify-center font-medium",
-          size === "md" ? "size-10 text-[10px]" : "size-12 text-xs",
-          isLight
-            ? "bg-[var(--wiro-romance)] text-[var(--wiro-cod-gray)]"
-            : "bg-[var(--wiro-cod-gray)] text-[var(--wiro-romance)]",
+          "shrink-0 rounded-md object-cover shadow-sm",
+          size === "md" ? "size-10" : "size-12",
+          isLight && "ring-1 ring-white/15",
         )}
-      >
-        S
-      </span>
+      />
       <div
         className={cn(
           "leading-tight tracking-wide",
           size === "md" ? "text-[10px]" : "text-xs",
         )}
       >
-        <span className="block opacity-80">SHOPIFY</span>
-        <span className="block font-medium">PREMIER</span>
-        <span className="block font-medium">PARTNER</span>
+        <span className="block font-medium">Want bE your</span>
+        <span className="block font-medium">PARTNER !</span>
       </div>
     </div>
   );

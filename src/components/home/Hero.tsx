@@ -2,19 +2,18 @@
 
 import { motion } from "framer-motion";
 import { LatestCaseBadge } from "@/components/figma/LatestCaseBadge";
-import { LogoMarquee } from "@/components/figma/LogoMarquee";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { FlowerImageFill } from "@/components/motion/FlowerImageFill";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
+import { ShopifyPremierBadge } from "@/components/shared/ShopifyPremierBadge";
 import { FlowerImageCard } from "@/components/motion/FlowerImageCard";
-import { awardLogos, figmaAssets } from "@/content/figma-assets";
+import { figmaAssets } from "@/content/figma-assets";
 import {
   clipUp,
   fadeUp,
   scaleIn,
   slideFromRight,
   staggerContainer,
-  fadeIn,
 } from "@/lib/motion";
 
 export function Hero() {
@@ -43,7 +42,7 @@ export function Hero() {
               className="relative z-10 mt-0 flex flex-wrap items-center gap-5 overflow-visible md:gap-8"
               data-node-id="1:457"
             >
-              <Reveal variants={scaleIn} className="overflow-visible">
+              <Reveal variants={scaleIn} className="relative z-40 overflow-visible">
                 <FlowerImageCard
                   src={figmaAssets.heroGrowthInline}
                   sizes="300px"
@@ -70,15 +69,12 @@ export function Hero() {
                   Specialists
                 </span>
               </Reveal>
-              <Reveal variants={slideFromRight} className="hidden md:block">
-                <div
-                  className="shrink-0 text-right text-xs leading-tight text-[var(--wiro-romance)]"
-                  data-node-id="1:465"
-                >
-                  <span className="mb-1 block text-[10px] opacity-80">SHOPIFY</span>
-                  <span className="block font-medium">PREMIER</span>
-                  <span className="block font-medium">PARTNER</span>
-                </div>
+              <Reveal
+                variants={slideFromRight}
+                className="hidden shrink-0 md:block"
+                data-node-id="1:465"
+              >
+                <ShopifyPremierBadge variant="light" size="lg" />
               </Reveal>
             </div>
           </div>
@@ -106,18 +102,6 @@ export function Hero() {
               />
             </motion.div>
           </Reveal>
-
-          <motion.div variants={fadeIn}>
-            <LogoMarquee
-              logos={awardLogos.map((a) => ({
-                src: a.src,
-                alt: a.alt,
-                width: a.w,
-              }))}
-              fadeFrom="black"
-              testId="hero-awards-marquee"
-            />
-          </motion.div>
         </RevealGroup>
       </PageContainer>
     </PageSection>

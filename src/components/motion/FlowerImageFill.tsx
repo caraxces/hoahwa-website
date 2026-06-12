@@ -14,9 +14,16 @@ export function FlowerImageFill({
   ...props
 }: FlowerImageFillProps) {
   return (
-    <div className={cn("group-hover-flowers relative overflow-visible", wrapperClassName)}>
-      <Image {...props} fill className={cn("object-cover", className)} />
-      <FlowersOverlay className={overlayClassName} />
+    <div
+      className={cn(
+        "group-hover-flowers relative isolate overflow-visible",
+        wrapperClassName,
+      )}
+    >
+      <div className="absolute inset-0 z-[1]">
+        <Image {...props} fill className={cn("object-cover", className)} />
+      </div>
+      <FlowersOverlay className={cn("!z-[60]", overlayClassName)} />
     </div>
   );
 }
