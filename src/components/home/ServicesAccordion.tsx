@@ -44,7 +44,10 @@ export function ServicesAccordion() {
                     onClick={() => setOpenId(open ? "" : item.id)}
                     aria-expanded={open}
                   >
-                    <AccordionPlusIcon className="text-[var(--wiro-romance)]" />
+                    <AccordionPlusIcon
+                      open={open}
+                      className="text-[var(--wiro-romance)]"
+                    />
                     <span className="text-[length:40px] leading-[44px] tracking-[-0.04em]">
                       {item.title}
                     </span>

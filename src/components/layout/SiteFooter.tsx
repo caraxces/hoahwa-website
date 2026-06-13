@@ -9,13 +9,15 @@ import { PageContainer } from "@/components/shared/PageContainer";
 const socialLinks = [
   { label: "Instagram", href: "#" },
   { label: "LinkedIn", href: "#" },
-  { label: "Privacy", href: "#" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Cookies", href: "/cookie-policy" },
+  { label: "Terms", href: "/terms" },
 ];
 
 export function SiteFooter() {
   return (
     <footer
-      className="bg-[var(--hoahwa-accent)] pb-[66px] pt-[120px] text-[var(--wiro-cod-gray)]"
+      className="relative z-40 bg-[var(--hoahwa-accent)] pb-[66px] pt-[120px] text-[var(--wiro-cod-gray)]"
       data-node-id="1:1108"
     >
       {/* Main footer content — respects page padding */}

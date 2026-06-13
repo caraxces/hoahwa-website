@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import { ConsentScripts } from "@/components/cookie/ConsentScripts";
 import { CookieConsentBanner } from "@/components/cookie/CookieConsentBanner";
 import "./globals.css";
 
@@ -38,6 +39,7 @@ export default function RootLayout({
         <div className="site-shell">
           {children}
           <CookieConsentBanner />
+          <ConsentScripts />
         </div>
       </body>
     </html>

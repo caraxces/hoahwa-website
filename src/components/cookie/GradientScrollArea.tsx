@@ -47,11 +47,13 @@ export function GradientScrollArea({
   }, [updateScrollHints, children]);
 
   return (
-    <div className="relative min-h-0 flex-1">
+    // Flex (not h-full) so the scroll region sizes correctly inside a
+    // max-height-constrained flex column, where percentage heights don't resolve.
+    <div className="relative flex min-h-0 flex-1 flex-col">
       <div
         ref={scrollRef}
         className={cn(
-          "scrollbar-gradient-hide h-full min-h-0 overflow-y-auto overscroll-contain",
+          "scrollbar-gradient-hide min-h-0 flex-1 overflow-y-auto overscroll-contain",
           className,
         )}
       >

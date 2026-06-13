@@ -32,6 +32,11 @@ export function ContactPageView() {
                 />
               </h1>
             </Reveal>
+            <Reveal variants={fadeUp} className="mt-8 max-w-[480px]">
+              <p className="text-base leading-6 tracking-[-0.03em] text-[var(--wiro-romance)]/75">
+                {contactPage.valueProposition}
+              </p>
+            </Reveal>
             <Reveal variants={fadeUp} className="mt-12 space-y-8">
               <div className="space-y-6">
                 {contactPage.phones.map((phone) => (
@@ -74,6 +79,8 @@ export function ContactPageView() {
               services={contactPage.services}
               budgets={contactPage.budgets}
               showBudget
+              budgetLegend="Budget (USD)*"
+              warrantyNote={contactPage.warrantyNote}
             />
           </Reveal>
         </div>

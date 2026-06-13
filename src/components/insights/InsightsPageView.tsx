@@ -41,7 +41,7 @@ export function InsightsPageView() {
           {filtered.map((post, i) => (
             <Reveal key={post.slug} as="li" variants={fadeUp} delay={i * 0.03}>
               <Link
-                href="#"
+                href={`/insights/${post.slug}`}
                 className="group flex flex-col gap-4 border-b border-[var(--wiro-cod-gray)] py-10 transition-opacity hover:opacity-80 md:flex-row md:items-start md:gap-12"
               >
                 <div className="flex shrink-0 flex-col gap-2 md:w-48">

@@ -1,16 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import {
   BUBBLE_CYCLE_MS,
   BUBBLE_SPAWN_SPREAD_MS,
+  intersectRectBox,
   keypointLayout,
+  LABEL_SIZE_DESKTOP,
+  LABEL_SIZE_MOBILE,
   maxBubblesPerCycle,
   positionKeypointAroundAnchor,
   type KeypointBurstItem,
   type RectBox,
 } from "@/lib/keypoint-burst";
 import { cn } from "@/lib/cn";
+
+const COMPACT_QUERY = "(max-width: 767px)";
+
+function subscribeCompact(onChange: () => void) {
+  const mq = window.matchMedia(COMPACT_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+function getCompactSnapshot() {
+  return window.matchMedia(COMPACT_QUERY).matches;
+}
+
+function getCompactServerSnapshot() {
+  return false;
+}
 
 const categoryTone: Record<KeypointBurstItem["category"], string> = {
   Dev: "text-[var(--wiro-cod-gray)]",
@@ -36,6 +55,11 @@ export function KeypointBurst({
   mode = "frame",
 }: KeypointBurstProps) {
   const [cycleKey, setCycleKey] = useState(0);
+  const isCompact = useSyncExternalStore(
+    subscribeCompact,
+    getCompactSnapshot,
+    getCompactServerSnapshot,
+  );
 
   useEffect(() => {
     if (!visible) {
@@ -53,6 +77,19 @@ export function KeypointBurst({
 
   if (!visible || !anchorRect || !boundsRect) return null;
 
+  // Labels must land on the visible part of the section — the section itself
+  // is usually taller than the screen.
+  const viewportBounds = intersectRectBox(boundsRect, {
+    top: 0,
+    left: 0,
+    right: window.innerWidth,
+    bottom: window.innerHeight,
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+  if (viewportBounds.width <= 0 || viewportBounds.height <= 0) return null;
+
+  const labelSize = isCompact ? LABEL_SIZE_MOBILE : LABEL_SIZE_DESKTOP;
   const total = items.length;
   const cap = maxBubblesPerCycle(mode);
   const eligible = items
@@ -73,13 +110,7 @@ export function KeypointBurst({
 
   return (
     <div
-      className="pointer-events-none fixed z-[28] overflow-hidden"
-      style={{
-        top: boundsRect.top,
-        left: boundsRect.left,
-        width: boundsRect.width,
-        height: boundsRect.height,
-      }}
+      className="pointer-events-none fixed inset-0 z-[35] overflow-hidden"
       aria-hidden
       data-testid="keypoint-burst"
     >
@@ -92,8 +123,9 @@ export function KeypointBurst({
         const { top, left } = positionKeypointAroundAnchor(
           anchorRect,
           layout,
-          boundsRect,
+          viewportBounds,
           mode,
+          labelSize,
         );
 
         return (
@@ -101,8 +133,8 @@ export function KeypointBurst({
             key={`${cycleKey}-${item.category}-${item.label}-${index}`}
             className="absolute max-w-[185px] whitespace-nowrap max-md:max-w-[120px] max-md:whitespace-normal"
             style={{
-              top: top - boundsRect.top,
-              left: left - boundsRect.left,
+              top,
+              left,
               transform: `rotate(${layout.rotateDeg}deg)`,
             }}
           >

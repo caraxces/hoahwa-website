@@ -60,6 +60,7 @@ export function CookieConsentBanner() {
   const [mounted, setMounted] = useState(false);
   const [view, setView] = useState<View>("bar");
   const [choices, setChoices] = useState<CookieConsentChoices>(defaultCookieChoices);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -130,7 +131,7 @@ export function CookieConsentBanner() {
               className={cn(
                 "pointer-events-auto w-full max-w-[min(100%,var(--wiro-container))] overflow-hidden",
                 cookieUi.shell,
-                view === "panel" ? "max-h-[min(85vh,720px)]" : "max-w-[640px]",
+                view === "panel" ? "max-h-[min(85dvh,720px)]" : "max-w-[640px]",
               )}
             >
               {view === "bar" ? (
@@ -209,6 +210,7 @@ export function CookieConsentBanner() {
                           cat.id === "necessary"
                             ? true
                             : Boolean(choices[cat.id as keyof CookieConsentChoices]);
+                        const isExpanded = expandedCategory === cat.id;
 
                         return (
                           <li
@@ -237,6 +239,52 @@ export function CookieConsentBanner() {
                               />
                             </div>
                             <p className={cookieUi.bodyMuted}>{cat.description}</p>
+
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setExpandedCategory(isExpanded ? null : cat.id)
+                              }
+                              aria-expanded={isExpanded}
+                              className={cn(
+                                "self-start text-sm tracking-[-0.02em] underline-offset-2",
+                                "text-[var(--wiro-cod-gray)]/55 transition-colors hover:text-[var(--wiro-cod-gray)] hover:underline",
+                              )}
+                            >
+                              {isExpanded
+                                ? cookieConsentCopy.detailsToggle.hide
+                                : cookieConsentCopy.detailsToggle.show}
+                            </button>
+
+                            {isExpanded ? (
+                              <ul className="flex flex-col gap-3">
+                                {cat.details.length === 0 ? (
+                                  <li className={cookieUi.bodyMuted}>
+                                    {cookieConsentCopy.emptyCategoryNote}
+                                  </li>
+                                ) : (
+                                  cat.details.map((cookie) => (
+                                    <li
+                                      key={cookie.name}
+                                      className={cn(
+                                        "flex flex-col gap-1 rounded-lg border p-4",
+                                        cookieUi.divider,
+                                      )}
+                                    >
+                                      <p className="text-sm font-medium tracking-[-0.02em] text-[var(--wiro-cod-gray)]">
+                                        {cookie.name}
+                                      </p>
+                                      <p className="text-sm leading-5 tracking-[-0.02em] text-[var(--wiro-cod-gray)]/65">
+                                        {cookie.purpose}
+                                      </p>
+                                      <p className="text-sm tracking-[-0.02em] text-[var(--wiro-cod-gray)]/50">
+                                        {cookie.provider} · {cookie.duration}
+                                      </p>
+                                    </li>
+                                  ))
+                                )}
+                              </ul>
+                            ) : null}
                           </li>
                         );
                       })}
@@ -279,12 +327,20 @@ export function CookieConsentBanner() {
                       cookieUi.sectionY,
                     )}
                   >
-                    <Link
-                      href={cookieConsentCopy.footer.privacyHref}
-                      className={cookieUi.link}
-                    >
-                      {cookieConsentCopy.footer.privacyLabel}
-                    </Link>
+                    <div className="flex flex-wrap gap-x-6 gap-y-2">
+                      <Link
+                        href={cookieConsentCopy.footer.privacyHref}
+                        className={cookieUi.link}
+                      >
+                        {cookieConsentCopy.footer.privacyLabel}
+                      </Link>
+                      <Link
+                        href={cookieConsentCopy.footer.cookieHref}
+                        className={cookieUi.link}
+                      >
+                        {cookieConsentCopy.footer.cookieLabel}
+                      </Link>
+                    </div>
                     <div className="flex flex-col gap-3">
                       <button
                         type="button"

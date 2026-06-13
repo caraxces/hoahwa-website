@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "description": "Hoahwa eCommerce Insights content database. Full article bodies live in src/content/insight-articles.ts and are merged at build time via src/lib/insights-db.ts.",
+  "postCount": 16
+}

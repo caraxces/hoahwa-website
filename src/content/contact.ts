@@ -1,10 +1,12 @@
 export const contactPage = {
   title: ["Lets Talk", "Hoahwa"] as const,
+  valueProposition:
+    "We are a young, high-potential team — direct collaboration, lean overhead, and studio-quality delivery at a fraction of typical agency rates. Every project includes free lifetime product quality warranty.",
   phones: [
     {
       label: "Design",
-      display: "(+84) 36 2321462",
-      href: "tel:+84362321462",
+      display: "(+84) 86 748 6101",
+      href: "tel:+84867486101",
     },
     {
       label: "SEO · CRO · DEV your website",
@@ -24,5 +26,7 @@ export const contactPage = {
     "Shopify Build",
     "eCommerce Strategy",
   ],
-  budgets: ["£10K – £30K", "£30K - £50K", "£50K - £100K", "£100K+"],
+  budgets: ["Under $500", "$500 – $1,000", "$1,000 – $1,500", "Up to $2,000"],
+  warrantyNote:
+    "Free lifetime product quality warranty on every engagement — we stand behind what we ship.",
 };

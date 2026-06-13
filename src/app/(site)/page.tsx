@@ -4,7 +4,6 @@ import { CaseCarousel } from "@/components/home/CaseCarousel";
 import { GrowthPitch } from "@/components/home/GrowthPitch";
 import { ServicesAccordion } from "@/components/home/ServicesAccordion";
 import { Testimonials } from "@/components/home/Testimonials";
-import { BlogTeaser } from "@/components/home/BlogTeaser";
 import { NewsletterCta } from "@/components/home/NewsletterCta";
 
 export default function HomePage() {
@@ -16,7 +15,6 @@ export default function HomePage() {
       <GrowthPitch />
       <ServicesAccordion />
       <Testimonials />
-      <BlogTeaser />
       <NewsletterCta />
     </div>
   );

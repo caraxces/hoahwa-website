@@ -17,8 +17,15 @@ export type RectBox = {
   height: number;
 };
 
-const LABEL_W = 185;
-const LABEL_H = 26;
+export type LabelSize = {
+  width: number;
+  height: number;
+};
+
+/** Must mirror the Tailwind classes on the label in KeypointBurst.tsx. */
+export const LABEL_SIZE_DESKTOP: LabelSize = { width: 185, height: 26 };
+export const LABEL_SIZE_MOBILE: LabelSize = { width: 120, height: 45 };
+
 const BOUND_PAD = 10;
 
 /** Deterministic “random” layout — stable across re-renders. */
@@ -46,17 +53,18 @@ function rayMaxRadius(
   cos: number,
   sin: number,
   bounds: RectBox,
+  label: LabelSize,
 ): number {
   let t = Infinity;
 
   if (cos > 0.001) {
-    t = Math.min(t, (bounds.right - BOUND_PAD - LABEL_W - cx) / cos);
+    t = Math.min(t, (bounds.right - BOUND_PAD - label.width - cx) / cos);
   } else if (cos < -0.001) {
     t = Math.min(t, (bounds.left + BOUND_PAD - cx) / cos);
   }
 
   if (sin > 0.001) {
-    t = Math.min(t, (bounds.bottom - BOUND_PAD - LABEL_H - cy) / sin);
+    t = Math.min(t, (bounds.bottom - BOUND_PAD - label.height - cy) / sin);
   } else if (sin < -0.001) {
     t = Math.min(t, (bounds.top + BOUND_PAD - cy) / sin);
   }
@@ -69,6 +77,7 @@ export function positionKeypointAroundAnchor(
   layout: KeypointLayout,
   bounds: RectBox,
   mode: "frame" | "card" = "frame",
+  label: LabelSize = LABEL_SIZE_DESKTOP,
 ): { top: number; left: number } {
   const cx = anchor.left + anchor.width / 2;
   const cy = anchor.top + anchor.height / 2;
@@ -76,25 +85,36 @@ export function positionKeypointAroundAnchor(
   const cos = Math.cos(angleRad);
   const sin = Math.sin(angleRad);
 
-  const maxR = rayMaxRadius(cx, cy, cos, sin, bounds);
+  const maxR = rayMaxRadius(cx, cy, cos, sin, bounds, label);
   const minR =
     mode === "card"
       ? Math.max(anchor.width, anchor.height) * 0.56 + 44
       : Math.max(anchor.width, anchor.height) * 0.48 + 28;
-  const r = minR + (maxR - minR) * layout.spread;
+  // On cramped bounds maxR can fall below minR; stop at the bounds edge
+  // instead of overshooting and piling every label onto the clamp line.
+  const r = maxR > minR ? minR + (maxR - minR) * layout.spread : maxR;
 
   const x = cx + cos * r;
   const y = cy + sin * r;
 
   const minX = bounds.left + BOUND_PAD;
-  const maxX = bounds.right - BOUND_PAD - LABEL_W;
+  const maxX = bounds.right - BOUND_PAD - label.width;
   const minY = bounds.top + BOUND_PAD;
-  const maxY = bounds.bottom - BOUND_PAD - LABEL_H;
+  const maxY = bounds.bottom - BOUND_PAD - label.height;
 
   return {
-    left: Math.min(maxX, Math.max(minX, x - LABEL_W * 0.12)),
-    top: Math.min(maxY, Math.max(minY, y - LABEL_H * 0.45)),
+    left: Math.min(maxX, Math.max(minX, x - label.width * 0.12)),
+    top: Math.min(maxY, Math.max(minY, y - label.height * 0.45)),
   };
+}
+
+/** Intersection of two boxes; width/height <= 0 means they don't overlap. */
+export function intersectRectBox(a: RectBox, b: RectBox): RectBox {
+  const top = Math.max(a.top, b.top);
+  const left = Math.max(a.left, b.left);
+  const right = Math.min(a.right, b.right);
+  const bottom = Math.min(a.bottom, b.bottom);
+  return { top, left, right, bottom, width: right - left, height: bottom - top };
 }
 
 export function toRectBox(rect: DOMRect): RectBox {

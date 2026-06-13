@@ -7,6 +7,8 @@ type HoahwaContactFormProps = {
   services: string[];
   budgets?: string[];
   showBudget?: boolean;
+  budgetLegend?: string;
+  warrantyNote?: string;
 };
 
 type FormState = {
@@ -35,6 +37,8 @@ export function HoahwaContactForm({
   services,
   budgets = [],
   showBudget = false,
+  budgetLegend = "Budget*",
+  warrantyNote,
 }: HoahwaContactFormProps) {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -173,7 +177,7 @@ export function HoahwaContactForm({
       {showBudget && budgets.length > 0 ? (
         <fieldset className="mt-10 border-0 p-0" disabled={status === "submitting"}>
           <legend className="mb-4 text-[length:var(--wiro-body)] text-[var(--wiro-romance)]">
-            Budget*
+            {budgetLegend}
           </legend>
           <div className="flex flex-col gap-4">
             {budgets.map((budget) => {
@@ -203,6 +207,11 @@ export function HoahwaContactForm({
               );
             })}
           </div>
+          {warrantyNote ? (
+            <p className="mt-4 text-sm leading-5 tracking-[-0.02em] text-[var(--wiro-romance)]/60">
+              {warrantyNote}
+            </p>
+          ) : null}
         </fieldset>
       ) : null}
 

@@ -2,14 +2,20 @@
 
 import { useEffect, useRef, useState } from "react";
 import { KeypointBurst } from "@/components/shared/KeypointBurst";
-import { HERO_FRAME_COUNT, heroFrameSrc } from "@/content/frame-sequence";
+import {
+  frameIndexFromProgress,
+  HERO_FRAME_COUNT,
+  heroFrameSrc,
+  MIN_TRACK_HEIGHT_PX,
+  naturalJourneySpanPx,
+  trackHeightFromJourney,
+  trackScrollProgress,
+} from "@/content/frame-sequence";
 import { serviceKeypoints } from "@/content/service-keypoints";
 import { toRectBox, type RectBox } from "@/lib/keypoint-burst";
 
 const START_ID = "frame-sequence-start";
 const END_ID = "frame-sequence-end";
-const MARQUEE_TEST_ID = "client-logos-marquee";
-const INTRO_SELECTOR = "[data-about-intro]";
 
 const frameShellClass =
   "overflow-hidden rounded-lg shadow-[0_12px_40px_rgba(0,0,0,0.22)] ring-1 ring-white/10";
@@ -17,9 +23,22 @@ const frameShellClass =
 const frameImgClass =
   "h-[min(28vw,180px)] w-full max-w-[960px] object-contain object-center";
 
+const preloadedFrames = new Set<number>();
+
+function preloadFrame(index: number) {
+  if (index < 0 || index >= HERO_FRAME_COUNT || preloadedFrames.has(index)) {
+    return;
+  }
+  preloadedFrames.add(index);
+  const img = new window.Image();
+  img.decoding = "async";
+  img.src = heroFrameSrc(index + 1);
+}
+
 export function AboutScrollFrame() {
   const trackRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
+  const journeySpanRef = useRef<number | null>(null);
   const [frameIndex, setFrameIndex] = useState(0);
   const [trackHeight, setTrackHeight] = useState(0);
   const [peakBurstProgress, setPeakBurstProgress] = useState(0);
@@ -28,98 +47,109 @@ export function AboutScrollFrame() {
   const [boundsRect, setBoundsRect] = useState<RectBox | null>(null);
 
   useEffect(() => {
+    let next = 0;
+    let timer = 0;
+    const pump = () => {
+      for (let n = 0; n < 8 && next < HERO_FRAME_COUNT; n += 1) {
+        preloadFrame(next);
+        next += 1;
+      }
+      if (next < HERO_FRAME_COUNT) {
+        timer = window.setTimeout(pump, 100);
+      }
+    };
+    pump();
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    for (let d = 1; d <= 6; d += 1) {
+      preloadFrame(frameIndex + d);
+      preloadFrame(frameIndex - d);
+    }
+  }, [frameIndex]);
+
+  useEffect(() => {
     let raf = 0;
 
-    const measureTrack = () => {
-      const start = document.getElementById(START_ID);
-      const marquee = document.querySelector(
-        `[data-testid="${MARQUEE_TEST_ID}"]`,
-      );
-      if (!start || !marquee) return;
+    /**
+     * Measure once from #start → #end while track is collapsed.
+     * Never use marquee getBoundingClientRect (feedback loop → 100k+ px height).
+     */
+    const measureTrack = (force = false) => {
+      if (!force && journeySpanRef.current !== null) {
+        setTrackHeight(trackHeightFromJourney(journeySpanRef.current));
+        return;
+      }
 
-      const startY = start.offsetTop;
-      const marqueeY =
-        marquee.getBoundingClientRect().top + window.scrollY;
-      setTrackHeight(Math.max(320, marqueeY - startY));
-    };
-
-    const update = () => {
       const start = document.getElementById(START_ID);
       const end = document.getElementById(END_ID);
       const track = trackRef.current;
-      const sticky = stickyRef.current;
-      const intro = document.querySelector(INTRO_SELECTOR);
       if (!start || !end || !track) return;
 
-      const sequenceRange = end.offsetTop - start.offsetTop;
-      if (sequenceRange <= 0) return;
+      const savedHeight = track.style.height;
+      track.style.height = `${MIN_TRACK_HEIGHT_PX}px`;
+      const fullSpan = naturalJourneySpanPx(start, end);
+      track.style.height = savedHeight;
 
-      const scrollY = window.scrollY;
-      const sequenceProgress = Math.min(
-        1,
-        Math.max(0, (scrollY - start.offsetTop) / sequenceRange),
-      );
+      journeySpanRef.current = fullSpan;
+      setTrackHeight(trackHeightFromJourney(fullSpan));
+    };
 
-      setFrameIndex(
-        Math.min(
-          HERO_FRAME_COUNT - 1,
-          Math.floor(sequenceProgress * HERO_FRAME_COUNT),
-        ),
-      );
+    const update = () => {
+      const track = trackRef.current;
+      const sticky = stickyRef.current;
+      if (!track) return;
 
-      const trackTop = track.offsetTop;
-      const burstEnd =
-        document.querySelector(`[data-testid="${MARQUEE_TEST_ID}"]`)
-          ?.getBoundingClientRect().top ?? track.getBoundingClientRect().bottom;
-      const burstEndY = burstEnd + scrollY;
-      const burstRange = Math.max(1, burstEndY - trackTop);
-      const nextBurstProgress = Math.min(
-        1,
-        Math.max(0, (scrollY - trackTop) / burstRange),
-      );
-      setPeakBurstProgress((prev) => Math.max(prev, nextBurstProgress));
+      const viewport = window.innerHeight;
+      const trackProgress = trackScrollProgress(track, viewport);
 
-      let separated = scrollY > trackTop + 6;
-      if (intro && sticky) {
-        const gap =
-          sticky.getBoundingClientRect().top -
-          intro.getBoundingClientRect().bottom;
-        separated = gap > 2 || scrollY > trackTop + 6;
-      }
+      setFrameIndex(frameIndexFromProgress(trackProgress));
 
-      if (separated) {
+      const frameImg = sticky?.querySelector("img");
+      const frameRect = frameImg?.getBoundingClientRect();
+      const frameOnScreen =
+        !!frameRect &&
+        frameRect.height > 0 &&
+        frameRect.bottom > viewport * 0.12 &&
+        frameRect.top < viewport * 0.92;
+
+      if (frameOnScreen) {
         setBurstVisible(true);
-      }
-
-      if (!separated && scrollY < trackTop - 24) {
-        setBurstVisible(false);
-        setPeakBurstProgress(0);
+        setPeakBurstProgress((prev) => Math.max(prev, trackProgress));
+      } else {
+        const trackDocTop = track.getBoundingClientRect().top + window.scrollY;
+        if (window.scrollY < trackDocTop - 48) {
+          setBurstVisible(false);
+          setPeakBurstProgress(0);
+        }
       }
 
       const romanceSection = track.closest("section");
-      const frameImg = sticky?.querySelector("img");
       if (romanceSection) {
         setBoundsRect(toRectBox(romanceSection.getBoundingClientRect()));
       }
-      if (frameImg) {
-        setAnchorRect(toRectBox(frameImg.getBoundingClientRect()));
+      if (frameRect) {
+        setAnchorRect(toRectBox(frameRect));
       }
     };
 
     const onScroll = () => {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        update();
-      });
+      raf = requestAnimationFrame(update);
     };
 
     const onResize = () => {
-      measureTrack();
+      journeySpanRef.current = null;
+      measureTrack(true);
       onScroll();
     };
 
-    measureTrack();
-    update();
+    requestAnimationFrame(() => {
+      measureTrack(true);
+      update();
+    });
+
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize, { passive: true });
 
@@ -151,7 +181,9 @@ export function AboutScrollFrame() {
       <div
         ref={trackRef}
         className="relative w-full"
-        style={{ height: trackHeight > 0 ? trackHeight : "min(80vh, 640px)" }}
+        style={{
+          height: trackHeight > 0 ? trackHeight : MIN_TRACK_HEIGHT_PX,
+        }}
         data-testid="hero-frame-sequence"
       >
         <div
