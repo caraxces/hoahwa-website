@@ -7,7 +7,7 @@ import {
   type CookieConsentRecord,
 } from "@/lib/cookie-consent";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA4_ID;
+const GA_ID = process.env.NEXT_PUBLIC_GA4_ID ?? "G-XW4CF8R5QJ";
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-MXMNQ7CL";
 
 declare global {
@@ -70,9 +70,9 @@ function loadGtmOnce() {
 /**
  * Consent Mode v2 gate: every signal defaults to denied, and analytics scripts
  * (gtag.js for GA4, plus the Google Tag Manager container) are only injected
- * after the visitor opts in to Analytics or Marketing. GTM defaults to the
- * GTM-MXMNQ7CL container; override with NEXT_PUBLIC_GTM_ID, and set
- * NEXT_PUBLIC_GA4_ID to also wire GA4 directly.
+ * after the visitor opts in to Analytics or Marketing. GA4 defaults to the
+ * G-XW4CF8R5QJ property and GTM to the GTM-MXMNQ7CL container; override either
+ * with NEXT_PUBLIC_GA4_ID / NEXT_PUBLIC_GTM_ID.
  */
 export function ConsentScripts() {
   useEffect(() => {
