@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     shortcut: "/LOGO HOAHWA/hoahwa_logo_board-03.png",
     apple: "/LOGO HOAHWA/hoahwa_logo_board-07.png",
   },
+  verification: {
+    google: "01deUYm_lrwd2GNfsvqNU--OOSgnQrgce04B-p_uW6Y",
+  },
 };
 
 export default function RootLayout({
