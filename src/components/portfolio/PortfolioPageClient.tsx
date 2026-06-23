@@ -144,7 +144,7 @@ export function PortfolioPageClient({
               <div style={{ maxWidth: "60%" }}>
                 <div className="hero-badge anim-fade-up mb-8" style={{ animationDelay: ".1s" }}>
                   <span className="inline-flex items-center gap-3 font-mono text-sm text-white-60">
-                    <span style={{ width: "2rem", height: "1px", background: "rgba(236,168,214,.6)", display: "inline-block" }} />
+                    <span style={{ width: "2rem", height: "1px", background: "var(--portfolio-accent-80)", display: "inline-block" }} />
                     {hero.badge}
                   </span>
                 </div>
@@ -265,7 +265,7 @@ export function PortfolioPageClient({
                   </span>
                   <h2 className="anim-reveal font-display tracking-tight" style={{ fontSize: "clamp(3rem,10vw,8rem)", lineHeight: 0.85 }}>
                     {howItWorks.titleLines.map((line, i) => (
-                      <span key={line} className="block" style={{ color: i === 0 ? "#fff" : i === 1 ? "rgba(255,255,255,.3)" : "rgba(255,255,255,.1)" }}>
+                      <span key={line} className="block" style={{ color: i === 0 ? "var(--text-on-dark)" : i === 1 ? "color-mix(in srgb, var(--text-on-dark) 30%, transparent)" : "color-mix(in srgb, var(--text-on-dark) 10%, transparent)" }}>
                         {line}
                       </span>
                     ))}
@@ -282,10 +282,10 @@ export function PortfolioPageClient({
                     key={step.number}
                     type="button"
                     className={`hiw-step relative border p-8 text-left transition-all duration-500 lg-p-12 ${i === 0 ? "hiw-step-active" : ""}`}
-                    style={{ background: "#000", borderColor: i === 0 ? "rgba(255,255,255,.6)" : "rgba(255,255,255,.25)" }}
+                    style={{ background: "var(--surface-deep)", borderColor: i === 0 ? "color-mix(in srgb, var(--text-on-dark) 60%, transparent)" : "color-mix(in srgb, var(--text-on-dark) 25%, transparent)" }}
                   >
                     <div className="mb-8 flex items-center gap-4">
-                      <span className="text-4xl font-display" style={{ color: i === 0 ? "#eca8d6" : "rgba(255,255,255,.2)" }}>
+                      <span className="text-4xl font-display" style={{ color: i === 0 ? "var(--portfolio-accent)" : "color-mix(in srgb, var(--text-on-dark) 20%, transparent)" }}>
                         {step.number}
                       </span>
                       <div style={{ flex: 1, height: "1px", background: "rgba(255,255,255,.1)" }} />
@@ -297,7 +297,7 @@ export function PortfolioPageClient({
                     <p className="hiw-desc leading-relaxed" style={{ color: "rgba(255,255,255,.6)", opacity: i === 0 ? 1 : 0.6 }}>
                       {step.body}
                     </p>
-                    <div className="absolute bottom-0 left-0 right-0" style={{ height: "4px", background: "#eca8d6", transformOrigin: "left", transform: i === 0 ? "scaleX(1)" : "scaleX(0)", transition: "transform .5s" }} />
+                    <div className="absolute bottom-0 left-0 right-0" style={{ height: "4px", background: "var(--portfolio-accent)", transformOrigin: "left", transform: i === 0 ? "scaleX(1)" : "scaleX(0)", transition: "transform .5s" }} />
                   </button>
                 ))}
               </div>
@@ -370,7 +370,7 @@ export function PortfolioPageClient({
               <div className="mb-20 grid gap-8 lg-mb-32 lg-grid-cols-12">
                 <div style={{ gridColumn: "span 8" }}>
                   {stats.liveLabel ? (
-                    <span className="mb-6 inline-flex items-center gap-2 px-3 py-1 font-mono text-xs" style={{ background: "rgba(236,168,214,.1)", color: "#eca8d6" }}>
+                    <span className="mb-6 inline-flex items-center gap-2 px-3 py-1 font-mono text-xs" style={{ background: "var(--portfolio-accent-30)", color: "var(--portfolio-accent)" }}>
                       ● {stats.liveLabel}
                     </span>
                   ) : null}
@@ -464,7 +464,7 @@ export function PortfolioPageClient({
         ) : null}
 
         {testimonials?.enabled ? (
-          <section className="relative overflow-hidden py-32 lg-py-40" style={{ background: "#eca8d6", color: "black" }}>
+          <section className="relative overflow-hidden py-32 lg-py-40" style={{ background: "var(--portfolio-accent)", color: "var(--text-on-light)" }}>
             <div className="relative z-10 max-w-1400 mx-auto px-6 lg-px-12">
               <div className="mb-20 flex items-center justify-between">
                 <div>
@@ -472,7 +472,7 @@ export function PortfolioPageClient({
                     <span style={{ width: "3rem", height: "1px", background: "rgba(0,0,0,.2)", display: "inline-block" }} />
                     {testimonials.eyebrow}
                   </span>
-                  <h2 className="anim-reveal font-display text-4xl lg-text-5xl" style={{ color: "black" }}>
+                  <h2 className="anim-reveal font-display text-4xl lg-text-5xl" style={{ color: "var(--text-on-light)" }}>
                     {testimonials.title}
                     <span style={{ color: "rgba(0,0,0,.4)" }}>{testimonials.titleMuted}</span>
                   </h2>
@@ -519,7 +519,7 @@ export function PortfolioPageClient({
                   <div className="flex gap-2">
                     {testimonials.items.map((_, i) => (
                       <button key={i} type="button" className="testimonial-indicator h-1 flex-1 overflow-hidden border-0" style={{ background: "rgba(0,0,0,.2)" }}>
-                        <div className="h-full" style={{ background: "black", width: i === 0 ? "100%" : "0%" }} />
+                        <div className="h-full" style={{ background: "var(--text-on-light)", width: i === 0 ? "100%" : "0%" }} />
                       </button>
                     ))}
                   </div>
@@ -529,7 +529,7 @@ export function PortfolioPageClient({
                     </span>
                     <div className="flex flex-wrap gap-3">
                       {testimonials.companies.map((company, i) => (
-                        <button key={company} type="button" className="border px-4 py-2 text-sm" style={{ borderColor: i === 0 ? "rgba(0,0,0,.4)" : "rgba(0,0,0,.1)", color: i === 0 ? "black" : "rgba(0,0,0,.4)" }}>
+                        <button key={company} type="button" className="border px-4 py-2 text-sm" style={{ borderColor: i === 0 ? "color-mix(in srgb, var(--text-on-light) 40%, transparent)" : "color-mix(in srgb, var(--text-on-light) 10%, transparent)", color: i === 0 ? "var(--text-on-light)" : "color-mix(in srgb, var(--text-on-light) 40%, transparent)" }}>
                           {company}
                         </button>
                       ))}
@@ -584,7 +584,7 @@ export function PortfolioPageClient({
                   </div>
                   <div className="grid gap-4 md-grid-cols-2 lg-grid-cols-5">
                     {pricing.bundlePlans.map((plan) => (
-                      <div key={plan.name} className={`pricing-card relative flex flex-col overflow-hidden rounded-2xl border bg-background ${plan.popular ? "pricing-popular" : "border-foreground-10"}`} style={plan.popular ? { transform: "scale(1.05)", zIndex: 10, borderColor: "#eca8d6", boxShadow: "0 0 30px rgba(236,168,214,.15)" } : undefined}>
+                      <div key={plan.name} className={`pricing-card relative flex flex-col overflow-hidden rounded-2xl border bg-background ${plan.popular ? "pricing-popular" : "border-foreground-10"}`} style={plan.popular ? { transform: "scale(1.05)", zIndex: 10, borderColor: "var(--portfolio-accent)", boxShadow: "0 0 30px var(--portfolio-accent-30)" } : undefined}>
                         {plan.badge ? <div className="pricing-popular-badge flex items-center justify-center gap-1">{plan.badge}</div> : null}
                         <div className="flex flex-1 flex-col p-6">
                           <h3 className="font-display mb-1 text-2xl">{plan.name}</h3>
@@ -611,7 +611,7 @@ export function PortfolioPageClient({
               ) : (
                 <div className="grid gap-4 md-grid-cols-2 lg-grid-cols-3">
                   {pricing.paygPlans.map((plan) => (
-                    <div key={plan.name} className={`pricing-card relative flex flex-col overflow-hidden rounded-2xl border bg-background ${plan.popular ? "pricing-popular border-foreground-10" : "border-foreground-10"}`} style={plan.popular ? { borderColor: "#eca8d6", boxShadow: "0 0 30px rgba(236,168,214,.15)" } : undefined}>
+                    <div key={plan.name} className={`pricing-card relative flex flex-col overflow-hidden rounded-2xl border bg-background ${plan.popular ? "pricing-popular border-foreground-10" : "border-foreground-10"}`} style={plan.popular ? { borderColor: "var(--portfolio-accent)", boxShadow: "0 0 30px var(--portfolio-accent-30)" } : undefined}>
                       {plan.badge ? <div className="pricing-popular-badge flex items-center justify-center gap-1">{plan.badge}</div> : null}
                       <div className="flex flex-1 flex-col p-6">
                         <h3 className="font-display mb-1 text-2xl">{plan.name}</h3>
@@ -723,7 +723,7 @@ export function PortfolioPageClient({
                             <a href={link.href} className="footer-link">
                               {link.label}
                               {link.badge ? (
-                                <span className="ml-1 rounded-full px-2 py-0-5 text-xs text-black" style={{ background: "#eca8d6" }}>
+                                <span className="ml-1 rounded-full px-2 py-0-5 text-xs text-[var(--text-on-light)]" style={{ background: "var(--portfolio-accent)" }}>
                                   {link.badge}
                                 </span>
                               ) : null}

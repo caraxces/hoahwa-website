@@ -40,22 +40,22 @@ export function ProjectCard({
       />
       </div>
       <FlowersOverlay />
-      <div className="absolute inset-0 bg-[rgba(21,21,21,0.35)] opacity-0 transition-opacity group-hover:opacity-100" />
-      <div className="absolute left-11 top-11 rounded border border-white/20 px-3 py-1 text-sm text-white">
+      <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--surface-dark)_35%,transparent)] opacity-0 transition-opacity group-hover:opacity-100" />
+      <div className="absolute left-11 top-11 rounded border border-[var(--border-subtle)] px-3 py-1 text-sm text-[var(--text-on-dark)]">
         Shopify Plus
       </div>
       <div className="absolute bottom-11 left-11 right-11">
         {project.brandLabel && (
-          <p className="mb-6 text-2xl font-medium text-white">{project.brandLabel}</p>
+          <p className="mb-6 text-2xl font-medium text-[var(--text-on-dark)]">{project.brandLabel}</p>
         )}
-        <p className="mb-6 max-w-[500px] text-lg leading-snug text-white/90">
+        <p className="mb-6 max-w-[500px] text-lg leading-snug text-[color-mix(in_srgb,var(--text-on-dark)_90%,transparent)]">
           {project.title}
         </p>
         <div className="flex flex-wrap gap-3">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/30 px-3 py-1 text-sm text-white"
+              className="rounded-full border border-[color-mix(in_srgb,var(--text-on-dark)_30%,transparent)] px-3 py-1 text-sm text-[var(--text-on-dark)]"
             >
               {tag}
             </span>

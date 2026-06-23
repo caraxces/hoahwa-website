@@ -39,7 +39,7 @@ export function ServicePlanCard({ plan }: { plan: ServicePlan }) {
         "flex min-h-[469px] flex-col gap-8 rounded-lg p-8",
         light
           ? "bg-[var(--wiro-spring-wood)] text-[var(--wiro-cod-gray)]"
-          : "bg-[#212121] pb-16 text-[var(--wiro-romance)]",
+          : "bg-[var(--surface-dark)] pb-16 text-[var(--wiro-romance)]",
       )}
     >
       <div className="min-h-[140px]">

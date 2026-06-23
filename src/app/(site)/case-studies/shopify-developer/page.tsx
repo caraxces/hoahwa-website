@@ -1,17 +1,29 @@
-import type { Metadata } from "next";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
+import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Shopify + Developer — Why you need both | Hoahwa",
+const PATH = "/case-studies/shopify-developer";
+
+export const metadata = pageMetadata({
+  title: "Shopify + Developer — Why You Need Both",
   description:
     "A practical explainer on what Shopify provides vs what custom development is responsible for—plus how we structure delivery and support after launch.",
-};
+  path: PATH,
+});
 
 export default function ShopifyDeveloperCaseStudyPage() {
   return (
-    <PageSection
+    <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Case Studies", path: "/case-studies" },
+          { name: "Shopify + Developer", path: PATH },
+        ])}
+      />
+      <PageSection
       padX={false}
       className="bg-[var(--wiro-black)] px-[var(--wiro-page-pad)] pb-24 pt-[120px] text-[var(--wiro-romance)]"
     >
@@ -37,7 +49,7 @@ export default function ShopifyDeveloperCaseStudyPage() {
         </RevealGroup>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
-          <div className="rounded-lg border border-white/15 p-8">
+          <div className="rounded-lg border border-[var(--border-subtle)] p-8">
             <h2 className="text-[length:var(--wiro-h4)] tracking-[-0.04em]">What Shopify gives you</h2>
             <ul className="mt-6 space-y-3 text-base leading-6 tracking-[-0.03em] text-[var(--wiro-romance)]/75">
               <li>Hosting, SSL, security, backups, and scaling</li>
@@ -46,7 +58,7 @@ export default function ShopifyDeveloperCaseStudyPage() {
               <li>App ecosystem for add-ons</li>
             </ul>
           </div>
-          <div className="rounded-lg border border-white/15 p-8">
+          <div className="rounded-lg border border-[var(--border-subtle)] p-8">
             <h2 className="text-[length:var(--wiro-h4)] tracking-[-0.04em]">What a developer owns</h2>
             <ul className="mt-6 space-y-3 text-base leading-6 tracking-[-0.03em] text-[var(--wiro-romance)]/75">
               <li>Custom layout + sections (Liquid)</li>
@@ -58,7 +70,7 @@ export default function ShopifyDeveloperCaseStudyPage() {
           </div>
         </div>
 
-        <div className="mt-10 rounded-lg border border-white/15 p-8">
+        <div className="mt-10 rounded-lg border border-[var(--border-subtle)] p-8">
           <h2 className="text-[length:var(--wiro-h4)] tracking-[-0.04em]">After go‑live</h2>
           <p className="mt-4 text-base leading-6 tracking-[-0.03em] text-[var(--wiro-romance)]/75">
             Launch is the start. We iterate with new landing pages, features, and analytics‑driven UX updates—
@@ -67,6 +79,7 @@ export default function ShopifyDeveloperCaseStudyPage() {
         </div>
       </PageContainer>
     </PageSection>
+    </>
   );
 }
 

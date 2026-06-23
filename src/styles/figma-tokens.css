@@ -1,14 +1,5 @@
-/* Hoahwa design tokens — evolved from WIRO layout system */
+/* Hoahwa design tokens — layout (vibe-independent) */
 :root {
-  --wiro-romance: #fffdfa;
-  --wiro-cod-gray: #151515;
-  --hoahwa-accent: #cd9d65;
-  --wiro-mauve: #cd9d65;
-  --wiro-chenin: #d4a574;
-  --wiro-spring-wood: #f3efe9;
-  --wiro-black: #000000;
-  --wiro-white: #ffffff;
-
   --wiro-h1: 120px;
   --wiro-h1-lh: 120px;
   --wiro-h1-tracking: -0.06em;
@@ -20,10 +11,133 @@
   --wiro-body-lh: 28px;
   --wiro-nav: 16px;
 
-  /* Layout — max content width 1920px */
   --wiro-container: 1920px;
   --wiro-gutter: 48px;
   --wiro-page-pad: 120px;
+}
+
+/* ── Windy vibe (default) ── */
+:root,
+[data-vibe="windy"] {
+  --vibe-c1: #3e5f44;
+  --vibe-c2: #5e936c;
+  --vibe-c3: #93da97;
+  --vibe-c4: #e8ffd7;
+
+  --surface-deep: var(--vibe-c1);
+  --surface-dark: color-mix(in srgb, var(--vibe-c1) 80%, var(--vibe-c2));
+  --surface-light: var(--vibe-c4);
+  --surface-muted: var(--vibe-c3);
+  --accent: var(--vibe-c2);
+  --accent-soft: var(--vibe-c3);
+  --accent-highlight: var(--vibe-c3);
+  --text-on-dark: var(--vibe-c4);
+  --text-on-light: var(--vibe-c1);
+  --text-on-accent: var(--vibe-c1);
+  --border-subtle: color-mix(in srgb, var(--vibe-c4) 20%, transparent);
+  --overlay-glass: color-mix(in srgb, var(--vibe-c1) 78%, transparent);
+  --overlay-glass-scrolled: color-mix(in srgb, var(--vibe-c1) 92%, transparent);
+  --shadow-header: 0 8px 32px color-mix(in srgb, var(--vibe-c1) 35%, transparent);
+
+  --portfolio-accent: var(--vibe-c3);
+  --portfolio-accent-80: color-mix(in srgb, var(--vibe-c3) 80%, transparent);
+  --portfolio-accent-30: color-mix(in srgb, var(--vibe-c3) 30%, transparent);
+
+  /* Legacy WIRO aliases */
+  --wiro-black: var(--surface-deep);
+  --wiro-cod-gray: var(--surface-dark);
+  --wiro-romance: var(--surface-light);
+  --wiro-spring-wood: var(--surface-muted);
+  --hoahwa-accent: var(--accent);
+  --wiro-mauve: var(--accent-highlight);
+  --wiro-chenin: var(--accent-soft);
+  --wiro-white: var(--surface-light);
+
+  /* Scaffold aliases */
+  --hoahwa-border: var(--border-subtle);
+  --hoahwa-surface: var(--surface-dark);
+  --hoahwa-muted: color-mix(in srgb, var(--text-on-light) 60%, transparent);
+}
+
+/* ── Raining vibe ── */
+[data-vibe="raining"],
+[data-vibe="rainy"] {
+  --vibe-c1: #41431b;
+  --vibe-c2: #aeb784;
+  --vibe-c3: #e3dbbb;
+  --vibe-c4: #f8f3e1;
+
+  --surface-deep: var(--vibe-c1);
+  --surface-dark: color-mix(in srgb, var(--vibe-c1) 80%, var(--vibe-c2));
+  --surface-light: var(--vibe-c4);
+  --surface-muted: var(--vibe-c3);
+  --accent: var(--vibe-c2);
+  --accent-soft: var(--vibe-c3);
+  --accent-highlight: var(--vibe-c2);
+  --text-on-dark: var(--vibe-c4);
+  --text-on-light: var(--vibe-c1);
+  --text-on-accent: var(--vibe-c1);
+  --border-subtle: color-mix(in srgb, var(--vibe-c4) 20%, transparent);
+  --overlay-glass: color-mix(in srgb, var(--vibe-c1) 78%, transparent);
+  --overlay-glass-scrolled: color-mix(in srgb, var(--vibe-c1) 92%, transparent);
+  --shadow-header: 0 8px 32px color-mix(in srgb, var(--vibe-c1) 35%, transparent);
+
+  --portfolio-accent: var(--vibe-c2);
+  --portfolio-accent-80: color-mix(in srgb, var(--vibe-c2) 80%, transparent);
+  --portfolio-accent-30: color-mix(in srgb, var(--vibe-c2) 30%, transparent);
+
+  --wiro-black: var(--surface-deep);
+  --wiro-cod-gray: var(--surface-dark);
+  --wiro-romance: var(--surface-light);
+  --wiro-spring-wood: var(--surface-muted);
+  --hoahwa-accent: var(--accent);
+  --wiro-mauve: var(--accent-highlight);
+  --wiro-chenin: var(--accent-soft);
+  --wiro-white: var(--surface-light);
+
+  --hoahwa-border: var(--border-subtle);
+  --hoahwa-surface: var(--surface-dark);
+  --hoahwa-muted: color-mix(in srgb, var(--text-on-light) 60%, transparent);
+}
+
+/* ── Sunny vibe — golden hour warm ── */
+[data-vibe="sunny"] {
+  --vibe-c1: #5c3d1e;
+  --vibe-c2: #d4a04a;
+  --vibe-c3: #f0d4a8;
+  --vibe-c4: #fff8ed;
+
+  --surface-deep: var(--vibe-c1);
+  --surface-dark: color-mix(in srgb, var(--vibe-c1) 80%, var(--vibe-c2));
+  --surface-light: var(--vibe-c4);
+  --surface-muted: var(--vibe-c3);
+  --accent: var(--vibe-c2);
+  --accent-soft: var(--vibe-c3);
+  --accent-highlight: var(--vibe-c3);
+  --text-on-dark: var(--vibe-c4);
+  --text-on-light: var(--vibe-c1);
+  --text-on-accent: var(--vibe-c1);
+  --border-subtle: color-mix(in srgb, var(--vibe-c4) 20%, transparent);
+  --overlay-glass: color-mix(in srgb, var(--vibe-c1) 78%, transparent);
+  --overlay-glass-scrolled: color-mix(in srgb, var(--vibe-c1) 92%, transparent);
+  --shadow-header: 0 8px 32px color-mix(in srgb, var(--vibe-c1) 35%, transparent);
+
+  --portfolio-accent: var(--vibe-c3);
+  --portfolio-accent-80: color-mix(in srgb, var(--vibe-c3) 80%, transparent);
+  --portfolio-accent-30: color-mix(in srgb, var(--vibe-c3) 30%, transparent);
+
+  --wiro-black: var(--surface-deep);
+  --wiro-cod-gray: var(--surface-dark);
+  --wiro-romance: var(--surface-light);
+  --wiro-spring-wood: var(--surface-muted);
+  --hoahwa-accent: var(--accent);
+  --wiro-mauve: var(--accent-highlight);
+  --wiro-chenin: var(--accent-soft);
+  --wiro-white: var(--surface-light);
+
+  --hoahwa-border: var(--border-subtle);
+  --hoahwa-surface: var(--surface-dark);
+  --hoahwa-muted: color-mix(in srgb, var(--text-on-light) 60%, transparent);
 }
 
 /* Wide desktop (1440–1920px) */
@@ -34,7 +148,6 @@
   }
 }
 
-/* Standard desktop (1280–1440px) */
 @media (max-width: 1440px) {
   :root {
     --wiro-page-pad: 60px;
@@ -42,7 +155,6 @@
   }
 }
 
-/* Laptop (max 1280px) */
 @media (max-width: 1280px) {
   :root {
     --wiro-page-pad: 40px;
@@ -50,7 +162,6 @@
   }
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
   :root {
     --wiro-page-pad: 24px;
@@ -58,7 +169,6 @@
   }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   :root {
     --wiro-h1: clamp(48px, 12vw, 80px);
@@ -68,4 +178,3 @@
     --wiro-gutter: 16px;
   }
 }
-

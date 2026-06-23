@@ -22,7 +22,7 @@ export function MenuButton({
       type="button"
       data-testid="menu-toggle"
       className={cn(
-        "relative flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-[var(--wiro-romance)] transition-colors hover:border-[var(--wiro-mauve)] lg:hidden",
+        "relative flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-subtle)] text-[var(--wiro-romance)] transition-colors hover:border-[var(--wiro-mauve)] lg:hidden",
         open && "border-[var(--wiro-mauve)]",
         className,
       )}

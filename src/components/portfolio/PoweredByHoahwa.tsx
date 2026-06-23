@@ -3,7 +3,7 @@ import { HoahwaLogo } from "@/components/portfolio/HoahwaLogo";
 export function PoweredByHoahwa({ compact = false }: { compact?: boolean }) {
   return (
     <div
-      className={`portfolio-powered-by border-t border-white/10 bg-black ${
+      className={`portfolio-powered-by border-t border-[var(--border-subtle)] bg-[var(--surface-deep)] ${
         compact ? "py-2" : "py-6"
       }`}
     >

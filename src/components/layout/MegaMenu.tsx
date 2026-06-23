@@ -111,7 +111,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
             className="flex h-full flex-col outline-none"
             variants={menuPanel}
           >
-            <div className="flex shrink-0 items-center justify-between border-b border-white/15 px-5 py-4 md:px-8">
+            <div className="flex shrink-0 items-center justify-between border-b border-[var(--border-subtle)] px-5 py-4 md:px-8">
               <AnimatePresence mode="wait" initial={false}>
                 {activePillar ? (
                   <motion.button
@@ -211,7 +211,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                       </nav>
                       <div className="flex flex-col justify-between md:w-80">
                         <motion.nav
-                          className="flex flex-col gap-3 border-t border-white/15 pt-8 md:border-t-0 md:pt-0"
+                          className="flex flex-col gap-3 border-t border-[var(--border-subtle)] pt-8 md:border-t-0 md:pt-0"
                           variants={staggerContainer(0.05, 0.15)}
                         >
                           {secondaryLinks.map((link) => (

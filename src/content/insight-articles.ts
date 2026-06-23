@@ -455,6 +455,119 @@ const articles: InsightsDatabase["posts"] = [
       ],
     ),
   },
+  {
+    slug: "what-is-aeo-answer-engine-optimization",
+    title:
+      "What Is Answer Engine Optimization (AEO)? A 2026 Guide for Shopify Brands",
+    date: "Jun 20, 2026",
+    tags: ["AEO", "AI Search", "Shopify"],
+    ...body(
+      "Shoppers increasingly ask ChatGPT, Perplexity, and Google's AI Overviews what to buy—and the answer rarely includes ten blue links. Answer Engine Optimization is how your brand becomes the answer instead of a footnote.",
+      [
+        {
+          paragraphs: [
+            "Answer Engine Optimization (AEO) is the practice of structuring your store and content so AI answer engines can understand, trust, and cite it. Where classic SEO competes for a ranking position, AEO competes to be quoted inside a single generated response—often the only result a shopper ever sees.",
+          ],
+        },
+        {
+          heading: "Why it matters now",
+          paragraphs: [
+            "AI Overviews compress a search results page into one answer, and paid click-through on those queries has fallen sharply. At the same time, traffic that arrives from AI assistants tends to convert better, because the shopper already received a recommendation they trust. Being absent from that answer is the new page-two.",
+          ],
+        },
+        {
+          heading: "What AEO actually requires",
+          list: [
+            "Structured data: Product, FAQ, Article, and Organization schema",
+            "Answer-first content that states the conclusion before the detail",
+            "Clear entity signals so engines know who your brand is",
+            "Crawler and agent access (robots, llms.txt, fast rendering)",
+            "Clean, machine-readable product and policy data",
+          ],
+        },
+        {
+          heading: "Where to start",
+          paragraphs: [
+            "Begin with an AI visibility audit: test a fixed set of buying-intent prompts across the major engines and see whether your brand appears at all. The gaps that audit surfaces—missing schema, thin entity data, slow rendering—become your roadmap.",
+          ],
+        },
+      ],
+    ),
+  },
+  {
+    slug: "agentic-commerce-ai-shopping-agents",
+    title: "Agentic Commerce: How AI Shopping Agents Will Buy From Your Store",
+    date: "Jun 16, 2026",
+    tags: ["Agentic Commerce", "AI Search", "eCommerce"],
+    ...body(
+      "The next shift after AI search is AI purchasing: assistants that read your catalogue, confirm stock, and complete checkout on a shopper's behalf. The brands structuring their data today are the ones agents will transact with first.",
+      [
+        {
+          paragraphs: [
+            "Agentic commerce describes a flow where an AI assistant doesn't just recommend a product—it buys it. The agent queries a catalogue, checks price and availability in real time, applies the right options, and pushes a purchase through via APIs, with the shopper approving rather than clicking through your funnel.",
+          ],
+        },
+        {
+          heading: "What agents need from your store",
+          list: [
+            "Structured, real-time product, price, and inventory data",
+            "Machine-readable offers, shipping, returns, and policy information",
+            "Stable APIs and an architecture an agent can transact against",
+            "Trustworthy entity and review signals to be chosen at all",
+          ],
+        },
+        {
+          heading: "It rewards the same fundamentals as AEO",
+          paragraphs: [
+            "Agentic readiness is not a separate project from Answer Engine Optimization—it is the same discipline taken one step further. Clean schema, accurate catalogue data, and fast, open access are what let an engine cite you and what let an agent buy from you.",
+          ],
+        },
+        {
+          heading: "How to prepare without over-investing",
+          paragraphs: [
+            "You do not need to rebuild your store for agents that are still emerging. You do need your product, pricing, and policy data to be accurate and structured now, so that when agentic checkout reaches your category, you are already eligible rather than scrambling to catch up.",
+          ],
+        },
+      ],
+    ),
+  },
+  {
+    slug: "geo-vs-seo-getting-cited-by-ai",
+    title: "GEO vs SEO: How to Get Cited by ChatGPT and Google AI Overviews",
+    date: "Jun 10, 2026",
+    tags: ["AEO", "AI Search", "Growth"],
+    ...body(
+      "SEO and GEO are not the same job. One earns you a ranking; the other earns you a citation inside an AI-generated answer. Here is how they differ and what to prioritise when both matter.",
+      [
+        {
+          paragraphs: [
+            "Generative Engine Optimization (GEO) optimises for being referenced by generative engines—ChatGPT, Perplexity, Gemini, and Google AI Overviews. SEO optimises for ranking in a list of links. They overlap on fundamentals like quality content and fast pages, but they diverge sharply on what wins.",
+          ],
+        },
+        {
+          heading: "Where they differ",
+          list: [
+            "SEO targets keyword rankings; GEO targets being quoted in an answer",
+            "SEO rewards links and authority; GEO rewards clarity and structure",
+            "SEO success is a position; GEO success is a citation and share-of-voice",
+            "GEO leans far more on structured data and clean entity signals",
+          ],
+        },
+        {
+          heading: "What earns citations",
+          paragraphs: [
+            "Generative engines favour content that answers the question directly, is well structured, and comes from a brand they can identify as a credible entity. Answer-first formatting, comprehensive FAQ coverage, and consistent brand information across the web all increase the odds you are the source an engine pulls from.",
+          ],
+        },
+        {
+          heading: "Run them together, measure differently",
+          paragraphs: [
+            "Keep doing SEO—rankings still drive meaningful traffic. But measure GEO on its own terms: track a fixed prompt set across engines, watch whether your brand is cited, and monitor share-of-voice against competitors. What gets you ranked and what gets you quoted are related, but they are not identical.",
+          ],
+        },
+      ],
+    ),
+  },
 ];
 
 export const insightsDatabase: InsightsDatabase = {

@@ -17,7 +17,7 @@ const socialLinks = [
 export function SiteFooter() {
   return (
     <footer
-      className="relative z-40 bg-[var(--hoahwa-accent)] pb-[66px] pt-[120px] text-[var(--wiro-cod-gray)]"
+      className="relative z-40 bg-[var(--hoahwa-accent)] pb-[66px] pt-[120px] text-[var(--text-on-accent)]"
       data-node-id="1:1108"
     >
       {/* Main footer content — respects page padding */}

@@ -55,7 +55,7 @@ export function ProcessPageView() {
             {processPhases.map((phase) => (
               <section
                 key={phase.number}
-                className="rounded-lg border border-[var(--wiro-cod-gray)]/15 bg-white/70 p-8 md:p-10"
+                className="rounded-lg border border-[var(--wiro-cod-gray)]/15 bg-[color-mix(in_srgb,var(--surface-light)_70%,transparent)] p-8 md:p-10"
               >
                 <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
                   <div>
@@ -74,7 +74,7 @@ export function ProcessPageView() {
                     {phase.tags.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full border border-[var(--wiro-cod-gray)]/15 bg-white/80 px-3 py-1 text-xs tracking-[-0.02em]"
+                        className="rounded-full border border-[var(--wiro-cod-gray)]/15 bg-[color-mix(in_srgb,var(--surface-light)_80%,transparent)] px-3 py-1 text-xs tracking-[-0.02em]"
                       >
                         {t}
                       </span>
@@ -86,7 +86,7 @@ export function ProcessPageView() {
                   {phase.deliverables.map((d) => (
                     <div
                       key={d.label}
-                      className="rounded-lg border border-[var(--wiro-cod-gray)]/10 bg-white/80 p-5"
+                      className="rounded-lg border border-[var(--wiro-cod-gray)]/10 bg-[color-mix(in_srgb,var(--surface-light)_80%,transparent)] p-5"
                     >
                       <p className="text-sm font-medium tracking-[-0.02em] text-[var(--wiro-cod-gray)]">
                         {d.label}
@@ -124,7 +124,7 @@ export function ProcessPageView() {
 
           <div className="mt-16 grid gap-10 md:grid-cols-2">
             {processAfterLaunch.items.map((item) => (
-              <div key={item.title} className="rounded-lg border border-white/15 p-8">
+              <div key={item.title} className="rounded-lg border border-[var(--border-subtle)] p-8">
                 <h3 className="text-[length:var(--wiro-h4)] tracking-[-0.04em]">
                   {item.title}
                 </h3>

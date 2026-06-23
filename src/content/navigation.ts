@@ -63,6 +63,10 @@ export const pillars: NavPillar[] = [
         label: "Growth Retainers",
         href: "/growth-retainers#growth-retainers",
       },
+      {
+        label: "AEO / GEO (AI Search)",
+        href: "/ai-search-optimization",
+      },
     ],
   },
 ];
@@ -108,6 +112,7 @@ export const footerCompany = [
 ];
 
 export const footerServices = [
+  { label: "AI Search (AEO/GEO)", href: "/ai-search-optimization" },
   { label: "CRO", href: "/growth-retainers" },
   { label: "Audits", href: "/audits" },
   { label: "Growth Retainers", href: "/growth-retainers" },

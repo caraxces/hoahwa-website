@@ -23,7 +23,7 @@ export function Button({
     variant === "primary" &&
       "bg-[var(--hoahwa-accent)] text-[var(--wiro-cod-gray)] hover:opacity-90",
     variant === "outline" &&
-      "border border-white/20 text-[var(--wiro-romance)] hover:border-[var(--wiro-mauve)]",
+      "border border-[var(--border-subtle)] text-[var(--wiro-romance)] hover:border-[var(--wiro-mauve)]",
     variant === "ghost" && "text-[var(--wiro-romance)] hover:text-[var(--wiro-mauve)]",
     className,
   );

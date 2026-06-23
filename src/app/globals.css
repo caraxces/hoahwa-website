@@ -12,6 +12,9 @@
   --color-hoahwa-accent: var(--hoahwa-accent);
   --color-wiro-chenin: var(--wiro-chenin);
   --color-wiro-cod-gray: var(--wiro-cod-gray);
+  --color-surface-deep: var(--surface-deep);
+  --color-surface-light: var(--surface-light);
+  --color-accent: var(--accent);
 }
 
 /*
@@ -36,20 +39,25 @@ html.cookie-scroll-lock {
 }
 
 body {
-  background: var(--wiro-black);
-  color: var(--wiro-romance);
+  background: var(--surface-deep);
+  color: var(--text-on-dark);
   font-family: var(--font-darley), var(--font-inter), Arial, Helvetica, sans-serif;
   overflow-x: clip;
   max-width: 100%;
+  transition:
+    background-color 400ms ease,
+    color 400ms ease;
 }
 
-/* Clip decorative marquees / flower hovers without breaking vertical scroll */
 .site-shell {
   overflow-x: clip;
   width: 100%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  transition:
+    background-color 400ms ease,
+    color 400ms ease;
 }
 
 /* Hidden scrollbar + gradient edge fades (cookie panel inner scroll) */
@@ -345,8 +353,11 @@ body {
   height: 1em;
   width: 1em;
   border-radius: 40% 70% / 7% 90%;
-  background: linear-gradient(#cd9d65, #f3dcb3);
-  border: 0.5px solid #dfc79b;
+  background: linear-gradient(
+    var(--accent),
+    color-mix(in srgb, var(--accent-soft) 70%, var(--surface-light))
+  );
+  border: 0.5px solid color-mix(in srgb, var(--accent) 75%, var(--surface-muted));
   position: relative;
   z-index: 61;
   transition:
@@ -398,8 +409,11 @@ body {
 
 /* Hover: bloom larger + spin */
 .group-hover-flowers:hover .petal {
-  background: linear-gradient(#b8874c, #e6cd9a);
-  border: 0.5px solid #cd9d65;
+  background: linear-gradient(
+    color-mix(in srgb, var(--accent) 85%, var(--surface-deep)),
+    color-mix(in srgb, var(--accent-soft) 80%, var(--surface-light))
+  );
+  border: 0.5px solid var(--accent);
 }
 
 .group-hover-flowers:hover .flower {

@@ -95,7 +95,7 @@ export function Hero() {
                 overlayClassName="!text-[18px]"
               />
               <motion.div
-                className="pointer-events-none absolute inset-0 bg-black/20"
+                className="pointer-events-none absolute inset-0 bg-[color-mix(in_srgb,var(--surface-deep)_20%,transparent)]"
                 initial={{ opacity: 0.4 }}
                 whileHover={{ opacity: 0.15 }}
                 transition={{ duration: 0.4 }}

@@ -10,6 +10,7 @@ import { HeaderAppMenu } from "./HeaderAppMenu";
 import { MegaMenu } from "./MegaMenu";
 import { PageContainer } from "@/components/shared/PageContainer";
 import { MenuButton } from "@/components/motion/MenuButton";
+import { VibeToggleWithToast } from "@/components/vibe/VibeToggleWithToast";
 import { cn } from "@/lib/cn";
 
 function HoahwaLogo() {
@@ -73,8 +74,8 @@ export function SiteHeader() {
         className={cn(
           "fixed left-0 right-0 top-0 z-50 px-[var(--wiro-page-pad)] py-6 backdrop-blur-md transition-[background,box-shadow]",
           scrolled
-            ? "bg-[rgba(21,21,21,0.92)] shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
-            : "bg-[rgba(21,21,21,0.78)]",
+            ? "bg-[var(--overlay-glass-scrolled)] shadow-[var(--shadow-header)]"
+            : "bg-[var(--overlay-glass)]",
         )}
         initial={{ y: 0 }}
         animate={{ y: hidden && !menuOpen ? "-100%" : 0 }}
@@ -110,6 +111,7 @@ export function SiteHeader() {
                 ))}
                 <HeaderAppMenu />
               </nav>
+              <VibeToggleWithToast variant="header" />
               <motion.div
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.98 }}
@@ -118,7 +120,7 @@ export function SiteHeader() {
                 <Link
                   href="/contact"
                   data-node-id="1:1260"
-                  className="rounded-full bg-[var(--hoahwa-accent)] px-4 py-2 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+                  className="rounded-full bg-[var(--hoahwa-accent)] px-4 py-2 text-base tracking-[-0.03em] text-[var(--text-on-accent)] transition-opacity hover:opacity-90"
                 >
                   Contact
                 </Link>

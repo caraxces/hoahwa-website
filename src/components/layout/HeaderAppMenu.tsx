@@ -67,7 +67,7 @@ export function HeaderAppMenu() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 top-full z-50 mt-3 min-w-[240px] rounded-lg border border-white/10 bg-[rgba(21,21,21,0.98)] py-2 shadow-[0_16px_48px_rgba(0,0,0,0.45)]"
+            className="absolute right-0 top-full z-50 mt-3 min-w-[240px] rounded-lg border border-[var(--border-subtle)] bg-[var(--overlay-glass-scrolled)] py-2 shadow-[var(--shadow-header)]"
             onMouseEnter={clearCloseTimer}
             onMouseLeave={scheduleClose}
           >
@@ -75,7 +75,7 @@ export function HeaderAppMenu() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="block px-4 py-2.5 text-sm tracking-[-0.02em] text-[var(--wiro-romance)] transition-colors hover:bg-white/5 hover:text-[var(--hoahwa-accent)]"
+                className="block px-4 py-2.5 text-sm tracking-[-0.02em] text-[var(--wiro-romance)] transition-colors hover:bg-[var(--border-subtle)] hover:text-[var(--hoahwa-accent)]"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
