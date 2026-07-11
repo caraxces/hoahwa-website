@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source not "../../public/assets/vietfolk-winter2026";
 @import "../styles/figma-tokens.css";
 @import "swiper/css";
 @import "swiper/css/navigation";
