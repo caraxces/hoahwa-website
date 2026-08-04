@@ -62,12 +62,10 @@ export function KeypointBurst({
   );
 
   useEffect(() => {
-    if (!visible) {
-      setCycleKey(0);
-      return;
-    }
+    if (!visible) return;
 
-    setCycleKey((k) => k + 1);
+    // The wave advances on a timer only. Advancing synchronously here would
+    // schedule a second render before the first wave ever painted.
     const interval = window.setInterval(() => {
       setCycleKey((k) => k + 1);
     }, BUBBLE_CYCLE_MS);

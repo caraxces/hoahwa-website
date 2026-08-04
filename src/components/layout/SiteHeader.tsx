@@ -26,7 +26,7 @@ function HoahwaLogo() {
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
       >
         <Image
-          src="/LOGO HOAHWA/hoahwa_logo_board-07.png"
+          src="/logo-hoahwa/hoahwa_logo_board-07.png"
           alt="Hoahwa"
           fill
           className="object-contain"
@@ -111,7 +111,7 @@ export function SiteHeader() {
                 ))}
                 {/* Static microsite, not a Next.js route — plain anchor forces a real page load */}
                 <a
-                  href="/news/editions-winter2026/"
+                  href="/editions/winter2026/"
                   className="group relative py-1 text-base tracking-[-0.02em] text-[var(--wiro-romance)]"
                 >
                   <span className="relative z-10">News</span>

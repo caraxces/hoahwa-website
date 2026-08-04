@@ -3,7 +3,7 @@ import { AuditHero } from "@/components/audits/AuditHero";
 import { AuditWhySection } from "@/components/audits/AuditWhySection";
 import { CaseCarousel } from "@/components/home/CaseCarousel";
 import { GrowthPitch } from "@/components/home/GrowthPitch";
-import { Testimonials } from "@/components/home/Testimonials";
+import { BuildingNow } from "@/components/home/BuildingNow";
 
 export function AuditsPageView() {
   return (
@@ -12,7 +12,7 @@ export function AuditsPageView() {
       <AuditWhySection />
       <CaseCarousel />
       <GrowthPitch />
-      <Testimonials />
+      <BuildingNow />
       <AuditFaqContact />
     </div>
   );

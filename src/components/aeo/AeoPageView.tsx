@@ -3,7 +3,7 @@ import { AeoWhySection } from "@/components/aeo/AeoWhySection";
 import { aeoContactServices, aeoFaqs } from "@/content/aeo";
 import { CaseCarousel } from "@/components/home/CaseCarousel";
 import { GrowthPitch } from "@/components/home/GrowthPitch";
-import { Testimonials } from "@/components/home/Testimonials";
+import { BuildingNow } from "@/components/home/BuildingNow";
 import { ServiceFaqContact } from "@/components/service/ServiceFaqContact";
 
 export function AeoPageView() {
@@ -13,7 +13,7 @@ export function AeoPageView() {
       <AeoWhySection />
       <CaseCarousel />
       <GrowthPitch />
-      <Testimonials />
+      <BuildingNow />
       <ServiceFaqContact
         faqs={aeoFaqs}
         contactTitle={["Lets Talk", "AI Search"]}

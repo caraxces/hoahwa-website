@@ -24,7 +24,7 @@ export function ContactPageView() {
             <Reveal clip variants={clipUp}>
               <h1 className="text-h1 text-[var(--wiro-mauve)]">
                 <Image
-                  src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+                  src="/logo-hoahwa/hoahwa_logo_board-08.png"
                   alt="Hoahwa"
                   width={480}
                   height={120}
@@ -36,6 +36,24 @@ export function ContactPageView() {
               <p className="text-base leading-6 tracking-[-0.03em] text-[var(--wiro-romance)]/75">
                 {contactPage.valueProposition}
               </p>
+            </Reveal>
+
+            {/* Booking is the faster path for anyone who just wants to talk. */}
+            <Reveal variants={fadeUp} className="mt-8 max-w-[480px]">
+              <div className="rounded-lg border border-[var(--wiro-romance)]/25 p-6">
+                <p className="text-[length:var(--wiro-h6)] leading-7 tracking-[-0.03em]">
+                  {contactPage.bookingNudge.title}
+                </p>
+                <p className="mt-3 text-base leading-6 tracking-[-0.03em] text-[var(--wiro-romance)]/70">
+                  {contactPage.bookingNudge.body}
+                </p>
+                <Link
+                  href="/book"
+                  className="mt-6 inline-flex items-center justify-center rounded-full bg-[var(--wiro-mauve)] px-5 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+                >
+                  {contactPage.bookingNudge.cta}
+                </Link>
+              </div>
             </Reveal>
             <Reveal variants={fadeUp} className="mt-12 space-y-8">
               <div className="space-y-6">

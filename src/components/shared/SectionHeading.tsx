@@ -10,7 +10,7 @@ function TitleWithBrandImage({ text }: { text: string }) {
         /^hoahwa$/i.test(part) ? (
           <Image
             key={i}
-            src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+            src="/logo-hoahwa/hoahwa_logo_board-08.png"
             alt="Hoahwa"
             width={240}
             height={60}

@@ -1,7 +1,7 @@
 export const contactPage = {
-  title: ["Lets Talk", "Hoahwa"] as const,
+  title: ["Let's Talk", "Hoahwa"] as const,
   valueProposition:
-    "We are a young, high-potential team — direct collaboration, lean overhead, and studio-quality delivery at a fraction of typical agency rates. Every project includes free lifetime product quality warranty.",
+    "We are a young, high-potential team — direct collaboration, lean overhead, and studio-quality delivery at a fraction of typical agency rates. Every project includes a free lifetime product-quality warranty.",
   phones: [
     {
       label: "Design",
@@ -14,9 +14,15 @@ export const contactPage = {
       href: "tel:+84924769556",
     },
   ],
+  /** Points at /book for people who would rather just talk than fill a form. */
+  bookingNudge: {
+    title: "Rather just talk?",
+    body: "Pick a slot on our calendar and skip the form. A first call is free, takes about 30 minutes, and you'll speak to the person who would build it.",
+    cta: "Book a meeting",
+  },
   email: "hello@hoahwa.com",
   emailHref: "mailto:hello@hoahwa.com",
-  address: "DHT6, Tan Hung Thuan, Ho Chi Minh city",
+  address: "DHT6, Tan Hung Thuan, Ho Chi Minh City",
   mapsHref:
     "https://maps.google.com/?q=DHT6+Tan+Hung+Thuan+Ho+Chi+Minh+city",
   services: [

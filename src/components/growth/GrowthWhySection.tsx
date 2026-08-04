@@ -1,16 +1,6 @@
 import Link from "next/link";
 import { growthWhy } from "@/content/growth";
-import { figmaAssets } from "@/content/figma-assets";
-import { LogoMarquee } from "@/components/figma/LogoMarquee";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
-
-const clientLogos = [
-  { src: figmaAssets.awardUkEcom, alt: "piglet in bed", width: 128 },
-  { src: figmaAssets.awardEuropean, alt: "WatchHouse", width: 200 },
-  { src: figmaAssets.awardUkEcom, alt: "Sisters and Seekers", width: 170 },
-  { src: figmaAssets.awardEuropean, alt: "Brother and Kin", width: 170 },
-  { src: figmaAssets.awardUkEcom, alt: "Kick Game", width: 160 },
-];
 
 export function GrowthWhySection() {
   return (
@@ -36,12 +26,6 @@ export function GrowthWhySection() {
           </div>
         </div>
 
-        <LogoMarquee
-          logos={clientLogos}
-          fadeFrom="romance"
-          className="my-20 h-[139px]"
-          testId="growth-client-logos"
-        />
 
         <div className="flex flex-col gap-16 lg:flex-row lg:justify-between">
           <div className="max-w-[640px] flex-1">

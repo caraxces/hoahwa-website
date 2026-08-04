@@ -89,24 +89,26 @@ export const appMenu: NavAppMenu = {
 };
 
 export const secondaryLinks = [
+  { label: "Book a Meeting", href: "/book" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "eCommerce Insights", href: "/insights" },
   { label: "Process", href: "/process" },
-  { label: "Awards", href: "#" },
-  { label: "About", href: "#" },
+  { label: "About", href: "/about" },
 ];
 
 export const headerLinks = [
+  { label: "Book a Meeting", href: "/book" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Insights", href: "/insights" },
   { label: "Process", href: "/process" },
 ];
 
 export const footerCompany = [
-  { label: "About", href: "#" },
+  { label: "About", href: "/about" },
+  { label: "Book a Meeting", href: "/book" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Blog", href: "/insights" },
-  { label: "Awards", href: "#" },
+  { label: "Careers", href: "/careers" },
   { label: "Process", href: "/process" },
   { label: "Contact", href: "/contact" },
 ];

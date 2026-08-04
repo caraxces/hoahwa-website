@@ -6,10 +6,10 @@ export const auditHero = {
   headline: ["CX, CRO + Tech", "Audits"],
   aboutLabel: "About us",
   aboutLead: [
-    "Hoahwa is a young, dynamic web design & development agency focusing on high aesthetics and world-class technical compatibility.",
+    "Hoahwa is a young web design and development studio focused on high aesthetics and rigorous technical quality.",
   ],
   aboutRoi:
-    "We have a track record for delivering over +2,600% ROI with our proven 3 step process.",
+    "Every audit ends with a prioritised roadmap scored by effort and impact — so you know what to fix first and what it is worth.",
 };
 
 export const auditPlans: AuditPlan[] = [
@@ -92,7 +92,7 @@ export const auditFaqs = [
     id: "charge",
     question: "Why do you charge for audits?",
     answer:
-      "Audits are a dedicated discovery phase led by senior strategists, designers, and developers. The fee covers deep analysis, prioritised recommendations, and a roadmap you can act on—rather than generic advice.",
+      "Audits are a dedicated discovery phase, not a free sales exercise. The fee covers deep analysis, prioritised recommendations, and a roadmap you can act on—rather than generic advice.",
   },
   {
     id: "after",

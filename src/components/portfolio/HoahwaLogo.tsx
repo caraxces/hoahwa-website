@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export const HOAHWA_LOGO_SRC = "/LOGO HOAHWA/hoahwa_logo_board-03.png";
+export const HOAHWA_LOGO_SRC = "/logo-hoahwa/hoahwa_logo_board-03.png";
 
 type HoahwaLogoProps = {
   className?: string;

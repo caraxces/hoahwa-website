@@ -2,17 +2,21 @@
 
 import Link from "next/link";
 import { footerCompany, footerServices } from "@/content/navigation";
+import { liveSocialProfiles } from "@/content/social";
+import { FooterNewsletterForm } from "@/components/layout/FooterNewsletterForm";
 import { HoahwaFooterWordmark } from "@/components/layout/HoahwaFooterWordmark";
-import { ShopifyPremierBadge } from "@/components/shared/ShopifyPremierBadge";
+import { AvailabilityBadge } from "@/components/shared/AvailabilityBadge";
 import { PageContainer } from "@/components/shared/PageContainer";
 
-const socialLinks = [
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
+const legalLinks = [
   { label: "Privacy", href: "/privacy" },
   { label: "Cookies", href: "/cookie-policy" },
   { label: "Terms", href: "/terms" },
 ];
+
+// Live social profiles first, then legal. Profiles with no URL yet are omitted
+// entirely — a dead "#" link reads worse than no link at all.
+const socialLinks = [...liveSocialProfiles, ...legalLinks];
 
 export function SiteFooter() {
   return (
@@ -56,31 +60,9 @@ export function SiteFooter() {
                 <p className="mb-6 max-w-[264px] text-[length:var(--wiro-h6)] leading-7 tracking-[-0.03em]">
                   Join our newsletter for the latest eCom insights
                 </p>
-                <form
-                  className="relative border-b border-[var(--wiro-cod-gray)] pb-4"
-                  onSubmit={(e) => e.preventDefault()}
-                >
-                  <label htmlFor="footer-email" className="sr-only">
-                    Email
-                  </label>
-                  <input
-                    id="footer-email"
-                    type="email"
-                    placeholder="Email"
-                    className="w-full bg-transparent pr-10 text-[length:var(--wiro-body)] text-[var(--wiro-cod-gray)] outline-none placeholder:text-[var(--wiro-cod-gray)]/60"
-                  />
-                  <button
-                    type="submit"
-                    className="absolute right-0 top-0 flex size-6 items-center justify-center"
-                    aria-label="Subscribe"
-                  >
-                    <span className="text-xl leading-none" aria-hidden>
-                      →
-                    </span>
-                  </button>
-                </form>
+                <FooterNewsletterForm />
               </div>
-              <ShopifyPremierBadge size="lg" />
+              <AvailabilityBadge size="lg" />
             </div>
           </div>
         </PageContainer>
@@ -100,11 +82,21 @@ export function SiteFooter() {
         <PageContainer>
           <div className="mt-10 flex flex-col gap-4 text-base tracking-[-0.03em] sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-wrap gap-8">
-              {socialLinks.map((link) => (
-                <Link key={link.label} href={link.href} className="hover:opacity-70">
-                  {link.label}
-                </Link>
-              ))}
+              {socialLinks.map((link) => {
+                const isExternal = link.href.startsWith("http");
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="hover:opacity-70"
+                    {...(isExternal
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
             <p>© 2026, Hoahwa Agency Limited</p>
           </div>

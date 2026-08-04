@@ -10,14 +10,14 @@ import{t as Qe,a as Ke,e as U,b as De,c as oe,_ as P}from"./constants-Dr1aQryP.j
 
             @font-face {
                 font-family: Shopify Sans;
-                src: url(../../downloaded/fonts/ShopifySans-Medium-425df29fa9.woff2) format("woff2"),url(../../downloaded/fonts/ShopifySans-Medium-3344bd44d5.woff) format("woff");
+                src: url(/assets/vietfolk-winter2026/downloaded/fonts/ShopifySans-Medium-425df29fa9.woff2) format("woff2"),url(/assets/vietfolk-winter2026/downloaded/fonts/ShopifySans-Medium-3344bd44d5.woff) format("woff");
                 font-weight: 700;
                 font-style: normal;
                 font-display: swap
             }
             @font-face {
                 font-family: Shopify Sans;
-                src: url(../../downloaded/fonts/ShopifySans-Black-6ea61ec534.woff2) format("woff2"),url(../../downloaded/fonts/ShopifySans-Black-ecbf57c330.woff) format("woff");
+                src: url(/assets/vietfolk-winter2026/downloaded/fonts/ShopifySans-Black-6ea61ec534.woff2) format("woff2"),url(/assets/vietfolk-winter2026/downloaded/fonts/ShopifySans-Black-ecbf57c330.woff) format("woff");
                 font-weight: 900;
                 font-style: normal;
                 font-display: swap

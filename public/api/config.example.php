@@ -13,4 +13,12 @@ return [
         'https://www.hoahwa.com',
         'http://localhost:3000',
     ],
+    // Booking request notifications (public/api/booking.php).
+    'notify_emails' => [
+        'larisa.trucmt@gmail.com',
+        'hello@hoahwa.com',
+    ],
+    // Envelope sender. Keep on a domain whose SPF record authorises this host,
+    // or Gmail will junk the notifications.
+    'mail_from' => 'no-reply@hoahwa.com',
 ];

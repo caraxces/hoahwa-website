@@ -60,16 +60,17 @@ export const growthWhy = {
     "Direct client collaboration and competitive, cost-efficient execution.",
   body: [
     "We are a young and dynamic boutique unit. By eliminating administrative bloat and collaborating directly with you as dedicated individual experts, we guarantee a high level of responsibility, responsiveness, and premium results.",
-    "Our primary objective is to win prestigious web design and development awards at the world's leading design organizations, offering superb visual aesthetics paired with industry-leading technical compatibility.",
+    "Our primary objective is to win prestigious web design and development awards at the world's leading design organisations, offering superb visual aesthetics paired with industry-leading technical compatibility.",
   ],
   partners: {
-    title: "Trusted partners that deliver on your growth goals",
-    body: "We don't believe in a one-size-fits-all approach. After conducting in-depth CX and Technical Audits, we develop a tailored roadmap based on your business goals, customer insights, and eCommerce landscape. From there, we create a backlog of high-impact tasks, ensuring each retainer hour is spent delivering measurable growth.",
+    title: "A roadmap built for your store, not a template",
+    body: "We don't believe in a one-size-fits-all approach. After conducting in-depth CX and technical audits, we develop a tailored roadmap based on your business goals, customer insights, and eCommerce landscape. From there, we create a backlog of high-impact tasks, ensuring each retainer hour is spent delivering measurable growth.",
   },
+  /** How a retainer is structured. Deliberately process facts, not client counts. */
   stats: [
-    { value: "500+", label: "eCommerce Brands" },
-    { value: "40", label: "Active Clients" },
-    { value: "2016", label: "Founded" },
+    { value: "2wk", label: "Sprint cycle" },
+    { value: "48h", label: "Response time on requests" },
+    { value: "100%", label: "Hours reported, itemised" },
   ],
   cro: {
     title: "Measurable results with CRO",
@@ -100,13 +101,13 @@ export const growthFaqs = [
     id: "audit-fee",
     question: "Why do you charge for audits?",
     answer:
-      "Audits are a dedicated discovery phase led by senior strategists, designers, and developers. The fee covers deep analysis and a roadmap you can act on—not generic advice.",
+      "Audits are a dedicated discovery phase, not a free sales exercise. The fee covers deep analysis and a roadmap you can act on—not generic advice.",
   },
   {
     id: "growth-retainers",
     question: "How do growth retainers work?",
     answer:
-      "A dedicated squad ships iterative UX, CRO, and development improvements each sprint against agreed goals, with transparent reporting and monthly planning.",
+      "We ship iterative UX, CRO, and development improvements each sprint against agreed goals, with itemised hour reporting and monthly planning.",
   },
   {
     id: "cro-retainers",
@@ -123,7 +124,7 @@ export const growthFaqs = [
 ];
 
 export const growthContact = {
-  title: ["Lets Talk", "Hoahwa"] as const,
+  title: ["Let's Talk", "Hoahwa"] as const,
   services: [
     "Audits / Discovery",
     "CRO Retainer",

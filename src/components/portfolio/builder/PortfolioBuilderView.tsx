@@ -13,7 +13,6 @@ import {
   fetchMe,
   listMyPages,
   loginUser,
-  logoutUser,
   registerUser,
   savePage,
   type PortfolioPageSummary,
@@ -58,8 +57,12 @@ export function PortfolioBuilderView() {
     [config, slug, title, user?.username],
   );
 
+  /**
+   * Imperative refresh used after login and after saving a page. `loading` is
+   * deliberately left alone so a refresh updates in place instead of flashing
+   * the whole builder back to a spinner.
+   */
   const loadSession = useCallback(async () => {
-    setLoading(true);
     const me = await fetchMe();
     if (me.ok) {
       setUser(me.user);
@@ -71,9 +74,31 @@ export function PortfolioBuilderView() {
     setLoading(false);
   }, []);
 
+  // Initial load is inlined rather than calling loadSession() so every setState
+  // sits behind an await, and so an unmount mid-flight cancels cleanly.
   useEffect(() => {
-    loadSession();
-  }, [loadSession]);
+    let cancelled = false;
+
+    (async () => {
+      const me = await fetchMe();
+      if (cancelled) return;
+
+      if (me.ok) {
+        setUser(me.user);
+        const list = await listMyPages();
+        if (cancelled) return;
+        if (list.ok) setPages(list.pages);
+      } else {
+        setUser(null);
+      }
+
+      setLoading(false);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   async function handleAuthSubmit(e: React.FormEvent) {
     e.preventDefault();

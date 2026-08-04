@@ -48,7 +48,7 @@ export const teamMembers: TeamMember[] = [
     role: "Developer",
     category: "Dev",
     bio: "Developed Hoahwa from the ground up — building the product, shaping delivery, and assembling the first team behind the studio.",
-    image: "/img/founder.png",
+    image: "/img/founder.webp",
     keypoints: [...devKeypoints, ...seoTechnicalKeypoints],
   },
   {
@@ -56,7 +56,7 @@ export const teamMembers: TeamMember[] = [
     role: "Marketing",
     category: "MKT",
     bio: "Shapes how Hoahwa shows up — brand storytelling, campaign strategy, and content that connects our work with the clients who need it.",
-    image: "/img/marketing.png",
+    image: "/img/marketing.webp",
     keypoints: marketingKeypoints,
   },
   {
@@ -64,7 +64,7 @@ export const teamMembers: TeamMember[] = [
     role: "Assets Material",
     category: "Design",
     bio: "Owns visual direction and production assets — UI layouts, brand imagery, iconography, motion references, and design systems that keep every build on-brand and shippable.",
-    image: "/img/designer.png",
+    image: "/img/designer.webp",
     keypoints: designKeypoints,
   },
 ];

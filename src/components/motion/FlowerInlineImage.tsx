@@ -11,11 +11,12 @@ export function FlowerInlineImage({
   wrapperClassName,
   overlayClassName,
   className,
+  alt,
   ...props
 }: FlowerInlineImageProps) {
   return (
     <span className={cn("group-hover-flowers relative inline-block overflow-visible", wrapperClassName)}>
-      <Image {...props} className={cn(props.fill ? "object-cover" : "", className)} />
+      <Image {...props} alt={alt} className={cn(props.fill ? "object-cover" : "", className)} />
       <FlowersOverlay className={cn("!text-[10px]", overlayClassName)} />
     </span>
   );

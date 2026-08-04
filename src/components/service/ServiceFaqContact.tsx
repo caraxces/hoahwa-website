@@ -91,7 +91,7 @@ export function ServiceFaqContact({
               <span className="block text-[var(--wiro-romance)]">{contactTitle[0]}</span>
               <span className="block text-[var(--wiro-mauve)]">
                 <Image
-                  src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+                  src="/logo-hoahwa/hoahwa_logo_board-08.png"
                   alt="Hoahwa"
                   width={480}
                   height={120}

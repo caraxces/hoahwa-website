@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { growthPitch } from "@/content/home";
 import { figmaAssets } from "@/content/figma-assets";
-import { ShopifyPremierBadge } from "@/components/shared/ShopifyPremierBadge";
+import { AvailabilityBadge } from "@/components/shared/AvailabilityBadge";
 import { FlowerImageCard } from "@/components/motion/FlowerImageCard";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
@@ -17,7 +17,7 @@ export function GrowthPitch() {
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start">
           <div className="flex max-w-[556px] flex-1 flex-col justify-center lg:pr-24">
             <Reveal variants={fadeUp}>
-              <ShopifyPremierBadge className="mb-8" />
+              <AvailabilityBadge className="mb-8" />
             </Reveal>
             <Reveal variants={fadeUp}>
               <h2 className="mb-10 text-[length:var(--wiro-h2)] leading-[var(--wiro-h2)] tracking-[-0.04em]">

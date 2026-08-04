@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/cn";
-import { VIBE_LABELS, VIBE_ORDER, type VibeId } from "@/lib/vibe";
+import { VIBE_LABELS, VIBE_ORDER } from "@/lib/vibe";
 import { useVibe } from "./VibeProvider";
 import { RainingIcon } from "./icons/RainingIcon";
 import { SunnyIcon } from "./icons/SunnyIcon";

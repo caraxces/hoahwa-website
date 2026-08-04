@@ -9,7 +9,7 @@ export function HoahwaFooterWordmark({ className }: HoahwaFooterWordmarkProps) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src="/LOGO HOAHWA/hoahwa_logo_board-09.png"
+      src="/logo-hoahwa/hoahwa_logo_board-09.png"
       alt="HOAHWA"
       draggable={false}
       className={cn("h-full w-auto shrink-0 object-contain", className)}

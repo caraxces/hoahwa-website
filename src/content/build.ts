@@ -4,7 +4,7 @@ export const buildHero = {
   headline: ["Shopify Builds", "+ Migrations"],
   aboutLabel: "About us",
   aboutBody:
-    "Hoahwa is a young, dynamic agency specializing in high-performance web design and development. By collaborating directly as dedicated individuals, we ensure unmatched personal accountability and high responsibility. With cost efficiency as our key strength, our mission is to win prestigious awards at leading global design organizations, showcasing premium aesthetic taste alongside world-class technical compatibility.",
+    "Hoahwa is a young, dynamic studio specialising in high-performance web design and development. By collaborating directly as dedicated individuals, we ensure unmatched personal accountability and high responsibility. With cost efficiency as our key strength, our mission is to win prestigious awards at leading global design organizations, showcasing premium aesthetic taste alongside world-class technical compatibility.",
 };
 
 export const buildPlans: ServicePlan[] = [
@@ -68,7 +68,7 @@ export const buildProcess = {
 
 export const buildMigration = {
   headline: ["Handle your", "migration with", "ease"],
-  body: "Migrating and replatforming a store from one platform to another can be daunting. We make the transition seamless for you, with our expert technical team supporting you every step of the way. Every function and redirect is planned out and tackled in our robust scoping process.",
+  body: "Migrating and replatforming a store from one platform to another can be daunting. We make the transition seamless for you, with the developer who will own the build supporting you every step of the way. Every function and redirect is planned out and tackled in our robust scoping process.",
   platforms: ["WooCommerce", "Magento", "Salesforce"],
 };
 
@@ -89,12 +89,12 @@ export const buildFaqs = [
     id: "discovery-fee",
     question: "Why do you charge for Discovery?",
     answer:
-      "Discovery is a dedicated phase led by senior strategists and developers. The fee covers workshops, audits, a line-itemised scope, and a build plan with timelines and costs—so you can proceed with clarity and confidence.",
+      "Discovery is a dedicated phase, not a free sales exercise. The fee covers workshops, audits, a line-itemised scope, and a build plan with timelines and costs—so you can proceed with clarity and confidence.",
   },
 ];
 
 export const buildContact = {
-  title: ["Lets Talk", "Hoahwa"] as const,
+  title: ["Let's Talk", "Hoahwa"] as const,
   services: [
     "Audits / Discovery",
     "CRO Retainer",

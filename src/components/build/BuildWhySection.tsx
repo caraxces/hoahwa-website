@@ -6,16 +6,7 @@ import {
 } from "@/content/build";
 import { figmaAssets } from "@/content/figma-assets";
 import { ExpertBlock } from "@/components/service/ExpertBlock";
-import { LogoMarquee } from "@/components/figma/LogoMarquee";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
-
-const clientLogos = [
-  { src: figmaAssets.awardUkEcom, alt: "piglet in bed", width: 128 },
-  { src: figmaAssets.awardEuropean, alt: "WatchHouse", width: 200 },
-  { src: figmaAssets.awardUkEcom, alt: "Sisters and Seekers", width: 170 },
-  { src: figmaAssets.awardEuropean, alt: "Brother and Kin", width: 170 },
-  { src: figmaAssets.awardUkEcom, alt: "Kick Game", width: 160 },
-];
 
 export function BuildWhySection() {
   return (
@@ -44,12 +35,6 @@ export function BuildWhySection() {
           </div>
         </div>
 
-        <LogoMarquee
-          logos={clientLogos}
-          fadeFrom="romance"
-          className="my-20 h-[139px]"
-          testId="build-client-logos"
-        />
 
         <div className="flex flex-col gap-24">
           <ExpertBlock

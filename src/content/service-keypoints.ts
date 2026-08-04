@@ -38,7 +38,7 @@ export const serviceKeypoints: ServiceKeypoint[] = [
   { category: "MKT", label: "Funnel analysis" },
   { category: "MKT", label: "Cohort tracking" },
   { category: "MKT", label: "Attribution modeling" },
-  { category: "MKT", label: "ROAS optimization" },
+  { category: "MKT", label: "ROAS optimisation" },
   { category: "MKT", label: "Customer segmentation" },
   { category: "MKT", label: "Heatmap insights" },
   { category: "MKT", label: "Conversion paths" },

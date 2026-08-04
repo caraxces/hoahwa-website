@@ -6,7 +6,7 @@ export const aeoHero = {
   aboutLead:
     "Search is moving inside AI. ChatGPT, Perplexity, and Google AI Overviews now answer shoppers directly—and only cite the brands they trust. We make sure that brand is yours.",
   aboutStat:
-    "Brands cited in an AI answer earn up to +35% more organic clicks. We engineer your store, content, and data to be the answer.",
+    "An AI answer names a handful of sources and drops the rest. We engineer your store, content, and structured data so yours is one of the names that gets read out.",
 };
 
 export const aeoPlans: ServicePlan[] = [

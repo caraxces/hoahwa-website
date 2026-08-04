@@ -66,3 +66,69 @@ export function writeCookieConsent(choices: CookieConsentChoices): CookieConsent
 export function hasStoredConsent(): boolean {
   return readCookieConsent() !== null;
 }
+
+/* -------------------------------------------------------------------------- */
+/*  useSyncExternalStore adapters                                             */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * `readCookieConsent` parses JSON, so it returns a fresh object every call —
+ * passing it straight to useSyncExternalStore would re-render forever. These
+ * cache the parsed record against the raw string and only re-parse when the
+ * stored value actually changes, giving a referentially stable snapshot.
+ */
+let cachedRaw: string | null = null;
+let cachedRecord: CookieConsentRecord | null = null;
+let cachePrimed = false;
+
+export function getCookieConsentSnapshot(): CookieConsentRecord | null {
+  if (typeof window === "undefined") return null;
+
+  let raw: string | null;
+  try {
+    raw = localStorage.getItem(STORAGE_KEY);
+  } catch {
+    return null;
+  }
+
+  if (cachePrimed && raw === cachedRaw) return cachedRecord;
+
+  cachedRaw = raw;
+  cachedRecord = readCookieConsent();
+  cachePrimed = true;
+  return cachedRecord;
+}
+
+/** Server/prerender snapshot: nothing is stored yet at build time. */
+export function getCookieConsentServerSnapshot(): CookieConsentRecord | null {
+  return null;
+}
+
+export function subscribeCookieConsent(onStoreChange: () => void): () => void {
+  window.addEventListener("hoahwa:cookie-consent", onStoreChange);
+  window.addEventListener("storage", onStoreChange);
+  return () => {
+    window.removeEventListener("hoahwa:cookie-consent", onStoreChange);
+    window.removeEventListener("storage", onStoreChange);
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Hydration gate                                                            */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Lets a component render nothing during prerender and only appear on the
+ * client, without a setState-in-effect. Snapshot is `false` on the server and
+ * `true` on the client; the store never emits, so this settles after hydration
+ * and never changes again.
+ */
+const noopSubscribe = (): (() => void) => () => {};
+const getHydratedSnapshot = () => true;
+const getHydratedServerSnapshot = () => false;
+
+export const hydrationStore = {
+  subscribe: noopSubscribe,
+  getSnapshot: getHydratedSnapshot,
+  getServerSnapshot: getHydratedServerSnapshot,
+};

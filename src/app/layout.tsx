@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/LOGO HOAHWA/hoahwa_logo_board-07.png",
-    shortcut: "/LOGO HOAHWA/hoahwa_logo_board-03.png",
-    apple: "/LOGO HOAHWA/hoahwa_logo_board-07.png",
+    icon: "/logo-hoahwa/hoahwa_logo_board-07.png",
+    shortcut: "/logo-hoahwa/hoahwa_logo_board-03.png",
+    apple: "/logo-hoahwa/hoahwa_logo_board-07.png",
   },
   openGraph: {
     type: "website",

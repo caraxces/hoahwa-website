@@ -1,6 +1,14 @@
 Options -MultiViews -Indexes
 RewriteEngine On
 
+# The Vietfolk mirror requests Shopify CDN URLs whose query string was baked
+# into the filename, e.g. hero.png;width=900&crop=center or hero.png&width=1800.
+# Those variants are byte-identical copies of the plain file (verified by md5),
+# so rather than shipping ~3.3 GB of duplicates we strip the suffix and serve
+# the original. Must stay ABOVE the trailing-slash rule, which would otherwise
+# 301 these to a directory that does not exist.
+RewriteRule ^(assets/vietfolk-winter2026/.+\.(?:png|jpe?g|webp|gif|svg|avif|mp4|webm|mov|ktx2|usdz|glb|gltf|bin|riv|ttf|woff2?))[;&].*$ /$1 [L]
+
 # Canonical trailing-slash redirect (matches Next trailingSlash:true)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -22,6 +30,22 @@ ErrorDocument 404 /404.html
   <FilesMatch "\.(png|jpg|jpeg|gif|webp|avif|svg|ico)$">
     ExpiresDefault "access plus 6 months"
   </FilesMatch>
+</IfModule>
+
+# Apache does not know these extensions, so it was serving 3D models, textures
+# and Rive animations as text/plain. Harmless for fetch()-based loaders but wrong
+# for anything that checks the type (and for caching heuristics).
+<IfModule mod_mime.c>
+  AddType model/gltf-binary          .glb
+  AddType model/gltf+json            .gltf
+  AddType model/vnd.usdz+zip         .usdz
+  AddType image/ktx2                 .ktx2
+  AddType application/octet-stream   .riv
+  AddType video/webm                 .webm
+  AddType video/mp4                  .mp4
+  AddType image/webp                 .webp
+  AddType image/avif                 .avif
+  AddType font/woff2                 .woff2
 </IfModule>
 
 # Security headers

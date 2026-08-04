@@ -8,7 +8,7 @@ import { figmaAssets } from "@/content/figma-assets";
 import { GrowthWhySection } from "@/components/growth/GrowthWhySection";
 import { CaseCarousel } from "@/components/home/CaseCarousel";
 import { GrowthPitch } from "@/components/home/GrowthPitch";
-import { Testimonials } from "@/components/home/Testimonials";
+import { BuildingNow } from "@/components/home/BuildingNow";
 import { ServiceFaqContact } from "@/components/service/ServiceFaqContact";
 import { ServiceHero } from "@/components/service/ServiceHero";
 
@@ -25,7 +25,7 @@ export function GrowthPageView() {
       <GrowthWhySection />
       <CaseCarousel />
       <GrowthPitch />
-      <Testimonials />
+      <BuildingNow />
       <ServiceFaqContact
         faqs={growthFaqs}
         contactTitle={growthContact.title}

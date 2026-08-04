@@ -29,6 +29,17 @@ const origins = (process.env.CONTACT_ALLOWED_ORIGINS ||
   .map((s) => s.trim())
   .filter(Boolean);
 
+// Who gets emailed when a booking request lands (public/api/booking.php).
+const notifyEmails = (process.env.BOOKING_NOTIFY_EMAILS ||
+  "larisa.trucmt@gmail.com,hello@hoahwa.com")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+// Envelope sender. Must stay on a domain whose SPF authorises this host,
+// otherwise Gmail will junk the notifications.
+const mailFrom = process.env.BOOKING_MAIL_FROM || "no-reply@hoahwa.com";
+
 const php = `<?php
 // Auto-generated — do not commit. Regenerate via scripts/generate-contact-api-config.mjs
 return [
@@ -39,6 +50,10 @@ return [
     'allowed_origins' => [
 ${origins.map((o) => `        ${phpString(o)},`).join("\n")}
     ],
+    'notify_emails' => [
+${notifyEmails.map((e) => `        ${phpString(e)},`).join("\n")}
+    ],
+    'mail_from' => ${phpString(mailFrom)},
 ];
 `;
 

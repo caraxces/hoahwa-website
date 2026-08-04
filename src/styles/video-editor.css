@@ -1,0 +1,222 @@
+/* ==========================================================================
+   /video-editor — scoped styles
+   --------------------------------------------------------------------------
+   This page is a LIGHT editorial surface inside an otherwise dark site, so it
+   declares its own colour scope under `.ve` rather than inheriting body
+   tokens. Numbers below come from a 1512px design frame; they are kept in px
+   on purpose so the artboard proportions survive edits.
+
+   Only things Tailwind expresses awkwardly live here: the artboard corner
+   dots / guide lines, the per-word highlight states, and the mobile reel
+   scroll-snap rail. Type and spacing stay in the markup as arbitrary values,
+   matching the rest of the codebase.
+   ========================================================================== */
+
+.ve {
+  /* light scope — deliberately not the site's dark tokens */
+  --ve-ink: #0b0b0b;
+  --ve-ink-2: #0e0e0e;
+  --ve-muted: #666666;
+  --ve-ghost: #d4d4d4; /* word not yet lit */
+  --ve-accent: #ff5001; /* leading edge of the highlight */
+  --ve-accent-2: #f25d00; /* stat figures, kicker */
+  --ve-line: #e6e6e6;
+  --ve-paper: #ffffff;
+
+  background: var(--ve-paper);
+  color: var(--ve-ink);
+}
+
+/* ── media placeholders — swap for <video>/<img> ─────────────────────────── */
+.ve-ph {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #f4f4f4;
+  border: 1px solid var(--ve-line);
+}
+.ve-ph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.028) 0 10px,
+    transparent 10px 20px
+  );
+}
+.ve-ph__label {
+  position: relative;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a3a3a3;
+}
+
+/* vertical 9:16 reel — dark so light UI reads on top */
+.ve-ph--reel {
+  aspect-ratio: 9 / 16;
+  width: 100%;
+  border-radius: 10px;
+  background: #111;
+  border-color: #111;
+}
+.ve-ph--reel::before {
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0 10px,
+    transparent 10px 20px
+  );
+}
+.ve-ph--reel .ve-ph__label {
+  color: #6b6b6b;
+}
+
+/* ── artboard: 742×390 frame with corner handles + guide lines ───────────── */
+.ve-board {
+  position: relative;
+  width: 742px;
+  height: 390px;
+  border: 1px solid var(--ve-line);
+  background: var(--ve-paper);
+}
+.ve-board__dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3d3d3d;
+}
+.ve-board__dot--tl { top: -4px; left: -4px; }
+.ve-board__dot--tr { top: -4px; right: -4px; }
+.ve-board__dot--bl { bottom: -4px; left: -4px; }
+.ve-board__dot--br { bottom: -4px; right: -4px; }
+
+.ve-guide {
+  position: absolute;
+  background: var(--ve-line);
+  pointer-events: none;
+}
+/* vertical drop from the top; hidden behind the opaque board below y=280 */
+.ve-guide--v { top: 0; bottom: 50%; left: 50%; width: 1px; }
+.ve-guide--h { top: 50%; left: calc(50% - 50vw); width: 100vw; height: 1px; }
+
+/* ── manifesto: words light grey → accent → ink as the block scrolls ─────── */
+.ve-word {
+  color: var(--ve-ghost);
+  transition: color 0.25s linear;
+}
+.ve-word[data-state="hot"] { color: var(--ve-accent); }
+.ve-word[data-state="done"] { color: var(--ve-ink); }
+
+/* ── accordion body: grid-rows trick so height animates without JS measure ─ */
+.ve-acc__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ve-acc__body > div { overflow: hidden; }
+.ve-acc[data-open="true"] .ve-acc__body { grid-template-rows: 1fr; }
+
+.ve-acc__chevron {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ve-acc[data-open="true"] .ve-acc__chevron {
+  transform: rotate(-135deg) translate(-3px, -3px);
+}
+
+/* ── reel row: 3-up on desktop (3×278 + 2×27 = 888) ─────────────────────── */
+.ve-reels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 27px;
+}
+
+/* ── quote card ─────────────────────────────────────────────────────────── */
+.ve-quote {
+  width: 694px;
+  height: 398px;
+  border-radius: 18px;
+  background: var(--ve-paper);
+  box-shadow: rgba(14, 14, 14, 0.1) 0 10px 24px;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s;
+}
+.ve-quote:hover {
+  transform: translateY(-4px);
+  box-shadow: rgba(14, 14, 14, 0.16) 0 14px 32px;
+}
+
+@media (max-width: 1180px) {
+  .ve-quote { width: 620px; }
+}
+
+@media (max-width: 980px) {
+  .ve-board {
+    width: 100%;
+    height: auto;
+  }
+  .ve-guide--v { display: none; }
+
+  /* horizontal snap rail beats squeezing three columns on a phone */
+  .ve-reels {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-inline: calc(var(--wiro-page-pad) * -1);
+    padding-inline: var(--wiro-page-pad);
+  }
+  .ve-reels::-webkit-scrollbar { display: none; }
+  .ve-ph--reel {
+    flex: none;
+    width: 62vw;
+    max-width: 300px;
+    scroll-snap-align: center;
+  }
+
+  .ve-quote {
+    width: min(78vw, 420px);
+    height: auto;
+  }
+}
+
+/* Swiper arrows inherit the light scope here (site default is on dark) */
+.ve .swiper-button-prev,
+.ve .swiper-button-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  transition: background 0.3s;
+}
+.ve .swiper-button-prev:hover,
+.ve .swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+.ve .swiper-button-prev::after,
+.ve .swiper-button-next::after {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ve-word { color: var(--ve-ink); }
+  .ve-acc__body,
+  .ve-acc__chevron,
+  .ve-quote {
+    transition-duration: 0.001ms;
+  }
+}

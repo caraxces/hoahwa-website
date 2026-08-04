@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import type { PortfolioPageConfig } from "@/content/portfolio/schema";
 
 export function usePortfolioInteractions(
@@ -8,8 +8,13 @@ export function usePortfolioInteractions(
   options?: { embedded?: boolean },
 ) {
   const embedded = options?.embedded ?? false;
-  const heroWords = config.sections.hero?.rotatingWords ?? [];
-  const testimonials = config.sections.testimonials?.items ?? [];
+
+  // `?? []` would mint a new array on every render and retrigger the effects
+  // below, so the fallbacks are memoised against the underlying config arrays.
+  const rotatingWords = config.sections.hero?.rotatingWords;
+  const testimonialItems = config.sections.testimonials?.items;
+  const heroWords = useMemo(() => rotatingWords ?? [], [rotatingWords]);
+  const testimonials = useMemo(() => testimonialItems ?? [], [testimonialItems]);
   const hiwSteps = config.sections.howItWorks?.steps?.length ?? 0;
 
   useEffect(() => {

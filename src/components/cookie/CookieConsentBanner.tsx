@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import { cookieConsentCopy } from "@/content/cookie-consent";
 import { CookieIcon } from "@/components/cookie/CookieIcon";
 import { GradientScrollArea } from "@/components/cookie/GradientScrollArea";
@@ -11,7 +17,10 @@ import { cn } from "@/lib/cn";
 import {
   acceptAllCookieChoices,
   defaultCookieChoices,
-  readCookieConsent,
+  getCookieConsentServerSnapshot,
+  getCookieConsentSnapshot,
+  hydrationStore,
+  subscribeCookieConsent,
   writeCookieConsent,
   type CookieConsentChoices,
 } from "@/lib/cookie-consent";
@@ -57,19 +66,33 @@ function ConsentToggle({
 
 export function CookieConsentBanner() {
   const reduceMotion = useReducedMotion();
-  const [mounted, setMounted] = useState(false);
-  const [view, setView] = useState<View>("bar");
-  const [choices, setChoices] = useState<CookieConsentChoices>(defaultCookieChoices);
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
-  useEffect(() => {
-    setMounted(true);
-    const stored = readCookieConsent();
-    if (stored) {
-      setChoices(stored.choices);
-      setView("dismissed");
-    }
-  }, []);
+  // Stored consent and hydration both come from external stores, so neither
+  // needs a setState-in-effect to reach React.
+  const stored = useSyncExternalStore(
+    subscribeCookieConsent,
+    getCookieConsentSnapshot,
+    getCookieConsentServerSnapshot,
+  );
+  const hydrated = useSyncExternalStore(
+    hydrationStore.subscribe,
+    hydrationStore.getSnapshot,
+    hydrationStore.getServerSnapshot,
+  );
+
+  // `null` means "follow whatever is stored"; a value means the visitor moved
+  // somewhere explicitly this session (opened settings, closed the panel).
+  const [viewOverride, setViewOverride] = useState<View | null>(null);
+  const view: View = viewOverride ?? (stored ? "dismissed" : "bar");
+
+  // Same idea for the toggles: stored choices win until the visitor edits them.
+  const [choicesOverride, setChoicesOverride] =
+    useState<CookieConsentChoices | null>(null);
+  const choices = useMemo(
+    () => choicesOverride ?? stored?.choices ?? defaultCookieChoices(),
+    [choicesOverride, stored],
+  );
 
   useEffect(() => {
     if (view !== "panel") return;
@@ -77,10 +100,14 @@ export function CookieConsentBanner() {
   }, [view]);
 
   const persist = useCallback((next: CookieConsentChoices) => {
-    setChoices(next);
     writeCookieConsent(next);
-    setView("dismissed");
+    // Drop both overrides so the freshly stored record becomes the truth,
+    // which resolves the view to "dismissed".
+    setChoicesOverride(null);
+    setViewOverride(null);
   }, []);
+
+  const setView = setViewOverride;
 
   const handleAcceptAll = () => persist(acceptAllCookieChoices());
   const handleRejectNonEssential = () => persist(defaultCookieChoices());
@@ -88,10 +115,10 @@ export function CookieConsentBanner() {
 
   const setCategory = (key: keyof CookieConsentChoices, value: boolean) => {
     if (key === "necessary") return;
-    setChoices((prev) => ({ ...prev, [key]: value }));
+    setChoicesOverride({ ...choices, [key]: value });
   };
 
-  if (!mounted) return null;
+  if (!hydrated) return null;
 
   const transition = reduceMotion
     ? { duration: 0 }

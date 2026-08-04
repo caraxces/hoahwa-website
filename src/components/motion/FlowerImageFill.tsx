@@ -11,6 +11,7 @@ export function FlowerImageFill({
   wrapperClassName,
   overlayClassName,
   className,
+  alt,
   ...props
 }: FlowerImageFillProps) {
   return (
@@ -21,7 +22,7 @@ export function FlowerImageFill({
       )}
     >
       <div className="absolute inset-0 z-[1]">
-        <Image {...props} fill className={cn("object-cover", className)} />
+        <Image {...props} alt={alt} fill className={cn("object-cover", className)} />
       </div>
       <FlowersOverlay className={cn("!z-[60]", overlayClassName)} />
     </div>

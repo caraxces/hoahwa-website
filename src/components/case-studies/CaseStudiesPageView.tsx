@@ -77,12 +77,18 @@ export function CaseStudiesPageView() {
           ))}
         </div>
 
-        <Reveal variants={fadeUp} className="mt-16">
+        <Reveal variants={fadeUp} className="mt-16 flex flex-wrap gap-4">
+          <Link
+            href="/case-studies/hoahwa-com"
+            className="inline-flex items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+          >
+            Case study 001 — how we built this site
+          </Link>
           <Link
             href="/case-studies/shopify-developer"
             className="inline-flex items-center justify-center rounded-[20px] border border-[var(--wiro-romance)]/35 px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-romance)] transition-colors hover:bg-[var(--wiro-romance)] hover:text-[var(--wiro-cod-gray)]"
           >
-            Read our first case study — Shopify developer explainer
+            Explainer — Shopify + developer
           </Link>
         </Reveal>
       </PageContainer>

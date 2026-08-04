@@ -1,6 +1,6 @@
 import { aeoHero, aeoPlans } from "@/content/aeo";
 import { ServicePlanCard } from "@/components/service/ServicePlanCard";
-import { ShopifyPremierBadge } from "@/components/shared/ShopifyPremierBadge";
+import { AvailabilityBadge } from "@/components/shared/AvailabilityBadge";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
@@ -21,7 +21,7 @@ export function AeoHero() {
               {aeoHero.headline[1]}
             </h1>
             <div className="absolute right-0 top-0 hidden lg:block">
-              <ShopifyPremierBadge variant="light" size="lg" />
+              <AvailabilityBadge variant="light" size="lg" />
             </div>
           </Reveal>
         </RevealGroup>

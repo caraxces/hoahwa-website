@@ -5,7 +5,7 @@ import { LatestCaseBadge } from "@/components/figma/LatestCaseBadge";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { FlowerImageFill } from "@/components/motion/FlowerImageFill";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
-import { ShopifyPremierBadge } from "@/components/shared/ShopifyPremierBadge";
+import { AvailabilityBadge } from "@/components/shared/AvailabilityBadge";
 import { FlowerImageCard } from "@/components/motion/FlowerImageCard";
 import { figmaAssets } from "@/content/figma-assets";
 import {
@@ -74,7 +74,7 @@ export function Hero() {
                 className="hidden shrink-0 md:block"
                 data-node-id="1:465"
               >
-                <ShopifyPremierBadge variant="light" size="lg" />
+                <AvailabilityBadge variant="light" size="lg" />
               </Reveal>
             </div>
           </div>

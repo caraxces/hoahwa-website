@@ -50,7 +50,7 @@ function MegaMenuSideLinks({ onClose }: { onClose: () => void }) {
         ))}
         {/* Static microsite, not a Next.js route — plain anchor forces a real page load */}
         <a
-          href="/news/editions-winter2026/"
+          href="/editions/winter2026/"
           className="text-[var(--wiro-romance)]/60 hover:text-[var(--wiro-romance)]"
           onClick={onClose}
         >
@@ -60,7 +60,7 @@ function MegaMenuSideLinks({ onClose }: { onClose: () => void }) {
       <Button href="/contact" className="mt-10" onClick={onClose}>
         Lets Talk{" "}
         <Image
-          src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+          src="/logo-hoahwa/hoahwa_logo_board-08.png"
           alt="Hoahwa"
           width={120}
           height={30}
@@ -236,7 +236,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                           {/* Static microsite, not a Next.js route — plain anchor forces a real page load */}
                           <motion.div variants={fadeUp}>
                             <a
-                              href="/news/editions-winter2026/"
+                              href="/editions/winter2026/"
                               className="text-[var(--wiro-romance)]/60 hover:text-[var(--wiro-romance)]"
                               onClick={onClose}
                             >
@@ -248,7 +248,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                           <Button href="/contact" onClick={onClose}>
                             Lets Talk{" "}
                             <Image
-                              src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+                              src="/logo-hoahwa/hoahwa_logo_board-08.png"
                               alt="Hoahwa"
                               width={120}
                               height={30}

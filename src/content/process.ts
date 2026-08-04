@@ -59,7 +59,7 @@ export const processPhases: ProcessPhase[] = [
       {
         label: "Collection",
         value:
-          "Filtering, sorting, pagination, and responsive product grid aligned to catalog needs.",
+          "Filtering, sorting, pagination, and responsive product grid aligned to catalogue needs.",
       },
       {
         label: "Product detail",
@@ -80,12 +80,12 @@ export const processPhases: ProcessPhase[] = [
   },
   {
     number: "03",
-    title: "Catalog Setup & Import",
+    title: "Catalogue Setup & Import",
     subtitle: "Structure products so content scales",
     timeframe: "Weeks 4–5 (overlaps with Phase 2)",
     deliverables: [
       {
-        label: "Catalog structure",
+        label: "Catalogue structure",
         value:
           "Collections, product types, tags, and metafields schema for consistent data.",
       },

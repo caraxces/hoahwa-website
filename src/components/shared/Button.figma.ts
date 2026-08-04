@@ -7,9 +7,11 @@ const instance = figma.selectedInstance;
 
 const label = instance.getString("Label") ?? "Contact";
 
-export default {
+const buttonConnect = {
   example: figma.code`<Button href="/contact">${label}</Button>`,
   imports: ['import { Button } from "@/components/shared/Button"'],
   id: "wiro-button-contact",
   metadata: { nestable: true },
 };
+
+export default buttonConnect;

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   builderCopy,
   HOSTINGER_REFERRAL_URL,

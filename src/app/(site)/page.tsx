@@ -3,7 +3,8 @@ import { AboutSection } from "@/components/home/AboutSection";
 import { CaseCarousel } from "@/components/home/CaseCarousel";
 import { GrowthPitch } from "@/components/home/GrowthPitch";
 import { ServicesAccordion } from "@/components/home/ServicesAccordion";
-import { Testimonials } from "@/components/home/Testimonials";
+import { VideoTeaser } from "@/components/home/VideoTeaser";
+import { BuildingNow } from "@/components/home/BuildingNow";
 import { NewsletterCta } from "@/components/home/NewsletterCta";
 
 export default function HomePage() {
@@ -14,7 +15,8 @@ export default function HomePage() {
       <CaseCarousel />
       <GrowthPitch />
       <ServicesAccordion />
-      <Testimonials />
+      <VideoTeaser />
+      <BuildingNow />
       <NewsletterCta />
     </div>
   );

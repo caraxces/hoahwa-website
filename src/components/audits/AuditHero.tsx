@@ -2,7 +2,7 @@ import { auditHero, auditPlans } from "@/content/audits";
 import { figmaAssets } from "@/content/figma-assets";
 import { AuditPlanCard } from "@/components/audits/AuditPlanCard";
 import { LatestCaseBadge } from "@/components/figma/LatestCaseBadge";
-import { ShopifyPremierBadge } from "@/components/shared/ShopifyPremierBadge";
+import { AvailabilityBadge } from "@/components/shared/AvailabilityBadge";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
@@ -42,7 +42,7 @@ export function AuditHero() {
             </h1>
           </Reveal>
           <div className="absolute right-0 top-[65%] hidden lg:block">
-            <ShopifyPremierBadge variant="light" size="lg" />
+            <AvailabilityBadge variant="light" size="lg" />
           </div>
         </RevealGroup>
 

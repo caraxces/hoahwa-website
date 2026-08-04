@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   careersHero,
-  careersQuotes,
+  hiringNotes,
   careersStats,
   openRoles,
   whyJoin,
@@ -71,7 +71,7 @@ export function CareersPageView() {
             <span className="text-[var(--wiro-mauve)]">Why</span>
             <span> Join{" "}
               <Image
-                src="/LOGO HOAHWA/hoahwa_logo_board-08.png"
+                src="/logo-hoahwa/hoahwa_logo_board-08.png"
                 alt="Hoahwa"
                 width={240}
                 height={60}
@@ -98,17 +98,18 @@ export function CareersPageView() {
       >
         <PageContainer>
           <div className="grid gap-8 md:grid-cols-2">
-            {careersQuotes.map((item) => (
-              <blockquote
-                key={`${item.name}-${item.role}`}
+            {hiringNotes.map((item) => (
+              <article
+                key={item.title}
                 className="rounded-lg border border-[var(--wiro-romance)]/20 p-8"
               >
-                <p className="text-base leading-6 tracking-[-0.03em]">&ldquo;{item.quote}&rdquo;</p>
-                <footer className="mt-6 text-sm tracking-[-0.03em] text-[var(--wiro-mauve)]">
-                  {item.name}
-                  <span className="text-[var(--wiro-romance)]/50"> — {item.role}</span>
-                </footer>
-              </blockquote>
+                <h3 className="text-[length:var(--wiro-h4)] tracking-[-0.04em] text-[var(--wiro-mauve)]">
+                  {item.title}
+                </h3>
+                <p className="mt-4 text-base leading-6 tracking-[-0.03em]">
+                  {item.body}
+                </p>
+              </article>
             ))}
           </div>
         </PageContainer>
@@ -118,7 +119,7 @@ export function CareersPageView() {
         <PageContainer>
           <h2 className="text-h3">
             <span className="block">Meet the</span>
-            <span className="block text-[var(--wiro-mauve)]">dream team</span>
+            <span className="block text-[var(--wiro-mauve)]">team</span>
           </h2>
           <div className="mt-16 grid gap-10 md:grid-cols-2">
             {teamMembers.map((member) => (

@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { VIBE_LABELS, VIBE_ORDER, VIBE_PALETTES } from "@/lib/vibe";
 import { VibeToggleWithToast } from "./VibeToggleWithToast";
 import { useVibe } from "./VibeProvider";
@@ -119,9 +121,9 @@ export function VibeDemoView() {
         </section>
 
         <p className="mt-12 text-center text-sm text-[var(--hoahwa-muted)]">
-          <a href="/" className="underline hover:text-[var(--accent-highlight)]">
+          <Link href="/" className="underline hover:text-[var(--accent-highlight)]">
             ← Back to homepage
-          </a>
+          </Link>
         </p>
       </div>
     </div>

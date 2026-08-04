@@ -2,7 +2,7 @@ import type { ServicePlan } from "@/content/service";
 import { figmaAssets } from "@/content/figma-assets";
 import { ServicePlanCard } from "@/components/service/ServicePlanCard";
 import { LatestCaseBadge } from "@/components/figma/LatestCaseBadge";
-import { ShopifyPremierBadge } from "@/components/shared/ShopifyPremierBadge";
+import { AvailabilityBadge } from "@/components/shared/AvailabilityBadge";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
@@ -60,7 +60,7 @@ export function ServiceHero({
             </h1>
           </Reveal>
           <div className="absolute right-0 top-[65%] hidden lg:block">
-            <ShopifyPremierBadge variant="light" size="lg" />
+            <AvailabilityBadge variant="light" size="lg" />
           </div>
         </RevealGroup>
 

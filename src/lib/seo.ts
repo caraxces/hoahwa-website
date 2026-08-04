@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { liveSocialProfiles } from "@/content/social";
 
 /**
  * Central SEO configuration and helpers.
@@ -16,18 +17,20 @@ export const SITE_NAME = "Hoahwa";
 export const SITE_TAGLINE = "High-End Web Design & Development";
 
 export const SITE_DESCRIPTION =
-  "Hoahwa is a boutique web design & development studio building high-performance, award-grade Shopify storefronts—direct collaboration, cost efficiency, and top-tier technical quality.";
+  "Hoahwa is a boutique web design & development studio building high-performance Shopify storefronts—you work directly with the people who design and build it, on a fixed scope and a fixed price.";
 
 /**
  * Real image used for JSON-LD `image`/`logo` fields (needs a stable, crawlable
  * URL). Social cards (og:image / twitter:image) are produced separately by the
  * build-time `opengraph-image.tsx` file convention.
  */
-export const BRAND_LOGO = "/LOGO HOAHWA/hoahwa_logo_board-07.png";
+export const BRAND_LOGO = "/logo-hoahwa/hoahwa_logo_board-07.png";
 
-export const SOCIAL_PROFILES: string[] = [
-  // Add real profile URLs as they go live; used for Organization `sameAs`.
-];
+/**
+ * Organization `sameAs` URLs, derived from `content/social.ts` so the footer
+ * links and the structured data can never drift apart.
+ */
+export const SOCIAL_PROFILES: string[] = liveSocialProfiles.map((p) => p.href);
 
 /**
  * Join a path to the canonical site origin. Page paths receive a trailing

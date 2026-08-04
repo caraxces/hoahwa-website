@@ -6,41 +6,47 @@ import { PortfolioPageClient } from "@/components/portfolio/PortfolioPageClient"
 import type { PortfolioPageConfig } from "@/content/portfolio/schema";
 import { fetchPublishedPage } from "@/lib/portfolio-auth-api";
 
+/** Fetch outcome tagged with the slug it belongs to, so a stale response for a
+ *  previous slug can never be shown as the current one. */
+type PreviewResult = {
+  slug: string;
+  config: PortfolioPageConfig | null;
+  error: string;
+};
+
 function PreviewContent() {
   const searchParams = useSearchParams();
   const slug = searchParams.get("slug")?.trim() ?? "";
-  const [config, setConfig] = useState<PortfolioPageConfig | null>(null);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [result, setResult] = useState<PreviewResult | null>(null);
 
   useEffect(() => {
-    if (!slug) {
-      setLoading(false);
-      setError("Missing page slug. Use ?slug=your-page");
-      return;
-    }
+    if (!slug) return;
 
     let cancelled = false;
 
     (async () => {
-      setLoading(true);
-      setError("");
-      const result = await fetchPublishedPage(slug);
+      // Awaiting first keeps every setState off the effect's synchronous path.
+      const res = await fetchPublishedPage(slug);
       if (cancelled) return;
 
-      if (!result.ok) {
-        setError(result.error);
-        setConfig(null);
-      } else {
-        setConfig(result.page.config as PortfolioPageConfig);
-      }
-      setLoading(false);
+      setResult(
+        res.ok
+          ? { slug, config: res.page.config as PortfolioPageConfig, error: "" }
+          : { slug, config: null, error: res.error },
+      );
     })();
 
     return () => {
       cancelled = true;
     };
   }, [slug]);
+
+  const settled = result?.slug === slug;
+  const loading = Boolean(slug) && !settled;
+  const error = slug
+    ? (settled ? result.error : "")
+    : "Missing page slug. Use ?slug=your-page";
+  const config = settled ? result.config : null;
 
   if (loading) {
     return (
