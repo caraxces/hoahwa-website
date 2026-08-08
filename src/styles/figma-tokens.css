@@ -140,6 +140,15 @@
   --hoahwa-muted: color-mix(in srgb, var(--text-on-light) 60%, transparent);
 }
 
+/*
+ * Raised surface for layers that float above a section — popovers, menus,
+ * calendar panels. Declared once, after the vibe blocks, so it resolves
+ * against whichever --surface-deep / --surface-light the active vibe won with.
+ */
+:root {
+  --surface-raised: color-mix(in srgb, var(--surface-deep) 88%, var(--surface-light));
+}
+
 /* Wide desktop (1440–1920px) */
 @media (max-width: 1920px) and (min-width: 1441px) {
   :root {

@@ -1,23 +1,17 @@
 "use client";
 
 import { useId, useState } from "react";
+import {
+  DateField,
+  SelectField,
+  fieldClass,
+  labelClass,
+} from "@/components/shared/FormFields";
 import { bookingFormCopy } from "@/content/booking";
 import { submitBookingRequest } from "@/lib/booking-api";
 import { cn } from "@/lib/cn";
 
 type Status = "idle" | "submitting" | "success" | "error";
-
-/** Local YYYY-MM-DD — avoids toISOString(), which shifts across UTC midnight. */
-function localDateInputValue(offsetDays = 0): string {
-  const d = new Date();
-  d.setDate(d.getDate() + offsetDays);
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-}
-
-const fieldClass =
-  "w-full rounded-md border border-current/25 bg-transparent px-4 py-3 text-base tracking-[-0.02em] outline-none transition-colors focus:border-current/60 disabled:opacity-60";
-const labelClass = "mb-2 block text-sm tracking-[-0.02em] opacity-70";
 
 export function BookingRequestForm({ className }: { className?: string }) {
   const uid = useId();
@@ -29,7 +23,7 @@ export function BookingRequestForm({ className }: { className?: string }) {
     name: "",
     email: "",
     company: "",
-    preferred_date: localDateInputValue(1),
+    preferred_date: "",
     preferred_window: bookingFormCopy.timeWindows[0]!,
     topic: bookingFormCopy.topics[0]!,
     notes: "",
@@ -99,7 +93,9 @@ export function BookingRequestForm({ className }: { className?: string }) {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className={cn("flex flex-col gap-5", className)}
+      /* color-scheme keeps the leftover native chrome — caret, autofill,
+         textarea scrollbar — dark like the surface it sits on. */
+      className={cn("flex flex-col gap-5 [color-scheme:dark]", className)}
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
@@ -148,59 +144,29 @@ export function BookingRequestForm({ className }: { className?: string }) {
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label htmlFor={`${uid}-date`} className={labelClass}>
-            Preferred date *
-          </label>
-          <input
-            id={`${uid}-date`}
-            type="date"
-            className={fieldClass}
-            value={form.preferred_date}
-            min={localDateInputValue(0)}
-            onChange={(e) => set("preferred_date", e.target.value)}
-            disabled={status === "submitting"}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor={`${uid}-window`} className={labelClass}>
-            Preferred time
-          </label>
-          <select
-            id={`${uid}-window`}
-            className={fieldClass}
-            value={form.preferred_window}
-            onChange={(e) => set("preferred_window", e.target.value)}
-            disabled={status === "submitting"}
-          >
-            {bookingFormCopy.timeWindows.map((w) => (
-              <option key={w} value={w}>
-                {w}
-              </option>
-            ))}
-          </select>
-        </div>
+        <DateField
+          label="Preferred date *"
+          value={form.preferred_date}
+          disablePast
+          onChange={(value) => set("preferred_date", value)}
+          disabled={status === "submitting"}
+        />
+        <SelectField
+          label="Preferred time"
+          value={form.preferred_window}
+          options={bookingFormCopy.timeWindows}
+          onChange={(value) => set("preferred_window", value)}
+          disabled={status === "submitting"}
+        />
       </div>
 
-      <div>
-        <label htmlFor={`${uid}-topic`} className={labelClass}>
-          What&apos;s it about?
-        </label>
-        <select
-          id={`${uid}-topic`}
-          className={fieldClass}
-          value={form.topic}
-          onChange={(e) => set("topic", e.target.value)}
-          disabled={status === "submitting"}
-        >
-          {bookingFormCopy.topics.map((t) => (
-            <option key={t} value={t}>
-              {t}
-            </option>
-          ))}
-        </select>
-      </div>
+      <SelectField
+        label="What's it about?"
+        value={form.topic}
+        options={bookingFormCopy.topics}
+        onChange={(value) => set("topic", value)}
+        disabled={status === "submitting"}
+      />
 
       <div>
         <label htmlFor={`${uid}-notes`} className={labelClass}>
