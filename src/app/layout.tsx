@@ -82,7 +82,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-vibe="windy"
+      data-vibe="sunny"
       suppressHydrationWarning
       className={`${inter.variable} ${darleySans.variable} h-full`}
     >

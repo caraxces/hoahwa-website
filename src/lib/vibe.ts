@@ -6,7 +6,7 @@ const LEGACY_VIBE_MAP: Record<string, VibeId> = {
   rainy: "raining",
 };
 
-export const DEFAULT_VIBE: VibeId = "windy";
+export const DEFAULT_VIBE: VibeId = "sunny";
 export const VIBE_STORAGE_KEY = "hoahwa-vibe";
 
 export const VIBE_PALETTES: Record<

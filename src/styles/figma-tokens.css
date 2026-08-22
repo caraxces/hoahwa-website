@@ -16,13 +16,17 @@
   --wiro-page-pad: 120px;
 }
 
-/* ── Windy vibe (default) ── */
+/*
+ * Sunny vibe (default) — golden hour warm.
+ * Keep this block first: `:root` and `[data-vibe="…"]` share the same
+ * specificity, so the other vibes must come after to win over the default.
+ */
 :root,
-[data-vibe="windy"] {
-  --vibe-c1: #3e5f44;
-  --vibe-c2: #5e936c;
-  --vibe-c3: #93da97;
-  --vibe-c4: #e8ffd7;
+[data-vibe="sunny"] {
+  --vibe-c1: #5c3d1e;
+  --vibe-c2: #d4a04a;
+  --vibe-c3: #f0d4a8;
+  --vibe-c4: #fff8ed;
 
   --surface-deep: var(--vibe-c1);
   --surface-dark: color-mix(in srgb, var(--vibe-c1) 80%, var(--vibe-c2));
@@ -59,6 +63,46 @@
   --hoahwa-muted: color-mix(in srgb, var(--text-on-light) 60%, transparent);
 }
 
+/* ── Windy vibe ── */
+[data-vibe="windy"] {
+  --vibe-c1: #3e5f44;
+  --vibe-c2: #5e936c;
+  --vibe-c3: #93da97;
+  --vibe-c4: #e8ffd7;
+
+  --surface-deep: var(--vibe-c1);
+  --surface-dark: color-mix(in srgb, var(--vibe-c1) 80%, var(--vibe-c2));
+  --surface-light: var(--vibe-c4);
+  --surface-muted: var(--vibe-c3);
+  --accent: var(--vibe-c2);
+  --accent-soft: var(--vibe-c3);
+  --accent-highlight: var(--vibe-c3);
+  --text-on-dark: var(--vibe-c4);
+  --text-on-light: var(--vibe-c1);
+  --text-on-accent: var(--vibe-c1);
+  --border-subtle: color-mix(in srgb, var(--vibe-c4) 20%, transparent);
+  --overlay-glass: color-mix(in srgb, var(--vibe-c1) 78%, transparent);
+  --overlay-glass-scrolled: color-mix(in srgb, var(--vibe-c1) 92%, transparent);
+  --shadow-header: 0 8px 32px color-mix(in srgb, var(--vibe-c1) 35%, transparent);
+
+  --portfolio-accent: var(--vibe-c3);
+  --portfolio-accent-80: color-mix(in srgb, var(--vibe-c3) 80%, transparent);
+  --portfolio-accent-30: color-mix(in srgb, var(--vibe-c3) 30%, transparent);
+
+  --wiro-black: var(--surface-deep);
+  --wiro-cod-gray: var(--surface-dark);
+  --wiro-romance: var(--surface-light);
+  --wiro-spring-wood: var(--surface-muted);
+  --hoahwa-accent: var(--accent);
+  --wiro-mauve: var(--accent-highlight);
+  --wiro-chenin: var(--accent-soft);
+  --wiro-white: var(--surface-light);
+
+  --hoahwa-border: var(--border-subtle);
+  --hoahwa-surface: var(--surface-dark);
+  --hoahwa-muted: color-mix(in srgb, var(--text-on-light) 60%, transparent);
+}
+
 /* ── Raining vibe ── */
 [data-vibe="raining"],
 [data-vibe="rainy"] {
@@ -85,46 +129,6 @@
   --portfolio-accent: var(--vibe-c2);
   --portfolio-accent-80: color-mix(in srgb, var(--vibe-c2) 80%, transparent);
   --portfolio-accent-30: color-mix(in srgb, var(--vibe-c2) 30%, transparent);
-
-  --wiro-black: var(--surface-deep);
-  --wiro-cod-gray: var(--surface-dark);
-  --wiro-romance: var(--surface-light);
-  --wiro-spring-wood: var(--surface-muted);
-  --hoahwa-accent: var(--accent);
-  --wiro-mauve: var(--accent-highlight);
-  --wiro-chenin: var(--accent-soft);
-  --wiro-white: var(--surface-light);
-
-  --hoahwa-border: var(--border-subtle);
-  --hoahwa-surface: var(--surface-dark);
-  --hoahwa-muted: color-mix(in srgb, var(--text-on-light) 60%, transparent);
-}
-
-/* ── Sunny vibe — golden hour warm ── */
-[data-vibe="sunny"] {
-  --vibe-c1: #5c3d1e;
-  --vibe-c2: #d4a04a;
-  --vibe-c3: #f0d4a8;
-  --vibe-c4: #fff8ed;
-
-  --surface-deep: var(--vibe-c1);
-  --surface-dark: color-mix(in srgb, var(--vibe-c1) 80%, var(--vibe-c2));
-  --surface-light: var(--vibe-c4);
-  --surface-muted: var(--vibe-c3);
-  --accent: var(--vibe-c2);
-  --accent-soft: var(--vibe-c3);
-  --accent-highlight: var(--vibe-c3);
-  --text-on-dark: var(--vibe-c4);
-  --text-on-light: var(--vibe-c1);
-  --text-on-accent: var(--vibe-c1);
-  --border-subtle: color-mix(in srgb, var(--vibe-c4) 20%, transparent);
-  --overlay-glass: color-mix(in srgb, var(--vibe-c1) 78%, transparent);
-  --overlay-glass-scrolled: color-mix(in srgb, var(--vibe-c1) 92%, transparent);
-  --shadow-header: 0 8px 32px color-mix(in srgb, var(--vibe-c1) 35%, transparent);
-
-  --portfolio-accent: var(--vibe-c3);
-  --portfolio-accent-80: color-mix(in srgb, var(--vibe-c3) 80%, transparent);
-  --portfolio-accent-30: color-mix(in srgb, var(--vibe-c3) 30%, transparent);
 
   --wiro-black: var(--surface-deep);
   --wiro-cod-gray: var(--surface-dark);

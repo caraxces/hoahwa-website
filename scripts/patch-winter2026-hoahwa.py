@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import struct
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +25,9 @@ OG_IMAGE = (
 )
 ICON = "/logo-hoahwa/hoahwa_logo_board-07.png"
 SHORTCUT = "/logo-hoahwa/hoahwa_logo_board-03.png"
+EXCLUDED_COLLECTION_HANDLES = ("retail", "shop-app")
+EXPERIENCE_STYLE_MARKER = "hoahwa-winter2026-customizations"
+HERO_BACKGROUND_NODE = "Vietfolk_Hero_Background"
 
 
 def patch_legal_urls(text: str) -> tuple[str, int]:
@@ -174,12 +178,139 @@ def patch_seo_and_favicon(html: str) -> tuple[str, int]:
     return html, (0 if html == before else 1)
 
 
+def patch_experience_html(html: str) -> tuple[str, int]:
+    """Prevent excluded Shopify collections from flashing before hydration."""
+    if EXPERIENCE_STYLE_MARKER in html:
+        return html, 0
+
+    excluded_selectors = ",".join(
+        [f'section#{handle}' for handle in EXCLUDED_COLLECTION_HANDLES]
+        + [
+            f'a[href$="#{handle}"]'
+            for handle in EXCLUDED_COLLECTION_HANDLES
+        ]
+    )
+    style = (
+        f'<style id="{EXPERIENCE_STYLE_MARKER}">'
+        f"{excluded_selectors}{{display:none!important}}"
+        "</style>"
+    )
+    return html.replace("</head>", style + "</head>", 1), 1
+
+
+def patch_experience_bundle(text: str) -> tuple[str, int]:
+    """Trim the hero backdrop and unsupported Shopify collections at runtime."""
+    before = text
+
+    # HeroScene receives a GLB foreground plus a KTX2 backdrop. Keep the model
+    # and skip the heavy backdrop that visually overlaps the custom hero art.
+    text = text.replace(
+        "(a=t.backgroundAssets)==null?void 0:a.map((i,m)=>",
+        '(a=t.backgroundAssets)==null?void 0:a.filter(i=>!i.url?.endsWith(".ktx2")).map((i,m)=>',
+    )
+
+    # Keep the source payload intact, but filter unsupported collections before
+    # navigation, DOM sections and WebGL scenes are constructed. Re-indexing is
+    # then handled naturally by the existing map calls.
+    route_anchor = "showDebugInfo:m}=we(),f="
+    if route_anchor in text:
+        filtered_state = (
+            "showDebugInfo:m}=we(),"
+            'hoahwaCollections=(t??[]).filter(v=>v.handle!=="retail"&&v.handle!=="shop-app"),'
+            "hoahwaNavItems=(n??[]).filter(v=>![\"retail\",\"shop-app\"]"
+            ".some(C=>v.url?.endsWith(`#${C}`))),f="
+        )
+        text = text.replace(route_anchor, filtered_state, 1)
+        text = text.replace(
+            "navItems:n,globalContent:a",
+            "navItems:hoahwaNavItems,globalContent:a",
+            1,
+        )
+        text = text.replace(
+            "hero:o,collections:t,globalBackgroundAssets:",
+            "hero:o,collections:hoahwaCollections,globalBackgroundAssets:",
+            1,
+        )
+        text = text.replace(
+            "t&&r.jsx(Wr,{collections:t})",
+            "hoahwaCollections.length>0&&r.jsx(Wr,{collections:hoahwaCollections})",
+            1,
+        )
+        text = text.replace(
+            "children:t&&t.map((v,C)=>",
+            "children:hoahwaCollections.map((v,C)=>",
+            1,
+        )
+
+    return text, (0 if text == before else 1)
+
+
+def patch_hero_glb(path: Path) -> bool:
+    """Remove the embedded market backdrop while retaining hero foreground art."""
+    raw = path.read_bytes()
+    if len(raw) < 20 or raw[:4] != b"glTF":
+        raise ValueError(f"Not a GLB file: {path}")
+
+    magic, version, _ = struct.unpack_from("<III", raw, 0)
+    chunks: list[tuple[int, bytes]] = []
+    cursor = 12
+    changed = False
+
+    while cursor < len(raw):
+        chunk_length, chunk_type = struct.unpack_from("<II", raw, cursor)
+        chunk_start = cursor + 8
+        chunk_data = raw[chunk_start : chunk_start + chunk_length]
+        cursor = chunk_start + chunk_length
+
+        if chunk_type == 0x4E4F534A:  # JSON
+            document = json.loads(chunk_data.rstrip(b" \t\r\n\x00"))
+            background_indices = {
+                index
+                for index, node in enumerate(document.get("nodes", []))
+                if node.get("name") == HERO_BACKGROUND_NODE
+            }
+            if background_indices:
+                for scene in document.get("scenes", []):
+                    original_nodes = scene.get("nodes", [])
+                    filtered_nodes = [
+                        node
+                        for node in original_nodes
+                        if node not in background_indices
+                    ]
+                    if filtered_nodes != original_nodes:
+                        scene["nodes"] = filtered_nodes
+                        changed = True
+
+            if changed:
+                chunk_data = json.dumps(
+                    document, ensure_ascii=False, separators=(",", ":")
+                ).encode("utf-8")
+                chunk_data += b" " * ((-len(chunk_data)) % 4)
+
+        chunks.append((chunk_type, chunk_data))
+
+    if not changed:
+        return False
+
+    rebuilt_chunks = b"".join(
+        struct.pack("<II", len(chunk_data), chunk_type) + chunk_data
+        for chunk_type, chunk_data in chunks
+    )
+    rebuilt = struct.pack("<III", magic, version, 12 + len(rebuilt_chunks))
+    path.write_bytes(rebuilt + rebuilt_chunks)
+    return True
+
+
 def process_file(path: Path) -> dict:
     raw = path.read_text(encoding="utf-8")
     text, legal = patch_legal_urls(raw)
     seo = 0
+    experience = 0
     if path.name == "index.html" and "winter2026" in str(path):
         text, seo = patch_seo_and_favicon(text)
+        text, experience = patch_experience_html(text)
+    if path.suffix == ".js":
+        text, experience = patch_experience_bundle(text)
     changed = text != raw
     if changed:
         path.write_text(text, encoding="utf-8")
@@ -187,6 +318,7 @@ def process_file(path: Path) -> dict:
         "file": str(path.relative_to(ROOT)),
         "legal": legal,
         "seo": seo,
+        "experience": experience,
         "changed": changed,
     }
 
@@ -199,6 +331,8 @@ def main() -> None:
         "**/__locale_.editions.winter2026-cWvCD4qi*.js",
         "**/GlobalNavigationContainer-BwYHx-2f.js",
         "**/GlobalNavigationContainer-BwYHx-2f-*.js",
+        "**/HeroScene-BaRW1AZ9.js",
+        "**/HeroScene-BaRW1AZ9-*.js",
     ]:
         targets.extend(PUBLIC.glob(f"assets/vietfolk-winter2026/{pattern}"))
         targets.extend(
@@ -217,6 +351,19 @@ def main() -> None:
         uniq.append(p)
 
     results = [process_file(p) for p in uniq]
+    hero_glb = (
+        PUBLIC
+        / "assets/vietfolk-winter2026/downloaded/models/"
+        "EW26_Hero_251205_compressed-optimized-df054b8770.glb"
+    )
+    if hero_glb.exists() and patch_hero_glb(hero_glb):
+        results.append(
+            {
+                "file": str(hero_glb.relative_to(ROOT)),
+                "experience": 1,
+                "changed": True,
+            }
+        )
     changed = [r for r in results if r.get("changed")]
     print(f"Patched {len(changed)}/{len(results)} files")
     for r in changed:

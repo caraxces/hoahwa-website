@@ -13,10 +13,11 @@ export const contentType = "image/png";
 // Required for `output: "export"` — render this image at build time.
 export const dynamic = "force-static";
 
-// Brand palette (default "windy" vibe).
-const DEEP = "#3E5F44";
-const MID = "#5E936C";
-const LIGHT = "#E8FFD7";
+// Brand palette (default "sunny" vibe). MID is pulled toward c1 rather than
+// using c2 (#D4A04A) directly — cream text over raw c2 lands around 2:1.
+const DEEP = "#5C3D1E";
+const MID = "#8A6430";
+const LIGHT = "#FFF8ED";
 
 export default function OpengraphImage() {
   return new ImageResponse(
