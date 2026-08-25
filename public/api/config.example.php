@@ -8,6 +8,7 @@ return [
     'db_name' => 'u525593444_hoahwa',
     'db_user' => 'u525593444_hoa',
     'db_pass' => 'YOUR_PASSWORD_HERE',
+    'site_url' => 'https://hoahwa.com',
     'allowed_origins' => [
         'https://hoahwa.com',
         'https://www.hoahwa.com',

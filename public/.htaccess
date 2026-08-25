@@ -1,6 +1,9 @@
 Options -MultiViews -Indexes
 RewriteEngine On
 
+# Short-link 302 (must run before trailing-slash canonicalization and 404)
+RewriteRule ^r/([A-Za-z0-9]{4,16})/?$ r/index.php?code=$1 [L,QSA]
+
 # Canonical trailing-slash redirect (matches Next trailingSlash:true)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

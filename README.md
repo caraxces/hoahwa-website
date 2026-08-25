@@ -16,7 +16,7 @@ Marketing site for **Hoahwa** — eCommerce Growth Agency (Shopify Plus). Next.j
 | `/case-studies` | Case studies grid |
 | `/insights` | eCommerce insights / blog index |
 | `/careers` | Careers |
-| `/contact` | Contact |
+| `/tree` | Tree QR shortener — voxel grove that is a scannable QR |
 
 ## Develop
 
