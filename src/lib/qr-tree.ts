@@ -139,7 +139,7 @@ function growTree(
     if (depth <= 0 || radius < 0.035) {
       blossoms.push({
         position: origin,
-        size: 0.1 + rng() * 0.08,
+        size: 0.16 + rng() * 0.12,
       });
       return;
     }
@@ -160,7 +160,7 @@ function growTree(
     if (rng() > 0.55) {
       blossoms.push({
         position: end,
-        size: 0.08 + rng() * 0.07,
+        size: 0.14 + rng() * 0.1,
       });
     }
   };

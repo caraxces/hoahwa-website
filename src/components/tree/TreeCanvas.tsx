@@ -49,17 +49,16 @@ function disposeObject(root: THREE.Object3D) {
 
 function buildScene(layout: QrTreeLayout) {
   const voxelGeo = new THREE.BoxGeometry(0.92, 1, 0.92);
-  const voxelMat = new THREE.MeshLambertMaterial({ vertexColors: true });
+  const voxelMat = new THREE.MeshLambertMaterial();
   const voxels = new THREE.InstancedMesh(
     voxelGeo,
     voxelMat,
     layout.voxels.length,
   );
   voxels.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
-  voxels.instanceColor = new THREE.InstancedBufferAttribute(
-    new Float32Array(layout.voxels.length * 3),
-    3,
-  );
+  const instanceColors = new Float32Array(layout.voxels.length * 3);
+  instanceColors.fill(1);
+  voxels.instanceColor = new THREE.InstancedBufferAttribute(instanceColors, 3);
   voxels.castShadow = false;
   voxels.receiveShadow = false;
 
@@ -244,7 +243,7 @@ export function TreeCanvas({
           : lerp(0.13, 0.08, t);
         dummy.quaternion.identity();
         dummy.position.set(voxel.x + 0.5, height / 2, voxel.z + 0.5);
-        dummy.scale.set(1, height, 1);
+        dummy.scale.set(lerp(0.92, 1, t) / 0.92, height, lerp(0.92, 1, t) / 0.92);
         dummy.updateMatrix();
         meshes.voxels.setMatrixAt(i, dummy.matrix);
         color.copy(voxel.dark ? darkA : lightA).lerp(voxel.dark ? darkB : lightB, t);

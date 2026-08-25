@@ -68,21 +68,18 @@ export function TreePageView() {
     };
   }, [queryCode]);
 
-  const writeQuery = useCallback(
-    (next: {
-      code?: string;
-      season: TreeSeason;
-      palette: TreePaletteId;
-    }) => {
-      const params = new URLSearchParams();
-      if (next.code) params.set("c", next.code);
-      params.set("season", next.season);
-      params.set("palette", next.palette);
-      const qs = params.toString();
-      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
-    },
-    [pathname, router],
-  );
+  const writeQuery = (next: {
+    code?: string;
+    season: TreeSeason;
+    palette: TreePaletteId;
+  }) => {
+    const params = new URLSearchParams();
+    if (next.code) params.set("c", next.code);
+    params.set("season", next.season);
+    params.set("palette", next.palette);
+    const qs = params.toString();
+    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+  };
 
   const plant = async () => {
     const normalized = normalizeHttpUrl(url || DEFAULT_TREE_PAYLOAD);
@@ -143,10 +140,10 @@ export function TreePageView() {
   };
 
   return (
-    <div className="tree-app relative min-h-[100dvh] w-full overflow-hidden bg-[#151515]">
+    <div className="tree-app relative h-[100dvh] w-full overflow-hidden bg-[#151515]">
       {webgl ? (
         <TreeCanvas
-          key={payload}
+          key="grove"
           payload={payload}
           season={season}
           palette={palette}
