@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "pattern": "myshopify\\.com",
+      "target": null,
+      "label": "KEEP: demo storefront (serves .m3u8 video + cart demos — rewriting breaks playback)"
+    },
+    {
+      "pattern": "^https://placeholder\\.shopify\\.com",
+      "target": null,
+      "label": "KEEP: placeholder host, never rendered as a link"
+    },
+    {
+      "pattern": "^https://all-editions\\.shopify\\.com",
+      "target": null,
+      "label": "KEEP: base for the All-editions dropdown, which is now hidden"
+    },
+    {
+      "pattern": "^https://admin\\.shopify\\.com/signup",
+      "target": "/book/",
+      "label": "CTA: Book a build"
+    },
+    {
+      "pattern": "^https://admin\\.shopify\\.com/sidekick",
+      "target": "/book/",
+      "label": "admin deep-link: Sidekick"
+    },
+    {
+      "pattern": "^https://admin\\.shopify\\.com",
+      "target": "/book/",
+      "label": "admin deep-link: settings"
+    },
+    {
+      "pattern": "^http://shopify\\.dev",
+      "target": "/shopify-theme-builds/",
+      "label": "dev docs (http)"
+    },
+    {
+      "pattern": "^https://www\\.shopify\\.com/agentic-storefronts",
+      "target": "/ai-search-optimization/",
+      "label": "agentic"
+    },
+    {
+      "pattern": "^https://(hydrogen\\.)?shopify\\.dev",
+      "target": "/shopify-theme-builds/",
+      "label": "dev docs"
+    },
+    {
+      "pattern": "^https://themes\\.shopify\\.com",
+      "target": "/shopify-theme-builds/",
+      "label": "themes"
+    },
+    {
+      "pattern": "^https://lovable\\.dev",
+      "target": "/shopify-theme-builds/",
+      "label": "vibe-code"
+    },
+    {
+      "pattern": "help\\.shopify\\.com/.*(reports-and-analytics|inventory|fulfillment|shopify-flow|organization-settings)",
+      "target": "/audits/",
+      "label": "ops/analytics"
+    },
+    {
+      "pattern": "help\\.shopify\\.com/.*(finance|shopify-balance|shopify-credit|capital)",
+      "target": "/audits/",
+      "label": "finance"
+    },
+    {
+      "pattern": "help\\.shopify\\.com/.*(promoting-marketing|customer-segmentation|shop-campaigns|forms-app)",
+      "target": "/growth-retainers/",
+      "label": "marketing"
+    },
+    {
+      "pattern": "help\\.shopify\\.com/.*(payments|shop-pay|checkout|discounts)",
+      "target": "/growth-retainers/",
+      "label": "checkout/payments"
+    },
+    {
+      "pattern": "help\\.shopify\\.com/.*(b2b|collective)",
+      "target": "/book/",
+      "label": "b2b"
+    },
+    {
+      "pattern": "^https://www\\.shopify\\.com/(payments|balance|credit|capital|shop-pay|fulfillment)",
+      "target": "/audits/",
+      "label": "money/logistics product"
+    },
+    {
+      "pattern": "^https://www\\.shopify\\.com/(collective|mobile|tools/)",
+      "target": "/book/",
+      "label": "other product"
+    },
+    {
+      "pattern": "^https://www\\.shopify\\.com/editions",
+      "target": "/insights/",
+      "label": "other editions"
+    },
+    {
+      "pattern": "^https://www\\.shopify\\.com/blog|partners/blog",
+      "target": "/insights/",
+      "label": "blog"
+    },
+    {
+      "pattern": "^https://(apps|changelog|hardware|accounts)\\.shopify\\.com",
+      "target": "/book/",
+      "label": "apps/changelog/hw"
+    },
+    {
+      "pattern": "^https://(help\\.)?shop\\.app",
+      "target": "/book/",
+      "label": "shop app"
+    },
+    {
+      "pattern": "help\\.shopify\\.com",
+      "target": "/book/",
+      "label": "help fallback"
+    },
+    {
+      "pattern": "^https://www\\.shopify\\.com/?$",
+      "target": "/case-studies/",
+      "label": "nav Portfolio button"
+    },
+    {
+      "pattern": "^https://www\\.shopify\\.com",
+      "target": "/book/",
+      "label": "shopify.com fallback"
+    }
+  ],
+  "note": "target:null means the URL is deliberately left alone. Every URL must hit some rule — an unmatched URL is an error, so nothing is left to a silent default."
+}

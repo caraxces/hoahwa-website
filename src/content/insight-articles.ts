@@ -568,6 +568,108 @@ const articles: InsightsDatabase["posts"] = [
       ],
     ),
   },
+  {
+    slug: "shopify-winter-2026-setup-priorities",
+    title: "Shopify Winter ’26: tính năng nào đáng setup trước?",
+    date: "Aug 23, 2026",
+    tags: ["Shopify", "Winter 2026", "Triển khai", "Vietfolk ’26"],
+    excerpt:
+      "Shopify công bố hàng trăm tính năng mỗi kỳ Editions. Câu hỏi thật của một chủ shop không phải “có gì mới” mà là “nên bật cái nào trước, mất bao lâu, và cái nào chờ được”.",
+    body: [
+      {
+        type: "paragraph",
+        text: "Mỗi kỳ Editions, Shopify nói với bạn theo góc của nhà cung cấp: bạn sẽ có thêm những tính năng gì. Đó là thông tin đúng nhưng chưa đủ để hành động. Bài này viết theo góc còn lại — góc của người triển khai: trong hàng trăm mục đó, cái nào bật được trong một buổi chiều, cái nào cần viết code, và cái nào nên để sang quý sau.",
+      },
+      {
+        type: "video",
+        caption:
+          "Bản ghi phần đi qua Vietfolk ’26 — chúng tôi đang dựng, sẽ bổ sung vào đây.",
+      },
+      { type: "heading", text: "Đọc một bản Editions theo góc triển khai" },
+      {
+        type: "paragraph",
+        text: "Danh sách tính năng của Shopify không phân biệt độ khó. “Unlisted product status” và “Shopify Functions cho checkout” nằm cạnh nhau như hai gạch đầu dòng ngang hàng, nhưng một cái là bật một toggle, cái kia là một dự án có test và có rollback. Sai lệch này là lý do nhiều shop bật hết mọi thứ rồi không đo được gì.",
+      },
+      {
+        type: "paragraph",
+        text: "Cách chúng tôi phân loại đơn giản: tính năng nào chỉ cần cấu hình thì làm ngay, vì rủi ro gần như bằng không. Tính năng nào thay đổi luồng tiền hoặc luồng đơn thì phải có số trước và sau. Tính năng nào cần code thì phải trả lời được câu “nếu bỏ đi thì mất gì” trước khi bắt đầu.",
+      },
+      { type: "heading", text: "Lộ trình 30/60/90" },
+      {
+        type: "phases",
+        phases: [
+          {
+            window: "0–30 ngày",
+            title: "Những thứ chỉ cần cấu hình",
+            items: [
+              "Bật và huấn luyện Sidekick theo nghiệp vụ thật: quy tắc tồn kho, cách đọc số, giọng trả lời khách.",
+              "Dọn analytics: bot filtering, khoảng thời gian báo cáo, top items — để số liệu tháng sau đáng tin.",
+              "Rà soát Shopify Payments và các phương thức thanh toán theo đúng thị trường bạn đang bán.",
+              "Chuẩn hoá dữ liệu sản phẩm: collections, unit pricing, unlisted status.",
+            ],
+          },
+          {
+            window: "30–60 ngày",
+            title: "Những thứ cần đo trước khi mở rộng",
+            items: [
+              "Dựng A/B testing native, chạy đúng một giả thuyết mỗi lần và giữ ít nhất hai tuần lấy số.",
+              "Phân khúc khách theo hành vi thật rồi mới nối vào email và SMS marketing.",
+              "Tự động hoá bằng Flow ở đúng những chỗ đang làm tay nhiều nhất, không tự động hoá cho vui.",
+              "Nếu bán nhiều kho: mô hình lại tồn kho trước khi bật flash sale đa điểm.",
+            ],
+          },
+          {
+            window: "60–90 ngày",
+            title: "Những thứ cần code và cần rollback",
+            items: [
+              "Tuỳ biến checkout bằng Shopify Functions — có staging, có kịch bản quay lại.",
+              "B2B: catalog theo từng công ty, payment terms, hạn mức, quy trình duyệt đơn.",
+              "Agentic storefront: product feed và structured data để sản phẩm xuất hiện được trong hội thoại AI.",
+              "Headless với Hydrogen, chỉ khi theme đã tới giới hạn thật chứ không phải vì nghe hay.",
+            ],
+          },
+        ],
+      },
+      { type: "heading", text: "Bốn thứ tốn công hơn vẻ ngoài" },
+      {
+        type: "list",
+        items: [
+          "B2B: phần khó không phải bật tính năng mà là cấu trúc lại catalog và bảng giá đang lộn xộn.",
+          "Checkout customization: viết Functions là phần nhanh; phần chậm là kiểm thử đủ các tổ hợp giỏ hàng.",
+          "Agentic / AI discovery: phụ thuộc chất lượng dữ liệu sản phẩm, mà dữ liệu sản phẩm thường là chỗ tệ nhất.",
+          "Headless: đổi luôn cả cách team bạn xuất bản nội dung, không chỉ đổi tầng frontend.",
+        ],
+      },
+      { type: "heading", text: "Chúng tôi đã làm gì" },
+      {
+        type: "paragraph",
+        text: "Trang Vietfolk ’26 mà bạn có thể mở ngay là một bản demo kỹ thuật thật: 12 scene WebGL scroll-driven, mô hình 3D nén, và toàn bộ nội dung được viết lại theo góc triển khai. Không logo đi mượn, không con số bịa — bạn kiểm tra được bằng cách mở trang và đo.",
+      },
+      {
+        type: "cta",
+        href: "/case-studies/vietfolk-winter-2026/",
+        label: "Đọc case study Vietfolk ’26 →",
+        note: "Quyết định kỹ thuật, số đo thật (12 scene, 47 mô hình 3D, 8 MB) và link mở bản demo trực tiếp.",
+      },
+      {
+        type: "cta",
+        href: "/case-studies/shopify-developer/",
+        label: "Xem case study Shopify Developer →",
+        note: "Phạm vi công việc, quyết định kỹ thuật và kết quả đo được của các dự án đã bàn giao.",
+      },
+      { type: "heading", text: "Bắt đầu từ đâu" },
+      {
+        type: "paragraph",
+        text: "Nếu bạn chưa biết chọn gì trong danh sách trên, đừng chọn theo tính năng — chọn theo chỗ đang chảy máu. Một buổi audit thường đủ để thấy ba việc đáng làm trước, và ba việc đó gần như luôn nằm ở nhóm 30 ngày đầu.",
+      },
+      {
+        type: "cta",
+        href: "/book/",
+        label: "Đặt lịch audit và lên lộ trình →",
+        note: "Chúng tôi xem store của bạn, nói thẳng cái nào nên làm, cái nào chưa cần, kèm ước lượng công.",
+      },
+    ],
+  },
 ];
 
 export const insightsDatabase: InsightsDatabase = {

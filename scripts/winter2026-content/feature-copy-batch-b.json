@@ -1,0 +1,335 @@
+{
+  "version": 1,
+  "description": "Feature-level body copy for the developer section — the deepest part of Hoahwa's work, so the voice carries implementation experience rather than restating the changelog.",
+  "entries": [
+    {
+      "id": "feature:developer:Search billions of products across",
+      "note": "developer — (untitled card)",
+      "find": "Search billions of products across Shopify merchants using MCP tools or REST—and soon, select partners can access a direct catalog feed.",
+      "replace": "Tìm kiếm trên hàng tỷ sản phẩm của các merchant Shopify qua MCP hoặc REST; một số partner sẽ được truy cập catalog feed trực tiếp.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Bring a merchant’s checkout to any",
+      "note": "developer — (untitled card)",
+      "find": "Bring a merchant’s checkout to any agentic flow in a browser with a JS library that renders in a pop-up or a new tab—also available in Swift, Android, and React Native.",
+      "replace": "Đưa checkout của merchant vào bất kỳ luồng agentic nào trong browser bằng thư viện JS, mở dạng pop-up hoặc tab mới. Có sẵn cho Swift, Android và React Native.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Themes are more discoverable with ",
+      "note": "developer — Improved theme discovery",
+      "find": "Themes are more discoverable with embedded demos and smarter filters.",
+      "replace": "Theme dễ tìm hơn nhờ demo nhúng sẵn và bộ lọc thông minh hơn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Get your app review-ready faster w",
+      "note": "developer — Clearer app store requirements",
+      "find": "Get your app review-ready faster with streamlined requirements and clearer documentation.",
+      "replace": "Yêu cầu duyệt app đã gọn lại và tài liệu rõ hơn, qua review nhanh hơn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Access regional Web Vitals data to",
+      "note": "developer — Regional admin performance data optimization",
+      "find": "Access regional Web Vitals data to pinpoint slowdowns and optimize your app to deliver faster admin experiences.",
+      "replace": "Xem Web Vitals theo vùng để tìm đúng chỗ chậm. Chúng tôi dùng chính dữ liệu này khi tối ưu app, thay vì đoán.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Launch admin workflows for creatin",
+      "note": "developer — (untitled card)",
+      "find": "Launch admin workflows for creating, editing, and managing Shopify resources with a single line of code.",
+      "replace": "Dựng luồng tạo, sửa và quản lý resource trong admin chỉ với một dòng code.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Shopify's bulk operations API now ",
+      "note": "developer — (untitled card)",
+      "find": "Shopify's bulk operations API now supports all Admin API mutations, accepts 100MB files, and runs up to five concurrent operations.",
+      "replace": "Bulk operations API giờ hỗ trợ mọi mutation của Admin API, nhận file 100MB và chạy tới năm tác vụ song song. Rất đáng dùng khi migrate dữ liệu lớn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Build ML and data pipelines collab",
+      "note": "developer — (untitled card)",
+      "find": "Build ML and data pipelines collaboratively with an open-source experimentation platform that comes with a powerful visual editor.",
+      "replace": "Dựng pipeline ML và dữ liệu trên nền tảng thí nghiệm mã nguồn mở, có visual editor.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Build tests from real production d",
+      "note": "developer — Binary testing in Shopify Functions",
+      "find": "Build tests from real production data and catch breaking changes before they hit production when you migrate from JavaScript to Rust.",
+      "replace": "Viết test từ dữ liệu production thật để bắt lỗi phá vỡ trước khi lên, đặc biệt khi chuyển Functions từ JavaScript sang Rust.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Access documentation for Hydrogen ",
+      "note": "developer — Shopify Dev MCP supports Hydrogen and Shopify API",
+      "find": "Access documentation for Hydrogen and Storefront API in the Dev MCP to build headless Shopify stores with AI coding tools such as Cursor or Claude Code.",
+      "replace": "Dev MCP đã có tài liệu Hydrogen và Storefront API, dùng được với Cursor hoặc Claude Code khi dựng store headless. Đây là cách chúng tôi làm việc hằng ngày.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Validate Liquid code in Shopify De",
+      "note": "developer — Liquid support in Shopify Dev MCP",
+      "find": "Validate Liquid code in Shopify Dev MCP to catch errors before deployment.",
+      "replace": "Kiểm tra cú pháp Liquid ngay trong Dev MCP, bắt lỗi trước khi deploy.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Build POS UI extensions faster wit",
+      "note": "developer — Shopify Dev MCP supports POS UI extensions",
+      "find": "Build POS UI extensions faster with AI using Shopify Dev MCP, which pulls right from the POS dev docs, generates valid code, and cuts errors.",
+      "replace": "Dev MCP đọc trực tiếp tài liệu POS, sinh code hợp lệ và giảm lỗi khi làm POS UI extension.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:In June 2026, Shopify Functions wi",
+      "note": "developer — Shopify Functions replace Scripts in 2026",
+      "find": "In June 2026, Shopify Functions will replace Scripts with faster execution and increased parity for a safer migration.",
+      "replace": "Tháng 6/2026 Shopify Functions sẽ thay thế Scripts, chạy nhanh hơn và tương thích tốt hơn. Nếu store bạn còn Scripts, đây là việc cần lên kế hoạch di trú ngay.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Get access to the full developer p",
+      "note": "developer — Dev Assistant supports all of Shopify",
+      "find": "Get access to the full developer platform with the upgraded Dev Assistant, which surfaces targeted documentation and code examples based on what you're trying to build.",
+      "replace": "Dev Assistant bản mới đưa đúng tài liệu và ví dụ code theo việc bạn đang làm.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Use expiring tokens to make your a",
+      "note": "developer — Enhanced security with token expiry",
+      "find": "Use expiring tokens to make your app more secure with OAuth 2.0-compliant token refresh, including programmatic exchange for existing non-expiring tokens.",
+      "replace": "Dùng token có hạn với luồng refresh chuẩn OAuth 2.0, đổi được cả token không hạn đang dùng. Đây là việc nên làm cho mọi app đang chạy production.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Clean up dev previews, uninstall a",
+      "note": "developer — Enhanced Dev Console",
+      "find": "Clean up dev previews, uninstall apps, and open the Dev Dashboard directly from the console.",
+      "replace": "Dọn dev preview, gỡ app và mở Dev Dashboard ngay từ console.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Execute theme commands in the CLI ",
+      "note": "developer — Multi-environment theme commands",
+      "find": "Execute theme commands in the CLI for multiple environments simultaneously, enabling bulk operations across different stores.",
+      "replace": "Chạy lệnh theme cho nhiều môi trường cùng lúc trong CLI, thao tác hàng loạt qua nhiều store.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Build POS extensions with Polaris ",
+      "note": "developer — Polaris unified UI components expand to POS",
+      "find": "Build POS extensions with Polaris web components using a standardized, web-component-based UI system.",
+      "replace": "Dựng POS extension bằng Polaris web components, dùng chung một hệ UI chuẩn hoá.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Use Shopify Functions to reject di",
+      "note": "developer — Discount code rejection with Shopify Functions",
+      "find": "Use Shopify Functions to reject discount codes and include an associated custom message displayed at checkout.",
+      "replace": "Dùng Shopify Functions để từ chối mã giảm giá kèm thông báo riêng hiện ở checkout.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Build Shop Minis to create immersi",
+      "note": "developer — Discount code rejection with Shopify Functions",
+      "find": "Build Shop Minis to create immersive shopping experiences, such as virtual try-on and live shopping, and distribute them directly to Shop app users.",
+      "replace": "Dựng Shop Mini cho các trải nghiệm mua sắm sâu như thử đồ ảo hay live shopping, phát hành trực tiếp tới người dùng app Shop.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Reduce API calls and improve perfo",
+      "note": "developer — (untitled card)",
+      "find": "Reduce API calls and improve performance with persistent, namespaced storage inside the POS app.",
+      "replace": "Giảm số lần gọi API nhờ storage bền theo namespace ngay trong app POS.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Build support for the unlisted pro",
+      "note": "developer — Unlisted product status value",
+      "find": "Build support for the unlisted product status to hide products from search results, collections, and more, while keeping them accessible with a direct URL.",
+      "replace": "Hỗ trợ trạng thái unlisted: ẩn sản phẩm khỏi tìm kiếm và collection nhưng vẫn vào được bằng link trực tiếp.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Use the Admin API to let merchants",
+      "note": "developer — Combine bundle options with the Admin API",
+      "find": "Use the Admin API to let merchants combine bundle options, such as size and length, into one selection.",
+      "replace": "Dùng Admin API cho phép merchant gộp nhiều tuỳ chọn bundle, ví dụ size và độ dài, thành một lựa chọn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Pre-order apps support customers p",
+      "note": "developer — Due on fulfillment terms for pre-orders",
+      "find": "Pre-order apps support customers paying a deposit at checkout and the remaining balance when the order is fulfilled.",
+      "replace": "App pre-order hỗ trợ khách đặt cọc ở checkout và trả phần còn lại khi đơn được fulfill.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Get Liquid code editing with multi",
+      "note": "developer — New code editor for themes",
+      "find": "Get Liquid code editing with multi-file search, syntax highlighting, intelligent autocomplete, keyboard shortcuts, side-by-side version diffs, and more.",
+      "replace": "Editor Liquid mới có tìm kiếm nhiều file, syntax highlight, autocomplete, phím tắt và so sánh phiên bản cạnh nhau.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Use Storefront MCP with Hydrogen t",
+      "note": "developer — Storefront MCP works with Hydrogen stores",
+      "find": "Use Storefront MCP with Hydrogen to build agents that can tailor recommendations, assist with cart building, and hand off to checkout.",
+      "replace": "Dùng Storefront MCP với Hydrogen để dựng agent gợi ý sản phẩm, hỗ trợ dựng giỏ hàng rồi chuyển sang checkout.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Headless stores are discoverable i",
+      "note": "developer — AI discovery for headless stores",
+      "find": "Headless stores are discoverable in AI chats like ChatGPT and Perplexity by automatically being part of the Shopify Catalog.",
+      "replace": "Store headless tự động nằm trong Shopify Catalog nên xuất hiện được trong ChatGPT hay Perplexity.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Build support for merchants to nes",
+      "note": "developer — Nested cart lines",
+      "find": "Build support for merchants to nest cart lines in cart, checkout, and post-purchase views for product add-ons, such as extended warranties.",
+      "replace": "Hỗ trợ lồng dòng giỏ hàng ở giỏ, checkout và sau mua — dùng cho hàng bán kèm như gói bảo hành mở rộng.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Add Shop Pay and Apple Pay wallet ",
+      "note": "developer — Native wallet buttons before checkout",
+      "find": "Add Shop Pay and Apple Pay wallet buttons on PDP and Cart pages in mobile apps using the Checkout Kit.",
+      "replace": "Thêm nút Shop Pay và Apple Pay ngay trên trang sản phẩm và trang giỏ trong app mobile bằng Checkout Kit.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Natively support targeted automati",
+      "note": "developer — Discount eligibility context field",
+      "find": "Natively support targeted automatic discounts for customer segments, like VIP, without needing Shopify Scripts.",
+      "replace": "Giảm giá tự động theo customer segment, ví dụ khách VIP, không còn cần Shopify Scripts.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Import existing subscribers via AP",
+      "note": "developer — Payment requirement removed on subscriptions",
+      "find": "Import existing subscribers via API, even if their payment method is missing or expired—just collect or update the details later.",
+      "replace": "Import khách đăng ký sẵn có qua API dù thiếu hoặc hết hạn phương thức thanh toán, cập nhật lại sau.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Add contextual actions to an indiv",
+      "note": "developer — POS UI extensions for cart line items",
+      "find": "Add contextual actions to an individual POS cart line item, such as dynamic bundles.",
+      "replace": "Thêm hành động theo ngữ cảnh cho từng dòng trong giỏ POS, ví dụ bundle động.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Sell customizable products in pers",
+      "note": "developer — Variant customization on POS",
+      "find": "Sell customizable products in person by adding the same variant to the cart with different configurations, which you can see split into distinct lines.",
+      "replace": "Bán hàng tuỳ biến tại quầy: cùng một variant thêm vào giỏ với cấu hình khác nhau, tách thành từng dòng riêng.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Build POS UI extensions faster wit",
+      "note": "developer — More POS UI extension tools",
+      "find": "Build POS UI extensions faster with stable hot reloading, clear in-app build errors, QR deep links, and a new in-app dev console.",
+      "replace": "Làm POS UI extension nhanh hơn nhờ hot reload ổn định, báo lỗi build ngay trong app, QR deep link và dev console mới.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Open native POS products, orders, ",
+      "note": "developer — POS UI extensions open native screens",
+      "find": "Open native POS products, orders, customers, draft orders, and staff details in modals that respect staff permissions right in UI extensions.",
+      "replace": "Mở màn hình gốc của POS cho sản phẩm, đơn, khách, draft order và nhân viên trong modal, vẫn tôn trọng phân quyền.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Use this API to let the POS dynami",
+      "note": "developer — Cart Transform Function API on POS",
+      "find": "Use this API to let the POS dynamically expand, merge, or update cart lines for bundles, custom pricing, and rich cart customization.",
+      "replace": "Dùng Cart Transform API để POS tự mở rộng, gộp hoặc cập nhật dòng giỏ cho bundle và giá tuỳ chỉnh.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Add and manage subscriptions with ",
+      "note": "developer — Customize subscriptions with POS UI Extensions",
+      "find": "Add and manage subscriptions with detailed line item data using the Cart APIs in POS UI Extensions 2025-10.",
+      "replace": "Thêm và quản lý subscription kèm dữ liệu chi tiết từng dòng bằng Cart API trong POS UI Extensions 2025-10.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Model real-world transfers, includ",
+      "note": "developer — Transfers API",
+      "find": "Model real-world transfers, including those from locations not tracked in Shopify, with the Transfers API.",
+      "replace": "Mô hình việc chuyển hàng thực tế, kể cả từ kho không quản trong Shopify, bằng Transfers API.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Simplify reconciliation for return",
+      "note": "developer — Return APIs with payment reference",
+      "find": "Simplify reconciliation for returns through a direct reference to the transaction with the Return API.",
+      "replace": "Đối soát hàng trả dễ hơn nhờ tham chiếu trực tiếp tới giao dịch trong Return API.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Use Shopify customer authenticatio",
+      "note": "developer — Customer Account API supports third-party apps",
+      "find": "Use Shopify customer authentication to give customers a unified sign-in experience and securely access customer data.",
+      "replace": "Dùng xác thực khách của Shopify để có một trải nghiệm đăng nhập thống nhất và truy cập dữ liệu khách an toàn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Refund to store credit through the",
+      "note": "developer — Store credit refunds in returns API",
+      "find": "Refund to store credit through the return and order cancellation APIs, even when store credit was not the original payment method.",
+      "replace": "Hoàn tiền vào store credit qua API trả hàng và huỷ đơn, kể cả khi ban đầu khách không trả bằng store credit.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Build analytics features faster by",
+      "note": "developer — ShopifyQL API for Shopify Analytics",
+      "find": "Build analytics features faster by querying thousands of combinations of Shopify Analytics metrics and dimensions.",
+      "replace": "Truy vấn hàng nghìn tổ hợp chỉ số và chiều dữ liệu của Shopify Analytics để dựng tính năng báo cáo nhanh hơn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Control when return sales are reco",
+      "note": "developer — Returns processing API",
+      "find": "Control when return sales are recorded in Shopify using a new processing mutation.",
+      "replace": "Kiểm soát thời điểm ghi nhận doanh thu hàng trả bằng mutation xử lý mới.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Use shopify.app.extensions() to ch",
+      "note": "developer — Improved onboarding flows with App Bridge",
+      "find": "Use shopify.app.extensions() to check which of your checkout and customer account extensions are active.",
+      "replace": "Dùng shopify.app.extensions() để biết extension checkout và tài khoản khách nào đang bật.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Add referenceDocumentUri to adjust",
+      "note": "developer — Inventory adjustments reference",
+      "find": "Add referenceDocumentUri to adjustments to show your app in admin history, create audit‑ready trails, and trace changes to its source.",
+      "replace": "Thêm referenceDocumentUri vào các điều chỉnh tồn kho để app hiện trong history của admin, tạo dấu vết audit và truy được nguồn thay đổi.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Use the paymentTermsSet operation ",
+      "note": "developer — Payment terms and deposit configurations",
+      "find": "Use the paymentTermsSet operation in Shopify Payment Customization Functions to dynamically change payment terms and deposit requirements. Exclusive to Plus.",
+      "replace": "Dùng paymentTermsSet trong Payment Customization Functions để đổi điều khoản thanh toán và mức cọc động. Chỉ có ở bản Plus.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:developer:Determine which B2B orders require",
+      "note": "developer — Order review operation in Shopify Functions",
+      "find": "Determine which B2B orders require review based on specific conditions using the orderReviewAdd operation in payment customization. Exclusive to Plus.",
+      "replace": "Dùng orderReviewAdd trong payment customization để quyết định đơn B2B nào cần duyệt theo điều kiện cụ thể. Chỉ có ở bản Plus.",
+      "min_matches": 1
+    }
+  ]
+}

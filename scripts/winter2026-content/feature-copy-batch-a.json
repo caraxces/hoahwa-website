@@ -1,0 +1,560 @@
+{
+  "version": 1,
+  "description": "Feature-level body copy rewritten from Shopify's vendor voice ('you will get X') into Hoahwa's implementation voice ('what setting X up actually takes'). Batch A: every section except developer.",
+  "entries": [
+    {
+      "id": "feature:sidekick:Create an app that recommends whic",
+      "note": "sidekick — (untitled card)",
+      "find": "Create an app that recommends which products I need to reorder.",
+      "replace": "Tạo app gợi ý những sản phẩm cần nhập lại.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Create an app that checks returns ",
+      "note": "sidekick — (untitled card)",
+      "find": "Create an app that checks returns and cancellation eligibility for orders.",
+      "replace": "Tạo app kiểm tra đơn nào đủ điều kiện trả hàng hoặc huỷ.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Create an event prep app that gene",
+      "note": "sidekick — (untitled card)",
+      "find": "Create an event prep app that generates discounted checkout links for selected products.",
+      "replace": "Tạo app chuẩn bị sự kiện, tự sinh link checkout kèm giảm giá cho nhóm sản phẩm đã chọn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Create a bulk B2B company importer",
+      "note": "sidekick — (untitled card)",
+      "find": "Create a bulk B2B company importer that uploads companies from a CSV file.",
+      "replace": "Tạo app import hàng loạt công ty B2B từ file CSV.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Sidekick can generate custom repor",
+      "note": "sidekick — (untitled card)",
+      "find": "Sidekick can generate custom reports and data visualizations directly in the ShopifyQL query editor.",
+      "replace": "Sidekick viết được báo cáo và biểu đồ ngay trong ShopifyQL editor. Chúng tôi dựng sẵn bộ câu hỏi theo đúng chỉ số bạn cần theo dõi.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Sidekick can help you build segmen",
+      "note": "sidekick — (untitled card)",
+      "find": "Sidekick can help you build segments or generate them from scratch.",
+      "replace": "Sidekick dựng được customer segment từ đầu. Phần khó là chọn đúng tiêu chí phân khúc — việc đó chúng tôi làm cùng bạn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Prompt Sidekick to change image ba",
+      "note": "sidekick — (untitled card)",
+      "find": "Prompt Sidekick to change image backgrounds, add or remove elements, and expand canvas size.",
+      "replace": "Đổi nền ảnh, thêm bớt chi tiết, mở rộng khung — sửa ảnh sản phẩm bằng câu lệnh thay vì mở Photoshop.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Partner with Sidekick on more comp",
+      "note": "sidekick — (untitled card)",
+      "find": "Partner with Sidekick on more complex tasks now that it can plan, write to-do lists, and take on multiple actions.",
+      "replace": "Sidekick giờ tự lập kế hoạch, viết danh sách việc và chạy nhiều bước liên tiếp, dùng được cho tác vụ nhiều công đoạn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Sidekick goes full screen so you c",
+      "note": "sidekick — Wide-mode",
+      "find": "Sidekick goes full screen so you can tackle complex tasks with more room to work.",
+      "replace": "Sidekick mở toàn màn hình, đủ chỗ để xử lý tác vụ dài.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Sidekick can help you find, compar",
+      "note": "sidekick — App discovery",
+      "find": "Sidekick can help you find, compare, and install apps.",
+      "replace": "Sidekick tìm, so sánh và cài app. Chúng tôi rà lại app nào thực sự cần trước khi bạn trả phí hàng tháng.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Sidekick gives contextual answers ",
+      "note": "sidekick — Target selection",
+      "find": "Sidekick gives contextual answers when clicking on specific areas of the admin.",
+      "replace": "Bấm vào khu vực nào trong admin, Sidekick trả lời theo đúng ngữ cảnh đó.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Sidekick remembers your chats and ",
+      "note": "sidekick — Better memory",
+      "find": "Sidekick remembers your chats and unique user preferences.",
+      "replace": "Sidekick nhớ hội thoại cũ và thói quen làm việc của từng người dùng.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Sidekick can create custom blocks ",
+      "note": "sidekick — Block generation for all themes",
+      "find": "Sidekick can create custom blocks in any theme from the Shopify Theme Store.",
+      "replace": "Sidekick sinh custom block cho mọi theme trên Theme Store. Tốt cho chỉnh nhỏ; layout phức tạp vẫn nên để chúng tôi code.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:agentic:Set up your data once and Shopify ",
+      "note": "agentic — (untitled card)",
+      "find": "Set up your data once and Shopify Agentic Storefronts will surface your products to AI chats everywhere.",
+      "replace": "Chuẩn hoá dữ liệu một lần, Agentic Storefronts sẽ đưa sản phẩm của bạn vào các hội thoại AI. Việc nặng nằm ở chữ “chuẩn hoá” — và đó là phần chúng tôi làm.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Make changes to products, collecti",
+      "note": "online — (untitled card)",
+      "find": "Make changes to products, collections, markets, metafields, and more, all without leaving your workflow in the theme editor and across the admin.",
+      "replace": "Sửa sản phẩm, collection, market và metafield ngay trong theme editor, không phải nhảy qua lại giữa các trang admin.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Turn your WordPress site into an o",
+      "note": "online — (untitled card)",
+      "find": "Turn your WordPress site into an online store by adding products, collections, a cart, and checkout with the Shopify plugin.",
+      "replace": "Biến site WordPress sẵn có thành cửa hàng bằng plugin Shopify: sản phẩm, collection, giỏ hàng, checkout. Hướng đi hợp lý nếu bạn chưa muốn rời WordPress.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Get new animations, interactive se",
+      "note": "online — Over 250 Horizon theme improvements",
+      "find": "Get new animations, interactive sections, faster performance, and more when using Horizon.",
+      "replace": "Horizon có thêm animation, section tương tác và hiệu năng tốt hơn. Đây là nền theme chúng tôi ưu tiên khi dựng mới.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Create products with up to 2048 va",
+      "note": "online — 2048 variants per product",
+      "find": "Create products with up to 2048 variants to manage and merchandise more diverse catalogs.",
+      "replace": "Tối đa 2048 variant mỗi sản phẩm. Catalog lớn cỡ này cần cấu trúc option cẩn thận từ đầu, nếu không sẽ rối rất nhanh.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Hide products from search results,",
+      "note": "online — Unlisted product status",
+      "find": "Hide products from search results, collections, and more, while keeping them accessible with a direct URL.",
+      "replace": "Ẩn sản phẩm khỏi tìm kiếm và collection nhưng vẫn vào được bằng link trực tiếp — tiện cho hàng bán riêng hoặc khi thử giá.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Duplicate collections and exclude ",
+      "note": "online — Collections improvements",
+      "find": "Duplicate collections and exclude products from smart collections using conditional logic.",
+      "replace": "Nhân bản collection và loại trừ sản phẩm khỏi smart collection bằng điều kiện logic.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Run targeted promotions by creatin",
+      "note": "online — Automatic discounts for eligible customers",
+      "find": "Run targeted promotions by creating automatic discounts that target specific customers, such as VIPs.",
+      "replace": "Giảm giá tự động cho đúng nhóm khách, ví dụ khách VIP, không cần phát mã.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Set up compare-at prices directly ",
+      "note": "online — Compare-at prices in catalogs",
+      "find": "Set up compare-at prices directly in your admin without CSV imports or APIs.",
+      "replace": "Đặt giá so sánh ngay trong admin, không cần import CSV hay gọi API.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Display prices by weight, volume, ",
+      "note": "online — Unit pricing for all",
+      "find": "Display prices by weight, volume, length, or quantity in metric, imperial, or counts, now available globally.",
+      "replace": "Hiển thị giá theo khối lượng, thể tích, chiều dài hoặc số lượng. Đã mở toàn cầu, dùng được cho hàng cân đo.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Spin up a Shopify store using Lova",
+      "note": "online — Vibe code with Lovable",
+      "find": "Spin up a Shopify store using Lovable that includes products, inventory, analytics, checkout, and more.",
+      "replace": "Dựng nhanh một store bằng Lovable để thử ý tưởng. Tốt cho bản nháp; lên production vẫn cần dọn lại code và đo hiệu năng.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Get suggestions for unique and ava",
+      "note": "online — AI-powered domain discovery",
+      "find": "Get suggestions for unique and available domain names from AI. English only.",
+      "replace": "AI gợi ý tên miền còn trống. Hiện chỉ hỗ trợ tiếng Anh.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Find a theme with improved search,",
+      "note": "online — Improved theme discovery",
+      "find": "Find a theme with improved search, more precise industry filters, and templates with less manual setup.",
+      "replace": "Tìm theme bằng bộ lọc theo ngành chính xác hơn, template cần ít thiết lập tay hơn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Describe what you want to sell and",
+      "note": "online — AI-generated theme before signup",
+      "find": "Describe what you want to sell and AI will generate a custom store, even without a Shopify account.",
+      "replace": "Mô tả mặt hàng, AI sinh sẵn một store để xem trước, chưa cần tài khoản Shopify.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Let recognized Shop users sign in ",
+      "note": "online — Faster customer login with Shop",
+      "find": "Let recognized Shop users sign in to any Shopify store with one tap.",
+      "replace": "Người đã dùng Shop đăng nhập vào store bằng một lần bấm.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Let customers sign in to your stor",
+      "note": "online — Customer sign-in with social accounts",
+      "find": "Let customers sign in to your store with Google or Facebook.",
+      "replace": "Cho khách đăng nhập bằng Google hoặc Facebook.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Allow customers to change their em",
+      "note": "online — Customers can edit their email addresses",
+      "find": "Allow customers to change their email addresses themselves in their account using a one-time passcode verification.",
+      "replace": "Khách tự đổi email trong tài khoản, xác thực bằng mã một lần. Giảm được kha khá ticket cho support.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Change the text on your customer s",
+      "note": "online — Customizable sign-in copy",
+      "find": "Change the text on your customer sign-in and one-time-passcode pages in the theme content editor.",
+      "replace": "Sửa chữ trên trang đăng nhập và trang nhập mã OTP ngay trong theme content editor.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Receive items from unspecified loc",
+      "note": "operations — (untitled card)",
+      "find": "Receive items from unspecified locations, edit shipments in transit, and accurately handle more real-world inventory scenarios.",
+      "replace": "Nhận hàng từ kho chưa xác định, sửa lô đang vận chuyển — xử lý được các tình huống tồn kho ngoài sách vở.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Sell in person instantly with quic",
+      "note": "operations — (untitled card)",
+      "find": "Sell in person instantly with quick sale and accept payments with Tap to Pay or payment links.",
+      "replace": "Bán tại quầy ngay bằng quick sale, nhận tiền qua Tap to Pay hoặc link thanh toán.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Monitor your store from your wrist",
+      "note": "operations — (untitled card)",
+      "find": "Monitor your store from your wrist with quick access to key metrics and customizable widgets.",
+      "replace": "Theo dõi chỉ số chính ngay trên Apple Watch với widget tuỳ chỉnh.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Auto-generate dispute summaries th",
+      "note": "operations — AI-enhanced chargeback management",
+      "find": "Auto-generate dispute summaries that include key factors like delivery tracking and your policies.",
+      "replace": "Tự sinh bản tóm tắt tranh chấp kèm tracking giao hàng và chính sách của bạn. Thắng chargeback phụ thuộc phần lớn vào việc chính sách có được viết rõ từ trước.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Set up passkeys to access your sto",
+      "note": "operations — Password-free login",
+      "find": "Set up passkeys to access your store securely with your fingerprint, face, or PIN.",
+      "replace": "Đăng nhập bằng passkey: vân tay, khuôn mặt hoặc PIN, không cần mật khẩu.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:View data as a heatmap across two ",
+      "note": "operations — Heatmaps in analytics",
+      "find": "View data as a heatmap across two variables, such as sales by hour and day of the week to spot your highest selling time.",
+      "replace": "Xem dữ liệu dạng heatmap theo hai biến, ví dụ doanh thu theo giờ và theo ngày trong tuần, để tìm khung giờ bán tốt nhất.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Get a flexible view of reports by ",
+      "note": "operations — Customizable top items in analytics",
+      "find": "Get a flexible view of reports by configuring the number of items displayed in visualizations, no longer limited to five.",
+      "replace": "Tự chọn số dòng hiển thị trong biểu đồ, không còn bị giới hạn ở 5 mục.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Exclude bot traffic for more accur",
+      "note": "operations — Bot filtering in analytics",
+      "find": "Exclude bot traffic for more accurate conversion rates and cleaner data.",
+      "replace": "Loại traffic bot khỏi báo cáo để tỷ lệ chuyển đổi phản ánh đúng người thật. Đây là việc nên làm trước khi tin bất kỳ con số nào.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Access full inventory adjustment h",
+      "note": "operations — Comprehensive inventory history",
+      "find": "Access full inventory adjustment history with the removal of the 180-day cap.",
+      "replace": "Xem toàn bộ lịch sử điều chỉnh tồn kho, đã bỏ giới hạn 180 ngày.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Monitor flash sales and product dr",
+      "note": "operations — Precise date and time controls for analytics",
+      "find": "Monitor flash sales and product drops with filters that show data down to the minute.",
+      "replace": "Lọc dữ liệu tới từng phút để soi flash sale và các đợt drop hàng.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Run flash sales without oversellin",
+      "note": "operations — Flash sales with multi-location inventory",
+      "find": "Run flash sales without overselling using inventory from multiple locations.",
+      "replace": "Chạy flash sale dùng tồn kho từ nhiều kho mà không bán vượt hàng.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:See organization-wide performance ",
+      "note": "operations — Single-view analytics for multiple stores",
+      "find": "See organization-wide performance in one view, then filter by store and compare metrics. Exclusive to Plus.",
+      "replace": "Xem hiệu suất toàn tổ chức trong một màn hình, lọc và so sánh theo từng store. Chỉ có ở bản Plus.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Filter orders by custom metafields",
+      "note": "operations — More order filtering capabilities",
+      "find": "Filter orders by custom metafields, total value, and weight for smarter fulfillment workflows in admin.",
+      "replace": "Lọc đơn theo metafield tuỳ chỉnh, giá trị và khối lượng để chia luồng xử lý đơn hợp lý hơn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Duties, taxes, and totals recalcul",
+      "note": "operations — Edit unfulfilled orders with duties",
+      "find": "Duties, taxes, and totals recalculate automatically when making changes to unfulfilled orders.",
+      "replace": "Sửa đơn chưa fulfill thì thuế, phí và tổng tiền tự tính lại.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Prevent accidental overrides when ",
+      "note": "operations — Smarter safeguards for inventory updates",
+      "find": "Prevent accidental overrides when you save bulk edits with color-coded changes, a warning, and a confirmation step.",
+      "replace": "Cảnh báo và bước xác nhận khi lưu sửa hàng loạt, kèm màu đánh dấu thay đổi, chặn ghi đè nhầm số tồn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Issue refunds by applying discount",
+      "note": "operations — Discounts on fulfilled items",
+      "find": "Issue refunds by applying discounts to fulfilled products for accurate taxes and reporting.",
+      "replace": "Hoàn tiền bằng cách áp giảm giá lên hàng đã fulfill để thuế và báo cáo khớp nhau.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Notify customers when store credit",
+      "note": "operations — Store credit email notifications",
+      "find": "Notify customers when store credit has been issued with a customizable email.",
+      "replace": "Gửi email tuỳ chỉnh thông báo cho khách khi được cấp store credit.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:operations:Sell internationally with instant ",
+      "note": "operations — Enhanced Managed Markets",
+      "find": "Sell internationally with instant compliance checks, faster payouts, and full Harmonized System code control. US only.",
+      "replace": "Bán quốc tế với kiểm tra tuân thủ tức thời, payout nhanh hơn và toàn quyền quản mã HS. Hiện chỉ ở Mỹ.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:b2b:Send a separate payment request fo",
+      "note": "b2b — (untitled card)",
+      "find": "Send a separate payment request for each shipment of a multi-shipment order. Exclusive to Plus.",
+      "replace": "Gửi yêu cầu thanh toán riêng cho từng lô của đơn giao nhiều lần. Chỉ có ở bản Plus.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:b2b:Issue store credit to company loca",
+      "note": "b2b — Store credit for B2B",
+      "find": "Issue store credit to company locations from their location profile or when refunding orders.",
+      "replace": "Cấp store credit cho từng địa điểm của công ty, từ profile hoặc khi hoàn đơn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:b2b:Let B2B customers select pick up a",
+      "note": "b2b — Pickup in store for B2B",
+      "find": "Let B2B customers select pick up as a delivery option at checkout.",
+      "replace": "Cho khách B2B chọn nhận tại cửa hàng ở bước checkout.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:b2b:Use third-party or custom apps pow",
+      "note": "b2b — Dynamic payment terms and deposits",
+      "find": "Use third-party or custom apps powered by Shopify Functions to set dynamic payment terms and deposit requirements. Exclusive to Plus.",
+      "replace": "Đặt điều khoản thanh toán và mức đặt cọc động bằng app chạy trên Shopify Functions. Đây đúng là loại việc chúng tôi viết riêng theo chính sách bán buôn của bạn. Chỉ có ở bản Plus.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:b2b:Set dynamic rules to determine whi",
+      "note": "b2b — Create rules for order review",
+      "find": "Set dynamic rules to determine which orders need review based on conditions like order values and products, using apps powered by Shopify Functions. Exclusive to Plus.",
+      "replace": "Đặt quy tắc động để quyết định đơn nào cần duyệt, theo giá trị đơn hoặc theo sản phẩm. Chỉ có ở bản Plus.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:b2b:Offer quote requests, custom buyer",
+      "note": "b2b — New B2B-compatible apps",
+      "find": "Offer quote requests, custom buyer roles, shopping lists, and more using 11 apps compatible with B2B.",
+      "replace": "11 app đã hỗ trợ B2B: yêu cầu báo giá, phân quyền người mua, danh sách mua hàng và hơn nữa.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:b2b:Sync companies, orders, and paymen",
+      "note": "b2b — ERP systems integration",
+      "find": "Sync companies, orders, and payment terms to NetSuite, BrightPearl, Fulfil, Sage, or Acumatica using pre-built integrations by Patchworks, Fulfil, and Kensium.",
+      "replace": "Đồng bộ công ty, đơn và điều khoản thanh toán sang NetSuite, BrightPearl, Fulfil, Sage hoặc Acumatica qua tích hợp có sẵn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:b2b:All Horizon themes support built-i",
+      "note": "b2b — Horizon themes work with B2B",
+      "find": "All Horizon themes support built-in volume pricing, quantity rules, and quick order lists.",
+      "replace": "Mọi theme Horizon đã có sẵn giá theo số lượng, quy tắc số lượng và quick order list.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:marketing:Automatically get promoted on coll",
+      "note": "marketing — (untitled card)",
+      "find": "Automatically get promoted on collections, search, and post-purchase pages on other relevant Shopify stores. US only.",
+      "replace": "Sản phẩm được tự động đề xuất trên collection, tìm kiếm và trang sau mua của các store Shopify liên quan. Hiện chỉ ở Mỹ.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:marketing:Browse, search, and filter through",
+      "note": "marketing — (untitled card)",
+      "find": "Browse, search, and filter through a refreshed customer segmentation template library.",
+      "replace": "Thư viện template phân khúc khách đã được làm lại, dễ tìm và lọc hơn.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:marketing:Launch a single Shop Campaign for ",
+      "note": "marketing — Target all audiences in one Shop Campaign",
+      "find": "Launch a single Shop Campaign for all audiences rather than choosing between acquisition or win back. US and Canada only.",
+      "replace": "Một Shop Campaign chạy cho mọi nhóm khách, không phải chọn giữa tìm khách mới hay kéo khách cũ. Hiện ở Mỹ và Canada.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:marketing:Get promoted in new ad channels, i",
+      "note": "marketing — Shop Campaigns on more channels",
+      "find": "Get promoted in new ad channels, including X, Snapchat, and Bing, and only pay when customers convert. US only.",
+      "replace": "Xuất hiện thêm trên X, Snapchat và Bing, chỉ trả tiền khi khách thực sự mua. Hiện chỉ ở Mỹ.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:marketing:Create customer segments based on ",
+      "note": "marketing — Segment customers with product categories",
+      "find": "Create customer segments based on product categories that they have viewed or purchased.",
+      "replace": "Phân khúc khách theo nhóm sản phẩm họ đã xem hoặc đã mua.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:marketing:Run web pixels and first-party ana",
+      "note": "marketing — Web pixels on customer accounts",
+      "find": "Run web pixels and first-party analytics on customer account pages to get more visibility into post-purchase behavior.",
+      "replace": "Chạy web pixel và analytics first-party trên trang tài khoản khách để thấy hành vi sau mua.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:shipping:Set a default package for each var",
+      "note": "shipping — (untitled card)",
+      "find": "Set a default package for each variant to get more accurate shipping rates at checkout and buy labels faster for single‑item orders.",
+      "replace": "Gán loại thùng mặc định cho từng variant để giá vận chuyển ở checkout sát thực tế và mua nhãn nhanh hơn với đơn một sản phẩm.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:shipping:Choose the sender name that appear",
+      "note": "shipping — Custom sender name on labels",
+      "find": "Choose the sender name that appears on your shipping labels to protect privacy, satisfy legal requirements, and keep gifts discreet.",
+      "replace": "Chọn tên người gửi in trên nhãn — để bảo mật, đáp ứng yêu cầu pháp lý, hoặc giữ bí mật khi gửi quà.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:shipping:Buy DHL Express Delivered Duty Pai",
+      "note": "shipping — Expanded US and Canada cross-border labels",
+      "find": "Buy DHL Express Delivered Duty Paid (DDP) or Delivered Duty Unpaid (DDU) and Canada Post DDP labels in Canada, and buy DHL eCommerce DDU labels in the US—directly in the admin.",
+      "replace": "Mua nhãn DHL Express DDP/DDU và Canada Post DDP tại Canada, nhãn DHL eCommerce DDU tại Mỹ, ngay trong admin.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:shipping:Buy shipping labels directly in th",
+      "note": "shipping — More global shipping carriers",
+      "find": "Buy shipping labels directly in the admin for Royal Mail in the UK, Australia Post in Australia, and DHL Express in Canada.",
+      "replace": "Mua nhãn trực tiếp trong admin cho Royal Mail (UK), Australia Post (Úc) và DHL Express (Canada).",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:shipping:Mark orders as in progress, add ti",
+      "note": "shipping — In-progress fulfillment status",
+      "find": "Mark orders as in progress, add timeline notes, run bulk actions, and manage statuses in a redesigned fulfillment card.",
+      "replace": "Đánh dấu đơn đang xử lý, ghi chú timeline và chạy thao tác hàng loạt trong thẻ fulfillment đã thiết kế lại.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:checkout:Customize your checkout and custom",
+      "note": "checkout — (untitled card)",
+      "find": "Customize your checkout and customer account pages for different countries and B2B buyers directly in the editor.",
+      "replace": "Tuỳ biến trang checkout và trang tài khoản riêng theo từng quốc gia và theo khách B2B, ngay trong editor.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:finance:Compare actual and estimated costs",
+      "note": "finance — Track international profit margins",
+      "find": "Compare actual and estimated costs by market, including duties, taxes, and shipping adjustments.",
+      "replace": "So sánh chi phí thực tế với chi phí dự kiến theo từng thị trường, gồm thuế, phí nhập khẩu và điều chỉnh vận chuyển.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:finance:Earn automatic credits on every or",
+      "note": "finance — Credits on USDC transactions",
+      "find": "Earn automatic credits on every order paid with USDC, which appear in your order timeline and payouts—paid in fiat or USDC on settlement. US, Mexico, and Hong Kong only.",
+      "replace": "Nhận credit tự động cho mỗi đơn thanh toán bằng USDC, hiện trong timeline đơn và payout. Hiện ở Mỹ, Mexico và Hong Kong.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:finance:Earn 3% cashback on up to $250,000",
+      "note": "finance — Increased Shopify Credit rewards cap",
+      "find": "Earn 3% cashback on up to $250,000 in eligible purchases on your top spend category annually, and 1% after with Shopify Credit. Earn 1% for all other eligible categories. US only.",
+      "replace": "Hoàn 3% cho tới 250.000 USD chi tiêu ở nhóm chi nhiều nhất mỗi năm, sau đó 1%; các nhóm khác 1%. Hiện chỉ ở Mỹ.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Create a task tracker for my whole",
+      "note": "sidekick — (untitled card)",
+      "find": "Create a task tracker for my whole team.",
+      "replace": "Tạo bảng theo dõi công việc cho cả team.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:sidekick:Sidekick can easily create B2B",
+      "note": "sidekick — Quick company creation",
+      "find": "Sidekick can easily create B2B companies.",
+      "replace": "Tạo nhanh company B2B bằng câu lệnh, không phải điền form từng bước.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:online:Customers can sign into their acco",
+      "note": "online — AI-generated theme before signup",
+      "find": "Customers can sign into their account without leaving the browser using Apple's iOS 26 passcode autofill.",
+      "replace": "Khách đăng nhập bằng passcode autofill của iOS 26, không phải rời trình duyệt.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:checkout:The last four digits of a customer",
+      "note": "checkout — (untitled card)",
+      "find": "The last four digits of a customer’s saved card will appear on their Shop Pay button.",
+      "replace": "Bốn số cuối của thẻ đã lưu hiện ngay trên nút Shop Pay.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:checkout:Offer Shop Pay's Buy Now, Pay Late",
+      "note": "checkout — Shop Pay Installments in the UK",
+      "find": "Offer Shop Pay's Buy Now, Pay Later in the UK with terms up to 24 months.",
+      "replace": "Mở trả góp Shop Pay tại UK với kỳ hạn tới 24 tháng.",
+      "min_matches": 1
+    },
+    {
+      "id": "feature:checkout:Accept cross-border payments in Fr",
+      "note": "checkout — More payment methods in France",
+      "find": "Accept cross-border payments in France from Bancontact in Belgium, iDEAL in the Netherlands, Twint in Switzerland, Blik and Przelewy24 in Poland, MobilePay in Denmark, and EPS in Austria.",
+      "replace": "Nhận thanh toán xuyên biên giới tại Pháp từ Bancontact (Bỉ), iDEAL (Hà Lan), Twint (Thuỵ Sĩ), Blik và Przelewy24 (Ba Lan), MobilePay (Đan Mạch), EPS (Áo).",
+      "min_matches": 1
+    },
+    {
+      "id": "legal:newsletter-consent-lead",
+      "scope": "both",
+      "note": "Consent line named Shopify as the sender on a Hoahwa page.",
+      "find": "By signing up, you agree to receive marketing emails from Shopify. Personal data will be used in accordance with ",
+      "replace": "Khi đăng ký, bạn đồng ý nhận email từ Hoahwa. Dữ liệu cá nhân được xử lý theo ",
+      "min_matches": 1
+    }
+  ]
+}

@@ -27,7 +27,39 @@ ICON = "/logo-hoahwa/hoahwa_logo_board-07.png"
 SHORTCUT = "/logo-hoahwa/hoahwa_logo_board-03.png"
 EXCLUDED_COLLECTION_HANDLES = ("retail", "shop-app")
 EXPERIENCE_STYLE_MARKER = "hoahwa-winter2026-customizations"
+HERO_FULLWIDTH_STYLE_MARKER = "hoahwa-hero-fullwidth-desktop"
+HERO_FULLWIDTH_CSS_MARKER = "/* hoahwa-hero-fullwidth-desktop */"
 HERO_BACKGROUND_NODE = "Vietfolk_Hero_Background"
+HERO_FULLWIDTH_IMAGE = (
+    "/assets/vietfolk-winter2026/downloaded/images/"
+    "hoahwa-hero-vietfolk-fullwidth-desktop-v2.webp"
+)
+SIDEKICK_DEFAULT_CARD_IMAGE = (
+    "/assets/vietfolk-winter2026/downloaded/images/"
+    "Rectangle_240654805-4bf7cd4182.png"
+)
+SIDEKICK_CARD_IMAGES = {
+    "sidekick-app-reorder-products": (
+        "/assets/vietfolk-winter2026/downloaded/images/"
+        "hoahwa-sidekick-replenishment-v1.webp"
+    ),
+    "sidekick-app-team-tasks": (
+        "/assets/vietfolk-winter2026/downloaded/images/"
+        "hoahwa-sidekick-team-tasks-v1.webp"
+    ),
+    "sidekick-app-returns-checker": (
+        "/assets/vietfolk-winter2026/downloaded/images/"
+        "hoahwa-sidekick-returns-v1.webp"
+    ),
+    "sidekick-app-event-prep": (
+        "/assets/vietfolk-winter2026/downloaded/images/"
+        "hoahwa-sidekick-event-discounts-v1.webp"
+    ),
+    "sidekick-app-b2b-company-importer": (
+        "/assets/vietfolk-winter2026/downloaded/images/"
+        "hoahwa-sidekick-b2b-import-v1.webp"
+    ),
+}
 
 
 def patch_legal_urls(text: str) -> tuple[str, int]:
@@ -180,22 +212,57 @@ def patch_seo_and_favicon(html: str) -> tuple[str, int]:
 
 def patch_experience_html(html: str) -> tuple[str, int]:
     """Prevent excluded Shopify collections from flashing before hydration."""
-    if EXPERIENCE_STYLE_MARKER in html:
-        return html, 0
+    before = html
 
-    excluded_selectors = ",".join(
-        [f'section#{handle}' for handle in EXCLUDED_COLLECTION_HANDLES]
-        + [
-            f'a[href$="#{handle}"]'
-            for handle in EXCLUDED_COLLECTION_HANDLES
-        ]
+    if EXPERIENCE_STYLE_MARKER not in html:
+        excluded_selectors = ",".join(
+            [f'section#{handle}' for handle in EXCLUDED_COLLECTION_HANDLES]
+            + [
+                f'a[href$="#{handle}"]'
+                for handle in EXCLUDED_COLLECTION_HANDLES
+            ]
+        )
+        style = (
+            f'<style id="{EXPERIENCE_STYLE_MARKER}">'
+            f"{excluded_selectors}{{display:none!important}}"
+            "</style>"
+        )
+        html = html.replace("</head>", style + "</head>", 1)
+
+    hero_style = (
+        f'<style id="{HERO_FULLWIDTH_STYLE_MARKER}">'
+        "@media (min-width:940px){"
+        ".main-wrapper::before{content:\"\";position:fixed;inset:0;z-index:1;"
+        "pointer-events:none;background-color:#080704;"
+        f"background-image:url('{HERO_FULLWIDTH_IMAGE}');"
+        "background-position:center center;background-repeat:no-repeat;"
+        "background-size:cover;opacity:1;visibility:visible;"
+        "transition:opacity .55s ease,visibility .55s ease}"
+        "body:has([data-section-name=\"side-and-lines\"][data-scrolled=\"true\"]) "
+        ".main-wrapper::before{opacity:0;visibility:hidden}"
+        "}</style>"
     )
-    style = (
-        f'<style id="{EXPERIENCE_STYLE_MARKER}">'
-        f"{excluded_selectors}{{display:none!important}}"
-        "</style>"
+    hero_preload = (
+        f'<link rel="preload" as="image" href="{HERO_FULLWIDTH_IMAGE}" '
+        'media="(min-width:940px)">'
     )
-    return html.replace("</head>", style + "</head>", 1), 1
+    hero_style_pattern = re.compile(
+        rf'<style id="{re.escape(HERO_FULLWIDTH_STYLE_MARKER)}">[\s\S]*?</style>'
+    )
+    if hero_style_pattern.search(html):
+        html = hero_style_pattern.sub(hero_style, html, count=1)
+    else:
+        html = html.replace("</head>", hero_preload + hero_style + "</head>", 1)
+
+    for card_id, image_url in SIDEKICK_CARD_IMAGES.items():
+        pattern = re.compile(
+            rf'(<button\b[^>]*data-component-extra-cardid="{re.escape(card_id)}"'
+            rf'[\s\S]*?<img src="){re.escape(SIDEKICK_DEFAULT_CARD_IMAGE)}'
+            rf'("[^>]*sidekick-card-bg[^>]*>)'
+        )
+        html = pattern.sub(rf"\g<1>{image_url}\g<2>", html)
+
+    return html, (0 if html == before else 1)
 
 
 def patch_experience_bundle(text: str) -> tuple[str, int]:
@@ -209,6 +276,43 @@ def patch_experience_bundle(text: str) -> tuple[str, int]:
         '(a=t.backgroundAssets)==null?void 0:a.filter(i=>!i.url?.endsWith(".ktx2")).map((i,m)=>',
     )
 
+    card_image_map = json.dumps(
+        SIDEKICK_CARD_IMAGES, ensure_ascii=False, separators=(",", ":")
+    )
+    card_component_anchor = (
+        'function Ct({description:e="",active:t=!0,triggerPlay:n=!1}){'
+    )
+    if card_component_anchor in text:
+        text = text.replace(
+            card_component_anchor,
+            f"const hoahwaSidekickCardImages={card_image_map};"
+            'function Ct({description:e="",active:t=!0,triggerPlay:n=!1,'
+            "backgroundImage:hoahwaBackgroundImage}){",
+            1,
+        )
+        text = text.replace(
+            f'src:"{SIDEKICK_DEFAULT_CARD_IMAGE}",alt:"",loading:"lazy",'
+            'className:"rounded-[inherit] max-w-none w-[130%] absolute top-1/2 '
+            'left-1/2 -translate-x-1/2 -translate-y-1/2 sidekick-card-bg"',
+            f'src:hoahwaBackgroundImage??"{SIDEKICK_DEFAULT_CARD_IMAGE}",alt:"",'
+            'loading:"lazy",className:"rounded-[inherit] max-w-none w-[130%] '
+            'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 '
+            'sidekick-card-bg"',
+            1,
+        )
+        text = text.replace(
+            "description:c.description,triggerPlay:b",
+            "description:c.description,triggerPlay:b,"
+            "backgroundImage:hoahwaSidekickCardImages[c.id]",
+            1,
+        )
+        text = text.replace(
+            "description:u.description,active:d===4",
+            "description:u.description,active:d===4,"
+            "backgroundImage:hoahwaSidekickCardImages[u.id]",
+            1,
+        )
+
     # Keep the source payload intact, but filter unsupported collections before
     # navigation, DOM sections and WebGL scenes are constructed. Re-indexing is
     # then handled naturally by the existing map calls.
@@ -217,8 +321,11 @@ def patch_experience_bundle(text: str) -> tuple[str, int]:
         filtered_state = (
             "showDebugInfo:m}=we(),"
             'hoahwaCollections=(t??[]).filter(v=>v.handle!=="retail"&&v.handle!=="shop-app"),'
-            "hoahwaNavItems=(n??[]).filter(v=>![\"retail\",\"shop-app\"]"
-            ".some(C=>v.url?.endsWith(`#${C}`))),f="
+            # Nav items carry `handle` (GlobalNavigationContainer renders
+            # href={`#${item.handle}`}), not `url` — filtering on `url`
+            # silently keeps every item and leaves dead anchors in the
+            # mobile menu once the excluded sections stop rendering.
+            'hoahwaNavItems=(n??[]).filter(v=>v.handle!=="retail"&&v.handle!=="shop-app"),f='
         )
         text = text.replace(route_anchor, filtered_state, 1)
         text = text.replace(
@@ -242,6 +349,29 @@ def patch_experience_bundle(text: str) -> tuple[str, int]:
             1,
         )
 
+    return text, (0 if text == before else 1)
+
+
+def patch_experience_css(text: str) -> tuple[str, int]:
+    """Install the desktop hero artwork in the persistent compiled stylesheet."""
+    before = text
+    custom_css = (
+        HERO_FULLWIDTH_CSS_MARKER
+        + "@media (min-width:940px){"
+        + ".main-wrapper::before{content:\"\";position:fixed;inset:0;z-index:1;"
+        + "pointer-events:none;background-color:#080704;"
+        + f"background-image:url('{HERO_FULLWIDTH_IMAGE}');"
+        + "background-position:center center;background-repeat:no-repeat;"
+        + "background-size:cover;opacity:1;visibility:visible;"
+        + "transition:opacity .55s ease,visibility .55s ease}"
+        + "body:has([data-section-name=\"side-and-lines\"]"
+        + "[data-scrolled=\"true\"]) .main-wrapper::before{"
+        + "opacity:0;visibility:hidden}}"
+    )
+    if HERO_FULLWIDTH_CSS_MARKER in text:
+        text = text.split(HERO_FULLWIDTH_CSS_MARKER, 1)[0] + custom_css
+    else:
+        text += custom_css
     return text, (0 if text == before else 1)
 
 
@@ -311,6 +441,8 @@ def process_file(path: Path) -> dict:
         text, experience = patch_experience_html(text)
     if path.suffix == ".js":
         text, experience = patch_experience_bundle(text)
+    if path.suffix == ".css":
+        text, experience = patch_experience_css(text)
     changed = text != raw
     if changed:
         path.write_text(text, encoding="utf-8")
@@ -333,6 +465,8 @@ def main() -> None:
         "**/GlobalNavigationContainer-BwYHx-2f-*.js",
         "**/HeroScene-BaRW1AZ9.js",
         "**/HeroScene-BaRW1AZ9-*.js",
+        "**/tailwind-G-N6aznT.css",
+        "**/tailwind-G-N6aznT-*.css",
     ]:
         targets.extend(PUBLIC.glob(f"assets/vietfolk-winter2026/{pattern}"))
         targets.extend(

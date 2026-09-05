@@ -6,13 +6,13 @@ export type InsightPostListItem = Pick<
   "slug" | "title" | "date" | "tags"
 >;
 
+/** Newest first. The listing renders whatever order it receives, so sorting has
+ * to happen here — relying on the order posts happen to sit in the array buried
+ * the most recent article at the bottom of the page. */
 export function getAllInsightPosts(): InsightPostListItem[] {
-  return insightsDatabase.posts.map(({ slug, title, date, tags }) => ({
-    slug,
-    title,
-    date,
-    tags,
-  }));
+  return insightsDatabase.posts
+    .map(({ slug, title, date, tags }) => ({ slug, title, date, tags }))
+    .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 }
 
 export function getAllInsightSlugs(): string[] {

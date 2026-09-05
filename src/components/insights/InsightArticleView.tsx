@@ -90,6 +90,100 @@ export function InsightArticleView({ post, related }: InsightArticleViewProps) {
               );
             }
 
+            if (block.type === "video") {
+              return (
+                <Reveal key={`${block.type}-${index}`} variants={fadeUp}>
+                  <figure className="mt-10">
+                    <div className="relative aspect-video overflow-hidden rounded-sm border border-[var(--wiro-cod-gray)]/20 bg-[var(--wiro-cod-gray)]/5">
+                      {block.youtubeId ? (
+                        <iframe
+                          src={`https://www.youtube-nocookie.com/embed/${block.youtubeId}`}
+                          title={block.caption}
+                          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          loading="lazy"
+                          className="absolute inset-0 h-full w-full"
+                        />
+                      ) : block.src ? (
+                        <video
+                          controls
+                          preload="metadata"
+                          poster={block.poster}
+                          className="absolute inset-0 h-full w-full object-cover"
+                        >
+                          <source src={block.src} />
+                        </video>
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center px-8 text-center">
+                          <span className="text-sm tracking-[-0.03em] text-[var(--wiro-cod-gray)]/45">
+                            Video đang được dựng — chỗ này sẽ hiện player khi
+                            bản ghi hoàn tất.
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <figcaption className="mt-3 text-sm tracking-[-0.03em] text-[var(--wiro-mauve)]">
+                      {block.caption}
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              );
+            }
+
+            if (block.type === "phases") {
+              return (
+                <Reveal key={`${block.type}-${index}`} variants={fadeUp}>
+                  <ol className="mt-8 space-y-6">
+                    {block.phases.map((phase) => (
+                      <li
+                        key={phase.window}
+                        className="border-t border-[var(--wiro-cod-gray)]/20 pt-5"
+                      >
+                        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                          <span className="text-sm tracking-[-0.03em] text-[var(--wiro-mauve)]">
+                            {phase.window}
+                          </span>
+                          <h3 className="text-[length:var(--wiro-h5,22px)] tracking-[-0.04em]">
+                            {phase.title}
+                          </h3>
+                        </div>
+                        <ul className="mt-3 space-y-2">
+                          {phase.items.map((item) => (
+                            <li
+                              key={item}
+                              className="text-base leading-6 tracking-[-0.03em] text-[var(--wiro-cod-gray)]/75"
+                            >
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    ))}
+                  </ol>
+                </Reveal>
+              );
+            }
+
+            if (block.type === "cta") {
+              return (
+                <Reveal key={`${block.type}-${index}`} variants={fadeUp}>
+                  <div className="mt-10 border border-[var(--wiro-cod-gray)]/20 p-6">
+                    <Link
+                      href={block.href}
+                      className="text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] underline decoration-[var(--wiro-mauve)] underline-offset-4 transition-opacity hover:opacity-70"
+                    >
+                      {block.label}
+                    </Link>
+                    {block.note ? (
+                      <p className="mt-2 text-sm leading-5 tracking-[-0.03em] text-[var(--wiro-cod-gray)]/60">
+                        {block.note}
+                      </p>
+                    ) : null}
+                  </div>
+                </Reveal>
+              );
+            }
+
             return (
               <Reveal key={`${block.type}-${index}`} variants={fadeUp}>
                 <p className="mt-6 text-base leading-6 tracking-[-0.03em] text-[var(--wiro-cod-gray)]/75">

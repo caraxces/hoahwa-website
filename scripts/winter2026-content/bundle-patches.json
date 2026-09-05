@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "description": "Literal patches applied to the mirrored JS bundles. These cover strings the page builds at runtime, which the HTML payload does not contain.",
+  "entries": [
+    {
+      "id": "cta:book-a-build",
+      "note": "Primary CTA was Shopify's merchant signup. Point it at Hoahwa's booking page.",
+      "files": [
+        "**/constants-Dr1aQryP*.js"
+      ],
+      "find": "ka=\"https://admin.shopify.com/signup\"",
+      "replace": "ka=\"/book/\"",
+      "min_matches": 1
+    },
+    {
+      "id": "nav:shopify-com-button",
+      "note": "Nav button read 'Shopify.com' and opened shopify.com in a new tab. Make it Hoahwa's own home.",
+      "files": [
+        "**/GlobalNavigationContainer-BwYHx-2f*.js"
+      ],
+      "find": "href:`${te}/${e.localeShopifyDotCom?e.localeShopifyDotCom:\"\"}`,target:\"_blank\",children:\"Shopify.com\"",
+      "replace": "href:\"/\",target:\"_self\",children:\"hoahwa.com\"",
+      "min_matches": 1
+    },
+    {
+      "id": "nav:hide-all-editions-dropdown",
+      "note": "The dropdown lists Shopify's other editions. Hoahwa has one edition, and its baseUrl is shared with the nav button, so hiding the dropdown removes the shopify.com links without creating URLs that 404.",
+      "files": [
+        "**/GlobalNavigationContainer-BwYHx-2f*.js"
+      ],
+      "find": "hasAllEditionsDropdown:f=!0",
+      "replace": "hasAllEditionsDropdown:f=!1",
+      "min_matches": 1
+    },
+    {
+      "id": "links:no-new-tab-for-internal-cta",
+      "note": "The feature-card anchor hard-codes target=_blank. Now that these links point inside the site, hydration re-applies it and every feature link opens a tab — the markup-level cleanup cannot win against the render.",
+      "files": [
+        "**/(_locale).editions.winter2026-cWvCD4qi*.js",
+        "**/__locale_.editions.winter2026-cWvCD4qi*.js"
+      ],
+      "find": "return n?r.jsx(\"a\",{href:n,target:\"_blank\",rel:\"noreferrer\",className:\"list-title-link no-underline hover:underline\"",
+      "replace": "return n?r.jsx(\"a\",{href:n,...(String(n).startsWith(\"/\")?{}:{target:\"_blank\",rel:\"noreferrer\"}),className:\"list-title-link no-underline hover:underline\"",
+      "min_matches": 1
+    },
+    {
+      "id": "links:inline-link-same-tab",
+      "note": "Inline rich-text links copy target straight off the source attribute, so internal destinations inherit the _blank the mirror was captured with.",
+      "files": [
+        "**/(_locale).editions.winter2026-cWvCD4qi*.js",
+        "**/__locale_.editions.winter2026-cWvCD4qi*.js"
+      ],
+      "find": "const o=s.target?{target:s.target}:{}",
+      "replace": "const o=(s.target&&!String(s.href||\"\").startsWith(\"/\"))?{target:s.target}:{}",
+      "min_matches": 1
+    },
+    {
+      "id": "links:search-result-same-tab",
+      "note": "Search results opened a new tab because they used to point at other editions on shopify.com. There is one edition now and it is this page.",
+      "files": [
+        "**/GlobalNavigationContainer-BwYHx-2f*.js"
+      ],
+      "find": "target:f?\"_blank\":\"_self\",rel:f?\"noopener noreferrer\":\"\"",
+      "replace": "target:\"_self\",rel:\"\"",
+      "min_matches": 1
+    }
+  ]
+}

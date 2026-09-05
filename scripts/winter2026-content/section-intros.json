@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "description": "Hoahwa content overrides for the Vietfolk '26 (winter2026) mirrored edition page. Each entry is a literal string replacement applied to public/editions/winter2026/index.html. The same text appears in both the SSR markup and the serialized Remix payload, so one literal replace covers both; min_matches guards against a mapping that silently stops matching.",
+  "entries": [
+    {
+      "id": "section-intro:sidekick",
+      "note": "Section 'sidekick' intro — Shopify product voice → Hoahwa implementation voice",
+      "find": "The AI-powered Shopify expert who's just as obsessed with your business as you are.",
+      "replace": "Chúng tôi bật và huấn luyện Sidekick theo nghiệp vụ thật của bạn — quy tắc tồn kho, cách đọc số, giọng trả lời khách — để trợ lý AI hiểu đúng ngành hàng thay vì trả lời chung chung. Setup 1–2 ngày, không cần code.",
+      "min_matches": 1
+    },
+    {
+      "id": "section-intro:agentic",
+      "note": "Section 'agentic' intro — Shopify product voice → Hoahwa implementation voice",
+      "find": "Sell directly in AI chats with built-in tools that syndicate your products to every AI platform.",
+      "replace": "Hoahwa dựng agentic storefront để sản phẩm của bạn xuất hiện được trong hội thoại AI: product feed chuẩn, structured data đúng schema, và kiểm thử thực tế trên từng nền tảng. Khoảng 3–5 ngày, cần chỉnh theme và feed.",
+      "min_matches": 1
+    },
+    {
+      "id": "section-intro:online",
+      "note": "Section 'online' intro — Shopify product voice → Hoahwa implementation voice",
+      "find": "Validate store changes with A/B testing and an AI tool that simulates shopping behavior.",
+      "replace": "Chúng tôi thiết lập A/B testing native trên Shopify và đo bằng số thật, để mỗi thay đổi theme đều có bằng chứng trước khi đẩy lên toàn bộ traffic. Setup 2–3 ngày, cần theo dõi thêm 2 tuần để lấy số.",
+      "min_matches": 1
+    },
+    {
+      "id": "section-intro:marketing",
+      "note": "Section 'marketing' intro — Shopify product voice → Hoahwa implementation voice",
+      "find": "Grow your sales with a first-of-its-kind product network.",
+      "replace": "Hoahwa nối cửa hàng của bạn vào Shop Campaigns, email và SMS marketing — phân khúc khách theo hành vi thật thay vì gửi đại trà. Khoảng 3–5 ngày, cần dữ liệu khách hàng sẵn có.",
+      "min_matches": 1
+    },
+    {
+      "id": "section-intro:checkout",
+      "note": "Section 'checkout' intro — Shopify product voice → Hoahwa implementation voice",
+      "find": "Convert customers with personalized checkout experiences and more payment options.",
+      "replace": "Chúng tôi tùy biến checkout bằng Shopify Functions và mở thêm cổng thanh toán phù hợp thị trường bạn bán — bớt bước, bớt rơi đơn ở phút cuối. Khoảng 1–2 tuần vì cần viết Functions.",
+      "min_matches": 1
+    },
+    {
+      "id": "section-intro:operations",
+      "note": "Section 'operations' intro — Shopify product voice → Hoahwa implementation voice",
+      "find": "Improve everyday workflows with flexible inventory modeling and trend-spotting analytics.",
+      "replace": "Hoahwa dựng lại luồng vận hành: mô hình tồn kho nhiều kho, tự động hoá bằng Flow, và báo cáo đọc được để bạn thấy vấn đề trước khi nó thành tiền mất. Khoảng 1–2 tuần tuỳ số kho và số SKU.",
+      "min_matches": 1
+    },
+    {
+      "id": "section-intro:b2b",
+      "note": "Section 'b2b' intro — Shopify product voice → Hoahwa implementation voice",
+      "find": "Take your wholesale business global, discover new retailers, and get paid in more ways.",
+      "replace": "Chúng tôi triển khai B2B trên Shopify: catalog riêng theo từng công ty, payment terms, hạn mức và quy trình duyệt đơn — bán buôn không cần rời nền tảng. Khoảng 2–4 tuần vì thường phải cấu trúc lại catalog.",
+      "min_matches": 1
+    },
+    {
+      "id": "section-intro:finance",
+      "note": "Section 'finance' intro — Shopify product voice → Hoahwa implementation voice",
+      "find": "Modern financial tools designed for growing your business and getting that coin.",
+      "replace": "Hoahwa kết nối và đối soát dòng tiền trên Shopify: Payments, Balance, Capital và báo cáo lợi nhuận theo từng thị trường — số liệu khớp nhau để bạn ra quyết định. Khoảng 3–5 ngày, phần lớn là cấu hình và đối soát.",
+      "min_matches": 1
+    },
+    {
+      "id": "section-intro:shipping",
+      "note": "Section 'shipping' intro — Shopify product voice → Hoahwa implementation voice",
+      "find": "Ship confidently and cheetah-fast with more label, partner, and carrier options.",
+      "replace": "Chúng tôi cấu hình vận chuyển theo thực tế của bạn: hãng vận chuyển, nhãn cross-border, và trạng thái fulfillment minh bạch cho khách theo dõi. Khoảng 2–4 ngày tuỳ số hãng vận chuyển.",
+      "min_matches": 1
+    },
+    {
+      "id": "section-intro:developer",
+      "note": "Section 'developer' intro — Shopify product voice → Hoahwa implementation voice",
+      "find": "A completely new way to build for commerce with the power of AI.",
+      "replace": "Đây là phần Hoahwa làm mạnh nhất: theme Horizon, Hydrogen headless, Shopify Functions và app riêng — code sạch, đo được, bàn giao kèm tài liệu. Báo giá theo dự án sau khi audit.",
+      "min_matches": 1
+    }
+  ]
+}
