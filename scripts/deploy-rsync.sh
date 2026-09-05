@@ -78,27 +78,60 @@ if [[ ! -d out ]]; then
   exit 1
 fi
 
-SSH_CMD="sshpass -e ssh -p ${PORT} \
-  -o StrictHostKeyChecking=accept-new \
-  -o ConnectTimeout=30 \
-  -o ServerAliveInterval=15 \
-  -o ServerAliveCountMax=8 \
+# macOS ships openrsync, whose ssh child does not get a controlling terminal
+# from sshpass, so `-e "sshpass -e ssh …"` fails with "Permission denied" even
+# though the same command works when run directly. Instead we authenticate once
+# with sshpass over a ControlMaster connection and let rsync reuse that socket,
+# which needs no password at all. Also means one TCP/auth round trip per deploy
+# rather than one per file batch.
+# Kept short and in /tmp: macOS caps Unix socket paths at 104 bytes and ssh
+# appends a random suffix while the master is starting up. %C is a hash of
+# user/host/port, so it stays unique without spelling any of them out.
+CTL="/tmp/hwd-%C"
+
+SSH_OPTS=(
+  -p "${PORT}"
+  -o StrictHostKeyChecking=accept-new
+  -o ConnectTimeout=30
+  -o ServerAliveInterval=15
+  -o ServerAliveCountMax=8
+  -o ControlPath="${CTL}"
+)
+
+# Tear the shared connection down on exit, however we exit.
+cleanup() {
+  ssh "${SSH_OPTS[@]}" -O exit "${USER}@${HOST}" 2>/dev/null || true
+}
+trap cleanup EXIT
+
+echo "→ Opening shared SSH connection…"
+sshpass -e ssh "${SSH_OPTS[@]}" \
+  -o ControlMaster=yes \
+  -o ControlPersist=600 \
   -o PreferredAuthentications=password \
-  -o PubkeyAuthentication=no"
+  -o PubkeyAuthentication=no \
+  -fN "${USER}@${HOST}"
 
 echo "→ Testing SSH…"
-eval "$SSH_CMD ${USER}@${HOST} 'echo ssh-ok'"
+ssh "${SSH_OPTS[@]}" "${USER}@${HOST}" 'echo ssh-ok'
+
+# rsync rides the existing socket, so no credentials pass through it.
+SSH_CMD="ssh -p ${PORT} -o ControlPath=${CTL}"
 
 # Kept to options that both GNU rsync and macOS openrsync (protocol 29) accept:
 # --info=progress2, --append-verify, --no-perms and --omit-dir-times are all
 # GNU-only. Using -rlz rather than -a already means perms, times, owner and
 # group are not preserved, which is what shared hosting needs anyway.
 RSYNC_OPTS=(
-  -rlz        # recurse, keep symlinks, compress in transit
+  -rlzt       # recurse, keep symlinks, compress in transit, preserve mtimes
   --partial   # keep partial files so an interrupted run resumes
   --progress
   --stats
 )
+# -t matters more than it looks: rsync's quick check compares size AND mtime, so
+# without it every rebuilt file looks modified and the whole 867 MB tree ships
+# again on each deploy. The first run after adding it is still a full transfer;
+# every run after that moves only what actually changed.
 
 # Filenames containing ";" or "&" are Shopify CDN query strings that were saved
 # as literal files by the mirror script. They are duplicates of the plain file,
