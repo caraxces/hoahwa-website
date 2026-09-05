@@ -26,14 +26,19 @@ export function AboutPageView() {
                 {aboutHero.eyebrow}
               </p>
             </Reveal>
-            <Reveal clip variants={clipUp}>
-              <h1 className="mt-4 text-h1">{aboutHero.headline[0]}</h1>
-            </Reveal>
-            <Reveal clip variants={clipUp}>
-              <h1 className="text-h1 text-[var(--wiro-mauve)]">
+            <h1 className="mt-4 text-h1">
+              <Reveal as="span" clip variants={clipUp} className="block">
+                {aboutHero.headline[0]}
+              </Reveal>
+              <Reveal
+                as="span"
+                clip
+                variants={clipUp}
+                className="block text-[var(--wiro-mauve)]"
+              >
                 {aboutHero.headline[1]}
-              </h1>
-            </Reveal>
+              </Reveal>
+            </h1>
             <Reveal variants={fadeUp} className="mt-10 max-w-[760px]">
               <p className="text-[length:var(--wiro-body)] leading-[var(--wiro-body-lh)] tracking-[-0.03em] text-[var(--wiro-romance)]/75">
                 {aboutHero.lead}

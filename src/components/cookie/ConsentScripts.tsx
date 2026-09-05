@@ -68,11 +68,19 @@ function loadGtmOnce() {
 }
 
 /**
- * Consent Mode v2 gate: every signal defaults to denied, and analytics scripts
- * (gtag.js for GA4, plus the Google Tag Manager container) are only injected
- * after the visitor opts in to Analytics or Marketing. GA4 defaults to the
- * G-XW4CF8R5QJ property and GTM to the GTM-MXMNQ7CL container; override either
- * with NEXT_PUBLIC_GA4_ID / NEXT_PUBLIC_GTM_ID.
+ * Consent Mode v2, "advanced" implementation.
+ *
+ * gtag.js loads on every page view with every consent signal defaulted to
+ * denied. In that state Google sets no cookies and stores no identifiers, but
+ * it does receive cookieless pings, which is what lets GA4 model the traffic
+ * of visitors who never touch the banner. (The previous "load nothing until
+ * opt-in" gate meant those visitors were simply invisible — typically 40–70%
+ * of sessions.) Consent is upgraded via `consent update` the moment a visitor
+ * opts in, and the GTM container — which may carry non-Google tags that do not
+ * honour Consent Mode — is still only injected after an opt-in.
+ *
+ * GA4 defaults to the G-XW4CF8R5QJ property and GTM to the GTM-MXMNQ7CL
+ * container; override either with NEXT_PUBLIC_GA4_ID / NEXT_PUBLIC_GTM_ID.
  */
 export function ConsentScripts() {
   useEffect(() => {
@@ -85,12 +93,15 @@ export function ConsentScripts() {
       ad_personalization: "denied",
       functionality_storage: "denied",
       security_storage: "granted",
+      wait_for_update: 500,
     });
+    // url_passthrough keeps click/session context across pages without cookies.
+    gtag("set", "url_passthrough", true);
+    loadGaOnce();
 
     const apply = (choices: CookieConsentChoices) => {
       gtag("consent", "update", consentStates(choices));
       if (choices.analytics || (choices.marketing && !choices.doNotSell)) {
-        loadGaOnce();
         loadGtmOnce();
       }
     };

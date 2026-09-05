@@ -13,10 +13,10 @@
 const BASE = (process.argv[2] ?? "https://hoahwa.com").replace(/\/$/, "");
 
 const ROUTES = [
-  "/", "/about/", "/book/", "/contact/", "/careers/", "/process/",
+  "/", "/about/", "/book/", "/contact/", "/process/", "/video-editor/",
   "/audits/", "/growth-retainers/", "/shopify-theme-builds/",
   "/ai-search-optimization/", "/case-studies/", "/case-studies/hoahwa-com/",
-  "/case-studies/shopify-developer/", "/insights/", "/privacy/", "/terms/",
+  "/case-studies/shopify-developer/", "/case-studies/vietfolk-winter-2026/", "/insights/", "/privacy/", "/terms/",
   "/cookie-policy/", "/editions/winter2026/",
 ];
 

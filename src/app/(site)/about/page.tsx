@@ -5,7 +5,7 @@ import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 const PATH = "/about";
 
 export const metadata = pageMetadata({
-  title: "About Hoahwa",
+  title: "About — A Three-Person Shopify Studio",
   description:
     "A three-person web design and development studio. Meet the people who scope, design, and build your project — no account managers in between.",
   path: PATH,

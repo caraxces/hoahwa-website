@@ -31,7 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/book", priority: 0.9, changeFrequency: "monthly" },
     { path: "/about", priority: 0.7, changeFrequency: "monthly" },
     { path: "/process", priority: 0.7, changeFrequency: "monthly" },
-    { path: "/careers", priority: 0.5, changeFrequency: "monthly" },
     { path: "/case-studies", priority: 0.8, changeFrequency: "weekly" },
     {
       path: "/case-studies/shopify-developer",
@@ -44,10 +43,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
     },
     {
-      path: "/editions/winter2026",
-      priority: 0.85,
+      path: "/case-studies/vietfolk-winter-2026",
+      priority: 0.8,
       changeFrequency: "monthly",
     },
+    { path: "/video-editor", priority: 0.8, changeFrequency: "monthly" },
     { path: "/insights", priority: 0.8, changeFrequency: "weekly" },
     { path: "/contact", priority: 0.6, changeFrequency: "yearly" },
     { path: "/privacy", priority: 0.2, changeFrequency: "yearly" },

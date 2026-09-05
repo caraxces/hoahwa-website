@@ -5,7 +5,7 @@ import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 const PATH = "/contact";
 
 export const metadata = pageMetadata({
-  title: "Contact Hoahwa",
+  title: "Contact — Talk to the People Who Build Your Store",
   description: "Get in touch with Hoahwa about your eCommerce growth goals.",
   path: PATH,
 });

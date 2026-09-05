@@ -22,12 +22,19 @@ export function InsightsPageView() {
     >
       <PageContainer>
         <RevealGroup variants={staggerContainer(0.1, 0)} className="mb-16">
-          <Reveal clip variants={clipUp}>
-            <h1 className="text-h1 text-[var(--wiro-mauve)]">Read the latest</h1>
-          </Reveal>
-          <Reveal clip variants={clipUp}>
-            <h1 className="text-h1">eCom Insights</h1>
-          </Reveal>
+          <h1 className="text-h1">
+            <Reveal
+              as="span"
+              clip
+              variants={clipUp}
+              className="block text-[var(--wiro-mauve)]"
+            >
+              Read the latest
+            </Reveal>
+            <Reveal as="span" clip variants={clipUp} className="block">
+              eCom Insights
+            </Reveal>
+          </h1>
         </RevealGroup>
 
         <FilterBar

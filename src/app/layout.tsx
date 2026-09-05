@@ -38,9 +38,6 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
-  alternates: {
-    canonical: "/",
-  },
   icons: {
     icon: "/logo-hoahwa/hoahwa_logo_board-07.png",
     shortcut: "/logo-hoahwa/hoahwa_logo_board-03.png",

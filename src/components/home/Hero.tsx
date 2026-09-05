@@ -32,6 +32,12 @@ export function Hero() {
           </motion.div>
 
           <div className="relative w-full" data-node-id="1:451">
+            {/* The display headline below is split across animated blocks, so
+                the page's single semantic H1 lives here (visually hidden). */}
+            <h1 className="sr-only">
+              eCommerce Growth Specialists — Shopify web design &amp; development
+              studio
+            </h1>
             <Reveal clip variants={clipUp} className="block">
               <div className="text-h1 text-[var(--wiro-romance)]" data-node-id="1:454">
                 eCommerce

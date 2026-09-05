@@ -108,7 +108,6 @@ export const footerCompany = [
   { label: "Book a Meeting", href: "/book" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Blog", href: "/insights" },
-  { label: "Careers", href: "/careers" },
   { label: "Process", href: "/process" },
   { label: "Contact", href: "/contact" },
 ];

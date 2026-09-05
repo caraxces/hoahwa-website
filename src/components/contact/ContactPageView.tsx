@@ -18,11 +18,16 @@ export function ContactPageView() {
             variants={staggerContainer(0.08, 0)}
             className="max-w-[520px] shrink-0"
           >
-            <Reveal clip variants={clipUp}>
-              <h1 className="text-h1">{contactPage.title[0]}</h1>
-            </Reveal>
-            <Reveal clip variants={clipUp}>
-              <h1 className="text-h1 text-[var(--wiro-mauve)]">
+            <h1 className="text-h1">
+              <Reveal as="span" clip variants={clipUp} className="block">
+                {contactPage.title[0]}
+              </Reveal>
+              <Reveal
+                as="span"
+                clip
+                variants={clipUp}
+                className="block text-[var(--wiro-mauve)]"
+              >
                 <Image
                   src="/logo-hoahwa/hoahwa_logo_board-08.png"
                   alt="Hoahwa"
@@ -30,8 +35,8 @@ export function ContactPageView() {
                   height={120}
                   className="block h-[1em] w-auto max-w-full"
                 />
-              </h1>
-            </Reveal>
+              </Reveal>
+            </h1>
             <Reveal variants={fadeUp} className="mt-8 max-w-[480px]">
               <p className="text-base leading-6 tracking-[-0.03em] text-[var(--wiro-romance)]/75">
                 {contactPage.valueProposition}

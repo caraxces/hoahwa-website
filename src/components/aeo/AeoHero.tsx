@@ -13,13 +13,16 @@ export function AeoHero() {
     >
       <PageContainer>
         <RevealGroup className="relative w-full" variants={staggerContainer(0.08, 0)}>
+          <h1 className="sr-only">
+            {aeoHero.headline[0]} {aeoHero.headline[1]}
+          </h1>
           <Reveal clip variants={clipUp}>
-            <h1 className="text-h1">{aeoHero.headline[0]}</h1>
+            <p className="text-h1">{aeoHero.headline[0]}</p>
           </Reveal>
           <Reveal variants={fadeUp} className="relative">
-            <h1 className="text-h1 text-[var(--wiro-mauve)]">
+            <p className="text-h1 text-[var(--wiro-mauve)]">
               {aeoHero.headline[1]}
-            </h1>
+            </p>
             <div className="absolute right-0 top-0 hidden lg:block">
               <AvailabilityBadge variant="light" size="lg" />
             </div>

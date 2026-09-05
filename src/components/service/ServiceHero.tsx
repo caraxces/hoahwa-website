@@ -42,8 +42,13 @@ export function ServiceHero({
           className="relative mt-8 w-full"
           variants={staggerContainer(0.08, 0)}
         >
+          {/* Display headline is split around the image card; the single
+              semantic H1 carries the full text. */}
+          <h1 className="sr-only">
+            {headline[0]} {headline[1]}
+          </h1>
           <Reveal clip variants={clipUp}>
-            <h1 className="text-h1">{headline[0]}</h1>
+            <p className="text-h1">{headline[0]}</p>
           </Reveal>
           <Reveal
             variants={fadeUp}
@@ -55,9 +60,9 @@ export function ServiceHero({
               priority
               overlapText
             />
-            <h1 className="relative z-0 text-h1 text-[var(--wiro-mauve)]">
+            <p className="relative z-0 text-h1 text-[var(--wiro-mauve)]">
               {headline[1]}
-            </h1>
+            </p>
           </Reveal>
           <div className="absolute right-0 top-[65%] hidden lg:block">
             <AvailabilityBadge variant="light" size="lg" />

@@ -109,13 +109,12 @@ export function SiteHeader() {
                     {link.label}
                   </NavLink>
                 ))}
-                {/* Static microsite, not a Next.js route — plain anchor forces a real page load */}
-                <a
-                  href="/editions/winter2026/"
-                  className="group relative py-1 text-base tracking-[-0.02em] text-[var(--wiro-romance)]"
+                <NavLink
+                  href="/case-studies/vietfolk-winter-2026"
+                  className="text-base tracking-[-0.02em] text-[var(--wiro-romance)]"
                 >
-                  <span className="relative z-10">News</span>
-                </a>
+                  Vietfolk ’26
+                </NavLink>
                 <HeaderAppMenu />
               </nav>
               <VibeToggleWithToast variant="header" />

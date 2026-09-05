@@ -1,6 +1,13 @@
 Options -MultiViews -Indexes
 RewriteEngine On
 
+# Canonical host: www.hoahwa.com -> hoahwa.com (one origin for every URL)
+RewriteCond %{HTTP_HOST} ^www\.hoahwa\.com$ [NC]
+RewriteRule ^(.*)$ https://hoahwa.com/$1 [R=301,L]
+
+# /careers was a client-side redirect stub (empty HTML, soft 404). Real 301.
+RewriteRule ^careers/?$ /process/ [R=301,L]
+
 # The Vietfolk mirror requests Shopify CDN URLs whose query string was baked
 # into the filename, e.g. hero.png;width=900&crop=center or hero.png&width=1800.
 # Those variants are byte-identical copies of the plain file (verified by md5),

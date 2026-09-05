@@ -54,7 +54,7 @@ export const pursuitGoals: PursuitGoal[] = [
     slug: "case-studies",
     title: "Published case studies",
     description:
-      "Documenting real outcomes — starting with our Shopify developer explainer; more client stories coming soon.",
+      "Documenting real outcomes — how we built this site, and the Vietfolk ’26 Shopify Editions rebuild; client stories as we publish each engagement.",
     tags: ["Development", "Shopify"],
   },
 ];

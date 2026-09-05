@@ -48,14 +48,13 @@ function MegaMenuSideLinks({ onClose }: { onClose: () => void }) {
             {link.label}
           </Link>
         ))}
-        {/* Static microsite, not a Next.js route — plain anchor forces a real page load */}
-        <a
-          href="/editions/winter2026/"
+        <Link
+          href="/case-studies/vietfolk-winter-2026"
           className="text-[var(--wiro-romance)]/60 hover:text-[var(--wiro-romance)]"
           onClick={onClose}
         >
-          News
-        </a>
+          Vietfolk ’26
+        </Link>
       </nav>
       <Button href="/contact" className="mt-10" onClick={onClose}>
         Lets Talk{" "}
@@ -233,15 +232,14 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                               </Link>
                             </motion.div>
                           ))}
-                          {/* Static microsite, not a Next.js route — plain anchor forces a real page load */}
                           <motion.div variants={fadeUp}>
-                            <a
-                              href="/editions/winter2026/"
+                            <Link
+                              href="/case-studies/vietfolk-winter-2026"
                               className="text-[var(--wiro-romance)]/60 hover:text-[var(--wiro-romance)]"
                               onClick={onClose}
                             >
-                              News
-                            </a>
+                              Vietfolk ’26
+                            </Link>
                           </motion.div>
                         </motion.nav>
                         <motion.div className="mt-10" variants={fadeUp}>

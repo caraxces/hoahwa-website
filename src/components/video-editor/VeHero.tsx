@@ -32,13 +32,19 @@ export function VeHero() {
           className="mt-1.5 w-[651px] max-w-full"
           variants={staggerContainer(0.08, 0)}
         >
-          {veHero.headline.map((line) => (
-            <Reveal key={line} clip variants={clipUp}>
-              <h1 className="text-[54.6px] font-semibold uppercase leading-[44.8px] tracking-[-2.73px] max-lg:text-[40px] max-lg:leading-9 max-lg:tracking-[-1.8px] max-sm:text-[32px] max-sm:leading-[30px] max-sm:tracking-[-1.3px]">
+          <h1 className="text-[54.6px] font-semibold uppercase leading-[44.8px] tracking-[-2.73px] max-lg:text-[40px] max-lg:leading-9 max-lg:tracking-[-1.8px] max-sm:text-[32px] max-sm:leading-[30px] max-sm:tracking-[-1.3px]">
+            {veHero.headline.map((line) => (
+              <Reveal
+                key={line}
+                as="span"
+                clip
+                variants={clipUp}
+                className="block"
+              >
                 {line}
-              </h1>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </h1>
         </RevealGroup>
 
         <p className="mt-6 w-[300px] max-w-full text-[12px] font-medium leading-[15.6px] tracking-[-0.12px] lg:absolute lg:left-[30px] lg:top-[169px] lg:mt-0">

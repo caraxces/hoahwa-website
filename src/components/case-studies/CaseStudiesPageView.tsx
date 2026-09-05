@@ -27,14 +27,19 @@ export function CaseStudiesPageView() {
     >
       <PageContainer>
         <RevealGroup variants={staggerContainer(0.1, 0)} className="mb-10">
-          <Reveal clip variants={clipUp}>
-            <h1 className="text-h1">{pursuitSection.headline[0]}</h1>
-          </Reveal>
-          <Reveal clip variants={clipUp}>
-            <h1 className="text-h1 text-[var(--wiro-mauve)]">
+          <h1 className="text-h1">
+            <Reveal as="span" clip variants={clipUp} className="block">
+              {pursuitSection.headline[0]}
+            </Reveal>
+            <Reveal
+              as="span"
+              clip
+              variants={clipUp}
+              className="block text-[var(--wiro-mauve)]"
+            >
               {pursuitSection.headline[1]}
-            </h1>
-          </Reveal>
+            </Reveal>
+          </h1>
           <Reveal variants={fadeUp} className="mt-10 max-w-[820px]">
             <p className="text-[length:var(--wiro-body)] leading-[var(--wiro-body-lh)] tracking-[-0.03em] text-[var(--wiro-romance)]/75">
               {pursuitSection.lead}
@@ -83,6 +88,12 @@ export function CaseStudiesPageView() {
             className="inline-flex items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
           >
             Case study 001 — how we built this site
+          </Link>
+          <Link
+            href="/case-studies/vietfolk-winter-2026"
+            className="inline-flex items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+          >
+            Case study 002 — Vietfolk ’26, a Shopify Editions page rebuilt
           </Link>
           <Link
             href="/case-studies/shopify-developer"
