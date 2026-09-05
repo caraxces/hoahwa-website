@@ -16,11 +16,13 @@
 # next.js
 /.next/
 /out/
-hoahwa-static-deploy.zip
-hoahwa-public_html.zip
-hoahwa-nodejs-deploy.zip
-hoahwa-images-for-designer.zip
 /hoahwa-images-export/
+
+# Archives. Two site backups (789 MB and 757 MB) were committed here once and
+# had to be stripped from history with git-filter-repo — GitHub rejects any
+# file over 100 MB, so the whole repo became unpushable. Keep backups outside
+# the working tree.
+*.zip
 
 # production
 /build
