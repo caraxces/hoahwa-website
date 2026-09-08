@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { InsightPostRecord } from "@/lib/insights-types";
 import type { InsightPostListItem } from "@/lib/insights-db";
@@ -90,6 +91,29 @@ export function InsightArticleView({ post, related }: InsightArticleViewProps) {
               );
             }
 
+            if (block.type === "image") {
+              return (
+                <Reveal key={`${block.type}-${index}`} variants={fadeUp}>
+                  <figure className="mt-10">
+                    <Image
+                      src={block.src}
+                      alt={block.alt}
+                      width={block.width}
+                      height={block.height}
+                      sizes="(max-width: 768px) 100vw, 720px"
+                      loading="lazy"
+                      className="h-auto w-full rounded-sm border border-[var(--wiro-cod-gray)]/20"
+                    />
+                    {block.caption ? (
+                      <figcaption className="mt-3 text-sm tracking-[-0.03em] text-[var(--wiro-mauve)]">
+                        {block.caption}
+                      </figcaption>
+                    ) : null}
+                  </figure>
+                </Reveal>
+              );
+            }
+
             if (block.type === "video") {
               return (
                 <Reveal key={`${block.type}-${index}`} variants={fadeUp}>
@@ -116,8 +140,8 @@ export function InsightArticleView({ post, related }: InsightArticleViewProps) {
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center px-8 text-center">
                           <span className="text-sm tracking-[-0.03em] text-[var(--wiro-cod-gray)]/45">
-                            Video đang được dựng — chỗ này sẽ hiện player khi
-                            bản ghi hoàn tất.
+                            Video in production — the player appears here once
+                            the recording is finished.
                           </span>
                         </div>
                       )}

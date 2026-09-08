@@ -21,6 +21,18 @@ export type InsightBlock =
       youtubeId?: string;
       poster?: string;
     }
+  /**
+   * A still image with an explicit intrinsic size, so next/image can reserve
+   * the box and the article does not shift as figures decode.
+   */
+  | {
+      type: "image";
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+      caption?: string;
+    }
   | { type: "phases"; phases: InsightPhase[] }
   | { type: "cta"; href: string; label: string; note?: string };
 

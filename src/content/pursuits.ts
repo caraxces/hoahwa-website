@@ -59,6 +59,13 @@ export const pursuitGoals: PursuitGoal[] = [
     tags: ["3D", "Development", "Design"],
   },
   {
+    slug: "tarotto-programmatic-seo",
+    title: "Programmatic content at volume",
+    description:
+      "Tarotto \u2014 910 sitemap URLs from zero indexing in April 2026: one template, a real content model, and bilingual hreflang from day one.",
+    tags: ["SEO", "Development", "Growth"],
+  },
+  {
     slug: "case-studies",
     title: "Published case studies",
     description:

@@ -670,6 +670,118 @@ const articles: InsightsDatabase["posts"] = [
       },
     ],
   },
+  {
+    slug: "three-projects-we-built-for-ourselves",
+    title: "Three things we built for ourselves, and what each one cost",
+    date: "Sep 8, 2026",
+    tags: ["Case study", "WebGL", "Programmatic SEO", "Shopify"],
+    excerpt:
+      "A Shopify launch page rewritten for implementers, a 3D landing page you can play, and 900 pages of programmatic SEO. No clients, so every number in them is ours to publish \u2014 including the ones that do not flatter us.",
+    body: [
+      {
+        type: "paragraph",
+        text: "Most agency portfolios are built from client work, which means the interesting numbers are the ones under NDA. Ours are not. These three projects have no client, no borrowed logo and no invented metric: we own them, so we can tell you what they weigh, what broke, and what we would not do again. Each one was built to answer a question we get asked in sales calls and could not previously answer with a link.",
+      },
+      { type: "heading", text: "Vietfolk \u201926 \u2014 the launch page, rewritten for the people who build it" },
+      {
+        type: "paragraph",
+        text: "Every Shopify Editions release ships as a long, motion-heavy microsite written for merchants in general. Vietfolk \u201926 is the same format rebuilt in Vietnamese from the implementer\u2019s side: twelve scroll-driven scenes, 47 compressed glTF binaries with 30 GPU-compressed KTX2 textures, 27 Rive animations and 99 short clips \u2014 and 6,352 words rewritten so each feature says what it takes to set up rather than what it is.",
+      },
+      {
+        type: "image",
+        src: "/img/vietfolk/hero-vietfolk-fullwidth-desktop-v2.webp",
+        alt: "The Vietfolk \u201926 microsite hero, a scroll-driven Shopify Editions-style launch page in Vietnamese.",
+        width: 1920,
+        height: 820,
+        caption: "Vietfolk \u201926 \u2014 twelve scenes, one per Shopify feature family.",
+      },
+      {
+        type: "paragraph",
+        text: "What it cost: 8.1 MB on first load and a 1.36 MB HTML document. Acceptable for a deliberate showcase, indefensible on a storefront. It also broke our deployment \u2014 208 MB of assets on disk could not ship through Hostinger\u2019s upload API, which wipes the directory first and rejects large archives, so the entire site moved to an rsync merge over SSH. A demo page changed how production deploys.",
+      },
+      {
+        type: "cta",
+        href: "/case-studies/vietfolk-winter-2026",
+        label: "Read the Vietfolk \u201926 case study",
+        note: "The full rewrite, the asset inventory, and the deployment consequence in detail.",
+      },
+      { type: "heading", text: "BloomBound \u2014 a 3D landing page you can actually play" },
+      {
+        type: "paragraph",
+        text: "A hero section with a model spinning in it proves you can time an animation. It does not prove you can hold a frame budget while a skinned character, a rigged enemy, instanced foliage and a grapple system all run at once. So we built a real single-player game instead: four districts assembled from nine CC0 models, three chapters, and a one-eyed giant remeshed from a two-eyed CC0 body and animated in code against its 22 bones.",
+      },
+      {
+        type: "image",
+        src: "/img/bloombound/launcher.webp",
+        alt: "The BloomBound launcher, with the live 3D valley rendering behind the hero copy and three selectable chapters.",
+        width: 1440,
+        height: 1080,
+        caption: "The launcher \u2014 the 3D world is already running behind the copy, with no loading screen between page and game.",
+      },
+      {
+        type: "paragraph",
+        text: "What it cost: the whole build is 6.2 MB, and the honest headline is that the Three.js core is 143 KB gzipped against 27 KB for all of our own game logic. That ratio is the real lesson of any 3D project \u2014 the weight lives in the engine, not in your code. It is a fair price for a destination someone chose to visit, and we would not put it in a storefront\u2019s critical path.",
+      },
+      {
+        type: "image",
+        src: "/img/bloombound/cyclops.webp",
+        alt: "The player mid-flight at eye level with a one-eyed Cyclops in a floral crown, the prompt reading 2 m and SLASH.",
+        width: 1440,
+        height: 1000,
+        caption: "Buying a rigged model and animating it yourself is far cheaper than commissioning animation \u2014 and keeps the licence clean.",
+      },
+      {
+        type: "cta",
+        href: "/case-studies/bloombound-3d-landing-page",
+        label: "Read the BloomBound case study",
+        note: "The remesh pipeline, the sub-path build, and all 96 automated browser checks. Or just play it from the App menu.",
+      },
+      { type: "heading", text: "Tarotto \u2014 900 pages from a standing start" },
+      {
+        type: "paragraph",
+        text: "Tarotto is a content site in the tarot and astrology niche, built on this same Next.js stack. Its sitemap listed 910 URLs when we read it on 8 September 2026, of which 729 are editorial pages under a single section, alongside 87 tarot pages, 26 personality tests and 17 horoscope pages. It ships in English and Vietnamese with hreflang alternates, and it started from zero indexed pages in April 2026.",
+      },
+      {
+        type: "paragraph",
+        text: "It is the clearest answer we have to a request merchants make constantly: can we have a page for every category and every city. Yes \u2014 and it works exactly as well as the substance you can put on each one. A 729-page section and a collection tree that ranks are the same mechanism: one template, a clean content model, and enough genuinely distinct content per page to deserve the URL.",
+      },
+      {
+        type: "paragraph",
+        text: "What it cost: honesty about measurement. Our most recent traffic figures are a May 2026 snapshot \u2014 248 active users over 30 days, up 359%, with 4.05K pages indexed of roughly 8.1K crawled. Those are four months old, and they are not comparable to a same-day sitemap count: one counts canonical URLs a site declares, the other counts everything Search Console crawled. Two facts, not a trend. A site publishing at this rate should be measured on a schedule, not when someone asks for a case study.",
+      },
+      {
+        type: "cta",
+        href: "/case-studies/tarotto-programmatic-seo",
+        label: "Read the Tarotto case study",
+        note: "The content model, bilingual hreflang from day one, and why the URL casing is a lesson.",
+      },
+      { type: "heading", text: "What the three have in common" },
+      {
+        type: "paragraph",
+        text: "Every one of them has a number that does not flatter us, and in each case that number is the most useful thing in the write-up. The 8.1 MB page that broke a deploy. The 143 KB engine that dwarfs the code it runs. The traffic snapshot that went stale while nobody was looking. A studio that only publishes its good numbers is telling you it has not measured the others.",
+      },
+      {
+        type: "list",
+        items: [
+          "The cost is almost never in your code \u2014 it is in the engine, the asset pipeline, or the infrastructure underneath it. Measure that first.",
+          "A showcase and a storefront have opposite budgets. Techniques that are right for a destination page are wrong in a purchase path, and saying so is part of the recommendation.",
+          "Decide what you will measure, and when, before the first page ships. Retrofitted measurement produces snapshots instead of trends.",
+          "Internationalisation, canonical URLs and URL casing are nearly free on day one and become migrations by month six.",
+          "If a demo cannot survive being deployed to production, it is a prototype. All three of these are live at their own URLs.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "We scope client work the same way we report on these: what it will weigh, what it will cost, and the places we would advise against the interesting option. If that is the kind of answer you want before signing anything, the case studies are the long version.",
+      },
+      {
+        type: "cta",
+        href: "/case-studies",
+        label: "All case studies",
+        note: "Four write-ups, every figure measured rather than estimated.",
+      },
+    ],
+  },
 ];
 
 export const insightsDatabase: InsightsDatabase = {

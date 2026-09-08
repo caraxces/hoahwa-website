@@ -52,6 +52,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       changeFrequency: "monthly",
     },
+    {
+      path: "/case-studies/tarotto-programmatic-seo",
+      priority: 0.8,
+      changeFrequency: "monthly",
+    },
     { path: "/video-editor", priority: 0.8, changeFrequency: "monthly" },
     { path: "/insights", priority: 0.8, changeFrequency: "weekly" },
     { path: "/contact", priority: 0.6, changeFrequency: "yearly" },

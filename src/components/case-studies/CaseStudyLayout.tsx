@@ -117,7 +117,7 @@ export function CaseStudyLayout({ content }: { content: CaseStudyContent }) {
         </PageContainer>
       </PageSection>
 
-      {gallery?.length ? (
+      {gallery?.length || demo ? (
         <PageSection className="bg-[var(--wiro-romance)] py-24 text-[var(--wiro-cod-gray)]">
           <PageContainer>
             <Reveal clip variants={clipUp}>
@@ -126,7 +126,7 @@ export function CaseStudyLayout({ content }: { content: CaseStudyContent }) {
               </h2>
             </Reveal>
             <div className="mt-12 grid gap-8 md:grid-cols-2">
-              {gallery.map((shot, i) => (
+              {gallery?.map((shot, i) => (
                 <Reveal
                   key={shot.src}
                   variants={fadeUp}
@@ -151,7 +151,7 @@ export function CaseStudyLayout({ content }: { content: CaseStudyContent }) {
               ))}
             </div>
             {demo ? (
-              <Reveal variants={fadeUp} className="mt-12 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+              <Reveal variants={fadeUp} className={`${gallery?.length ? "mt-12" : "mt-8"} flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6`}>
                 {/* Static microsite, not a Next.js route — plain anchor forces a real page load */}
                 <a
                   href={demo.href}

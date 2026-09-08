@@ -102,6 +102,12 @@ export function CaseStudiesPageView() {
             Case study 003 — BloomBound, a 3D landing page you can play
           </Link>
           <Link
+            href="/case-studies/tarotto-programmatic-seo"
+            className="inline-flex items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+          >
+            Case study 004 — Tarotto, 900+ pages of programmatic SEO
+          </Link>
+          <Link
             href="/case-studies/shopify-developer"
             className="inline-flex items-center justify-center rounded-[20px] border border-[var(--wiro-romance)]/35 px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-romance)] transition-colors hover:bg-[var(--wiro-romance)] hover:text-[var(--wiro-cod-gray)]"
           >
