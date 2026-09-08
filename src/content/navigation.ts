@@ -1,6 +1,13 @@
 export type NavChild = {
   label: string;
   href: string;
+  /**
+   * True when href points outside the Next.js router — e.g. a static sub-app
+   * served straight from `public/`. Those links must render as a plain <a>:
+   * `next/link` would try a client-side navigation to a route the static
+   * export's router does not know about, and the page would 404.
+   */
+  external?: boolean;
 };
 
 export type NavPillar = {
@@ -85,6 +92,11 @@ export const appMenu: NavAppMenu = {
   href: "/portfolio/builder",
   children: [
     { label: "Create your Portfolio", href: "/portfolio/builder" },
+    {
+      label: "BloomBound · 3D Game",
+      href: "/apps/bloombound/",
+      external: true,
+    },
   ],
 };
 

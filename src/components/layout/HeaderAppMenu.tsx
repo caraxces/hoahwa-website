@@ -71,16 +71,32 @@ export function HeaderAppMenu() {
             onMouseEnter={clearCloseTimer}
             onMouseLeave={scheduleClose}
           >
-            {appMenu.children.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block px-4 py-2.5 text-sm tracking-[-0.02em] text-[var(--wiro-romance)] transition-colors hover:bg-[var(--border-subtle)] hover:text-[var(--hoahwa-accent)]"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {appMenu.children.map((item) => {
+              const itemClass =
+                "block px-4 py-2.5 text-sm tracking-[-0.02em] text-[var(--wiro-romance)] transition-colors hover:bg-[var(--border-subtle)] hover:text-[var(--hoahwa-accent)]";
+
+              // Static sub-apps live outside the router — a plain <a> forces a
+              // real page load instead of a client-side navigation that 404s.
+              return item.external ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={itemClass}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={itemClass}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </motion.div>
         ) : null}
       </AnimatePresence>

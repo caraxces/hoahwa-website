@@ -19,6 +19,7 @@ export const pursuitFilters = [
   "Design",
   "Development",
   "Growth",
+  "3D",
 ] as const;
 
 export const pursuitGoals: PursuitGoal[] = [
@@ -49,6 +50,13 @@ export const pursuitGoals: PursuitGoal[] = [
     description:
       "Structured discovery, wireframes, and phased delivery — so clients know exactly what ships and when.",
     tags: ["Shopify", "Development", "Growth"],
+  },
+  {
+    slug: "bloombound-3d-landing-page",
+    title: "Interactive 3D on the web",
+    description:
+      "BloomBound — a playable Three.js landing page: four instanced districts, a remeshed 22-bone enemy animated in code, 96 automated browser checks.",
+    tags: ["3D", "Development", "Design"],
   },
   {
     slug: "case-studies",

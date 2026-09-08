@@ -280,17 +280,34 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                           </span>
                         </motion.div>
                         <ul className="flex flex-col gap-4">
-                          {appMenu.children.map((child) => (
-                            <motion.li key={child.label} variants={fadeUp}>
-                              <Link
-                                href={child.href}
-                                className="text-xl text-[var(--wiro-romance)]/60 hover:text-[var(--wiro-romance)] md:text-2xl"
-                                onClick={onClose}
-                              >
-                                {child.label}
-                              </Link>
-                            </motion.li>
-                          ))}
+                          {appMenu.children.map((child) => {
+                            const childClass =
+                              "text-xl text-[var(--wiro-romance)]/60 hover:text-[var(--wiro-romance)] md:text-2xl";
+
+                            return (
+                              <motion.li key={child.label} variants={fadeUp}>
+                                {child.external ? (
+                                  // Static sub-app: real page load, not a
+                                  // client-side route the export lacks.
+                                  <a
+                                    href={child.href}
+                                    className={childClass}
+                                    onClick={onClose}
+                                  >
+                                    {child.label}
+                                  </a>
+                                ) : (
+                                  <Link
+                                    href={child.href}
+                                    className={childClass}
+                                    onClick={onClose}
+                                  >
+                                    {child.label}
+                                  </Link>
+                                )}
+                              </motion.li>
+                            );
+                          })}
                         </ul>
                       </div>
                       <MegaMenuSideLinks onClose={onClose} />

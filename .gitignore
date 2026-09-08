@@ -55,3 +55,7 @@ public/api/config.php
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# The BloomBound game is its own repository (source/wallbreaker). Only its
+# build output, public/apps/bloombound, is committed here and deployed.
+/wallbreaker/

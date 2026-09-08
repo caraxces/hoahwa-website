@@ -1,0 +1,11 @@
+HoaHwa Cyclops body mesh
+
+Original mesh and rig: Giant Mutant by Eldritch Grim
+https://opengameart.org/content/giant-mutant
+License listed by the author: CC0 1.0
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Retouched for HoaHwa BloomBound: upright reference pose, plain botanical material, original one-eye face, floral crown and linen accessories. Body.glb contains the imported body mesh and skeleton. It contains no source animation clips or textures. All runtime Cyclops motion is authored in src/imported-cyclops.js.
+
+Source ZIP: https://opengameart.org/sites/default/files/giant_mutant.zip
+Retrieved 2026-09-07.
