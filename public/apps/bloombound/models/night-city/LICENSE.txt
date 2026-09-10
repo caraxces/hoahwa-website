@@ -1,0 +1,11 @@
+City at night low poly skyscrapers
+Author: dasy444 (https://sketchfab.com/dasy444)
+Source: https://sketchfab.com/3d-models/city-at-night-low-poly-skyscrapers-dc1294de66194054961c16aa74fda2cb
+Licence: Sketchfab Standard (https://sketchfab.com/licenses), as recorded in the GLB metadata.
+Supplied by the project owner on 2026-09-09 and used inside the HoaHwa BloomBound game only.
+
+Modifications in game: City.glb is the supplied file, unchanged. The runtime hides the
+included ground plane and sky sphere, scales the cluster by 48.35 and places it nine
+times (layout.json) to form the Neon Night City. surface.bin / surface.json are a derived
+2 m collision field for those placements. Lighting, streets, lamps, stations, wind rings
+and billboards are HoaHwa additions.

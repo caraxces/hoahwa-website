@@ -17,7 +17,7 @@ const ROUTES = [
   "/audits/", "/growth-retainers/", "/shopify-theme-builds/",
   "/ai-search-optimization/", "/case-studies/", "/case-studies/hoahwa-com/",
   "/case-studies/shopify-developer/", "/case-studies/vietfolk-winter-2026/", "/insights/", "/privacy/", "/terms/",
-  "/cookie-policy/", "/editions/winter2026/",
+  "/cookie-policy/", "/editions/winter2026/", "/apps/bloombound/",
 ];
 
 const ENDPOINTS = ["/api/contact.php", "/api/newsletter.php", "/api/booking.php"];

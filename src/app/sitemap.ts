@@ -58,6 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
     },
     { path: "/video-editor", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/apps/bloombound", priority: 0.6, changeFrequency: "monthly" },
     { path: "/insights", priority: 0.8, changeFrequency: "weekly" },
     { path: "/contact", priority: 0.6, changeFrequency: "yearly" },
     { path: "/privacy", priority: 0.2, changeFrequency: "yearly" },

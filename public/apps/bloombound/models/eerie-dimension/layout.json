@@ -1,0 +1,6 @@
+{
+  "note": "Single placement of the supplied baked mesh at the origin. Shared by scripts/prepare-map.mjs and src/glb-world.js.",
+  "tiles": [
+    { "x": 0, "z": 0, "rotY": 0, "scale": 1 }
+  ]
+}

@@ -1,0 +1,10 @@
+Errie Dimension [Baked]
+Author: abhayexe (https://sketchfab.com/abhayexe)
+Source: https://sketchfab.com/3d-models/errie-dimension-baked-b01fb0729b004bdd8da7b28d942aac1e
+Licence: Sketchfab Standard (https://sketchfab.com/licenses), as recorded in the GLB metadata.
+Supplied by the project owner on 2026-09-09 and used inside the HoaHwa BloomBound game only.
+
+Modifications in game: City.glb is the supplied file, unchanged. The runtime scales it by
+26.59 (1,000 m across) and plays on its 240 m roof plateau. surface.bin / surface.json are a
+derived 2 m collision field. Atmosphere, stations, wind rings, motes and billboards are
+HoaHwa additions.

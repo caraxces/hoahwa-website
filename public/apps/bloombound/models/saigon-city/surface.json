@@ -1,0 +1,25 @@
+{
+  "width": 1201,
+  "depth": 1055,
+  "step": 2,
+  "minX": -1200,
+  "minZ": -1053.3900415403261,
+  "maxX": 1200,
+  "maxZ": 1054.6099584596739,
+  "scale": 43.23379483381334,
+  "sourceCenter": [
+    27.75606454655872,
+    2.57257313207675,
+    -24.36496832141133
+  ],
+  "sourceMinY": 7.440269489742546e-16,
+  "triangles": 301490,
+  "height": 222.44419797437354,
+  "encoding": "uint16-le; meters = sample / 100 - 16",
+  "source": {
+    "author": "Saigon 3D City (https://sketchfab.com/saigon3dcity)",
+    "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+    "source": "https://sketchfab.com/3d-models/ho-chi-minh-city-2025-thanh-pho-ho-chi-minh-10e6d7c014a141b4a4adec54729d0968",
+    "title": "Ho Chi Minh City 2025 - Thành Phố Hồ Chí Minh"
+  }
+}

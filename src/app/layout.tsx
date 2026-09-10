@@ -38,9 +38,11 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
+  // One HoaHwa mark everywhere: the same PNG serves as favicon, shortcut and touch icon
+  // for the site and for the BloomBound game at /apps/bloombound/.
   icons: {
     icon: "/logo-hoahwa/hoahwa_logo_board-07.png",
-    shortcut: "/logo-hoahwa/hoahwa_logo_board-03.png",
+    shortcut: "/logo-hoahwa/hoahwa_logo_board-07.png",
     apple: "/logo-hoahwa/hoahwa_logo_board-07.png",
   },
   openGraph: {

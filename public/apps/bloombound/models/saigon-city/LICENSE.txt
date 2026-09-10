@@ -1,0 +1,11 @@
+Ho Chi Minh City 2025 - Thành Phố Hồ Chí Minh
+Author: Saigon 3D City — https://sketchfab.com/saigon3dcity
+Source: https://sketchfab.com/3d-models/ho-chi-minh-city-2025-thanh-pho-ho-chi-minh-10e6d7c014a141b4a4adec54729d0968
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Attribution and license above come from the supplied GLB's asset.extras metadata.
+City.glb was supplied by the project owner and is retained unchanged.
+HoaHwa modifications: runtime scale and position, botanical material palette,
+original flower districts and travel routes. surface.bin is a derived 2 m collision
+height field generated with scripts/prepare-city.mjs. No author endorsement implied.

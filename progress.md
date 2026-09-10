@@ -1,0 +1,1 @@
+- Deployed 2026-09-09 via `npm run deploy:rsync` (two passes: 27.5 MB then 3.2 MB after adding eerie-dimension/layout.json to silence a 404). Live smoke in Chrome against https://hoahwa.com/apps/bloombound/ loaded all three realms with no console or asset errors; `npm run verify:live` passed.

@@ -1,0 +1,33 @@
+{
+  "width": 781,
+  "depth": 701,
+  "step": 2,
+  "minX": -780,
+  "minZ": -700,
+  "maxX": 780,
+  "maxZ": 700,
+  "scale": 48.35,
+  "groundY": 0,
+  "sourceCenter": [
+    1.6204606886105077,
+    2.3582580430719764,
+    1.618454390726448
+  ],
+  "sourceMinY": -0.0586237424911801,
+  "triangles": 9468,
+  "height": 237.1632537841797,
+  "groundLevel": 26,
+  "topLevel": 134.5,
+  "tiles": 9,
+  "skipped": [
+    "Sphere",
+    "Plane"
+  ],
+  "encoding": "uint16-le; meters = sample / 100 - 16",
+  "source": {
+    "author": "dasy444 (https://sketchfab.com/dasy444)",
+    "license": "SKETCHFAB Standard (https://sketchfab.com/licenses)",
+    "source": "https://sketchfab.com/3d-models/city-at-night-low-poly-skyscrapers-dc1294de66194054961c16aa74fda2cb",
+    "title": "city at night low poly skyscrapers"
+  }
+}

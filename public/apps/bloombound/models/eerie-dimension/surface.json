@@ -1,0 +1,30 @@
+{
+  "width": 481,
+  "depth": 581,
+  "step": 2,
+  "minX": -480,
+  "minZ": -580,
+  "maxX": 480,
+  "maxZ": 580,
+  "scale": 26.58914536709037,
+  "groundY": -0.48134567766937053,
+  "sourceCenter": [
+    11.282799028546862,
+    4.242191959316072,
+    -15.043732942066327
+  ],
+  "sourceMinY": -0.48134567766937053,
+  "triangles": 21400,
+  "height": 238.8516845703125,
+  "groundLevel": 0,
+  "topLevel": 239,
+  "tiles": 1,
+  "skipped": [],
+  "encoding": "uint16-le; meters = sample / 100 - 16",
+  "source": {
+    "author": "abhayexe (https://sketchfab.com/abhayexe)",
+    "license": "SKETCHFAB Standard (https://sketchfab.com/licenses)",
+    "source": "https://sketchfab.com/3d-models/errie-dimension-baked-b01fb0729b004bdd8da7b28d942aac1e",
+    "title": "Errie Dimension [Baked]"
+  }
+}
