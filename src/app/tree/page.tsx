@@ -4,14 +4,14 @@ import { TreePageView } from "@/components/tree/TreePageView";
 import { treeCopy } from "@/content/tree";
 
 export const metadata: Metadata = {
-  title: "Tree QR | Hoahwa",
+  title: "Forest | Hoahwa",
   description: treeCopy.kicker,
 };
 
 function TreeFallback() {
   return (
     <div className="flex min-h-[100dvh] items-center justify-center bg-[#151515] text-sm text-[var(--wiro-romance)]/60">
-      Growing the grove…
+      Growing the forest…
     </div>
   );
 }

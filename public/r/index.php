@@ -11,7 +11,7 @@ if ($config === null) {
     header('Content-Type: text/html; charset=utf-8');
     echo '<!doctype html><meta charset="utf-8"><title>Link unavailable</title>'
         . '<body style="font-family:Georgia,serif;background:#151515;color:#fffdfa;padding:48px">'
-        . '<p>This grove is resting. Try again shortly.</p>'
+        . '<p>This forest is resting. Try again shortly.</p>'
         . '<p><a href="/tree/" style="color:#cd9d65">Plant a new link</a></p>';
     exit;
 }
@@ -24,7 +24,7 @@ try {
     header('Content-Type: text/html; charset=utf-8');
     echo '<!doctype html><meta charset="utf-8"><title>Link unavailable</title>'
         . '<body style="font-family:Georgia,serif;background:#151515;color:#fffdfa;padding:48px">'
-        . '<p>This grove is resting. Try again shortly.</p>'
+        . '<p>This forest is resting. Try again shortly.</p>'
         . '<p><a href="/tree/" style="color:#cd9d65">Plant a new link</a></p>';
     exit;
 }
@@ -43,8 +43,8 @@ if (!$row) {
     header('Content-Type: text/html; charset=utf-8');
     echo '<!doctype html><meta charset="utf-8"><title>Link not found</title>'
         . '<body style="font-family:Georgia,serif;background:#151515;color:#fffdfa;padding:48px">'
-        . '<p>This short grove has no destination.</p>'
-        . '<p><a href="/tree/" style="color:#cd9d65">Grow a new Tree QR</a></p>';
+        . '<p>This short forest has no destination.</p>'
+        . '<p><a href="/tree/" style="color:#cd9d65">Grow a new Forest QR</a></p>';
     exit;
 }
 

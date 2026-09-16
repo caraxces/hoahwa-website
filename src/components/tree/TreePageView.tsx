@@ -143,7 +143,7 @@ export function TreePageView() {
     <div className="tree-app relative h-[100dvh] w-full overflow-hidden bg-[#151515]">
       {webgl ? (
         <TreeCanvas
-          key="grove"
+          key="forest"
           payload={payload}
           season={season}
           palette={palette}

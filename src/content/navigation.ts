@@ -81,7 +81,7 @@ export const appMenu: NavAppMenu = {
   href: "/portfolio/builder",
   children: [
     { label: "Create your Portfolio", href: "/portfolio/builder" },
-    { label: "Tree QR / Shortener", href: "/tree" },
+    { label: "Forest QR / Shortener", href: "/tree" },
   ],
 };
 

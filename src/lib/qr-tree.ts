@@ -1,5 +1,13 @@
 import QRCode from "qrcode";
 import type { TreePaletteId, TreeSeason } from "@/content/tree";
+import {
+  type FoliageShape,
+  type ForestSlot,
+  type TreeSpeciesRules,
+  hashSeed,
+  mulberry32,
+  planForestSlots,
+} from "@/lib/forest-rules";
 
 export type Vec3 = { x: number; y: number; z: number };
 
@@ -19,6 +27,7 @@ export type QrBranch = {
 export type QrBlossom = {
   position: Vec3;
   size: number;
+  shape: FoliageShape;
 };
 
 export type QrGrass = {
@@ -45,28 +54,12 @@ export type QrTreeLayout = {
   blossoms: QrBlossom[];
   grass: QrGrass[];
   petals: QrPetal[];
+  forest: ForestSlot[];
 };
 
 const QUIET_ZONE = 3;
 
-function mulberry32(seed: number): () => number {
-  let a = seed >>> 0;
-  return () => {
-    a = (a + 0x6d2b79f5) >>> 0;
-    let t = Math.imul(a ^ (a >>> 15), 1 | a);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-export function hashSeed(text: string): number {
-  let h = 2166136261;
-  for (let i = 0; i < text.length; i += 1) {
-    h ^= text.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return h >>> 0;
-}
+export { hashSeed };
 
 export function isFinderCell(x: number, y: number, size: number): boolean {
   const inFinder = (ox: number, oy: number) =>
@@ -88,10 +81,7 @@ export function encodeQrMatrix(text: string): boolean[][] {
   return modules;
 }
 
-function rotateY(
-  dir: Vec3,
-  angle: number,
-): Vec3 {
+function rotateY(dir: Vec3, angle: number): Vec3 {
   const c = Math.cos(angle);
   const s = Math.sin(angle);
   return {
@@ -119,16 +109,26 @@ function normalize(v: Vec3): Vec3 {
   return { x: v.x / len, y: v.y / len, z: v.z / len };
 }
 
-function growTree(
-  seed: number,
+function growSpeciesTree(
+  slot: ForestSlot,
   world: number,
 ): { branches: QrBranch[]; blossoms: QrBlossom[] } {
-  const rng = mulberry32(seed);
-  const cx = world / 2;
-  const cz = world / 2;
-  const height = world * 0.52;
+  const rng = mulberry32(slot.seed);
+  const rules = slot.species;
+  const height = world * rules.heightMul * slot.scale;
   const branches: QrBranch[] = [];
   const blossoms: QrBlossom[] = [];
+  const leanX = (rng() - 0.5) * rules.lean;
+  const leanZ = (rng() - 0.5) * rules.lean;
+
+  const addBlossom = (position: Vec3, mul = 1) => {
+    if (rng() > rules.blossomDensity) return;
+    blossoms.push({
+      position,
+      size: (rules.blossomSize + rng() * rules.blossomSize * 0.45) * slot.scale * mul,
+      shape: rules.foliageShape,
+    });
+  };
 
   const fork = (
     origin: Vec3,
@@ -136,43 +136,100 @@ function growTree(
     radius: number,
     depth: number,
   ) => {
-    if (depth <= 0 || radius < 0.035) {
-      blossoms.push({
-        position: origin,
-        size: 0.16 + rng() * 0.12,
-      });
+    if (depth <= 0 || radius < 0.025 * slot.scale) {
+      addBlossom(origin);
       return;
     }
-    const length = (0.28 + rng() * 0.34) * height * (depth / 5);
+    const length =
+      (rules.lengthMul + rng() * rules.lengthMul * 0.6) *
+      height *
+      (depth / (rules.branchDepth + 1));
     const end: Vec3 = {
       x: origin.x + dir.x * length,
       y: origin.y + dir.y * length,
       z: origin.z + dir.z * length,
     };
     branches.push({ start: origin, end, radius });
-    const count = depth > 3 ? 3 : 2;
+    const count =
+      depth > rules.branchDepth - 1
+        ? rules.forksMax
+        : rules.forksMin + Math.floor(rng() * (rules.forksMax - rules.forksMin + 1));
     for (let i = 0; i < count; i += 1) {
-      const yaw = (rng() - 0.5) * 1.35;
-      const pitch = (rng() - 0.35) * 0.7;
+      const yaw = (rng() - 0.5) * rules.yawSpread;
+      let pitch = (rng() - 0.5) * (rules.pitchUp + rules.pitchDown);
+      if (rules.droop > 0) {
+        pitch -= rng() * rules.droop;
+      } else if (rng() > 0.45) {
+        pitch += rules.pitchUp * 0.35;
+      }
       const next = normalize(rotatePitch(rotateY(dir, yaw), pitch));
-      fork(end, next, radius * (0.58 + rng() * 0.12), depth - 1);
+      fork(
+        end,
+        next,
+        radius * (rules.radiusDecay + rng() * 0.1),
+        depth - 1,
+      );
     }
-    if (rng() > 0.55) {
-      blossoms.push({
-        position: end,
-        size: 0.14 + rng() * 0.1,
-      });
-    }
+    if (rng() > 0.4) addBlossom(end, 0.85);
   };
 
-  const trunkTop: Vec3 = { x: cx, y: height * 0.28, z: cz };
-  branches.push({
-    start: { x: cx, y: 0, z: cz },
-    end: trunkTop,
-    radius: 0.22 + rng() * 0.06,
-  });
-  fork(trunkTop, { x: 0, y: 1, z: 0 }, 0.16, 4);
+  const trunkCount = rules.multiTrunk;
+  for (let t = 0; t < trunkCount; t += 1) {
+    const spread = trunkCount > 1 ? (t - (trunkCount - 1) / 2) * 0.14 * slot.scale : 0;
+    const base: Vec3 = {
+      x: slot.x + spread + leanX * height,
+      y: 0,
+      z: slot.z + spread * 0.6 + leanZ * height,
+    };
+    const trunkTop: Vec3 = {
+      x: base.x,
+      y: height * (rules.id === "baobab" ? 0.22 : 0.28 + rng() * 0.08),
+      z: base.z,
+    };
+    branches.push({
+      start: base,
+      end: trunkTop,
+      radius: (rules.trunkRadius + rng() * 0.04) * slot.scale,
+    });
+    const startDir =
+      rules.id === "willow"
+        ? normalize({ x: leanX * 0.2, y: 0.85, z: leanZ * 0.2 })
+        : rules.id === "pine" || rules.id === "bamboo"
+          ? { x: leanX * 0.15, y: 1, z: leanZ * 0.15 }
+          : { x: leanX * 0.25, y: 1, z: leanZ * 0.25 };
+    fork(
+      trunkTop,
+      normalize(startDir),
+      rules.trunkRadius * 0.72 * slot.scale,
+      rules.branchDepth,
+    );
+  }
 
+  if (rules.id === "baobab" && blossoms.length < 3) {
+    addBlossom(
+      {
+        x: slot.x,
+        y: height * 0.34,
+        z: slot.z,
+      },
+      1.4,
+    );
+  }
+
+  return { branches, blossoms };
+}
+
+function growForest(
+  slots: ForestSlot[],
+  world: number,
+): { branches: QrBranch[]; blossoms: QrBlossom[] } {
+  const branches: QrBranch[] = [];
+  const blossoms: QrBlossom[] = [];
+  for (const slot of slots) {
+    const tree = growSpeciesTree(slot, world);
+    branches.push(...tree.branches);
+    blossoms.push(...tree.blossoms);
+  }
   return { branches, blossoms };
 }
 
@@ -190,7 +247,7 @@ export function buildQrTreeLayout(payload: string): QrTreeLayout {
       const mx = x - quiet;
       const mz = z - quiet;
       const inside = mx >= 0 && mz >= 0 && mx < size && mz < size;
-      const dark = inside ? modules[mz][mx] : false;
+      const dark = inside ? modules[mz]![mx]! : false;
       const finder = inside ? isFinderCell(mx, mz, size) : false;
       voxels.push({ x, z, dark, finder });
     }
@@ -212,27 +269,28 @@ export function buildQrTreeLayout(payload: string): QrTreeLayout {
       const nx = mx + dx;
       const nz = mz + dz;
       if (nx < 0 || nz < 0 || nx >= size || nz >= size) continue;
-      if (modules[nz][nx]) {
+      if (modules[nz]![nx]) {
         edge = true;
         break;
       }
     }
-    if (edge && rng() > 0.28) {
+    if (edge && rng() > 0.22) {
       grass.push({
         x: voxel.x + (rng() - 0.5) * 0.35,
         z: voxel.z + (rng() - 0.5) * 0.35,
-        h: 0.18 + rng() * 0.22,
+        h: 0.16 + rng() * 0.24,
         phase: rng() * Math.PI * 2,
       });
     }
   }
 
-  const { branches, blossoms } = growTree(hashSeed(payload), world);
-  const petals: QrPetal[] = blossoms.slice(0, 48).map((b, i) => ({
+  const forest = planForestSlots(payload, world, quiet, modules);
+  const { branches, blossoms } = growForest(forest, world);
+  const petals: QrPetal[] = blossoms.slice(0, 72).map((b, i) => ({
     origin: b.position,
-    speed: 0.12 + (i % 7) * 0.03,
-    phase: i * 0.47,
-    drift: 0.35 + (i % 5) * 0.08,
+    speed: 0.1 + (i % 9) * 0.025,
+    phase: i * 0.41,
+    drift: 0.3 + (i % 6) * 0.07,
   }));
 
   return {
@@ -245,6 +303,7 @@ export function buildQrTreeLayout(payload: string): QrTreeLayout {
     blossoms,
     grass,
     petals,
+    forest,
   };
 }
 
@@ -276,3 +335,5 @@ export function normalizeHttpUrl(raw: string): string | null {
     return null;
   }
 }
+
+export type { TreeSpeciesRules, ForestSlot, FoliageShape };

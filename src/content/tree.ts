@@ -91,20 +91,21 @@ export function resolveTreeColors(
 }
 
 export const treeCopy = {
-  title: "Tree QR",
-  kicker: "A living grove that hides a scannable code",
-  placeholder: "Paste a URL to plant",
-  generate: "Plant",
-  planting: "Rooting…",
+  title: "Forest",
+  kicker: "A living forest — each link grows its own ecosystem",
+  placeholder: "Paste a URL to plant in the forest",
+  generate: "Plant forest",
+  planting: "Growing…",
   scanView: "Scan view",
-  groveView: "Grove view",
+  groveView: "Forest view",
   copy: "Copy short link",
   copied: "Copied",
-  hint: "Click the grove to flatten the canopy and reveal the code",
-  emptyHint: "Every link grows a unique tree. The soil is the QR.",
-  fallbackTitle: "This grove prefers a simpler drawing",
+  hint: "Click the forest to flatten the canopy and reveal the QR code",
+  emptyHint:
+    "Every URL sprouts a unique forest — cherry, pine, willow, oak, and more. The soil is the QR.",
+  fallbackTitle: "This forest prefers a simpler drawing",
   privacy:
-    "The grove is a QR. Short links are stored so scans can redirect — original URLs are not shown on shared scenes.",
+    "The forest is a QR. Short links are stored so scans can redirect — original URLs are not shown on shared scenes.",
   back: "Back to Hoahwa",
 };
 

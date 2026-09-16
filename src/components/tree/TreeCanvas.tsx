@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { resolveTreeColors, type TreePaletteId, type TreeSeason } from "@/content/tree";
+import type { FoliageShape } from "@/lib/forest-rules";
 import { buildQrTreeLayout, type QrTreeLayout } from "@/lib/qr-tree";
 
 type TreeCanvasProps = {
@@ -13,6 +14,8 @@ type TreeCanvasProps = {
   onToggleScan?: () => void;
   onUnsupported?: () => void;
 };
+
+const FOLIAGE_SHAPES: FoliageShape[] = ["sphere", "cone", "disc", "cluster"];
 
 function supportsWebGL(): boolean {
   try {
@@ -47,6 +50,19 @@ function disposeObject(root: THREE.Object3D) {
   });
 }
 
+function foliageGeometry(shape: FoliageShape): THREE.BufferGeometry {
+  switch (shape) {
+    case "cone":
+      return new THREE.ConeGeometry(1, 1.4, 6);
+    case "disc":
+      return new THREE.CircleGeometry(1, 6);
+    case "cluster":
+      return new THREE.TetrahedronGeometry(1, 0);
+    default:
+      return new THREE.IcosahedronGeometry(1, 0);
+  }
+}
+
 function buildScene(layout: QrTreeLayout) {
   const voxelGeo = new THREE.BoxGeometry(0.92, 1, 0.92);
   const voxelMat = new THREE.MeshLambertMaterial();
@@ -71,14 +87,24 @@ function buildScene(layout: QrTreeLayout) {
   );
   branches.count = layout.branches.length;
 
-  const blossomGeo = new THREE.IcosahedronGeometry(1, 0);
-  const blossomMat = new THREE.MeshLambertMaterial();
-  const blossoms = new THREE.InstancedMesh(
-    blossomGeo,
-    blossomMat,
-    Math.max(layout.blossoms.length, 1),
-  );
-  blossoms.count = layout.blossoms.length;
+  const blossomsByShape = new Map<FoliageShape, typeof layout.blossoms>();
+  for (const shape of FOLIAGE_SHAPES) {
+    blossomsByShape.set(
+      shape,
+      layout.blossoms.filter((b) => b.shape === shape),
+    );
+  }
+
+  const blossomLayers = FOLIAGE_SHAPES.map((shape) => {
+    const items = blossomsByShape.get(shape) ?? [];
+    const geo = foliageGeometry(shape);
+    const mat = new THREE.MeshLambertMaterial({
+      side: shape === "disc" ? THREE.DoubleSide : THREE.FrontSide,
+    });
+    const mesh = new THREE.InstancedMesh(geo, mat, Math.max(items.length, 1));
+    mesh.count = items.length;
+    return { shape, items, mesh };
+  });
 
   const grassGeo = new THREE.BoxGeometry(0.06, 1, 0.06);
   const grassMat = new THREE.MeshLambertMaterial();
@@ -127,21 +153,26 @@ function buildScene(layout: QrTreeLayout) {
   branches.instanceMatrix.needsUpdate = true;
   branches.count = layout.branches.length;
 
-  layout.blossoms.forEach((blossom, i) => {
-    dummy.quaternion.identity();
-    dummy.position.set(
-      blossom.position.x,
-      blossom.position.y,
-      blossom.position.z,
-    );
-    dummy.scale.setScalar(blossom.size);
-    dummy.updateMatrix();
-    blossoms.setMatrixAt(i, dummy.matrix);
+  blossomLayers.forEach(({ items, mesh, shape }) => {
+    items.forEach((blossom, i) => {
+      dummy.quaternion.identity();
+      if (shape === "disc") {
+        dummy.rotation.set(-Math.PI / 2, 0, 0);
+      }
+      dummy.position.set(
+        blossom.position.x,
+        blossom.position.y,
+        blossom.position.z,
+      );
+      dummy.scale.setScalar(blossom.size);
+      dummy.updateMatrix();
+      mesh.setMatrixAt(i, dummy.matrix);
+    });
+    mesh.instanceMatrix.needsUpdate = true;
+    mesh.count = items.length;
   });
-  blossoms.instanceMatrix.needsUpdate = true;
-  blossoms.count = layout.blossoms.length;
 
-  return { voxels, branches, blossoms, grass, petals, dummy };
+  return { voxels, branches, blossomLayers, grass, petals, dummy };
 }
 
 export function TreeCanvas({
@@ -203,7 +234,7 @@ export function TreeCanvas({
     const meshes = buildScene(layout);
     scene.add(meshes.voxels);
     scene.add(meshes.branches);
-    scene.add(meshes.blossoms);
+    meshes.blossomLayers.forEach(({ mesh }) => scene.add(mesh));
     scene.add(meshes.grass);
     scene.add(meshes.petals);
 
@@ -273,9 +304,9 @@ export function TreeCanvas({
       (meshes.branches.material as THREE.MeshLambertMaterial).color.set(
         colors.trunk,
       );
-      (meshes.blossoms.material as THREE.MeshLambertMaterial).color.set(
-        colors.blossom,
-      );
+      meshes.blossomLayers.forEach(({ mesh }) => {
+        (mesh.material as THREE.MeshLambertMaterial).color.set(colors.blossom);
+      });
       (meshes.grass.material as THREE.MeshLambertMaterial).color.set(
         colors.grass,
       );
@@ -339,9 +370,9 @@ export function TreeCanvas({
       (meshes.branches.material as THREE.MeshLambertMaterial).color.set(
         colors.trunk,
       );
-      (meshes.blossoms.material as THREE.MeshLambertMaterial).color.set(
-        colors.blossom,
-      );
+      meshes.blossomLayers.forEach(({ mesh }) => {
+        (mesh.material as THREE.MeshLambertMaterial).color.set(colors.blossom);
+      });
       (meshes.grass.material as THREE.MeshLambertMaterial).color.set(
         colors.grass,
       );
@@ -365,9 +396,9 @@ export function TreeCanvas({
 
       const floraHide = 1 - Math.min(flatten * 1.7, 1);
       meshes.branches.visible = floraHide > 0.04;
-      meshes.blossoms.visible = floraHide > 0.04;
-      (meshes.branches.material as THREE.MeshLambertMaterial).opacity = 1;
-      meshes.branches.material.transparent = false;
+      meshes.blossomLayers.forEach(({ mesh }) => {
+        mesh.visible = floraHide > 0.04;
+      });
 
       placeVoxels(flatten);
       placeGrass(flatten);

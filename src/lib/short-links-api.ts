@@ -38,7 +38,7 @@ export async function createShortLink(input: {
     });
     const data = await readPayload(res);
     if (!res.ok || !data.ok || !data.code) {
-      return { ok: false, error: data.error ?? "Could not plant a short grove." };
+      return { ok: false, error: data.error ?? "Could not plant a short forest." };
     }
     return {
       ok: true,
@@ -50,7 +50,7 @@ export async function createShortLink(input: {
       },
     };
   } catch {
-    return { ok: false, error: "Could not reach the short-link grove." };
+    return { ok: false, error: "Could not reach the short-link forest." };
   }
 }
 
@@ -62,7 +62,7 @@ export async function fetchShortLink(
     const res = await fetch(url);
     const data = await readPayload(res);
     if (!res.ok || !data.ok || !data.code) {
-      return { ok: false, error: data.error ?? "Short grove not found." };
+      return { ok: false, error: data.error ?? "Short forest not found." };
     }
     return {
       ok: true,
@@ -74,7 +74,7 @@ export async function fetchShortLink(
       },
     };
   } catch {
-    return { ok: false, error: "Could not reach the short-link grove." };
+    return { ok: false, error: "Could not reach the short-link forest." };
   }
 }
 
