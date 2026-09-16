@@ -1,0 +1,8 @@
+html:has(.tree-app),
+html:has(.tree-app) body {
+  overflow: hidden;
+}
+
+.tree-app {
+  min-height: 100dvh;
+}
