@@ -11,6 +11,7 @@ export const metadata = pageMetadata({
   description:
     "A practical explainer on what Shopify provides vs what custom development is responsible for—plus how we structure delivery and support after launch.",
   path: PATH,
+  image: "/og/shopify-developer.png",
 });
 
 export default function ShopifyDeveloperCaseStudyPage() {

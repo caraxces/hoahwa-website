@@ -16,6 +16,7 @@ export const metadata = {
     title: TITLE,
     description: DESCRIPTION,
     path: PATH,
+    image: "/og/tarotto-programmatic-seo.png",
     type: "article",
     publishedTime: PUBLISHED,
     tags: TAGS,

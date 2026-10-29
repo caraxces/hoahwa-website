@@ -12,6 +12,7 @@ export const metadata = pageMetadata({
   title: TITLE,
   description: DESCRIPTION,
   path: PATH,
+  image: "/og/hoahwa-com.png",
   type: "article",
   publishedTime: "2026-07-29T00:00:00.000Z",
   tags: ["Next.js", "Performance", "Static export", "Case study"],

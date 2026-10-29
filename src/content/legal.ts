@@ -40,14 +40,14 @@ export const privacyPolicy: LegalDoc = {
         "Contact and project enquiries — name, phone number, email address, the services and budget range you select, and anything you write in the message field. We use this to reply to your enquiry and prepare a proposal (legal basis: steps prior to a contract, GDPR Art. 6(1)(b), and our legitimate interest in responding to business enquiries).",
         "Newsletter — your email address, used only to send the updates you signed up for (legal basis: consent, which you can withdraw in any email or by writing to us).",
         "Cookie preferences — a record of the consent choices you make in our cookie banner, stored on your device (legal basis: legal obligation to demonstrate consent).",
-        "Analytics and marketing data — page views, approximate location, and device information, collected only if you opt in to the Analytics or Marketing cookie categories. See the Cookie policy for the exact tools and lifetimes.",
+        "Analytics and marketing data — when you opt in to Analytics, Google Analytics may use cookies to measure page views, approximate location, and device information. Before that choice, our Google Analytics implementation uses Google Consent Mode with storage denied; Google may receive cookieless measurement requests, but analytics cookies and identifiers are not enabled. See the Cookie policy for how this works.",
       ],
     },
     {
       heading: "What we do not do",
       bullets: [
-        "We do not sell personal data, and we do not share it for cross-context behavioural advertising unless you have opted in to Marketing cookies.",
-        "We do not run analytics, advertising pixels, or other non-essential trackers before you consent.",
+        "The website does not load its Google Tag Manager container unless you opt in to Analytics or to Marketing without selecting our \"Do Not Sell or Share\" control. This control is limited to tags managed through that container.",
+        "Before you make a choice, Google Analytics loads with all optional Google Consent Mode storage signals denied. This can send cookieless measurement requests to Google, but it does not enable Google Analytics cookies or identifiers. Other tags managed through Google Tag Manager are not loaded before the relevant opt-in.",
         "We do not knowingly collect data from children under 16; this site is aimed at businesses.",
       ],
     },
@@ -59,7 +59,7 @@ export const privacyPolicy: LegalDoc = {
       bullets: [
         "Website hosting and content delivery for serving this site.",
         "A form-processing service that delivers your contact enquiry to our inbox.",
-        "Analytics and advertising platforms (such as Google Analytics, Meta, or LinkedIn) — only when you have opted in to the matching cookie category.",
+        "Google Analytics — loaded with Google Consent Mode storage denied before a choice, and able to use analytics cookies only after you opt in to Analytics. Google Tag Manager, which may contain advertising or other tags, is loaded only after the relevant Analytics or Marketing opt-in.",
         "Professional advisers or authorities where the law requires it.",
       ],
     },
@@ -74,8 +74,8 @@ export const privacyPolicy: LegalDoc = {
       bullets: [
         "Contact enquiries — up to 24 months after our last exchange, or longer if we enter into a contract.",
         "Newsletter emails — until you unsubscribe.",
-        "Cookie consent records — 12 months, after which we ask again.",
-        "Analytics data — per the retention configured with the provider, at most 24 months.",
+        "Cookie consent records — stored in your browser's localStorage until you clear site data, change your choice, or we change the consent-record format. The site does not currently expire this record automatically.",
+        "Analytics data — retained by Google according to the retention setting on the relevant Google Analytics property; that setting is not controlled or exposed by this website code.",
       ],
     },
     {
@@ -89,14 +89,14 @@ export const privacyPolicy: LegalDoc = {
         "Delete your data (\"right to be forgotten\").",
         "Restrict or object to processing, including any direct marketing.",
         "Receive your data in a portable format.",
-        "Withdraw consent at any time, without affecting processing that happened before withdrawal — for cookies, use the cookie icon in the bottom-left corner of any page.",
+        "Withdraw consent at any time, without affecting processing that happened before withdrawal — for cookies, use the cookie icon in the bottom-left corner of any page. Changing a choice updates the consent signals we send and applies to future page loads; tags that already loaded keep running until you reload the page, and cookies already stored by third parties must be deleted in your browser settings.",
         "Complain to your local supervisory authority if you believe we have mishandled your data.",
       ],
     },
     {
       heading: "Your rights (California — CCPA/CPRA)",
       paragraphs: [
-        "If you are a California resident, you have the right to know what personal information we collect, to access and correct it, to request deletion, and to opt out of the sale or sharing of personal information. We do not sell personal information. To opt out of sharing for cross-context behavioural advertising, switch on \"Do Not Sell or Share My Personal Information\" in our cookie preferences, or email us. We honour opt-out preference signals such as Global Privacy Control. We will never discriminate against you for exercising these rights.",
+        "If you are a California resident, you have the right to know what personal information we collect, to access and correct it, to request deletion, and to opt out of the sale or sharing of personal information. Switching on \"Do Not Sell or Share My Personal Information\" in our cookie preferences sets Google's advertising consent signals to denied and stops the Marketing choice from loading our Google Tag Manager container; if you have also allowed Analytics, that container still loads and some third-party tags may not honour those signals, so email us to make a full opt-out request. We do not currently detect Global Privacy Control signals automatically. We will not discriminate against you for exercising these rights.",
       ],
     },
     {
@@ -137,22 +137,22 @@ export const cookiePolicy: LegalDoc = {
     {
       heading: "How consent works on this site",
       bullets: [
-        "Non-essential cookies are off by default. Nothing in the Functional, Analytics, or Marketing categories loads until you opt in.",
-        "\"Accept all\" and \"Reject non-essential\" are equally available — declining everything takes exactly one click.",
-        "Your choice is stored for 12 months in a first-party record on your device, after which we ask again.",
-        "You can change or withdraw consent at any time via the cookie icon in the bottom-left corner of every page. Withdrawing is as easy as giving consent.",
+        "Optional cookie storage is denied by default. Google Analytics loads after the page hydrates with all optional Google Consent Mode storage signals denied, so Google may receive cookieless measurement requests before you choose; Google Analytics cookies and identifiers are not enabled unless you opt in to Analytics. Google Tag Manager is not loaded until the relevant Analytics or Marketing opt-in.",
+        "You can accept all from the banner, or select \"Customize\" to reject non-essential categories or save individual choices.",
+        "Your choice is stored in a first-party localStorage record on your device until you clear site data, change your choice, or we change the consent-record format; it does not currently expire automatically.",
+        "You can change or withdraw consent at any time via the cookie icon in the bottom-left corner of every page. A change applies from the next page load (tags already running stay active until you reload); to remove cookies already stored by a third party, use your browser settings.",
       ],
     },
     {
       heading: "Categories we use",
       paragraphs: [
-        "The full, current list of cookies — with provider, purpose, and lifetime for each — is shown per category in the cookie preference panel and summarised below.",
+        "The preference panel describes the cookie and storage categories currently configured on this site. Third-party providers control their own cookie names and lifetimes, which can change; consult their policies for their current details.",
       ],
     },
     {
       heading: "Managing cookies in your browser",
       paragraphs: [
-        "Beyond our preference panel, every major browser lets you block or delete cookies in its settings. Blocking strictly necessary storage may stop parts of the site from working (for example, we would not remember your consent choice). Your browser or extensions may also send a Global Privacy Control signal, which we treat as an opt-out of sale or sharing.",
+        "Beyond our preference panel, every major browser lets you block or delete cookies in its settings. Blocking strictly necessary storage may stop parts of the site from working (for example, we would not remember your consent choice). We do not currently detect Global Privacy Control signals automatically, so use the preference panel or contact us to make a request.",
       ],
     },
     {

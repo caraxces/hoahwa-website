@@ -10,7 +10,7 @@ export type CookieDetail = {
 export const cookieConsentCopy = {
   bar: {
     message:
-      "We use cookies to improve your experience, analyse traffic, and personalise content. You can choose which categories to allow.",
+      "We use essential local storage for your preferences and optional technologies for analytics and features such as the booking calendar. You can choose which categories to allow.",
     customize: "Customize",
     acceptAll: "Accept all",
   },
@@ -48,7 +48,13 @@ export const cookieConsentCopy = {
           name: "hoahwa-cookie-consent",
           provider: "Hoahwa (first party, localStorage)",
           purpose: "Stores your cookie preferences so we don't ask again.",
-          duration: "12 months",
+          duration: "Until you clear site data or we change the consent-record version",
+        },
+        {
+          name: "hoahwa-vibe",
+          provider: "Hoahwa (first party, localStorage)",
+          purpose: "Stores your selected site visual theme.",
+          duration: "Until you clear site data or change the theme",
         },
       ] as CookieDetail[],
     },
@@ -60,11 +66,18 @@ export const cookieConsentCopy = {
       required: false,
       details: [
         {
-          name: "Embedded media (e.g. YouTube, Vimeo)",
-          provider: "Google / Vimeo (third party)",
+          name: "Google Calendar booking page (when available)",
+          provider: "Google Calendar (third party)",
           purpose:
-            "Set only when you play embedded video; remembers player settings.",
-          duration: "Session – 6 months",
+            "Loads only after you allow Functional cookies or choose to load the calendar for this visit; Google may set its own cookies.",
+          duration: "Set by Google; see Google's policies",
+        },
+        {
+          name: "YouTube privacy-enhanced player (where present)",
+          provider: "YouTube (third party)",
+          purpose:
+            "An article video iframe can load with the page and is not controlled by this preference setting; YouTube may receive request data and set its own storage.",
+          duration: "Set by YouTube; see YouTube's policies",
         },
       ] as CookieDetail[],
     },
@@ -79,8 +92,8 @@ export const cookieConsentCopy = {
           name: "_ga, _ga_*",
           provider: "Google Analytics 4 (third party)",
           purpose:
-            "Distinguishes visitors and sessions to measure how the site is used. Loads only after you opt in.",
-          duration: "Up to 24 months",
+            "When Analytics is allowed, distinguishes visitors and sessions. Before consent, Google Consent Mode is denied and GA4 sends cookieless measurement pings without analytics cookies or identifiers.",
+          duration: "Set by Google; see Google's policies",
         },
       ] as CookieDetail[],
     },
@@ -92,11 +105,11 @@ export const cookieConsentCopy = {
       required: false,
       details: [
         {
-          name: "_fbp / li_sugr (when enabled)",
-          provider: "Meta / LinkedIn (third party)",
+          name: "Google Tag Manager container",
+          provider: "Google (third party)",
           purpose:
-            "Measures ad campaigns and builds audience insights. Loads only after you opt in.",
-          duration: "3 – 12 months",
+            "Loads after Analytics or Marketing is allowed. Tags configured in the container may set their own cookies.",
+          duration: "Varies by configured tag",
         },
       ] as CookieDetail[],
     },

@@ -6,6 +6,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "report:weekly": "node scripts/weekly-report.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -19,25 +20,34 @@
     "test:mail": "php scripts/test-mail-headers.php",
     "smoke:runtime": "node scripts/runtime-smoke.mjs",
     "deploy:rsync": "bash scripts/deploy-rsync.sh",
-    "verify:live": "node scripts/verify-live.mjs"
+    "verify:live": "node scripts/verify-live.mjs",
+    "test:tree": "node scripts/test-tree.mjs",
+    "test:tree:morph": "node scripts/test-tree-morph.mjs",
+    "test:forest": "node scripts/test-forest.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.40.0",
     "next": "16.2.6",
+    "qrcode": "^1.5.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "swiper": "^12.1.4",
-    "tailwind-merge": "^3.6.0"
+    "tailwind-merge": "^3.6.0",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.185.4",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "jsqr": "^1.4.0",
     "playwright": "^1.60.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "tus-js-client": "^4.1.0",
     "typescript": "^5"

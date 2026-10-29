@@ -17,6 +17,7 @@ export const metadata = {
     title: TITLE,
     description: DESCRIPTION,
     path: PATH,
+    image: "/og/bloombound-3d-landing-page.png",
     type: "article",
     publishedTime: PUBLISHED,
     tags: TAGS,

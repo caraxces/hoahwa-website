@@ -9,6 +9,10 @@ import { VibeProvider } from "@/components/vibe/VibeProvider";
 import { vibeInitScript } from "@/lib/vibe-init-script";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
+  absoluteUrl,
+  DEFAULT_OG_IMAGE,
+  OG_IMAGE_HEIGHT,
+  OG_IMAGE_WIDTH,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_TAGLINE,
@@ -47,15 +51,24 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: SITE_URL,
+    url: absoluteUrl("/"),
     siteName: SITE_NAME,
     title: `${SITE_NAME} | ${SITE_TAGLINE}`,
     description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: absoluteUrl(DEFAULT_OG_IMAGE),
+        width: OG_IMAGE_WIDTH,
+        height: OG_IMAGE_HEIGHT,
+        alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} | ${SITE_TAGLINE}`,
     description: SITE_DESCRIPTION,
+    images: [absoluteUrl(DEFAULT_OG_IMAGE)],
   },
   robots: {
     index: true,

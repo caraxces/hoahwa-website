@@ -4,7 +4,6 @@ import { AboutSection } from "@/components/home/AboutSection";
 import { CaseCarousel } from "@/components/home/CaseCarousel";
 import { GrowthPitch } from "@/components/home/GrowthPitch";
 import { ServicesAccordion } from "@/components/home/ServicesAccordion";
-import { VideoTeaser } from "@/components/home/VideoTeaser";
 import { BuildingNow } from "@/components/home/BuildingNow";
 import { NewsletterCta } from "@/components/home/NewsletterCta";
 import { pageMetadata } from "@/lib/seo";
@@ -30,7 +29,7 @@ export default function HomePage() {
       <CaseCarousel />
       <GrowthPitch />
       <ServicesAccordion />
-      <VideoTeaser />
+      {/* VideoTeaser hidden until /video-editor has real English copy (still placeholder, noindex). */}
       <BuildingNow />
       <NewsletterCta />
     </div>

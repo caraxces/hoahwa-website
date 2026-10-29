@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { getRelatedLinks } from "@/content/related";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
+import { RelatedReading } from "@/components/shared/RelatedReading";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
 
 export type CaseStudyContent = {
@@ -37,6 +40,8 @@ export type CaseStudyContent = {
  */
 export function CaseStudyLayout({ content }: { content: CaseStudyContent }) {
   const { meta, stats, chapters, stack, gallery, demo, cta } = content;
+  const pathname = usePathname();
+  const related = getRelatedLinks(pathname);
 
   return (
     <>
@@ -194,6 +199,14 @@ export function CaseStudyLayout({ content }: { content: CaseStudyContent }) {
           </dl>
         </PageContainer>
       </PageSection>
+
+      {related.length > 0 ? (
+        <PageSection className="bg-[var(--wiro-spring-wood)] py-24 text-[var(--wiro-cod-gray)]">
+          <PageContainer>
+            <RelatedReading links={related} />
+          </PageContainer>
+        </PageSection>
+      ) : null}
 
       <PageSection className="bg-[var(--wiro-romance)] py-24 text-[var(--wiro-cod-gray)]">
         <PageContainer>

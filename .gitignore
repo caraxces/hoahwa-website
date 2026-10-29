@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# Private generated analytics reports
+/reports/weekly/
+
 # next.js
 /.next/
 /out/
@@ -59,3 +62,12 @@ next-env.d.ts
 # The BloomBound game is its own repository (source/wallbreaker). Only its
 # build output, public/apps/bloombound, is committed here and deployed.
 /wallbreaker/
+
+# Kể installers (~650 MB) — deployed by rsync, never committed
+public/apps/ke/downloads/
+
+# Local test/run artifacts and backups (2026-10-28 cleanup)
+/.playwright-cli/
+/artifacts/
+/output/
+/.htaccess.bak*

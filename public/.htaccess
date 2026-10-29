@@ -16,6 +16,14 @@ RewriteRule ^careers/?$ /process/ [R=301,L]
 # 301 these to a directory that does not exist.
 RewriteRule ^(assets/vietfolk-winter2026/.+\.(?:png|jpe?g|webp|gif|svg|avif|mp4|webm|mov|ktx2|usdz|glb|gltf|bin|riv|ttf|woff2?))[;&].*$ /$1 [L]
 
+# HoaHwa Links: hoahwa.com/<code> → api/go.php (302 + click count). Must run before the
+# trailing-slash canonicalization; codes are 4–16 letters/digits and never an existing
+# file or folder, so every real page keeps winning. /r/<code> stays for old QR prints.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([A-Za-z0-9]{4,16})/?$ api/go.php?code=$1 [L,QSA]
+RewriteRule ^r/([A-Za-z0-9]{4,16})/?$ api/go.php?code=$1 [L,QSA]
+
 # Canonical trailing-slash redirect (matches Next trailingSlash:true)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -53,6 +61,18 @@ ErrorDocument 404 /404.html
   AddType image/webp                 .webp
   AddType image/avif                 .avif
   AddType font/woff2                 .woff2
+  # Kể installers. Apache has no default type for .dmg, and with nosniff on a
+  # text/plain disk image will not download correctly.
+  AddType application/octet-stream      .exe
+  AddType application/x-apple-diskimage .dmg
+</IfModule>
+
+# Installers must always download, never render, even when the URL is opened
+# directly rather than through the download button on /apps/ke/.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(exe|dmg)$">
+    Header set Content-Disposition "attachment"
+  </FilesMatch>
 </IfModule>
 
 # Security headers

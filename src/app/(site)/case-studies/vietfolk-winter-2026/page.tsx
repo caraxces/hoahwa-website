@@ -17,6 +17,7 @@ export const metadata = {
     title: TITLE,
     description: DESCRIPTION,
     path: PATH,
+    image: "/og/vietfolk-winter-2026.png",
     type: "article",
     publishedTime: PUBLISHED,
     tags: TAGS,

@@ -23,9 +23,9 @@ export const pillars: NavPillar[] = [
     label: "Audit",
     href: "/audits",
     children: [
-      { label: "CRO Audits", href: "/audits#cro-audits" },
-      { label: "CX Audits", href: "/audits#cx-audits" },
-      { label: "Technical Audits", href: "/audits#technical-audits" },
+      { label: "CRO Audits", href: "/audits#cro" },
+      { label: "CX Audits", href: "/audits#cx" },
+      { label: "Technical Audits", href: "/audits#technical" },
     ],
   },
   {
@@ -35,13 +35,13 @@ export const pillars: NavPillar[] = [
     children: [
       {
         label: "Migration & Replatforming",
-        href: "/shopify-theme-builds#migration",
+        href: "/shopify-theme-builds#migrate",
       },
       {
         label: "Shopify Theme Development",
-        href: "/shopify-theme-builds#theme-development",
+        href: "/shopify-theme-builds#build",
       },
-      { label: "Shopify Plus", href: "/shopify-theme-builds#shopify-plus" },
+      { label: "Shopify Plus", href: "/shopify-theme-builds#build" },
     ],
   },
   {
@@ -51,24 +51,24 @@ export const pillars: NavPillar[] = [
     children: [
       {
         label: "CRO + A/B Testing",
-        href: "/growth-retainers#cro-ab-testing",
+        href: "/growth-retainers#cro-retainer",
       },
       {
         label: "eCommerce Strategy",
-        href: "/growth-retainers#ecommerce-strategy",
+        href: "/growth-retainers#audit-roadmap",
       },
       {
         label: "User Testing & Research",
-        href: "/growth-retainers#user-testing",
+        href: "/growth-retainers#cro-retainer",
       },
-      { label: "CX Design", href: "/growth-retainers#cx-design" },
+      { label: "CX Design", href: "/growth-retainers#growth-retainer" },
       {
         label: "Development Retainer",
-        href: "/growth-retainers#development-retainer",
+        href: "/growth-retainers#growth-retainer",
       },
       {
         label: "Growth Retainers",
-        href: "/growth-retainers#growth-retainers",
+        href: "/growth-retainers#growth-retainer",
       },
       {
         label: "AEO / GEO (AI Search)",
@@ -92,9 +92,16 @@ export const appMenu: NavAppMenu = {
   href: "/portfolio/builder",
   children: [
     { label: "Create your Portfolio", href: "/portfolio/builder" },
+    { label: "HoaHwa Links · Tree QR", href: "/tree" },
+    { label: "Tree market", href: "/tree/market" },
     {
       label: "BloomBound · 3D Game",
       href: "/apps/bloombound/",
+      external: true,
+    },
+    {
+      label: "Kể · AI Story Studio",
+      href: "/apps/ke/",
       external: true,
     },
   ],
@@ -104,6 +111,7 @@ export const secondaryLinks = [
   { label: "Book a Meeting", href: "/book" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "eCommerce Insights", href: "/insights" },
+  { label: "Build Log", href: "/build-log" },
   { label: "Process", href: "/process" },
   { label: "About", href: "/about" },
 ];
@@ -131,5 +139,5 @@ export const footerServices = [
   { label: "Growth Retainers", href: "/growth-retainers" },
   { label: "Shopify Builds", href: "/shopify-theme-builds" },
   { label: "Discovery", href: "/shopify-theme-builds" },
-  { label: "Shopify Plus", href: "/shopify-theme-builds#shopify-plus" },
+  { label: "Shopify Plus", href: "/shopify-theme-builds#build" },
 ];

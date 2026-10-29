@@ -1,4 +1,6 @@
 import type { InsightBlock, InsightsDatabase } from "@/lib/insights-types";
+import { insightRewritesA } from "./insight-rewrites-a";
+import { insightRewritesB } from "./insight-rewrites-b";
 
 function body(
   excerpt: string,
@@ -778,13 +780,20 @@ const articles: InsightsDatabase["posts"] = [
         type: "cta",
         href: "/case-studies",
         label: "All case studies",
-        note: "Four write-ups, every figure measured rather than estimated.",
+        note: "Every write-up, every figure measured rather than estimated.",
       },
     ],
   },
 ];
 
+// The first 16 posts started as short stubs; their full rewrites (Oct 2026)
+// live in insight-rewrites-a/b.ts and replace title, excerpt, body and tags.
+const rewrites = { ...insightRewritesA, ...insightRewritesB };
+
 export const insightsDatabase: InsightsDatabase = {
   version: 1,
-  posts: articles,
+  posts: articles.map((post) => {
+    const rewrite = rewrites[post.slug];
+    return rewrite ? { ...post, ...rewrite, tags: rewrite.tags ?? post.tags } : post;
+  }),
 };

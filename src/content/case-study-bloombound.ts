@@ -70,6 +70,16 @@ export const caseStudyBloombound: CaseStudyContent = {
         "The verification is the part we would repeat on any client project: 96 automated browser checks — 47 on gameplay and UI, 40 on the world, models and enemy AI, 9 on mouse and fullscreen input — all run against the real production build at its real URL, with console errors treated as failures. Mobile is covered by 390 px Chrome touch emulation, which is a genuine check of layout and touch controls and is not the same as a physical device.",
       ],
     },
+    {
+      num: "06",
+      title: "Update — October 2026: the Blossom Crown realm",
+      body: [
+        "BloomBound has a fourth realm. Blossom Crown is a painterly dark-fantasy throne hall — navy and gold banners, coral-pink and violet fractal blossom trees, crows circling a castle under a misty pink-grey sky — art-directed from three concept paintings by our artist team: the throne hall itself, a knight march with a giant red sword, and a magenta holographic HUD. The whole scene renders at roughly 256,000 triangles.",
+        "The realm is procedural where it counts. Twenty-five road paths are planned around the castle with a 4 m baked avoidance mask, and that planning step went from about 15 seconds to 151 ms — the entire realm builds in around 0.4 seconds. Twenty-six vehicles (carriages, carts, cavalry) travel those roads through instanced scenery: 48 blossom trees, 140 pines, 167 banners, 334 lamps and 60 crows.",
+        "The new gameplay is an escort mission: guard a carriage along the road to the castle while giants smash the traffic underfoot — and hitting a giant's eye counts. A painterly post-processing pass (toon ramps, outlines, bloom) ties the realm back to the concept art. Behind it sits a proper asset pipeline: headless Blender 5.2 scripts to optimize, stylize and preview, plus a Tripo 3D v3 API client for generating props.",
+        "The build itself is the other story: the work was split across several AI coding agents, each in its own git worktree — the same setup documented in our Notch Agent Train case study. Blossom Crown was built and tested locally on 29 October 2026 and is now rolling out; the figures in the stats above remain the September measurements of the original three chapters until we re-measure.",
+      ],
+    },
   ],
   stack: [
     { label: "Engine", value: "Three.js 0.180 on WebGL 2, no game framework" },

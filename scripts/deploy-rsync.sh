@@ -16,6 +16,7 @@
 #   ./scripts/deploy-rsync.sh                 # merge (safe default)
 #   ./scripts/deploy-rsync.sh --dry-run       # show what would transfer
 #   ./scripts/deploy-rsync.sh --only-assets   # just assets/ (media restore)
+#   ./scripts/deploy-rsync.sh --installers    # just the Kể installers (new release only)
 #   ./scripts/deploy-rsync.sh --delete        # also remove remote extras (DANGER)
 #
 # SSHPASS is also read from .env.local (gitignored) if present, so the password
@@ -40,6 +41,7 @@ for arg in "$@"; do
     --dry-run)     DRY_RUN=1 ;;
     --delete)      DELETE=1 ;;
     --only-assets) SUBPATH="assets/" ;;
+    --installers)  SUBPATH="apps/ke/downloads/" ;;
     *) echo "Unknown option: $arg" >&2; exit 2 ;;
   esac
 done
@@ -137,6 +139,15 @@ RSYNC_OPTS=(
 # as literal files by the mirror script. They are duplicates of the plain file,
 # the server 301s them, and they account for ~3.3 GB. Never upload them.
 RSYNC_OPTS+=( --exclude '*;*' --exclude '*&*' )
+
+# The Kể installers are 650 MB of immutable release artifacts, but `next build` re-copies public/
+# into out/ on every run, which resets their mtimes — so rsync's size+mtime quick check sees them
+# as changed and re-uploads the pair on every deploy. They only ever change when the version in
+# their filename changes, so keep them out of the default run and push them explicitly:
+#   ./scripts/deploy-rsync.sh --installers
+if [[ -z "$SUBPATH" ]]; then
+  RSYNC_OPTS+=( --exclude 'apps/ke/downloads/' )
+fi
 
 (( DRY_RUN )) && RSYNC_OPTS+=( --dry-run )
 if (( DELETE )); then

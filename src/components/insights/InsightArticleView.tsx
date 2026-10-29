@@ -2,8 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import type { InsightPostRecord } from "@/lib/insights-types";
 import type { InsightPostListItem } from "@/lib/insights-db";
+import { parseInsightDate } from "@/lib/seo";
+import { getRelatedLinks } from "@/content/related";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
+import { RelatedReading } from "@/components/shared/RelatedReading";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
 
 type InsightArticleViewProps = {
@@ -33,7 +36,7 @@ export function InsightArticleView({ post, related }: InsightArticleViewProps) {
           <Reveal variants={fadeUp}>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <time
-                dateTime={post.date}
+                dateTime={parseInsightDate(post.date)?.slice(0, 10) ?? post.date}
                 className="text-sm tracking-[-0.03em] text-[var(--wiro-mauve)]"
               >
                 {post.date}
@@ -217,6 +220,10 @@ export function InsightArticleView({ post, related }: InsightArticleViewProps) {
             );
           })}
         </article>
+
+        <div className="mt-24">
+          <RelatedReading links={getRelatedLinks(`/insights/${post.slug}`)} />
+        </div>
 
         {related.length > 0 ? (
           <div className="mt-24 border-t border-[var(--wiro-cod-gray)] pt-12">

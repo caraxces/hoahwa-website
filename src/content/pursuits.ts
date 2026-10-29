@@ -8,7 +8,7 @@ export type PursuitGoal = {
 export const pursuitSection = {
   eyebrow: "What we're pursuing",
   headline: ["Goals we're", "building toward"] as const,
-  lead: "We're focused on measurable outcomes — case studies will follow as we publish each engagement.",
+  lead: "We're focused on measurable outcomes. Six in-house case studies are published with every figure measured; client stories follow as each engagement ships.",
 };
 
 export const pursuitFilters = [
@@ -20,6 +20,8 @@ export const pursuitFilters = [
   "Development",
   "Growth",
   "3D",
+  "AI",
+  "Desktop",
 ] as const;
 
 export const pursuitGoals: PursuitGoal[] = [
@@ -66,10 +68,24 @@ export const pursuitGoals: PursuitGoal[] = [
     tags: ["SEO", "Development", "Growth"],
   },
   {
+    slug: "ke-audio-story-studio",
+    title: "Local-first AI software",
+    description:
+      "K\u1ec3 \u2014 a Vietnamese audio story studio that runs entirely on the user's laptop: bring-your-own ChatGPT, an originality gate that measures the script, voice cloning with no upload.",
+    tags: ["Desktop", "AI", "Development"],
+  },
+  {
+    slug: "notch-agent-train",
+    title: "AI-orchestrated engineering",
+    description:
+      "Notch Agent Train — a macOS notch app where Claude splits work and delegates slices to Codex, Cursor, Antigravity, Kimi and opencode, each in its own git worktree, reviewed before merge.",
+    tags: ["Desktop", "AI", "Development"],
+  },
+  {
     slug: "case-studies",
     title: "Published case studies",
     description:
-      "Documenting real outcomes — how we built this site, and the Vietfolk ’26 Shopify Editions rebuild; client stories as we publish each engagement.",
+      "Documenting real outcomes — this site, the Vietfolk ’26 Editions rebuild, BloomBound, Tarotto, Kể and Notch Agent Train, plus a weekly build log; client stories as we publish each engagement.",
     tags: ["Development", "Shopify"],
   },
 ];

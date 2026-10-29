@@ -654,7 +654,7 @@ export function PortfolioPageClient({
         ) : null}
 
         {cta?.enabled ? (
-          <section className="relative overflow-hidden bg-section-darker py-24 lg-py-32">
+          <section id="cta" className="relative overflow-hidden bg-section-darker py-24 lg-py-32">
             <div className="max-w-1400 mx-auto px-6 lg-px-12">
               <div className="anim-reveal-up relative border border-foreground">
                 <div className="relative z-10 px-8 py-16 lg-px-16 lg-py-24">

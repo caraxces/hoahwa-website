@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kể — An AI Story Studio That Runs On Your Own Machine</title>
+<meta name="description" content="Free desktop app for Windows and Apple Silicon Macs. Turn a reference video or a rough idea into a finished Vietnamese audio episode — transcript, script, narration, subtitles. Nothing you write or record is uploaded anywhere." />
+<link rel="canonical" href="https://hoahwa.com/apps/ke/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Kể — An AI Story Studio That Runs On Your Own Machine" />
+<meta property="og:description" content="Free for Windows and Apple Silicon Macs. Bring your own ChatGPT; the app measures whether the script is genuinely new, and narrates it without a byte leaving your laptop." />
+<meta property="og:url" content="https://hoahwa.com/apps/ke/" />
+<link rel="icon" href="/logo-hoahwa/hoahwa_logo_board-07.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --deep:#5c3d1e; --accent:#d4a04a; --soft:#f0d4a8; --cream:#fff8ed;
+    --sage:#6B6E5D; --ink:#2b1c0d;
+    --pad:clamp(20px,5vw,120px);
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding-inline:var(--pad)}
+  a{color:inherit}
+  h1,h2,h3{letter-spacing:-0.035em; line-height:1.08; margin:0}
+  h1{font-size:clamp(38px,6.4vw,72px); font-weight:700}
+  h2{font-size:clamp(26px,3.6vw,40px); font-weight:600; margin-bottom:18px}
+  h3{font-size:19px; font-weight:600; letter-spacing:-0.02em}
+  p{margin:0 0 16px}
+  .lead{font-size:clamp(18px,2.1vw,21px); color:color-mix(in srgb, var(--cream) 82%, transparent)}
+
+  /* hero */
+  header.hero{background:var(--deep); color:var(--cream); padding:clamp(64px,10vw,120px) 0 clamp(48px,7vw,84px)}
+  .eyebrow{color:var(--soft); font-size:15px; letter-spacing:-0.01em; margin:0 0 18px}
+  .hero h1 span{display:block; color:var(--soft)}
+  .hero .lead{max-width:760px; margin-top:26px}
+  .free{display:inline-flex; align-items:center; gap:8px; margin-top:28px; background:var(--accent); color:var(--ink);
+        font-weight:600; font-size:14px; padding:7px 14px; border-radius:999px}
+
+  /* downloads */
+  .downloads{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); margin-top:44px}
+  .card{background:color-mix(in srgb, var(--cream) 8%, transparent); border:1px solid color-mix(in srgb, var(--cream) 24%, transparent);
+        border-radius:18px; padding:24px}
+  .card.is-yours{border-color:var(--accent); background:color-mix(in srgb, var(--accent) 16%, transparent)}
+  .card h3{color:var(--cream)}
+  .card .meta{font-size:14px; color:color-mix(in srgb, var(--cream) 70%, transparent); margin:6px 0 18px}
+  .btn{display:block; text-align:center; text-decoration:none; font-weight:600; font-size:16px;
+       background:var(--accent); color:var(--ink); padding:14px 20px; border-radius:12px; transition:opacity .15s}
+  .btn:hover{opacity:.88}
+  .btn.secondary{background:transparent; color:var(--cream); border:1px solid color-mix(in srgb,var(--cream) 40%,transparent)}
+  .yours-tag{display:none; font-size:13px; font-weight:600; color:var(--accent); margin-bottom:8px}
+  .card.is-yours .yours-tag{display:block}
+  .hash{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px; line-height:1.5;
+        color:color-mix(in srgb, var(--cream) 55%, transparent); word-break:break-all; margin-top:14px}
+
+  /* body sections */
+  main section{padding:clamp(52px,7vw,88px) 0; border-top:1px solid color-mix(in srgb,var(--deep) 12%,transparent)}
+  main section:first-child{border-top:0}
+  .cols{display:grid; gap:32px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .step{border-top:2px solid var(--accent); padding-top:14px}
+  .step .n{font-size:13px; font-weight:600; color:var(--sage); letter-spacing:.04em; text-transform:uppercase}
+  .step h3{margin:6px 0 8px}
+  .step p{font-size:15.5px; color:color-mix(in srgb,var(--ink) 78%,transparent); margin:0}
+
+  .note{background:#fff; border:1px solid color-mix(in srgb,var(--deep) 14%,transparent);
+        border-left:4px solid var(--accent); border-radius:12px; padding:20px 22px; margin:20px 0}
+  .note h3{margin-bottom:8px}
+  .note p:last-child, .note ol:last-child, .note ul:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 16px; padding-left:22px} li{margin-bottom:7px}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:14px;
+       background:color-mix(in srgb,var(--soft) 55%,transparent); padding:2px 6px; border-radius:5px; word-break:break-all}
+  table{width:100%; border-collapse:collapse; font-size:15px; margin-bottom:16px}
+  th,td{text-align:left; padding:11px 12px; border-bottom:1px solid color-mix(in srgb,var(--deep) 12%,transparent); vertical-align:top}
+  th{font-weight:600; color:var(--sage); font-size:13px; text-transform:uppercase; letter-spacing:.04em}
+  .scroller{overflow-x:auto}
+
+  .cs-link{display:inline-block; margin-top:8px; font-weight:600; color:var(--deep);
+           border-bottom:2px solid var(--accent); text-decoration:none; padding-bottom:2px}
+
+  /* footer */
+  footer{background:var(--deep); color:var(--cream); padding:clamp(44px,6vw,72px) 0}
+  .powered{display:flex; justify-content:center}
+  .powered-inner{background:var(--cream); border-radius:20px; padding:26px 40px;
+        display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center}
+  .powered-inner span{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--sage)}
+  .powered-inner img{width:186px; height:auto; display:block}
+  .powered-inner a{text-decoration:none; display:block}
+  .foot-links{margin-top:26px; text-align:center; font-size:14px; color:color-mix(in srgb,var(--cream) 62%,transparent)}
+  .foot-links a{color:color-mix(in srgb,var(--cream) 88%,transparent); text-decoration:none; border-bottom:1px solid color-mix(in srgb,var(--cream) 30%,transparent); margin:0 10px}
+  @media (max-width:600px){ .powered-inner img{width:150px} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Free desktop app · Windows &amp; macOS</p>
+    <h1>Kể<span>An AI story studio that runs on your own machine.</span></h1>
+    <p class="lead">
+      Kể turns a reference video or a rough idea into a finished Vietnamese audio episode — transcript,
+      script, narration, subtitles, and the YouTube title and hashtags to publish it. The unusual part is
+      where it runs: entirely on your laptop. No account, no server, no upload. You bring your own ChatGPT
+      for the writing; the app measures whether what comes back is genuinely new, then speaks it in a voice
+      you can clone yourself.
+    </p>
+    <p class="free">Free · No account · Nothing leaves your machine</p>
+
+    <div class="downloads">
+      <div class="card" id="card-win">
+        <p class="yours-tag">Detected: you are on Windows</p>
+        <h3>Windows 10 / 11</h3>
+        <p class="meta">Installer · 64-bit · 286 MB · v0.2.2</p>
+        <a class="btn" id="dl-win" href="downloads/Ke-Setup-0.2.2-win-x64.exe" download>Download for Windows</a>
+        <p class="hash">SHA-256<br />ccaefcd1ac82786ce685ada8c9481a1941f9b574d6426a859db4bcf3f70d7b82</p>
+      </div>
+      <div class="card" id="card-mac">
+        <p class="yours-tag">Detected: you are on a Mac</p>
+        <h3>macOS · Apple Silicon</h3>
+        <p class="meta">Disk image · M1–M4 only · 337 MB · v0.2.2</p>
+        <a class="btn" id="dl-mac" href="downloads/Ke-0.2.2-arm64.dmg" download>Download for Mac</a>
+        <p class="hash">SHA-256<br />1da52b09e3aaf117bd0d8def0ae797cb6cd2c736f88fd0262fe45e9034d8c380</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="wrap">
+    <h2>What it actually does</h2>
+    <p style="max-width:760px">
+      Six stages, each one resumable and written to plain files on disk, so you can stop after any step and
+      pick the project back up later.
+    </p>
+    <div class="cols" style="margin-top:30px">
+      <div class="step"><p class="n">Step 1</p><h3>Source material</h3><p>Paste a YouTube link and the app pulls the subtitles as reference, or paste your own text. Optional — you can start from a blank idea.</p></div>
+      <div class="step"><p class="n">Step 2–3</p><h3>Brief &amp; script</h3><p>The app builds a prompt pack you paste into ChatGPT. Paste the answer back and it extracts the script, the self-scored review and the metadata.</p></div>
+      <div class="step"><p class="n">Step 4</p><h3>Originality check</h3><p>The engine measures the script against your sources itself — word-overlap and meaning-similarity — instead of taking the AI's word for it.</p></div>
+      <div class="step"><p class="n">Step 5</p><h3>Narration</h3><p>Two Vietnamese voices ship with the app, or clone your own from a few seconds of audio. The model runs locally on your CPU.</p></div>
+      <div class="step"><p class="n">Step 6</p><h3>Export</h3><p>MP3 and WAV, a matching SRT subtitle file, and a description file with the source credits already written in.</p></div>
+      <div class="step"><p class="n">Optional</p><h3>Claude Desktop</h3><p>If you use Claude Desktop, the app can expose the project to it over a local MCP server so the assistant writes straight into it — no copy-paste.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Before you install</h2>
+
+    <div class="note">
+      <h3>The installers are not code-signed yet</h3>
+      <p>
+        Kể is free and self-funded, and a code-signing certificate is not in place. Both Windows and macOS
+        will therefore warn you the first time you open it. That warning means “this developer has not paid
+        for a certificate”, not “this file is dangerous” — but you should only trust that from a source you
+        trust, so the SHA-256 of each file is published above and you can verify it before opening.
+      </p>
+    </div>
+
+    <h3 style="margin-top:28px">Opening it on Windows</h3>
+    <ol>
+      <li>Run <code>Ke-Setup-0.2.2-win-x64.exe</code>.</li>
+      <li>SmartScreen will say “Windows protected your PC”. Click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
+      <li>Install. It does not need administrator rights and installs for your user only.</li>
+    </ol>
+    <p>Verify the download first, if you like — in PowerShell:<br />
+      <code>Get-FileHash .\Ke-Setup-0.2.2-win-x64.exe -Algorithm SHA256</code></p>
+
+    <h3 style="margin-top:28px">Opening it on a Mac</h3>
+    <ol>
+      <li>Open <code>Ke-0.2.2-arm64.dmg</code> and drag <strong>Kể</strong> into Applications.</li>
+      <li>The first launch will be blocked. Open <strong>System Settings → Privacy &amp; Security</strong>, scroll down,
+        and click <strong>Open Anyway</strong> next to the message about Kể.</li>
+      <li>If that option does not appear, run this in Terminal and open the app again:<br />
+        <code>xattr -dr com.apple.quarantine /Applications/Kể.app</code></li>
+    </ol>
+    <p>To verify the download:<br /><code>shasum -a 256 Ke-0.2.2-arm64.dmg</code></p>
+
+    <div class="note">
+      <h3>Apple Silicon only</h3>
+      <p>
+        The macOS build runs on M1, M2, M3 and M4 Macs. There is no Intel build — on an Intel Mac it will not
+        start. Check with the Apple menu → About This Mac; it should say “Apple M…”, not “Intel”.
+      </p>
+    </div>
+
+    <div class="note">
+      <h3>First launch downloads about 1.2 GB</h3>
+      <p>
+        The speech engine is not inside the installer. The first time you use step 5, the app installs a small
+        Python runtime (about 620 MB) and the voice model (about 610 MB), once, over your internet connection.
+        Everything after that works offline.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>What you need</h2>
+    <div class="scroller">
+      <table>
+        <tr><th>Windows</th><td>Windows 10 or 11, 64-bit. About 1.5 GB free disk space including the voice model.</td></tr>
+        <tr><th>macOS</th><td>Apple Silicon (M1–M4), macOS 13 or newer. About 1.5 GB free disk space.</td></tr>
+        <tr><th>Internet</th><td>Needed to pull YouTube transcripts and for the one-time voice model download. The rest works offline.</td></tr>
+        <tr><th>An AI subscription</th><td>Your own ChatGPT (or Claude) account for the writing step. Kể has no AI of its own and never asks for an API key.</td></tr>
+        <tr><th>Rendering time</th><td>Narration runs at roughly 1.2–1.7× realtime on an M4, so a 30-minute episode takes 18–25 minutes. It runs as a background job with progress.</td></tr>
+      </table>
+    </div>
+
+    <div class="note">
+      <h3>Your text and your voice stay on your computer</h3>
+      <p>
+        Kể has no backend. There is no account system, no telemetry, and no server for it to send anything to.
+        Projects live in a folder you choose; cloned voices live in your own application data folder. The only
+        network traffic is YouTube subtitle downloads, the one-time model download, and — if you use it —
+        whatever you personally paste into ChatGPT.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>How it was built</h2>
+    <p style="max-width:760px">
+      We wrote up the engineering behind this one — the originality gate and how its threshold was calibrated,
+      why there is no API key in the app, what local speech synthesis actually costs, and the Windows-only
+      transcript bug that three of our tests were quietly mocking out.
+    </p>
+    <a class="cs-link" href="/case-studies/ke-audio-story-studio">Read the case study →</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="powered">
+      <div class="powered-inner">
+        <span>Powered by</span>
+        <a href="https://hoahwa.com/" aria-label="hoahwa">
+          <img src="/logo-hoahwa/hoahwa_logo_board-08.png" width="1152" height="231" alt="hoahwa" />
+        </a>
+      </div>
+    </div>
+    <p class="foot-links">
+      <a href="/">hoahwa.com</a>
+      <a href="/case-studies/ke-audio-story-studio">Case study</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Highlight the build that matches the visitor's machine; both stay downloadable.
+  (function () {
+    var ua = navigator.userAgent || "";
+    var p = navigator.platform || "";
+    var isMac = /Mac/i.test(p) || /Mac OS X/i.test(ua);
+    var isWin = /Win/i.test(p) || /Windows/i.test(ua);
+    var id = isMac && !isWin ? "card-mac" : isWin ? "card-win" : null;
+    if (id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.classList.add("is-yours");
+        el.parentNode.insertBefore(el, el.parentNode.firstChild);
+      }
+    }
+  })();
+</script>
+</body>
+</html>

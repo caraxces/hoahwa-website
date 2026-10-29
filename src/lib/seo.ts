@@ -19,10 +19,15 @@ export const SITE_TAGLINE = "High-End Web Design & Development";
 export const SITE_DESCRIPTION =
   "Hoahwa is a boutique web design & development studio building high-performance Shopify storefronts—you work directly with the people who design and build it, on a fixed scope and a fixed price.";
 
+/** Default social share image (1200×630) for og:image / twitter:image. */
+export const DEFAULT_OG_IMAGE = "/og-default.png";
+
+export const OG_IMAGE_WIDTH = 1200;
+export const OG_IMAGE_HEIGHT = 630;
+
 /**
- * Real image used for JSON-LD `image`/`logo` fields (needs a stable, crawlable
- * URL). Social cards (og:image / twitter:image) are produced separately by the
- * build-time `opengraph-image.tsx` file convention.
+ * Real image used for JSON-LD `logo` fields (needs a stable, crawlable URL).
+ * Article `image` defaults to {@link DEFAULT_OG_IMAGE}, not the square logo.
  */
 export const BRAND_LOGO = "/logo-hoahwa/hoahwa_logo_board-07.png";
 
@@ -58,13 +63,28 @@ type PageMetaInput = {
   publishedTime?: string;
   tags?: string[];
   noindex?: boolean;
+  /** Relative or absolute path to the share image. Defaults to {@link DEFAULT_OG_IMAGE}. */
+  image?: string;
 };
+
+function shareImages(imagePath: string, alt: string) {
+  const url = absoluteUrl(imagePath);
+  return {
+    openGraphImages: [
+      {
+        url,
+        width: OG_IMAGE_WIDTH,
+        height: OG_IMAGE_HEIGHT,
+        alt,
+      },
+    ],
+    twitterImage: url,
+  };
+}
 
 /**
  * Build a complete `Metadata` object for a page: title, description, canonical
- * URL, and Open Graph + Twitter cards. The root layout supplies `metadataBase`
- * and the title template; the og:image/twitter:image come from the build-time
- * `opengraph-image.tsx` convention, so they are intentionally omitted here.
+ * URL, Open Graph + Twitter cards (including absolute og:image / twitter:image).
  */
 export function pageMetadata({
   title,
@@ -74,8 +94,11 @@ export function pageMetadata({
   publishedTime,
   tags,
   noindex,
+  image,
 }: PageMetaInput): Metadata {
   const url = absoluteUrl(path);
+  const imagePath = image ?? DEFAULT_OG_IMAGE;
+  const { openGraphImages, twitterImage } = shareImages(imagePath, title);
 
   return {
     title,
@@ -88,6 +111,7 @@ export function pageMetadata({
       siteName: SITE_NAME,
       title,
       description,
+      images: openGraphImages,
       ...(type === "article" && publishedTime ? { publishedTime } : {}),
       ...(type === "article" && tags ? { tags } : {}),
     },
@@ -95,16 +119,22 @@ export function pageMetadata({
       card: "summary_large_image",
       title,
       description,
+      images: [twitterImage],
     },
   };
 }
 
 /**
- * Parse the human-readable insight date ("Jun 2, 2026") into an ISO string.
- * Returns undefined for unparseable input so callers can omit the field.
+ * Parse the human-readable insight date ("Jun 2, 2026") as a UTC calendar day.
+ * Returns an ISO-8601 instant at 00:00:00.000Z for that day, or undefined if
+ * unparseable.
  */
 export function parseInsightDate(date: string): string | undefined {
-  const parsed = new Date(date);
+  const trimmed = date.trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+    return `${trimmed}T00:00:00.000Z`;
+  }
+  const parsed = new Date(`${trimmed} UTC`);
   return Number.isNaN(parsed.getTime()) ? undefined : parsed.toISOString();
 }
 
@@ -121,7 +151,7 @@ export function organizationSchema(): Json {
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
-    url: SITE_URL,
+    url: absoluteUrl("/"),
     description: SITE_DESCRIPTION,
     logo: {
       "@type": "ImageObject",
@@ -137,7 +167,7 @@ export function websiteSchema(): Json {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
-    url: SITE_URL,
+    url: absoluteUrl("/"),
     name: SITE_NAME,
     description: SITE_DESCRIPTION,
     publisher: { "@id": `${SITE_URL}/#organization` },
@@ -185,7 +215,7 @@ export function articleSchema({
   description,
   path,
   datePublished,
-  image = BRAND_LOGO,
+  image = DEFAULT_OG_IMAGE,
   tags,
 }: ArticleInput): Json {
   const url = absoluteUrl(path);
