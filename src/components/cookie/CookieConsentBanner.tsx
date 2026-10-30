@@ -176,19 +176,28 @@ export function CookieConsentBanner() {
                     </p>
                   </div>
                   <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-3 sm:flex-row">
+                      <button
+                        type="button"
+                        onClick={handleRejectNonEssential}
+                        className={cookieUi.btnPrimary}
+                      >
+                        {cookieConsentCopy.bar.rejectAll}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleAcceptAll}
+                        className={cookieUi.btnPrimary}
+                      >
+                        {cookieConsentCopy.bar.acceptAll}
+                      </button>
+                    </div>
                     <button
                       type="button"
                       onClick={() => setView("panel")}
                       className={cookieUi.btnSecondary}
                     >
                       {cookieConsentCopy.bar.customize}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleAcceptAll}
-                      className={cookieUi.btnPrimary}
-                    >
-                      {cookieConsentCopy.bar.acceptAll}
                     </button>
                   </div>
                 </div>

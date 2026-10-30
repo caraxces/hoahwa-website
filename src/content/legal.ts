@@ -138,7 +138,8 @@ export const cookiePolicy: LegalDoc = {
       heading: "How consent works on this site",
       bullets: [
         "Optional cookie storage is denied by default. Google Analytics loads after the page hydrates with all optional Google Consent Mode storage signals denied, so Google may receive cookieless measurement requests before you choose; Google Analytics cookies and identifiers are not enabled unless you opt in to Analytics. Google Tag Manager is not loaded until the relevant Analytics or Marketing opt-in.",
-        "You can accept all from the banner, or select \"Customize\" to reject non-essential categories or save individual choices.",
+        "YouTube videos in insight articles do not load with the page. Each one shows a placeholder until you allow Functional cookies or choose to load that individual video; only then does YouTube receive a request, and it may set its own cookies.",
+        "The banner offers \"Accept all\" and \"Reject all\" side by side; select \"Customize\" to save individual choices.",
         "Your choice is stored in a first-party localStorage record on your device until you clear site data, change your choice, or we change the consent-record format; it does not currently expire automatically.",
         "You can change or withdraw consent at any time via the cookie icon in the bottom-left corner of every page. A change applies from the next page load (tags already running stay active until you reload); to remove cookies already stored by a third party, use your browser settings.",
       ],

@@ -15,10 +15,12 @@ export const cookieUi = {
   btnPrimary: cn(
     "inline-flex w-full items-center justify-center rounded-full bg-[var(--wiro-mauve)] px-6 py-2.5",
     "text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90",
+    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--wiro-cod-gray)]",
   ),
   btnSecondary: cn(
     "inline-flex w-full items-center justify-center rounded-full border border-[var(--wiro-cod-gray)]/20 px-6 py-2.5",
     "text-base tracking-[-0.03em] transition-colors hover:border-[var(--wiro-cod-gray)]/40",
+    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--wiro-cod-gray)]",
   ),
   link: "text-sm tracking-[-0.02em] text-[var(--wiro-cod-gray)]/60 underline-offset-2 hover:text-[var(--wiro-cod-gray)] hover:underline",
 };

@@ -5,6 +5,7 @@ import type { InsightPostListItem } from "@/lib/insights-db";
 import { parseInsightDate } from "@/lib/seo";
 import { getRelatedLinks } from "@/content/related";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
+import { YouTubeConsentEmbed } from "@/components/insights/YouTubeConsentEmbed";
 import { PageContainer, PageSection } from "@/components/shared/PageContainer";
 import { RelatedReading } from "@/components/shared/RelatedReading";
 import { clipUp, fadeUp, staggerContainer } from "@/lib/motion";
@@ -123,13 +124,10 @@ export function InsightArticleView({ post, related }: InsightArticleViewProps) {
                   <figure className="mt-10">
                     <div className="relative aspect-video overflow-hidden rounded-sm border border-[var(--wiro-cod-gray)]/20 bg-[var(--wiro-cod-gray)]/5">
                       {block.youtubeId ? (
-                        <iframe
-                          src={`https://www.youtube-nocookie.com/embed/${block.youtubeId}`}
-                          title={block.caption}
-                          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          loading="lazy"
-                          className="absolute inset-0 h-full w-full"
+                        <YouTubeConsentEmbed
+                          youtubeId={block.youtubeId}
+                          caption={block.caption}
+                          poster={block.poster}
                         />
                       ) : block.src ? (
                         <video

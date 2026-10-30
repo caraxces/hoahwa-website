@@ -10,8 +10,9 @@ export type CookieDetail = {
 export const cookieConsentCopy = {
   bar: {
     message:
-      "We use essential local storage for your preferences and optional technologies for analytics and features such as the booking calendar. You can choose which categories to allow.",
+      "We use essential local storage for your preferences and optional technologies for analytics and features such as the booking calendar and embedded videos. You can choose which categories to allow.",
     customize: "Customize",
+    rejectAll: "Reject all",
     acceptAll: "Accept all",
   },
   panel: {
@@ -76,7 +77,7 @@ export const cookieConsentCopy = {
           name: "YouTube privacy-enhanced player (where present)",
           provider: "YouTube (third party)",
           purpose:
-            "An article video iframe can load with the page and is not controlled by this preference setting; YouTube may receive request data and set its own storage.",
+            "Article videos stay behind a placeholder and never load with the page. A video loads only after you allow Functional cookies or click \"Load video\" on that video; from that point YouTube may receive request data and set its own storage.",
           duration: "Set by YouTube; see YouTube's policies",
         },
       ] as CookieDetail[],
