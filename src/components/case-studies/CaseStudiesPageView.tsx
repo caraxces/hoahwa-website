@@ -85,49 +85,49 @@ export function CaseStudiesPageView() {
         <Reveal variants={fadeUp} className="mt-16 flex flex-wrap gap-4">
           <Link
             href="/case-studies/hoahwa-com"
-            className="inline-flex items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-3 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
           >
             Case study 001 — how we built this site
           </Link>
           <Link
             href="/case-studies/vietfolk-winter-2026"
-            className="inline-flex items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-3 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
           >
             Case study 002 — Vietfolk ’26, a Shopify Editions page rebuilt
           </Link>
           <Link
             href="/case-studies/bloombound-3d-landing-page"
-            className="inline-flex items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-3 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
           >
             Case study 003 — BloomBound, a 3D landing page you can play
           </Link>
           <Link
             href="/case-studies/tarotto-programmatic-seo"
-            className="inline-flex items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-3 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
           >
             Case study 004 — Tarotto, 900+ pages of programmatic SEO
           </Link>
           <Link
             href="/case-studies/ke-audio-story-studio"
-            className="inline-flex items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-3 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
           >
             Case study 005 — Kể, an AI story studio that runs offline
           </Link>
           <Link
             href="/case-studies/notch-agent-train"
-            className="inline-flex items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-[20px] bg-[var(--wiro-mauve)] px-4 py-3 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
           >
             Case study 006 — Notch Agent Train, AI coding agents run from the notch
           </Link>
           <Link
             href="/build-log"
-            className="inline-flex items-center justify-center rounded-[20px] border border-[var(--wiro-romance)]/35 px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-romance)] transition-colors hover:bg-[var(--wiro-romance)] hover:text-[var(--wiro-cod-gray)]"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-[20px] border border-[var(--wiro-romance)]/35 px-4 py-3 text-base tracking-[-0.03em] text-[var(--wiro-romance)] transition-colors hover:bg-[var(--wiro-romance)] hover:text-[var(--wiro-cod-gray)]"
           >
             Build log — what we shipped this week
           </Link>
           <Link
             href="/case-studies/shopify-developer"
-            className="inline-flex items-center justify-center rounded-[20px] border border-[var(--wiro-romance)]/35 px-4 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-romance)] transition-colors hover:bg-[var(--wiro-romance)] hover:text-[var(--wiro-cod-gray)]"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-[20px] border border-[var(--wiro-romance)]/35 px-4 py-3 text-base tracking-[-0.03em] text-[var(--wiro-romance)] transition-colors hover:bg-[var(--wiro-romance)] hover:text-[var(--wiro-cod-gray)]"
           >
             Explainer — Shopify + developer
           </Link>

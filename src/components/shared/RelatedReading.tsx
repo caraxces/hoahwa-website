@@ -33,12 +33,12 @@ export function RelatedReading({
             <li className="border-b border-[var(--wiro-cod-gray)]/20">
               <Link
                 href={link.href}
-                className="group flex flex-col gap-2 py-6 transition-opacity hover:opacity-80 md:flex-row md:items-baseline md:gap-8"
+                className="group flex min-h-[44px] flex-col justify-center gap-2 py-6 transition-opacity hover:opacity-80 md:flex-row md:items-baseline md:gap-8"
               >
-                <span className="shrink-0 text-sm tracking-[-0.03em] text-[var(--wiro-mauve)] md:w-36">
+                <span className="shrink-0 text-sm font-medium tracking-[-0.03em] text-[var(--wiro-cod-gray)]/70 md:w-36">
                   {link.kicker}
                 </span>
-                <span className="text-h3 text-[var(--wiro-cod-gray)]/25 transition-colors group-hover:text-[var(--wiro-cod-gray)]/50">
+                <span className="text-h3 text-[var(--wiro-cod-gray)]/45 transition-colors group-hover:text-[var(--wiro-cod-gray)]/75">
                   {link.title}
                 </span>
               </Link>

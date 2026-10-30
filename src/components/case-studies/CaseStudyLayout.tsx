@@ -98,7 +98,7 @@ export function CaseStudyLayout({ content }: { content: CaseStudyContent }) {
               <Reveal key={chapter.num} variants={fadeUp}>
                 <article className="flex flex-col gap-8 lg:flex-row lg:gap-20">
                   <div className="lg:w-[300px] lg:shrink-0">
-                    <span className="text-base tracking-[-0.03em] text-[var(--wiro-mauve)]">
+                    <span className="text-base font-medium tracking-[-0.03em] text-[var(--wiro-cod-gray)]/70">
                       {chapter.num}
                     </span>
                     <h2 className="mt-3 text-[length:var(--wiro-h4)] leading-tight tracking-[-0.04em]">
@@ -145,7 +145,7 @@ export function CaseStudyLayout({ content }: { content: CaseStudyContent }) {
                       width={shot.width}
                       height={shot.height}
                       sizes={i === 0 ? "(max-width: 1360px) 100vw, 1312px" : "(max-width: 768px) 100vw, 640px"}
-                      loading="lazy"
+                      loading={i === 0 ? "eager" : "lazy"}
                       className="h-auto w-full rounded-lg border border-[var(--wiro-cod-gray)]/10"
                     />
                     <figcaption className="mt-3 text-sm leading-5 tracking-[-0.02em] text-[var(--wiro-cod-gray)]/70">
@@ -160,7 +160,7 @@ export function CaseStudyLayout({ content }: { content: CaseStudyContent }) {
                 {/* Static microsite, not a Next.js route — plain anchor forces a real page load */}
                 <a
                   href={demo.href}
-                  className="inline-flex w-fit items-center justify-center rounded-full border border-[var(--wiro-cod-gray)]/30 px-5 py-2.5 text-base tracking-[-0.03em] transition-colors hover:bg-[var(--wiro-cod-gray)] hover:text-[var(--wiro-romance)]"
+                  className="inline-flex min-h-[44px] w-fit items-center justify-center rounded-full border border-[var(--wiro-cod-gray)]/30 px-5 py-3 text-base tracking-[-0.03em] transition-colors hover:bg-[var(--wiro-cod-gray)] hover:text-[var(--wiro-romance)]"
                 >
                   {demo.label} →
                 </a>
@@ -214,7 +214,10 @@ export function CaseStudyLayout({ content }: { content: CaseStudyContent }) {
             <Reveal clip variants={clipUp}>
               <h2 className="text-h3">
                 {cta.headline[0]}
-                <span className="block text-[var(--wiro-mauve)]">{cta.headline[1]}</span>
+                <span className="block">
+                  {cta.headline[1]}
+                  <span className="text-[var(--wiro-mauve)]">.</span>
+                </span>
               </h2>
             </Reveal>
             <Reveal variants={fadeUp} className="mt-8 max-w-[620px]">
@@ -225,7 +228,7 @@ export function CaseStudyLayout({ content }: { content: CaseStudyContent }) {
             <Reveal variants={fadeUp}>
               <Link
                 href="/book"
-                className="mt-10 inline-flex items-center justify-center rounded-full bg-[var(--wiro-mauve)] px-6 py-2.5 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
+                className="mt-10 inline-flex min-h-[44px] items-center justify-center rounded-full bg-[var(--wiro-mauve)] px-6 py-3 text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)] transition-opacity hover:opacity-90"
               >
                 {cta.cta}
               </Link>

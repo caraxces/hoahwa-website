@@ -87,13 +87,15 @@ export default function BuildLogPage() {
         <PageContainer>
           <header className="mb-16">
             <h1 className="text-h1">
-              <span className="block text-[var(--wiro-mauve)]">What we</span>
-              <span className="block">shipped</span>
+              <span className="block">What we</span>
+              <span className="block">
+                shipped<span className="text-[var(--wiro-mauve)]">.</span>
+              </span>
             </h1>
             <p className="mt-6 max-w-2xl text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)]/70">
               {DESCRIPTION}
             </p>
-            <p className="mt-4 text-sm tracking-[-0.03em] text-[var(--wiro-mauve)]">
+            <p className="mt-4 text-sm tracking-[-0.03em] text-[var(--wiro-cod-gray)]/65">
               Updated {updatedLabel}
             </p>
           </header>
@@ -103,7 +105,7 @@ export default function BuildLogPage() {
               const rowContent = (
                 <>
                   <div className="flex shrink-0 flex-col gap-2 md:w-48">
-                    <span className="text-sm tracking-[-0.03em] text-[var(--wiro-mauve)]">
+                    <span className="text-sm font-medium tracking-[-0.03em] text-[var(--wiro-cod-gray)]/70">
                       {formatBuildLogDisplayDate(entry.date)}
                     </span>
                     <span className="text-xs tracking-[-0.02em] text-[var(--wiro-cod-gray)]/60">
@@ -121,7 +123,7 @@ export default function BuildLogPage() {
                     </div>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <span className="text-h3 text-[var(--wiro-cod-gray)]/25 transition-colors group-hover:text-[var(--wiro-cod-gray)]/50">
+                    <span className="text-h3 text-[var(--wiro-cod-gray)]/45 transition-colors group-hover:text-[var(--wiro-cod-gray)]/75">
                       {entry.title}
                     </span>
                     <p className="max-w-3xl text-base tracking-[-0.03em] text-[var(--wiro-cod-gray)]/70">
@@ -132,7 +134,7 @@ export default function BuildLogPage() {
               );
 
               const className =
-                "group flex flex-col gap-4 border-b border-[var(--wiro-cod-gray)] py-10 transition-opacity hover:opacity-80 md:flex-row md:items-start md:gap-12";
+                "group flex min-h-[44px] flex-col gap-4 border-b border-[var(--wiro-cod-gray)] py-10 transition-opacity hover:opacity-80 md:flex-row md:items-start md:gap-12";
 
               return (
                 <li key={entry.id}>
